@@ -1,0 +1,19 @@
+{
+    "appTitle": "Softonix Demo",
+    "screenText": "Screen",
+
+    "profile" : "Profile",
+    "profileInfo": "Info",
+    "profileDocuments": "profileDocuments",
+    "profileInfoScreenTitle": "@:profileInfo @:screenText",
+    "profileDocumentsScreenTitle": "@:profileDocuments @:screenText",
+    "posts" : "Posts",
+    "postsScreenTitle" : "@:posts @:screenText",
+
+    "settings" : "Settings",
+    "settingsScreenTitle" : "@:settings @:screenText",
+
+    "changePassword": "Change Password",
+    "languageName": "Franch",
+    "signOut": "Sign Out"
+}
