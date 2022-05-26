@@ -18,17 +18,13 @@ class LoginFormBloc extends FormBloc<String, String> {
     required this.repository,
   }) : super() {
     username = TextFieldBloc(
-      validators: [
-        FieldBlocValidators.required,
-      ],
+      required: true,
       rules: [ValidationType.onBlur],
     );
 
     password = TextFieldBloc(
-      validators: [
-        FieldBlocValidators.required,
-        FieldBlocValidators.passwordMin6Chars
-      ],
+      required: true,
+      customValidators: [FieldBlocValidators.passwordMin6Chars],
       rules: [ValidationType.onBlur],
     );
 
