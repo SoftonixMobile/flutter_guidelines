@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 import 'package:flutter_guidelines/localization/index.dart';
 
 class InfoScreen extends StatelessWidget {

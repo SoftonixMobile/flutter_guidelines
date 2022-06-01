@@ -78,21 +78,21 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppStartedCopyWith<$Res> {
-  factory _$AppStartedCopyWith(
-          _AppStarted value, $Res Function(_AppStarted) then) =
-      __$AppStartedCopyWithImpl<$Res>;
+abstract class _$$_AppStartedCopyWith<$Res> {
+  factory _$$_AppStartedCopyWith(
+          _$_AppStarted value, $Res Function(_$_AppStarted) then) =
+      __$$_AppStartedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$AppStartedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AppStartedCopyWith<$Res> {
-  __$AppStartedCopyWithImpl(
-      _AppStarted _value, $Res Function(_AppStarted) _then)
-      : super(_value, (v) => _then(v as _AppStarted));
+class __$$_AppStartedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_AppStartedCopyWith<$Res> {
+  __$$_AppStartedCopyWithImpl(
+      _$_AppStarted _value, $Res Function(_$_AppStarted) _then)
+      : super(_value, (v) => _then(v as _$_AppStarted));
 
   @override
-  _AppStarted get _value => super._value as _AppStarted;
+  _$_AppStarted get _value => super._value as _$_AppStarted;
 }
 
 /// @nodoc
@@ -108,7 +108,7 @@ class _$_AppStarted implements _AppStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _AppStarted);
+        (other.runtimeType == runtimeType && other is _$_AppStarted);
   }
 
   @override
@@ -188,28 +188,29 @@ abstract class _AppStarted implements AuthEvent {
 }
 
 /// @nodoc
-abstract class _$AuthDataChangedCopyWith<$Res> {
-  factory _$AuthDataChangedCopyWith(
-          _AuthDataChanged value, $Res Function(_AuthDataChanged) then) =
-      __$AuthDataChangedCopyWithImpl<$Res>;
+abstract class _$$_AuthDataChangedCopyWith<$Res> {
+  factory _$$_AuthDataChangedCopyWith(
+          _$_AuthDataChanged value, $Res Function(_$_AuthDataChanged) then) =
+      __$$_AuthDataChangedCopyWithImpl<$Res>;
   $Res call({String authData});
 }
 
 /// @nodoc
-class __$AuthDataChangedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$AuthDataChangedCopyWith<$Res> {
-  __$AuthDataChangedCopyWithImpl(
-      _AuthDataChanged _value, $Res Function(_AuthDataChanged) _then)
-      : super(_value, (v) => _then(v as _AuthDataChanged));
+class __$$_AuthDataChangedCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_AuthDataChangedCopyWith<$Res> {
+  __$$_AuthDataChangedCopyWithImpl(
+      _$_AuthDataChanged _value, $Res Function(_$_AuthDataChanged) _then)
+      : super(_value, (v) => _then(v as _$_AuthDataChanged));
 
   @override
-  _AuthDataChanged get _value => super._value as _AuthDataChanged;
+  _$_AuthDataChanged get _value => super._value as _$_AuthDataChanged;
 
   @override
   $Res call({
     Object? authData = freezed,
   }) {
-    return _then(_AuthDataChanged(
+    return _then(_$_AuthDataChanged(
       authData == freezed
           ? _value.authData
           : authData // ignore: cast_nullable_to_non_nullable
@@ -235,7 +236,7 @@ class _$_AuthDataChanged implements _AuthDataChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AuthDataChanged &&
+            other is _$_AuthDataChanged &&
             const DeepCollectionEquality().equals(other.authData, authData));
   }
 
@@ -245,8 +246,8 @@ class _$_AuthDataChanged implements _AuthDataChanged {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthDataChangedCopyWith<_AuthDataChanged> get copyWith =>
-      __$AuthDataChangedCopyWithImpl<_AuthDataChanged>(this, _$identity);
+  _$$_AuthDataChangedCopyWith<_$_AuthDataChanged> get copyWith =>
+      __$$_AuthDataChangedCopyWithImpl<_$_AuthDataChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -322,24 +323,24 @@ abstract class _AuthDataChanged implements AuthEvent {
 
   String get authData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AuthDataChangedCopyWith<_AuthDataChanged> get copyWith =>
+  _$$_AuthDataChangedCopyWith<_$_AuthDataChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$LogoutCopyWith<$Res> {
-  factory _$LogoutCopyWith(_Logout value, $Res Function(_Logout) then) =
-      __$LogoutCopyWithImpl<$Res>;
+abstract class _$$_LogoutCopyWith<$Res> {
+  factory _$$_LogoutCopyWith(_$_Logout value, $Res Function(_$_Logout) then) =
+      __$$_LogoutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LogoutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$LogoutCopyWith<$Res> {
-  __$LogoutCopyWithImpl(_Logout _value, $Res Function(_Logout) _then)
-      : super(_value, (v) => _then(v as _Logout));
+class __$$_LogoutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_LogoutCopyWith<$Res> {
+  __$$_LogoutCopyWithImpl(_$_Logout _value, $Res Function(_$_Logout) _then)
+      : super(_value, (v) => _then(v as _$_Logout));
 
   @override
-  _Logout get _value => super._value as _Logout;
+  _$_Logout get _value => super._value as _$_Logout;
 }
 
 /// @nodoc
@@ -355,7 +356,7 @@ class _$_Logout implements _Logout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Logout);
+        (other.runtimeType == runtimeType && other is _$_Logout);
   }
 
   @override
@@ -478,29 +479,30 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
-  factory _$AuthStateCopyWith(
-          _AuthState value, $Res Function(_AuthState) then) =
-      __$AuthStateCopyWithImpl<$Res>;
+abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$$_AuthStateCopyWith(
+          _$_AuthState value, $Res Function(_$_AuthState) then) =
+      __$$_AuthStateCopyWithImpl<$Res>;
   @override
   $Res call({AuthStatus status, String? authData});
 }
 
 /// @nodoc
-class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
-    implements _$AuthStateCopyWith<$Res> {
-  __$AuthStateCopyWithImpl(_AuthState _value, $Res Function(_AuthState) _then)
-      : super(_value, (v) => _then(v as _AuthState));
+class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_AuthStateCopyWith<$Res> {
+  __$$_AuthStateCopyWithImpl(
+      _$_AuthState _value, $Res Function(_$_AuthState) _then)
+      : super(_value, (v) => _then(v as _$_AuthState));
 
   @override
-  _AuthState get _value => super._value as _AuthState;
+  _$_AuthState get _value => super._value as _$_AuthState;
 
   @override
   $Res call({
     Object? status = freezed,
     Object? authData = freezed,
   }) {
-    return _then(_AuthState(
+    return _then(_$_AuthState(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -533,7 +535,7 @@ class _$_AuthState implements _AuthState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AuthState &&
+            other is _$_AuthState &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.authData, authData));
   }
@@ -546,8 +548,8 @@ class _$_AuthState implements _AuthState {
 
   @JsonKey(ignore: true)
   @override
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
-      __$AuthStateCopyWithImpl<_AuthState>(this, _$identity);
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
+      __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }
 
 abstract class _AuthState implements AuthState {
@@ -560,6 +562,6 @@ abstract class _AuthState implements AuthState {
   String? get authData => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AuthStateCopyWith<_AuthState> get copyWith =>
+  _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }

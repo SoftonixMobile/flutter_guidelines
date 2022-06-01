@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
-
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
 
@@ -44,8 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _screenSize = MediaQuery.of(context).size;
-    final _mainContainerWidth = _screenSize.width * 0.85;
+    final screenSize = MediaQuery.of(context).size;
+    final mainContainerWidth = screenSize.width * 0.85;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -54,12 +54,12 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.lightBlue,
         child: SingleChildScrollView(
           child: SizedBox(
-            height: max(_screenSize.height, 600),
+            height: max(screenSize.height, 600),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CustomCard(
-                  width: _mainContainerWidth,
+                  width: mainContainerWidth,
                   height: 450,
                   slotWidget: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

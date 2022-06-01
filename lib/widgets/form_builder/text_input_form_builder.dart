@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
+
 import 'package:flutter_guidelines/styles/index.dart';
-import 'package:stx_form_bloc/stx_form_bloc.dart';
 
 class TextInputFormBuilder extends StatefulWidget {
   const TextInputFormBuilder({

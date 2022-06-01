@@ -15,7 +15,7 @@ part 'auth_bloc.freezed.dart';
 @singleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   static final String _authDataKey =
-      dotenv.get('APP_PROJECT_PREFIX') + 'Auth_Data';
+      '${dotenv.get('APP_PROJECT_PREFIX')}Auth_Data';
 
   AuthBloc({
     required this.repository,

@@ -26,7 +26,8 @@ class AppRouter extends _i2.RootStackRouter {
     },
     LoginRoute.name: (routeData) {
       return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.LoginScreen());
+          routeData: routeData,
+          child: _i2.WrappedRoute(child: const _i1.LoginScreen()));
     },
     HomeRoute.name: (routeData) {
       return _i2.AdaptivePage<dynamic>(

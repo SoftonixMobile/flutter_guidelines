@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -31,7 +33,8 @@ class AppDrawer extends StatelessWidget {
                       CircleAvatar(
                         radius: 60,
                         backgroundColor: AppColors.primary,
-                        backgroundImage: Assets.images.logoShort,
+                        backgroundImage:
+                            AssetImage(Assets.images.logoShort.path),
                       ),
                     ],
                   ),

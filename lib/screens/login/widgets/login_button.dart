@@ -1,5 +1,7 @@
-import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'package:bouncing_widget/bouncing_widget.dart';
+
 import 'package:flutter_guidelines/styles/index.dart';
 
 class LoginButton extends StatelessWidget {
@@ -15,6 +17,7 @@ class LoginButton extends StatelessWidget {
     return BouncingWidget(
       duration: const Duration(milliseconds: 100),
       scaleFactor: 1,
+      onPressed: onPressed,
       child: Container(
         height: 40,
         decoration: const BoxDecoration(
@@ -34,7 +37,6 @@ class LoginButton extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: onPressed,
     );
   }
 }

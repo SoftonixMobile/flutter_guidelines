@@ -10,7 +10,8 @@
 .history
 .svn/
 
-*.env
+#uncomment in a real project
+#*.env
 
 #flutter version managers
 .fvm/

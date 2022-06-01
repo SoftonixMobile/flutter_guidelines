@@ -1,9 +1,10 @@
 import 'dart:async';
 
+import 'package:injectable/injectable.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
+
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/screens/auth/auth_repository.dart';
-import 'package:injectable/injectable.dart';
-import 'package:stx_form_bloc/stx_form_bloc.dart';
 
 @injectable
 class LoginFormBloc extends FormBloc<String, String> {

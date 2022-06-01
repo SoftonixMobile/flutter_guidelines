@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_guidelines/helpers/constants.dart';
-import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'app.dart';
-import 'services/injector/injector.dart';
+import 'package:flutter_guidelines/app.dart';
+import 'package:flutter_guidelines/core/constants.dart';
+import 'package:flutter_guidelines/localization/index.dart';
+import 'package:flutter_guidelines/services/index.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

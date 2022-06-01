@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_guidelines/styles/index.dart';
 
 class AppTheme {
@@ -7,6 +8,6 @@ class AppTheme {
     colorScheme: ColorScheme.fromSwatch(
       primarySwatch: AppColors.primary,
     ),
-    fontFamily: FontFamily.robotoMono,
+    fontFamily: FontFamily.poppins,
   );
 }
