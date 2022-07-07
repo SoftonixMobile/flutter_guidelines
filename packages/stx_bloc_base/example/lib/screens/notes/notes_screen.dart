@@ -13,8 +13,7 @@ class NotesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          NotesBloc(repository: NotesRepository())..loadAsync(),
+      create: (context) => NotesBloc(repository: NotesRepository())..load(),
       child: const NotesView(),
     );
   }
@@ -30,7 +29,7 @@ class NotesView extends StatelessWidget {
     return RefreshIndicator(
       displacement: 100,
       onRefresh: () {
-        notesBloc.loadAsync();
+        notesBloc.load();
 
         return notesBloc.stream.firstWhere(
           (state) => !state.status.isLoading,
@@ -40,42 +39,72 @@ class NotesView extends StatelessWidget {
         appBar: AppBar(
           title: const Text('My notes'),
         ),
-        body: Center(
-          child: BlocConsumer<NotesBloc, NetworkListStateBase<Note>>(
-            listener: (context, state) {
-              if (state.status.isFailure) {
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        state.errorMsg,
-                        textAlign: TextAlign.center,
-                      ),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      onChanged: (value) {
+                        notesBloc.search(value);
+                      },
                     ),
-                  );
-              }
-            },
-            builder: (context, state) {
-              switch (state.status) {
-                case NetworkStatus.loading:
-                  return const Text('loading');
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      notesBloc.filter(true);
+                    },
+                    icon: const Text('Odd'),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      notesBloc.filter(false);
+                    },
+                    icon: const Text('Even'),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: BlocConsumer<NotesBloc,
+                  NetworkFilterableListState<Note, bool>>(
+                listener: (context, state) {
+                  if (state.status.isFailure) {
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            state.errorMsg,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                  }
+                },
+                builder: (context, state) {
+                  switch (state.status) {
+                    case NetworkStatus.success:
+                    case NetworkStatus.failure:
+                      return Scrollbar(
+                        child: ListView.builder(
+                          itemCount: state.visibleData.length,
+                          itemBuilder: ((context, index) {
+                            final item = state.visibleData[index];
 
-                case NetworkStatus.success:
-                case NetworkStatus.failure:
-                  return Scrollbar(
-                    child: ListView.builder(
-                      itemCount: state.data.length,
-                      itemBuilder: ((context, index) {
-                        final item = state.data[index];
-
-                        return NoteItem(item: item);
-                      }),
-                    ),
-                  );
-              }
-            },
-          ),
+                            return NoteItem(item: item);
+                          }),
+                        ),
+                      );
+                    default:
+                      return const Text('loading');
+                  }
+                },
+              ),
+            ),
+          ],
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: Row(
@@ -90,17 +119,6 @@ class NotesView extends StatelessWidget {
                     );
               },
               child: const Icon(Icons.add),
-            ),
-            IconButton(
-              onPressed: () {
-                context.read<NotesBloc>().addItem(
-                      Note(
-                        noteId: Random().nextInt(100),
-                        message: 'New note',
-                      ),
-                    );
-              },
-              icon: const Icon(Icons.add),
             ),
           ],
         ),
@@ -141,56 +159,29 @@ class NoteItem extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          if (item.noteId % 2 == 0)
-            IconButton(
-              onPressed: () {
-                notesBloc.editItemAsync(
-                  Note(
-                    noteId: item.noteId,
-                    message: '${item.message}e',
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.edit,
-                color: Colors.purple,
-              ),
+          IconButton(
+            onPressed: () {
+              notesBloc.editItemAsync(
+                Note(
+                  noteId: item.noteId,
+                  message: '${item.message}e',
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.edit,
+              color: Colors.purple,
             ),
-          if (item.noteId % 2 == 1)
-            IconButton(
-              onPressed: () {
-                notesBloc.editItem(
-                  Note(
-                    noteId: item.noteId,
-                    message: '${item.message}e',
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.edit,
-                color: Colors.purple,
-              ),
+          ),
+          IconButton(
+            onPressed: () {
+              notesBloc.removeItemAsync(item);
+            },
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
             ),
-          if (item.noteId % 2 == 0)
-            IconButton(
-              onPressed: () {
-                notesBloc.removeItemAsync(item);
-              },
-              icon: const Icon(
-                Icons.delete,
-                color: Colors.red,
-              ),
-            ),
-          if (item.noteId % 2 == 1)
-            IconButton(
-              onPressed: () {
-                notesBloc.removeItem(item);
-              },
-              icon: const Icon(
-                Icons.delete,
-                color: Colors.red,
-              ),
-            ),
+          ),
         ],
       ),
     );

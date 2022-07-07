@@ -1,23 +1,19 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:example/helpers/list_extentions.dart';
 import 'package:example/screens/notes/models/models.dart';
 
 class NotesRepository {
-  static bool isSuccess = true;
-
   static List<Note> initalNotes = [
-    const Note(noteId: 1, message: 'First'),
-    const Note(noteId: 2, message: 'Second'),
+    const Note(noteId: 1, message: 'Note1'),
+    const Note(noteId: 2, message: 'Note2'),
+    const Note(noteId: 3, message: 'Note3'),
+    const Note(noteId: 4, message: 'Note4'),
+    const Note(noteId: 5, message: 'Note5'),
   ];
 
   Future<List<Note>> getNotes() {
-    if ((isSuccess = !isSuccess) == false) {
-      return Future.value([...initalNotes]);
-    }
-
-    throw const HttpException('Get notes failed');
+    return Future.value([...initalNotes]);
   }
 
   Future<Note> addNote(Note note) {
@@ -26,19 +22,16 @@ class NotesRepository {
   }
 
   Future<Note> updateNote(Note note) {
-    if ((isSuccess = !isSuccess) == false) {
-      initalNotes.replaceWhere(
-          (item) => item.noteId == note.noteId, (_) => note, false);
-      return Future.value(note);
-    }
+    initalNotes.replaceWhere(
+        (item) => item.noteId == note.noteId, (_) => note, false);
 
-    throw const HttpException('Get notes failed');
+    return Future.value(note);
   }
 
   Future<bool> deleteNote(int id) async {
     final noteToDelete = initalNotes.firstWhere((note) => note.noteId == id);
     initalNotes.remove(noteToDelete);
 
-    return isSuccess = !isSuccess;
+    return true;
   }
 }

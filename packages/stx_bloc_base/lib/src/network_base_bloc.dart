@@ -3,28 +3,31 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-enum NetworkStatus {
-  loading,
-  success,
-  failure;
-
-  bool get isLoading => this == NetworkStatus.loading;
-  bool get isSuccess => this == NetworkStatus.success;
-  bool get isFailure => this == NetworkStatus.failure;
-}
+import 'models.dart';
+import 'network_base_bloc_event.dart';
 
 class NetworkStateBase<T> extends Equatable {
-  const NetworkStateBase({
-    this.status = NetworkStatus.loading,
-    required this.data,
-    this.errorMessage,
-  });
-
   final NetworkStatus status;
   final T data;
   final String? errorMessage;
 
-  String get errorMsg => errorMessage ?? 'Something went wrong';
+  const NetworkStateBase({
+    this.status = NetworkStatus.initial,
+    required this.data,
+    this.errorMessage,
+  });
+
+  ///subClassMustOverride
+  NetworkStateBase<T> copyWithLoading() =>
+      copyWith(status: NetworkStatus.loading);
+
+  ///subClassMustOverride
+  NetworkStateBase<T> copyWithSuccess(T data) =>
+      copyWith(status: NetworkStatus.success, data: data);
+
+  ///subClassMustOverride
+  NetworkStateBase<T> copyWithFailure([String? errorMessage]) =>
+      copyWith(status: NetworkStatus.failure, errorMessage: errorMessage);
 
   ///subClassMustOverride
   NetworkStateBase<T> copyWith({
@@ -39,24 +42,10 @@ class NetworkStateBase<T> extends Equatable {
     );
   }
 
+  String get errorMsg => errorMessage ?? 'Something went wrong';
+
   @override
   List<Object?> get props => [status, data, errorMessage];
-}
-
-abstract class NetworkEventBase {}
-
-class NetworkEventLoadAsync implements NetworkEventBase {}
-
-class NetworkEventUpdate<T> implements NetworkEventBase {
-  const NetworkEventUpdate(this.updatedData);
-
-  final T updatedData;
-}
-
-class NetworkEventUpdateAsync<T> implements NetworkEventBase {
-  const NetworkEventUpdateAsync(this.updatedData);
-
-  final T updatedData;
 }
 
 abstract class NetworkBlocBase<T, S extends NetworkStateBase<T>>
@@ -65,62 +54,60 @@ abstract class NetworkBlocBase<T, S extends NetworkStateBase<T>>
     super.initialState, {
     this.errorHandler,
   }) {
-    on<NetworkEventLoadAsync>(onEventLoadAsync);
+    on<NetworkEventLoad>(onEventLoad);
     on<NetworkEventUpdate>(onEventUpdate);
     on<NetworkEventUpdateAsync>(onEventUpdateAsync);
   }
 
-  final String? Function(Object)? errorHandler;
+  final String? Function(Object, StackTrace)? errorHandler;
 
-  void loadAsync() => add(NetworkEventLoadAsync());
-  void updateData(T updatedData) => add(NetworkEventUpdate(updatedData));
-  void updateDataAsync(T updatedData) =>
-      add(NetworkEventUpdateAsync(updatedData));
+  void load() => add(NetworkEventLoad());
 
-  FutureOr<void> onEventLoadAsync(
-      NetworkEventLoadAsync event, Emitter<NetworkStateBase<T>> emit) async {
-    emit(state.copyWith(status: NetworkStatus.loading));
+  void update(T updatedData) => add(NetworkEventUpdate(updatedData));
+  void updateAsync(T updatedData) => add(NetworkEventUpdateAsync(updatedData));
+
+  FutureOr<void> onEventLoad(
+      NetworkEventLoad event, Emitter<NetworkStateBase<T>> emit) async {
+    emit(state.copyWithLoading());
 
     try {
       var data = await onLoadDataAsync();
 
-      emit(state.copyWith(status: NetworkStatus.success, data: data));
-    } catch (e) {
+      emit(onStateChanged(event, state.copyWithSuccess(data)));
+    } catch (e, stackTrace) {
       emit(
-        state.copyWith(
-          status: NetworkStatus.failure,
-          errorMessage: errorHandler?.call(e),
-        ),
+        state.copyWithFailure(errorHandler?.call(e, stackTrace)),
       );
     }
   }
 
   FutureOr<void> onEventUpdate(
       NetworkEventUpdate event, Emitter<NetworkStateBase<T>> emit) {
-    emit(state.copyWith(data: event.updatedData));
+    emit(onStateChanged(event, state.copyWithSuccess(event.updatedData)));
   }
 
   FutureOr<void> onEventUpdateAsync(
       NetworkEventUpdateAsync event, Emitter<NetworkStateBase<T>> emit) async {
-    emit(state.copyWith(status: NetworkStatus.loading));
+    emit(state.copyWithLoading());
 
     try {
       var data = await onUpdateDataAsync(event.updatedData);
 
-      emit(NetworkStateBase(data: data));
-    } catch (e) {
+      emit(onStateChanged(event, state.copyWithSuccess(data)));
+    } catch (e, stackTrace) {
       emit(
-        state.copyWith(
-          status: NetworkStatus.failure,
-          errorMessage: errorHandler?.call(e),
-        ),
+        state.copyWithFailure(errorHandler?.call(e, stackTrace)),
       );
     }
   }
 
   Future<T> onLoadDataAsync();
 
-  Future<T> onUpdateDataAsync(T updatedData) {
-    return Future.value(updatedData);
-  }
+  Future<T> onUpdateDataAsync(T updatedData) => Future.value(updatedData);
+
+  NetworkStateBase<T> onStateChanged(
+    NetworkEventBase event,
+    covariant NetworkStateBase<T> state,
+  ) =>
+      state;
 }

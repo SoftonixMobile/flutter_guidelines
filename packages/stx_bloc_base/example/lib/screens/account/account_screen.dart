@@ -1,6 +1,5 @@
 import 'package:example/screens/account/account_bloc.dart';
 import 'package:example/screens/account/account_repository.dart';
-import 'package:example/screens/account/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stx_bloc_base/stx_bloc_base.dart';
@@ -11,8 +10,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AccountBloc>(
-      create: (context) =>
-          AccountBloc(repository: AccountRepository())..loadAsync(),
+      create: (context) => AccountBloc(repository: AccountRepository())..load(),
       child: const AccountView(),
     );
   }
@@ -28,7 +26,7 @@ class AccountView extends StatelessWidget {
         title: const Text('Account Details'),
       ),
       body: Center(
-        child: BlocConsumer<AccountBloc, NetworkStateBase<Account>>(
+        child: BlocConsumer<AccountBloc, TestState>(
           listener: (context, state) {
             if (state.status.isFailure) {
               ScaffoldMessenger.of(context)
@@ -45,8 +43,6 @@ class AccountView extends StatelessWidget {
           },
           builder: (context, state) {
             switch (state.status) {
-              case NetworkStatus.loading:
-                return const Text('loading');
               case NetworkStatus.success:
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -54,13 +50,21 @@ class AccountView extends StatelessWidget {
                     Text(state.data.firstName),
                     Text(state.data.lastName),
                     Text(state.data.age.toString()),
+                    Text(state.counter.toString())
                   ],
                 );
               case NetworkStatus.failure:
                 return Text(state.errorMsg);
+              default:
+                return const Text('loading');
             }
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.read<AccountBloc>().increaseCounter();
+        },
       ),
     );
   }

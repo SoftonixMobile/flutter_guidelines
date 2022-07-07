@@ -7,4 +7,6 @@ extension ListExtension<T> on List<T> {
   }
 
   List<T> whereList(bool Function(T) test) => where(test).toList();
+
+  List<T> mapList(T Function(T) toElement) => map(toElement).toList();
 }
