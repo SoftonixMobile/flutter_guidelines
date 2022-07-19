@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:flutter_guidelines/app.dart';
-import 'package:flutter_guidelines/core/constants/app_constants.dart';
-import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
+import 'package:{{project_name}}/app.dart';
+import 'package:{{project_name}}/core/constants/app_constants.dart';
+import 'package:{{project_name}}/localization/index.dart';
+import 'package:{{project_name}}/services/index.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ void main() async {
       supportedLocales: CodegenLoader.supportedLocales,
       fallbackLocale: CodegenLoader.supportedLocales.last,
       assetLoader: const CodegenLoader(),
-      child: SoftonixApp(),
+      child: {{#pascalCase}}{{project_name}}{{/pascalCase}}(),
     ),
   );
 }

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_guidelines/core/index.dart';
+import 'package:{{project_name}}/core/index.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/models/general_models.dart';
+import 'package:{{project_name}}/models/general_models.dart';
 import 'interceptors/index.dart';
 
 @injectable

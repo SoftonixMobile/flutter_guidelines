@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_guidelines/core/index.dart';
+import 'package:{{project_name}}/core/index.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:{{project_name}}/styles/index.dart';
 
 class SliverTabsRouter extends StatelessWidget {
   const SliverTabsRouter({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guidelines/core/index.dart';
+import 'package:{{project_name}}/core/index.dart';
 
-import 'package:flutter_guidelines/localization/index.dart';
+import 'package:{{project_name}}/localization/index.dart';
 
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);

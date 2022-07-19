@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/localization/index.dart';
+import 'package:{{project_name}}/localization/index.dart';
 
 class DocumentsScreen extends StatelessWidget {
   const DocumentsScreen({Key? key}) : super(key: key);

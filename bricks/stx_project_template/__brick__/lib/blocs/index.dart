@@ -1,1 +1,1 @@
-export 'package:flutter_guidelines/screens/auth/bloc/auth_bloc.dart';
+export 'package:{{project_name}}/screens/auth/bloc/auth_bloc.dart';

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_guidelines/blocs/index.dart';
-import 'package:flutter_guidelines/screens/login/widgets/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
-import 'package:flutter_guidelines/widgets/index.dart';
+import 'package:{{project_name}}/blocs/index.dart';
+import 'package:{{project_name}}/screens/login/widgets/index.dart';
+import 'package:{{project_name}}/styles/index.dart';
+import 'package:{{project_name}}/widgets/index.dart';
 import '../login_form_bloc.dart';
 
 class LoginForm extends StatelessWidget {

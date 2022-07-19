@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/services/http/http_client.dart';
+import 'package:{{project_name}}/services/http/http_client.dart';
 
 @injectable
 class AuthRepository {

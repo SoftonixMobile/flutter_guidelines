@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/router/index.dart';
-import 'package:flutter_guidelines/widgets/index.dart';
+import 'package:{{project_name}}/localization/index.dart';
+import 'package:{{project_name}}/router/index.dart';
+import 'package:{{project_name}}/widgets/index.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);

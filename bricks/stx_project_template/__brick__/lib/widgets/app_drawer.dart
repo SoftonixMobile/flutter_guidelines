@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:flutter_guidelines/blocs/index.dart';
-import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:{{project_name}}/blocs/index.dart';
+import 'package:{{project_name}}/localization/index.dart';
+import 'package:{{project_name}}/services/index.dart';
+import 'package:{{project_name}}/styles/index.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);

@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
-import 'package:flutter_guidelines/widgets/index.dart';
+import 'package:{{project_name}}/services/index.dart';
+import 'package:{{project_name}}/styles/index.dart';
+import 'package:{{project_name}}/widgets/index.dart';
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
 

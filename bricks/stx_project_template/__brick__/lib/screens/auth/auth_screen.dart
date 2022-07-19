@@ -4,8 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 
-import 'package:flutter_guidelines/router/index.dart';
-import 'package:flutter_guidelines/screens/auth/bloc/auth_bloc.dart';
+import 'package:{{project_name}}/router/index.dart';
+import 'package:{{project_name}}/screens/auth/bloc/auth_bloc.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key? key}) : super(key: key);

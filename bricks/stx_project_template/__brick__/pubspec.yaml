@@ -1,4 +1,4 @@
-name: flutter_guidelines
+name: {{project_name}}
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -52,7 +52,7 @@ dependencies:
   #icons
   font_awesome_flutter: ^10.1.0
 
-  #
+  #sort imports
   import_sorter: ^4.6.0
 
   #widgets

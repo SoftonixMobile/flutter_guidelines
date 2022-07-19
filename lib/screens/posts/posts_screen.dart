@@ -12,9 +12,7 @@ class PostsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          LocaleKeys.posts.tr(),
-        ),
+        title: Text(LocaleKeys.posts.tr()),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () => RootScaffold.openDrawer(context),
