@@ -17,7 +17,6 @@ class MessagesScreen extends StatelessWidget {
     final tabs = [
       LocaleKeys.chats.tr(),
       LocaleKeys.posts.tr(),
-      'Notes',
     ];
 
     const routes = <PageRouteInfo<dynamic>>[
