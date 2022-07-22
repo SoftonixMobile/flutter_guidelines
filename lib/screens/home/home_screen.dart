@@ -21,6 +21,9 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
         BlocProvider(
           create: (context) => getIt<PostsBloc>(),
         ),
+        BlocProvider(
+          create: (context) => getIt<NotesBloc>(),
+        ),
       ],
       child: this,
     );

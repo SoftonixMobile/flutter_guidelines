@@ -11,6 +11,9 @@ const profileRouter = AutoRoute(
     ),
     AutoRoute(
       page: PostsScreen,
-    )
+    ),
+    AutoRoute(
+      page: NotesScreen,
+    ),
   ],
 );

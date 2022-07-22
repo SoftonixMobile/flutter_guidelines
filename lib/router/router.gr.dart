@@ -57,6 +57,10 @@ class AppRouter extends _i5.RootStackRouter {
     PostsRoute.name: (routeData) {
       return _i5.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i3.PostsScreen());
+    },
+    NotesRoute.name: (routeData) {
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i3.NotesScreen());
     }
   };
 
@@ -78,7 +82,9 @@ class AppRouter extends _i5.RootStackRouter {
                       _i5.RouteConfig(ChatsRoute.name,
                           path: '', parent: MessagesRoute.name),
                       _i5.RouteConfig(PostsRoute.name,
-                          path: 'posts-screen', parent: MessagesRoute.name)
+                          path: 'posts-screen', parent: MessagesRoute.name),
+                      _i5.RouteConfig(NotesRoute.name,
+                          path: 'notes-screen', parent: MessagesRoute.name)
                     ]),
                 _i5.RouteConfig(SettingsRoute.name,
                     path: 'settings-screen', parent: HomeRoute.name)
@@ -153,4 +159,12 @@ class PostsRoute extends _i5.PageRouteInfo<void> {
   const PostsRoute() : super(PostsRoute.name, path: 'posts-screen');
 
   static const String name = 'PostsRoute';
+}
+
+/// generated route for
+/// [_i3.NotesScreen]
+class NotesRoute extends _i5.PageRouteInfo<void> {
+  const NotesRoute() : super(NotesRoute.name, path: 'notes-screen');
+
+  static const String name = 'NotesRoute';
 }

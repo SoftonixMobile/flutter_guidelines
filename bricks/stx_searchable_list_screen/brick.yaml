@@ -1,0 +1,24 @@
+name: stx_searchable_list_screen
+description: Creates template for landing page with searchable list.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.26 <0.1.0"
+
+vars:
+  project_name:
+    type: string
+    description: Screen name
+    default: notes
+    prompt: What is the project name?
+  screen_name:
+    type: string
+    description: Screen name
+    default: notes
+    prompt: What is the screen name?
+  entity_name:
+    type: string
+    description: Entity name
+    default: Note
+    prompt: What is the entity name?
