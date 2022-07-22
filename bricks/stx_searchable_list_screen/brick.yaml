@@ -1,7 +1,8 @@
 name: stx_searchable_list_screen
 description: Creates template for landing page with searchable list.
+repository: https://github.com/VSydorko/flutter_guidelines/tree/main/bricks/stx_searchable_list_screen
 
-version: 0.1.0+1
+version: 0.1.0+2
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
@@ -10,7 +11,7 @@ vars:
   project_name:
     type: string
     description: Screen name
-    default: notes
+    default: softonix_demo
     prompt: What is the project name?
   screen_name:
     type: string

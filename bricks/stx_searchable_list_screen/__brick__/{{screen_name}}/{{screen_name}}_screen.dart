@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
 
 import 'models/models.dart';
 import '{{screen_name}}_bloc.dart';
@@ -46,7 +47,7 @@ class {{#pascalCase}}{{screen_name}}{{/pascalCase}}Screen extends StatelessWidge
 
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text({{#camelCase}}{{variable}}{{/camelCase}}.name),
+                        child: Text({{#camelCase}}{{entity_name}}{{/camelCase}}.name),
                       );
                     },
                   );

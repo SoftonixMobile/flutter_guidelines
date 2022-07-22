@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/services/http/http_client.dart';
-
 import 'models/models.dart';
 
 @injectable

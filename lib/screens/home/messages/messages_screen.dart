@@ -6,7 +6,6 @@ import 'package:flutter_guidelines/widgets/index.dart';
 
 export 'chats/chats_screen.dart';
 export 'posts/posts_screen.dart';
-export 'notes/notes_screen.dart';
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({Key? key}) : super(key: key);
@@ -24,7 +23,6 @@ class MessagesScreen extends StatelessWidget {
     const routes = <PageRouteInfo<dynamic>>[
       ChatsRoute(),
       PostsRoute(),
-      NotesRoute(),
     ];
 
     return CustomTabsRouter(
