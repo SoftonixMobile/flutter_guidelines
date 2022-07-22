@@ -1,23 +1,20 @@
 part of 'auth_bloc.dart';
 
-enum AuthStatus {
-  initial,
-  unauthenticated,
-  authenticated,
-}
-
 @freezed
 class AuthState with _$AuthState {
   const factory AuthState({
-    @Default(AuthStatus.initial) AuthStatus status,
-    String? authData,
+    @Default(AuthenticationStatus.initial) AuthenticationStatus status,
+    @Default(UserProfile()) UserProfile userProfile,
   }) = _AuthState;
 
-  factory AuthState.authenticated(String authData) => AuthState(
-        status: AuthStatus.authenticated,
-        authData: authData,
+  factory AuthState.authenticated(
+    UserProfile userProfile,
+  ) =>
+      AuthState(
+        status: AuthenticationStatus.authenticated,
+        userProfile: userProfile,
       );
 
   factory AuthState.unauthenticated() =>
-      const AuthState(status: AuthStatus.unauthenticated);
+      const AuthState(status: AuthenticationStatus.unauthenticated);
 }

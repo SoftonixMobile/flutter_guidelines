@@ -1,18 +1,19 @@
 {
-    "screenText": "IIIII",
+    "screenText": "Filtrer",
 
-    "profile" : "IIIIII",
-    "profileInfo": "IIIII",
-    "profileDocuments": "IIIIIIIIIII",
-    "profileInfoScreenTitle": "@:profileInfo @:screenText",
-    "profileDocumentsScreenTitle": "@:profileDocuments @:screenText",
-    "posts" : "IIIII",
+    "dashboard" : "Tableau de bord",
+    "dashboardScreenTitle": "@:dashboard @:screenText",
+
+    "messages": "Messages",
+    "chats": "Chats",
+    "chatsScreenTitle" : "@:chats @:screenText",
+    "posts": "Des postes",
     "postsScreenTitle" : "@:posts @:screenText",
 
-    "settings" : "IIIII",
+    "settings" : "Réglages",
     "settingsScreenTitle" : "@:settings @:screenText",
 
-    "changePassword": "IIIIIIIII",
+    "changePassword": "Changer le mot de passe",
     "languageName": "French",
-    "signOut": "IIIIII"
+    "signOut": "Se déconnecter"
 }

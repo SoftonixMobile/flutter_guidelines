@@ -18,7 +18,7 @@ class StateWrapper extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>()..appStarted(),
+          create: (context) => getIt<AuthBloc>(),
         ),
       ],
       child: child,

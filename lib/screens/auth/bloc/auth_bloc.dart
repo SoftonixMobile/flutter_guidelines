@@ -1,76 +1,58 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_guidelines/screens/auth/models/models.dart';
 import '../auth_repository.dart';
 
+part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
-part 'auth_bloc.freezed.dart';
 
 @singleton
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  static final String _authDataKey =
-      '${dotenv.get('APP_PROJECT_PREFIX')}Auth_Data';
-
   AuthBloc({
     required this.repository,
   }) : super(const AuthState()) {
-    on<_AppStarted>(_appStarted);
-    on<_AuthDataChanged>(_authDataChanged);
-    on<_Logout>(_logout);
+    _subscription = repository.authenticationStatus.listen((status) {
+      add(AuthEvent.authenticationStatusChanged(status));
+    });
+
+    on<_AuthenticationStatusChanged>(_authenticationStatusChanged);
+    on<_SignOut>(_signOut);
   }
 
   final AuthRepository repository;
 
-  void appStarted() => add(const AuthEvent.appStarted());
+  late StreamSubscription<AuthenticationStatus> _subscription;
 
-  void authDataChanged(String authData) =>
-      add(AuthEvent.authDataChanged(authData));
+  void signOut() => add(const AuthEvent.signOut());
 
-  void logout() => add(const AuthEvent.logout());
+  FutureOr<void> _authenticationStatusChanged(
+      _AuthenticationStatusChanged event, Emitter<AuthState> emit) async {
+    if (event.status == AuthenticationStatus.authenticated) {
+      try {
+        final userProfile = await repository.getUserProfile();
 
-  FutureOr<void> _appStarted(_AppStarted event, Emitter<AuthState> emit) async {
-    final prefs = await SharedPreferences.getInstance();
-
-    try {
-      if (prefs.containsKey(_authDataKey)) {
-        final authData = prefs.getString(_authDataKey) ?? '';
-
-        emit(AuthState.authenticated(authData));
-      } else {
+        emit(AuthState.authenticated(userProfile));
+      } catch (_) {
         emit(AuthState.unauthenticated());
       }
-    } catch (_) {
-      emit(AuthState.unauthenticated());
+    } else {
+      emit(state.copyWith(status: event.status));
     }
   }
 
-  FutureOr<void> _authDataChanged(
-      _AuthDataChanged event, Emitter<AuthState> emit) async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-
-      prefs.setString(_authDataKey, event.authData);
-
-      emit(AuthState.authenticated(event.authData));
-    } on Exception catch (_) {
-      emit(AuthState.unauthenticated());
-    }
-  }
-
-  FutureOr<void> _logout(_Logout event, Emitter<AuthState> emit) async {
-    (await SharedPreferences.getInstance()).clear();
-
-    emit(AuthState.unauthenticated());
+  FutureOr<void> _signOut(_SignOut event, Emitter<AuthState> emit) {
+    return repository.signOut();
   }
 
   @override
-  Future<void> close() {
+  Future<void> close() async {
+    await _subscription.cancel();
     return super.close();
   }
 }

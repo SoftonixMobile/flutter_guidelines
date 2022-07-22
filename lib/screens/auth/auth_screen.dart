@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_guidelines/router/index.dart';
@@ -17,12 +17,12 @@ class AuthScreen extends StatelessWidget {
     return AutoRouter.declarative(
       routes: (context) {
         switch (authStatus) {
-          case AuthStatus.initial:
+          case AuthenticationStatus.initial:
             return [];
-          case AuthStatus.unauthenticated:
+          case AuthenticationStatus.unauthenticated:
             FlutterNativeSplash.remove();
             return [const LoginRoute()];
-          case AuthStatus.authenticated:
+          case AuthenticationStatus.authenticated:
             FlutterNativeSplash.remove();
             return [const HomeRoute()];
         }

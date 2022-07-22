@@ -5,8 +5,11 @@ linter:
 
 analyzer:
   exclude:
-    - "**/*.g.dart"
+    - bricks/**
+    - '**/*.g.dart'
     - '**/*config.dart'
-    - "**/*.freezed.dart"
+    - '**/*.freezed.dart'
+    - '**/*.gen.dart'
+    - '**/*.gr.dart'
   errors:
     invalid_annotation_target: ignore

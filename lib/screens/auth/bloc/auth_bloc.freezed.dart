@@ -18,45 +18,43 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function(String authData) authDataChanged,
-    required TResult Function() logout,
+    required TResult Function(AuthenticationStatus status)
+        authenticationStatusChanged,
+    required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_AuthDataChanged value) authDataChanged,
-    required TResult Function(_Logout value) logout,
+    required TResult Function(_AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_SignOut value) signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,207 +76,99 @@ class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_AppStartedCopyWith<$Res> {
-  factory _$$_AppStartedCopyWith(
-          _$_AppStarted value, $Res Function(_$_AppStarted) then) =
-      __$$_AppStartedCopyWithImpl<$Res>;
+abstract class _$$_AuthenticationStatusChangedCopyWith<$Res> {
+  factory _$$_AuthenticationStatusChangedCopyWith(
+          _$_AuthenticationStatusChanged value,
+          $Res Function(_$_AuthenticationStatusChanged) then) =
+      __$$_AuthenticationStatusChangedCopyWithImpl<$Res>;
+  $Res call({AuthenticationStatus status});
 }
 
 /// @nodoc
-class __$$_AppStartedCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AppStartedCopyWith<$Res> {
-  __$$_AppStartedCopyWithImpl(
-      _$_AppStarted _value, $Res Function(_$_AppStarted) _then)
-      : super(_value, (v) => _then(v as _$_AppStarted));
-
-  @override
-  _$_AppStarted get _value => super._value as _$_AppStarted;
-}
-
-/// @nodoc
-
-class _$_AppStarted implements _AppStarted {
-  const _$_AppStarted();
-
-  @override
-  String toString() {
-    return 'AuthEvent.appStarted()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AppStarted);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function(String authData) authDataChanged,
-    required TResult Function() logout,
-  }) {
-    return appStarted();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
-  }) {
-    return appStarted?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
-    required TResult orElse(),
-  }) {
-    if (appStarted != null) {
-      return appStarted();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_AuthDataChanged value) authDataChanged,
-    required TResult Function(_Logout value) logout,
-  }) {
-    return appStarted(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
-  }) {
-    return appStarted?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
-    required TResult orElse(),
-  }) {
-    if (appStarted != null) {
-      return appStarted(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AppStarted implements AuthEvent {
-  const factory _AppStarted() = _$_AppStarted;
-}
-
-/// @nodoc
-abstract class _$$_AuthDataChangedCopyWith<$Res> {
-  factory _$$_AuthDataChangedCopyWith(
-          _$_AuthDataChanged value, $Res Function(_$_AuthDataChanged) then) =
-      __$$_AuthDataChangedCopyWithImpl<$Res>;
-  $Res call({String authData});
-}
-
-/// @nodoc
-class __$$_AuthDataChangedCopyWithImpl<$Res>
+class __$$_AuthenticationStatusChangedCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_AuthDataChangedCopyWith<$Res> {
-  __$$_AuthDataChangedCopyWithImpl(
-      _$_AuthDataChanged _value, $Res Function(_$_AuthDataChanged) _then)
-      : super(_value, (v) => _then(v as _$_AuthDataChanged));
+    implements _$$_AuthenticationStatusChangedCopyWith<$Res> {
+  __$$_AuthenticationStatusChangedCopyWithImpl(
+      _$_AuthenticationStatusChanged _value,
+      $Res Function(_$_AuthenticationStatusChanged) _then)
+      : super(_value, (v) => _then(v as _$_AuthenticationStatusChanged));
 
   @override
-  _$_AuthDataChanged get _value => super._value as _$_AuthDataChanged;
+  _$_AuthenticationStatusChanged get _value =>
+      super._value as _$_AuthenticationStatusChanged;
 
   @override
   $Res call({
-    Object? authData = freezed,
+    Object? status = freezed,
   }) {
-    return _then(_$_AuthDataChanged(
-      authData == freezed
-          ? _value.authData
-          : authData // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$_AuthenticationStatusChanged(
+      status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AuthenticationStatus,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AuthDataChanged implements _AuthDataChanged {
-  const _$_AuthDataChanged(this.authData);
+class _$_AuthenticationStatusChanged implements _AuthenticationStatusChanged {
+  const _$_AuthenticationStatusChanged(this.status);
 
   @override
-  final String authData;
+  final AuthenticationStatus status;
 
   @override
   String toString() {
-    return 'AuthEvent.authDataChanged(authData: $authData)';
+    return 'AuthEvent.authenticationStatusChanged(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthDataChanged &&
-            const DeepCollectionEquality().equals(other.authData, authData));
+            other is _$_AuthenticationStatusChanged &&
+            const DeepCollectionEquality().equals(other.status, status));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(authData));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
 
   @JsonKey(ignore: true)
   @override
-  _$$_AuthDataChangedCopyWith<_$_AuthDataChanged> get copyWith =>
-      __$$_AuthDataChangedCopyWithImpl<_$_AuthDataChanged>(this, _$identity);
+  _$$_AuthenticationStatusChangedCopyWith<_$_AuthenticationStatusChanged>
+      get copyWith => __$$_AuthenticationStatusChangedCopyWithImpl<
+          _$_AuthenticationStatusChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function(String authData) authDataChanged,
-    required TResult Function() logout,
+    required TResult Function(AuthenticationStatus status)
+        authenticationStatusChanged,
+    required TResult Function() signOut,
   }) {
-    return authDataChanged(authData);
+    return authenticationStatusChanged(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
   }) {
-    return authDataChanged?.call(authData);
+    return authenticationStatusChanged?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
-    if (authDataChanged != null) {
-      return authDataChanged(authData);
+    if (authenticationStatusChanged != null) {
+      return authenticationStatusChanged(status);
     }
     return orElse();
   }
@@ -286,77 +176,79 @@ class _$_AuthDataChanged implements _AuthDataChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_AuthDataChanged value) authDataChanged,
-    required TResult Function(_Logout value) logout,
+    required TResult Function(_AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_SignOut value) signOut,
   }) {
-    return authDataChanged(this);
+    return authenticationStatusChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
   }) {
-    return authDataChanged?.call(this);
+    return authenticationStatusChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (authDataChanged != null) {
-      return authDataChanged(this);
+    if (authenticationStatusChanged != null) {
+      return authenticationStatusChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _AuthDataChanged implements AuthEvent {
-  const factory _AuthDataChanged(final String authData) = _$_AuthDataChanged;
+abstract class _AuthenticationStatusChanged implements AuthEvent {
+  const factory _AuthenticationStatusChanged(
+      final AuthenticationStatus status) = _$_AuthenticationStatusChanged;
 
-  String get authData => throw _privateConstructorUsedError;
+  AuthenticationStatus get status;
   @JsonKey(ignore: true)
-  _$$_AuthDataChangedCopyWith<_$_AuthDataChanged> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_AuthenticationStatusChangedCopyWith<_$_AuthenticationStatusChanged>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LogoutCopyWith<$Res> {
-  factory _$$_LogoutCopyWith(_$_Logout value, $Res Function(_$_Logout) then) =
-      __$$_LogoutCopyWithImpl<$Res>;
+abstract class _$$_SignOutCopyWith<$Res> {
+  factory _$$_SignOutCopyWith(
+          _$_SignOut value, $Res Function(_$_SignOut) then) =
+      __$$_SignOutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LogoutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
-    implements _$$_LogoutCopyWith<$Res> {
-  __$$_LogoutCopyWithImpl(_$_Logout _value, $Res Function(_$_Logout) _then)
-      : super(_value, (v) => _then(v as _$_Logout));
+class __$$_SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements _$$_SignOutCopyWith<$Res> {
+  __$$_SignOutCopyWithImpl(_$_SignOut _value, $Res Function(_$_SignOut) _then)
+      : super(_value, (v) => _then(v as _$_SignOut));
 
   @override
-  _$_Logout get _value => super._value as _$_Logout;
+  _$_SignOut get _value => super._value as _$_SignOut;
 }
 
 /// @nodoc
 
-class _$_Logout implements _Logout {
-  const _$_Logout();
+class _$_SignOut implements _SignOut {
+  const _$_SignOut();
 
   @override
   String toString() {
-    return 'AuthEvent.logout()';
+    return 'AuthEvent.signOut()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Logout);
+        (other.runtimeType == runtimeType && other is _$_SignOut);
   }
 
   @override
@@ -365,33 +257,31 @@ class _$_Logout implements _Logout {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() appStarted,
-    required TResult Function(String authData) authDataChanged,
-    required TResult Function() logout,
+    required TResult Function(AuthenticationStatus status)
+        authenticationStatusChanged,
+    required TResult Function() signOut,
   }) {
-    return logout();
+    return signOut();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
   }) {
-    return logout?.call();
+    return signOut?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? appStarted,
-    TResult Function(String authData)? authDataChanged,
-    TResult Function()? logout,
+    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function()? signOut,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout();
+    if (signOut != null) {
+      return signOut();
     }
     return orElse();
   }
@@ -399,46 +289,46 @@ class _$_Logout implements _Logout {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AppStarted value) appStarted,
-    required TResult Function(_AuthDataChanged value) authDataChanged,
-    required TResult Function(_Logout value) logout,
+    required TResult Function(_AuthenticationStatusChanged value)
+        authenticationStatusChanged,
+    required TResult Function(_SignOut value) signOut,
   }) {
-    return logout(this);
+    return signOut(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
   }) {
-    return logout?.call(this);
+    return signOut?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AppStarted value)? appStarted,
-    TResult Function(_AuthDataChanged value)? authDataChanged,
-    TResult Function(_Logout value)? logout,
+    TResult Function(_AuthenticationStatusChanged value)?
+        authenticationStatusChanged,
+    TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
-    if (logout != null) {
-      return logout(this);
+    if (signOut != null) {
+      return signOut(this);
     }
     return orElse();
   }
 }
 
-abstract class _Logout implements AuthEvent {
-  const factory _Logout() = _$_Logout;
+abstract class _SignOut implements AuthEvent {
+  const factory _SignOut() = _$_SignOut;
 }
 
 /// @nodoc
 mixin _$AuthState {
-  AuthStatus get status => throw _privateConstructorUsedError;
-  String? get authData => throw _privateConstructorUsedError;
+  AuthenticationStatus get status => throw _privateConstructorUsedError;
+  UserProfile get userProfile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -449,7 +339,9 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
-  $Res call({AuthStatus status, String? authData});
+  $Res call({AuthenticationStatus status, UserProfile userProfile});
+
+  $UserProfileCopyWith<$Res> get userProfile;
 }
 
 /// @nodoc
@@ -463,18 +355,25 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   @override
   $Res call({
     Object? status = freezed,
-    Object? authData = freezed,
+    Object? userProfile = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      authData: authData == freezed
-          ? _value.authData
-          : authData // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as AuthenticationStatus,
+      userProfile: userProfile == freezed
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as UserProfile,
     ));
+  }
+
+  @override
+  $UserProfileCopyWith<$Res> get userProfile {
+    return $UserProfileCopyWith<$Res>(_value.userProfile, (value) {
+      return _then(_value.copyWith(userProfile: value));
+    });
   }
 }
 
@@ -484,7 +383,10 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
-  $Res call({AuthStatus status, String? authData});
+  $Res call({AuthenticationStatus status, UserProfile userProfile});
+
+  @override
+  $UserProfileCopyWith<$Res> get userProfile;
 }
 
 /// @nodoc
@@ -500,17 +402,17 @@ class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = freezed,
-    Object? authData = freezed,
+    Object? userProfile = freezed,
   }) {
     return _then(_$_AuthState(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      authData: authData == freezed
-          ? _value.authData
-          : authData // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as AuthenticationStatus,
+      userProfile: userProfile == freezed
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as UserProfile,
     ));
   }
 }
@@ -518,17 +420,20 @@ class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AuthState implements _AuthState {
-  const _$_AuthState({this.status = AuthStatus.initial, this.authData});
+  const _$_AuthState(
+      {this.status = AuthenticationStatus.initial,
+      this.userProfile = const UserProfile()});
 
   @override
   @JsonKey()
-  final AuthStatus status;
+  final AuthenticationStatus status;
   @override
-  final String? authData;
+  @JsonKey()
+  final UserProfile userProfile;
 
   @override
   String toString() {
-    return 'AuthState(status: $status, authData: $authData)';
+    return 'AuthState(status: $status, userProfile: $userProfile)';
   }
 
   @override
@@ -537,14 +442,15 @@ class _$_AuthState implements _AuthState {
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.authData, authData));
+            const DeepCollectionEquality()
+                .equals(other.userProfile, userProfile));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(authData));
+      const DeepCollectionEquality().hash(userProfile));
 
   @JsonKey(ignore: true)
   @override
@@ -553,13 +459,14 @@ class _$_AuthState implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final AuthStatus status, final String? authData}) =
-      _$_AuthState;
+  const factory _AuthState(
+      {final AuthenticationStatus status,
+      final UserProfile userProfile}) = _$_AuthState;
 
   @override
-  AuthStatus get status => throw _privateConstructorUsedError;
+  AuthenticationStatus get status;
   @override
-  String? get authData => throw _privateConstructorUsedError;
+  UserProfile get userProfile;
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

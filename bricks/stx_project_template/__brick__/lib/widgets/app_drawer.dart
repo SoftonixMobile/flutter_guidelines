@@ -32,7 +32,7 @@ class AppDrawer extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: AppColors.primary,
+                        backgroundColor: AppColors.black,
                         backgroundImage:
                             AssetImage(Assets.images.logoShort.path),
                       ),
@@ -66,7 +66,7 @@ class AppDrawer extends StatelessWidget {
                             iconData: FontAwesomeIcons.rightFromBracket,
                           ),
                           onTap: () {
-                            getIt<AuthBloc>().logout();
+                            getIt<AuthBloc>().signOut();
                           },
                         ),
                       ],

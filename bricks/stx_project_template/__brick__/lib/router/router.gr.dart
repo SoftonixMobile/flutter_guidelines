@@ -10,72 +10,77 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i3;
+import 'package:auto_route/auto_route.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
+import 'package:{{project_name}}/screens/home/dashboard/dashboard_screen.dart'
+    as _i2;
+import 'package:{{project_name}}/screens/home/messages/messages_screen.dart'
+    as _i3;
+import 'package:{{project_name}}/screens/home/settings/settings_screen.dart'
+    as _i4;
 import 'package:{{project_name}}/screens/index.dart' as _i1;
 
-class AppRouter extends _i2.RootStackRouter {
-  AppRouter([_i3.GlobalKey<_i3.NavigatorState>? navigatorKey])
+class AppRouter extends _i5.RootStackRouter {
+  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i2.PageFactory> pagesMap = {
+  final Map<String, _i5.PageFactory> pagesMap = {
     AuthRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
+      return _i5.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i1.AuthScreen());
     },
     LoginRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData,
-          child: _i2.WrappedRoute(child: const _i1.LoginScreen()));
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i1.LoginScreen());
     },
     HomeRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
+      return _i5.AdaptivePage<dynamic>(
           routeData: routeData, child: const _i1.HomeScreen());
     },
-    ProfileRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.ProfileScreen());
+    DashboardRoute.name: (routeData) {
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i2.DashboardScreen());
     },
-    PostsRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.PostsScreen());
+    MessagesRoute.name: (routeData) {
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i3.MessagesScreen());
     },
     SettingsRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.SettingsScreen());
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i4.SettingsScreen());
     },
-    InfoRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.InfoScreen());
+    ChatsRoute.name: (routeData) {
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i3.ChatsScreen());
     },
-    DocumentsRoute.name: (routeData) {
-      return _i2.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i1.DocumentsScreen());
+    PostsRoute.name: (routeData) {
+      return _i5.AdaptivePage<dynamic>(
+          routeData: routeData, child: const _i3.PostsScreen());
     }
   };
 
   @override
-  List<_i2.RouteConfig> get routes => [
-        _i2.RouteConfig(AuthRoute.name, path: '/', children: [
-          _i2.RouteConfig(LoginRoute.name,
+  List<_i5.RouteConfig> get routes => [
+        _i5.RouteConfig(AuthRoute.name, path: '/', children: [
+          _i5.RouteConfig(LoginRoute.name,
               path: 'login-screen', parent: AuthRoute.name),
-          _i2.RouteConfig(HomeRoute.name,
+          _i5.RouteConfig(HomeRoute.name,
               path: 'home-screen',
               parent: AuthRoute.name,
               children: [
-                _i2.RouteConfig(ProfileRoute.name,
-                    path: '',
+                _i5.RouteConfig(DashboardRoute.name,
+                    path: '', parent: HomeRoute.name),
+                _i5.RouteConfig(MessagesRoute.name,
+                    path: 'messages-screen',
                     parent: HomeRoute.name,
                     children: [
-                      _i2.RouteConfig(InfoRoute.name,
-                          path: '', parent: ProfileRoute.name),
-                      _i2.RouteConfig(DocumentsRoute.name,
-                          path: 'documents-screen', parent: ProfileRoute.name)
+                      _i5.RouteConfig(ChatsRoute.name,
+                          path: '', parent: MessagesRoute.name),
+                      _i5.RouteConfig(PostsRoute.name,
+                          path: 'posts-screen', parent: MessagesRoute.name)
                     ]),
-                _i2.RouteConfig(PostsRoute.name,
-                    path: 'posts-screen', parent: HomeRoute.name),
-                _i2.RouteConfig(SettingsRoute.name,
+                _i5.RouteConfig(SettingsRoute.name,
                     path: 'settings-screen', parent: HomeRoute.name)
               ])
         ])
@@ -84,8 +89,8 @@ class AppRouter extends _i2.RootStackRouter {
 
 /// generated route for
 /// [_i1.AuthScreen]
-class AuthRoute extends _i2.PageRouteInfo<void> {
-  const AuthRoute({List<_i2.PageRouteInfo>? children})
+class AuthRoute extends _i5.PageRouteInfo<void> {
+  const AuthRoute({List<_i5.PageRouteInfo>? children})
       : super(AuthRoute.name, path: '/', initialChildren: children);
 
   static const String name = 'AuthRoute';
@@ -93,7 +98,7 @@ class AuthRoute extends _i2.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i1.LoginScreen]
-class LoginRoute extends _i2.PageRouteInfo<void> {
+class LoginRoute extends _i5.PageRouteInfo<void> {
   const LoginRoute() : super(LoginRoute.name, path: 'login-screen');
 
   static const String name = 'LoginRoute';
@@ -101,50 +106,51 @@ class LoginRoute extends _i2.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i1.HomeScreen]
-class HomeRoute extends _i2.PageRouteInfo<void> {
-  const HomeRoute({List<_i2.PageRouteInfo>? children})
+class HomeRoute extends _i5.PageRouteInfo<void> {
+  const HomeRoute({List<_i5.PageRouteInfo>? children})
       : super(HomeRoute.name, path: 'home-screen', initialChildren: children);
 
   static const String name = 'HomeRoute';
 }
 
 /// generated route for
-/// [_i1.ProfileScreen]
-class ProfileRoute extends _i2.PageRouteInfo<void> {
-  const ProfileRoute({List<_i2.PageRouteInfo>? children})
-      : super(ProfileRoute.name, path: '', initialChildren: children);
+/// [_i2.DashboardScreen]
+class DashboardRoute extends _i5.PageRouteInfo<void> {
+  const DashboardRoute() : super(DashboardRoute.name, path: '');
 
-  static const String name = 'ProfileRoute';
+  static const String name = 'DashboardRoute';
 }
 
 /// generated route for
-/// [_i1.PostsScreen]
-class PostsRoute extends _i2.PageRouteInfo<void> {
-  const PostsRoute() : super(PostsRoute.name, path: 'posts-screen');
+/// [_i3.MessagesScreen]
+class MessagesRoute extends _i5.PageRouteInfo<void> {
+  const MessagesRoute({List<_i5.PageRouteInfo>? children})
+      : super(MessagesRoute.name,
+            path: 'messages-screen', initialChildren: children);
 
-  static const String name = 'PostsRoute';
+  static const String name = 'MessagesRoute';
 }
 
 /// generated route for
-/// [_i1.SettingsScreen]
-class SettingsRoute extends _i2.PageRouteInfo<void> {
+/// [_i4.SettingsScreen]
+class SettingsRoute extends _i5.PageRouteInfo<void> {
   const SettingsRoute() : super(SettingsRoute.name, path: 'settings-screen');
 
   static const String name = 'SettingsRoute';
 }
 
 /// generated route for
-/// [_i1.InfoScreen]
-class InfoRoute extends _i2.PageRouteInfo<void> {
-  const InfoRoute() : super(InfoRoute.name, path: '');
+/// [_i3.ChatsScreen]
+class ChatsRoute extends _i5.PageRouteInfo<void> {
+  const ChatsRoute() : super(ChatsRoute.name, path: '');
 
-  static const String name = 'InfoRoute';
+  static const String name = 'ChatsRoute';
 }
 
 /// generated route for
-/// [_i1.DocumentsScreen]
-class DocumentsRoute extends _i2.PageRouteInfo<void> {
-  const DocumentsRoute() : super(DocumentsRoute.name, path: 'documents-screen');
+/// [_i3.PostsScreen]
+class PostsRoute extends _i5.PageRouteInfo<void> {
+  const PostsRoute() : super(PostsRoute.name, path: 'posts-screen');
 
-  static const String name = 'DocumentsRoute';
+  static const String name = 'PostsRoute';
 }

@@ -1,12 +1,13 @@
 {
     "screenText": "Screen",
 
-    "profile" : "Profile",
-    "profileInfo": "Info",
-    "profileDocuments": "Documents",
-    "profileInfoScreenTitle": "@:profileInfo @:screenText",
-    "profileDocumentsScreenTitle": "@:profileDocuments @:screenText",
-    "posts" : "Posts",
+    "dashboard" : "Dashboard",
+    "dashboardScreenTitle": "@:dashboard @:screenText",
+
+    "messages": "Messages",
+    "chats": "Chats",
+    "chatsScreenTitle" : "@:chats @:screenText",
+    "posts": "Posts",
     "postsScreenTitle" : "@:posts @:screenText",
 
     "settings" : "Settings",

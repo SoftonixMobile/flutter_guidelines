@@ -1,7 +1,8 @@
+export 'package:stx_bloc_base/stx_bloc_base.dart';
 export 'general_models.dart';
 export 'enums/index.dart';
 export 'package:{{project_name}}/screens/auth/models/models.dart';
-export 'package:{{project_name}}/screens/profile/info/models/models.dart';
-export 'package:{{project_name}}/screens/profile/documents/models/models.dart';
-export 'package:{{project_name}}/screens/posts/models/models.dart';
-export 'package:{{project_name}}/screens/settings/models/models.dart';
+export 'package:{{project_name}}/screens/home/messages/chats/models/models.dart';
+export 'package:{{project_name}}/screens/home/messages/posts/models/models.dart';
+export 'package:{{project_name}}/screens/home/dashboard/models/models.dart';
+export 'package:{{project_name}}/screens/home/settings/models/models.dart';

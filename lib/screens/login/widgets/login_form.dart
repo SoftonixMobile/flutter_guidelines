@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/screens/login/widgets/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
@@ -24,9 +23,7 @@ class LoginForm extends StatelessWidget {
 
     return CustomFormBlocListener<LoginFormBloc, String>(
       formBloc: formBloc,
-      onSuccess: (context, state) {
-        context.read<AuthBloc>().authDataChanged(state.response!);
-      },
+      onSuccess: (context, state) {},
       child: Column(
         children: <Widget>[
           TextInputFormBuilder(

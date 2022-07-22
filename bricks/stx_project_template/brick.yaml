@@ -2,7 +2,7 @@ name: stx_project_template
 description: Softonix project template.
 repository: https://github.com/VSydorko/flutter_guidelines/tree/main/bricks/stx_project_template
 
-version: 0.1.0+2
+version: 0.1.0+5
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
@@ -12,4 +12,4 @@ vars:
     type: string
     description: Project name
     default: softonix_demo
-    prompt: What is project name?
+    prompt: What is the project name?
