@@ -11,7 +11,7 @@ import 'package:flutter_guidelines/widgets/index.dart';
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
 
-class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
+class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -20,26 +20,6 @@ class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
       create: (context) => getIt<LoginFormBloc>(),
       child: this,
     );
-  }
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _usernameFocusNode = FocusNode();
-  final _passwordFocusNode = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _usernameFocusNode.dispose();
-    _passwordFocusNode.dispose();
-    super.dispose();
   }
 
   @override
@@ -73,12 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      Builder(builder: (context) {
-                        return LoginForm(
-                          usernameFocusNode: _usernameFocusNode,
-                          passwordFocusNode: _passwordFocusNode,
-                        );
-                      }),
+                      const LoginForm(),
                       const Spacer()
                     ],
                   ),

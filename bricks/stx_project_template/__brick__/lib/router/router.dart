@@ -16,7 +16,7 @@ import 'package:{{project_name}}/screens/index.dart';
           page: HomeScreen,
           children: [
             dashboardRouter,
-            profileRouter,
+            messagesRouter,
             settingsRouter,
           ],
         ),

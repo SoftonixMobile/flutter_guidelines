@@ -23,26 +23,6 @@ class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
   }
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _usernameFocusNode = FocusNode();
-  final _passwordFocusNode = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _usernameFocusNode.dispose();
-    _passwordFocusNode.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final mainContainerWidth = screenSize.width * 0.85;
@@ -73,12 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           fit: BoxFit.contain,
                         ),
                       ),
-                      Builder(builder: (context) {
-                        return LoginForm(
-                          usernameFocusNode: _usernameFocusNode,
-                          passwordFocusNode: _passwordFocusNode,
-                        );
-                      }),
+                      const LoginForm(),
                       const Spacer()
                     ],
                   ),

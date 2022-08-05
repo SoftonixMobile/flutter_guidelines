@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import 'messages_screen.dart';
 
-const profileRouter = AutoRoute(
+const messagesRouter = AutoRoute(
   page: MessagesScreen,
   children: [
     AutoRoute(

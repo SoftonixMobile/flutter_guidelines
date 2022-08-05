@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/general_models.dart';
@@ -42,7 +41,6 @@ class HttpClient {
         logPrint: print,
         retries: 3,
       ),
-      PrettyDioLogger(),
     ]);
   }
 

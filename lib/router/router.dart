@@ -16,7 +16,7 @@ import 'package:flutter_guidelines/screens/index.dart';
           page: HomeScreen,
           children: [
             dashboardRouter,
-            profileRouter,
+            messagesRouter,
             settingsRouter,
           ],
         ),
