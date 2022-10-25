@@ -1,3 +1,15 @@
+# 0.1.0+8
+
+- Fix loading dialog.
+
+# 0.1.0+7
+
+- Fix typo.
+
+# 0.1.0+6
+
+- Login was simplified.
+
 # 0.1.0+5
 
 - Fix typo.
