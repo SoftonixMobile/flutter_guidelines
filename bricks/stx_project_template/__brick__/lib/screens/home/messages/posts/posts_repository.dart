@@ -13,7 +13,7 @@ class PostsRepository {
     await Future.delayed(const Duration(seconds: 2));
 
     return List.generate(
-      10,
+      100,
       (index) => Post(id: index, name: 'Post $index'),
     );
   }

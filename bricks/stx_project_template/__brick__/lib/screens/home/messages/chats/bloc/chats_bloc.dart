@@ -11,7 +11,7 @@ part 'chats_event.dart';
 part 'chats_state.dart';
 part 'chats_bloc.freezed.dart';
 
-@injectable
+@singleton
 class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
   ChatsBloc({
     required this.repository,

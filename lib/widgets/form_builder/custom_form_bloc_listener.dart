@@ -5,17 +5,14 @@ import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 class CustomFormBlocListener<T extends FormBloc<SuccessResponse, String>,
     SuccessResponse> extends FormBlocListener<T, SuccessResponse, String> {
   CustomFormBlocListener({
-    Key? key,
-    Widget? child,
+    super.key,
+    super.child,
     FormBlocListenerCallback<SuccessResponse, String>? onSubmitting,
     FormBlocListenerCallback<SuccessResponse, String>? onSuccess,
     FormBlocListenerCallback<SuccessResponse, String>? onFailure,
     FormBlocListenerCallback<SuccessResponse, String>? onCancel,
-    T? formBloc,
+    super.formBloc,
   }) : super(
-          key: key,
-          formBloc: formBloc,
-          child: child,
           customListener: (context, state) {
             if (state.status.isLoading) {
               LoadingDialog.show(context);

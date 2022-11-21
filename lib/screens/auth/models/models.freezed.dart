@@ -32,28 +32,32 @@ mixin _$UserProfile {
 abstract class $UserProfileCopyWith<$Res> {
   factory $UserProfileCopyWith(
           UserProfile value, $Res Function(UserProfile) then) =
-      _$UserProfileCopyWithImpl<$Res>;
+      _$UserProfileCopyWithImpl<$Res, UserProfile>;
+  @useResult
   $Res call({String? userName});
 }
 
 /// @nodoc
-class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
+class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
+    implements $UserProfileCopyWith<$Res> {
   _$UserProfileCopyWithImpl(this._value, this._then);
 
-  final UserProfile _value;
   // ignore: unused_field
-  final $Res Function(UserProfile) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userName = freezed,
   }) {
     return _then(_value.copyWith(
-      userName: userName == freezed
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -64,25 +68,25 @@ abstract class _$$_UserProfileCopyWith<$Res>
           _$_UserProfile value, $Res Function(_$_UserProfile) then) =
       __$$_UserProfileCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? userName});
 }
 
 /// @nodoc
-class __$$_UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
+class __$$_UserProfileCopyWithImpl<$Res>
+    extends _$UserProfileCopyWithImpl<$Res, _$_UserProfile>
     implements _$$_UserProfileCopyWith<$Res> {
   __$$_UserProfileCopyWithImpl(
       _$_UserProfile _value, $Res Function(_$_UserProfile) _then)
-      : super(_value, (v) => _then(v as _$_UserProfile));
+      : super(_value, _then);
 
-  @override
-  _$_UserProfile get _value => super._value as _$_UserProfile;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userName = freezed,
   }) {
     return _then(_$_UserProfile(
-      userName: userName == freezed
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -111,16 +115,17 @@ class _$_UserProfile implements _UserProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserProfile &&
-            const DeepCollectionEquality().equals(other.userName, userName));
+            (identical(other.userName, userName) ||
+                other.userName == userName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userName));
+  int get hashCode => Object.hash(runtimeType, userName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserProfileCopyWith<_$_UserProfile> get copyWith =>
       __$$_UserProfileCopyWithImpl<_$_UserProfile>(this, _$identity);
 

@@ -10,7 +10,14 @@ final getIt = GetIt.instance;
   asExtension: true,
   initializerName: 'init',
 )
-void configureDependencies() {
+//register only auth dependencies
+void configureAuthDependencies() {
+  getIt
+    ..registerSingleton(AppRouter())
+    ..initAuthScope();
+}
+
+//register other dependencies (except auth ones)
+void configureUserDependencies(GetIt getIt) {
   getIt.init();
-  getIt.registerSingleton(AppRouter());
 }

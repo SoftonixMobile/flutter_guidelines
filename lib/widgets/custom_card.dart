@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
- const CustomCard({
+  const CustomCard({
     required this.slotWidget,
     this.width,
     this.height,
-    Key? key
-  }) : super(key: key);
+    super.key,
+  });
 
   final double? width;
   final double? height;
@@ -20,19 +20,20 @@ class CustomCard extends StatelessWidget {
       color: Colors.lightBlue,
       shadowColor: Colors.black,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0)),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(
-            Radius.circular(12.0),
+            Radius.circular(12),
           ),
         ),
         height: height,
         width: width ?? 0,
         padding: const EdgeInsets.symmetric(
           vertical: 20,
-          horizontal: 14
+          horizontal: 14,
         ),
         child: slotWidget,
       ),

@@ -12,7 +12,7 @@ part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-@singleton
+@Singleton(scope: 'auth')
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required this.repository,
@@ -32,7 +32,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void signOut() => add(const AuthEvent.signOut());
 
   FutureOr<void> _authenticationStatusChanged(
-      _AuthenticationStatusChanged event, Emitter<AuthState> emit) async {
+    _AuthenticationStatusChanged event,
+    Emitter<AuthState> emit,
+  ) async {
     if (event.status == AuthenticationStatus.authenticated) {
       try {
         final userProfile = await repository.getUserProfile();
@@ -42,7 +44,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthState.unauthenticated());
       }
     } else {
-      emit(state.copyWith(status: event.status));
+      emit(
+        state.copyWith(
+          status: event.status,
+          userProfile: const UserProfile(),
+        ),
+      );
     }
   }
 

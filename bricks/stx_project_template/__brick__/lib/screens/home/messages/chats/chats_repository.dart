@@ -13,7 +13,7 @@ class ChatsRepository {
     await Future.delayed(const Duration(seconds: 2));
 
     return List.generate(
-      10,
+      100,
       (index) => Chat(id: index, name: 'Chat $index'),
     );
   }

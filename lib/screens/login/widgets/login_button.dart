@@ -6,9 +6,9 @@ import 'package:flutter_guidelines/styles/index.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
-    Key? key,
+    super.key,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final VoidCallback onPressed;
 
@@ -16,14 +16,13 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BouncingWidget(
       duration: const Duration(milliseconds: 100),
-      scaleFactor: 1,
       onPressed: onPressed,
       child: Container(
         height: 40,
         decoration: const BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.all(
-            Radius.circular(6.0),
+            Radius.circular(6),
           ),
         ),
         child: const Center(

@@ -1,44 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
-class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<ChatsBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<PostsBloc>(),
-        ),
-      ],
-      child: this,
-    );
-  }
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     EasyLocalization.of(context);
 
     return AutoTabsScaffold(
-      drawer: const AppDrawer(),
+      endDrawer: const AppDrawer(),
       routes: const [
-        DashboardRoute(),
-        MessagesRoute(),
-        SettingsRoute(),
+        DashboardRouter(),
+        MessagesRouter(),
+        SettingsRouter(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
-        return Container(
+        return DecoratedBox(
           decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(

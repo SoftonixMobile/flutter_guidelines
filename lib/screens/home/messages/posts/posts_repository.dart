@@ -10,10 +10,10 @@ class PostsRepository {
   final HttpClient httpClient;
 
   Future<List<Post>> getPosts() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     return List.generate(
-      10,
+      100,
       (index) => Post(id: index, name: 'Post $index'),
     );
   }

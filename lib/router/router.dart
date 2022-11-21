@@ -13,13 +13,23 @@ import 'package:flutter_guidelines/screens/index.dart';
           page: LoginScreen,
         ),
         AutoRoute(
-          page: HomeScreen,
+          name: 'HomeRouter',
+          page: HomeWrapperScreen,
           children: [
-            dashboardRouter,
-            messagesRouter,
-            settingsRouter,
+            AutoRoute(
+              initial: true,
+              page: HomeScreen,
+              children: [
+                dashboardRouter,
+                messagesRouter,
+                settingsRouter,
+              ],
+            ),
+            ...dashboardModals,
+            ...messagesModals,
+            ...settingModals,
           ],
-        ),
+        )
       ],
     ),
   ],

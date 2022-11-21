@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 
@@ -24,6 +24,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [logoShort, logo];
 }
 
 class $ResourcesLangsGen {
@@ -34,6 +37,9 @@ class $ResourcesLangsGen {
 
   /// File path: resources/langs/fr-FR.json
   String get frFR => 'resources/langs/fr-FR.json';
+
+  /// List of all assets
+  List<String> get values => [enUS, frFR];
 }
 
 class Assets {
@@ -100,6 +106,8 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
+
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 
