@@ -25,8 +25,8 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
+    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,9 +45,9 @@ mixin _$AuthEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
+    TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
+    TResult? Function(_SignOut value)? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,16 +63,18 @@ mixin _$AuthEvent {
 /// @nodoc
 abstract class $AuthEventCopyWith<$Res> {
   factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
-      _$AuthEventCopyWithImpl<$Res>;
+      _$AuthEventCopyWithImpl<$Res, AuthEvent>;
 }
 
 /// @nodoc
-class _$AuthEventCopyWithImpl<$Res> implements $AuthEventCopyWith<$Res> {
+class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
+    implements $AuthEventCopyWith<$Res> {
   _$AuthEventCopyWithImpl(this._value, this._then);
 
-  final AuthEvent _value;
   // ignore: unused_field
-  final $Res Function(AuthEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -81,28 +83,26 @@ abstract class _$$_AuthenticationStatusChangedCopyWith<$Res> {
           _$_AuthenticationStatusChanged value,
           $Res Function(_$_AuthenticationStatusChanged) then) =
       __$$_AuthenticationStatusChangedCopyWithImpl<$Res>;
+  @useResult
   $Res call({AuthenticationStatus status});
 }
 
 /// @nodoc
 class __$$_AuthenticationStatusChangedCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_AuthenticationStatusChanged>
     implements _$$_AuthenticationStatusChangedCopyWith<$Res> {
   __$$_AuthenticationStatusChangedCopyWithImpl(
       _$_AuthenticationStatusChanged _value,
       $Res Function(_$_AuthenticationStatusChanged) _then)
-      : super(_value, (v) => _then(v as _$_AuthenticationStatusChanged));
+      : super(_value, _then);
 
-  @override
-  _$_AuthenticationStatusChanged get _value =>
-      super._value as _$_AuthenticationStatusChanged;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_$_AuthenticationStatusChanged(
-      status == freezed
+      null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
@@ -128,15 +128,15 @@ class _$_AuthenticationStatusChanged implements _AuthenticationStatusChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthenticationStatusChanged &&
-            const DeepCollectionEquality().equals(other.status, status));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(status));
+  int get hashCode => Object.hash(runtimeType, status);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AuthenticationStatusChangedCopyWith<_$_AuthenticationStatusChanged>
       get copyWith => __$$_AuthenticationStatusChangedCopyWithImpl<
           _$_AuthenticationStatusChanged>(this, _$identity);
@@ -154,8 +154,8 @@ class _$_AuthenticationStatusChanged implements _AuthenticationStatusChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
+    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function()? signOut,
   }) {
     return authenticationStatusChanged?.call(status);
   }
@@ -186,9 +186,9 @@ class _$_AuthenticationStatusChanged implements _AuthenticationStatusChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
+    TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return authenticationStatusChanged?.call(this);
   }
@@ -226,13 +226,11 @@ abstract class _$$_SignOutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SignOutCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+class __$$_SignOutCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$_SignOut>
     implements _$$_SignOutCopyWith<$Res> {
   __$$_SignOutCopyWithImpl(_$_SignOut _value, $Res Function(_$_SignOut) _then)
-      : super(_value, (v) => _then(v as _$_SignOut));
-
-  @override
-  _$_SignOut get _value => super._value as _$_SignOut;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -267,8 +265,8 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
+    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function()? signOut,
   }) {
     return signOut?.call();
   }
@@ -299,9 +297,9 @@ class _$_SignOut implements _SignOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
+    TResult? Function(_AuthenticationStatusChanged value)?
         authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
+    TResult? Function(_SignOut value)? signOut,
   }) {
     return signOut?.call(this);
   }
@@ -338,41 +336,46 @@ mixin _$AuthState {
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res>;
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
+  @useResult
   $Res call({AuthenticationStatus status, UserProfile userProfile});
 
   $UserProfileCopyWith<$Res> get userProfile;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
   _$AuthStateCopyWithImpl(this._value, this._then);
 
-  final AuthState _value;
   // ignore: unused_field
-  final $Res Function(AuthState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? userProfile = freezed,
+    Object? status = null,
+    Object? userProfile = null,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
-      userProfile: userProfile == freezed
+      userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserProfileCopyWith<$Res> get userProfile {
     return $UserProfileCopyWith<$Res>(_value.userProfile, (value) {
-      return _then(_value.copyWith(userProfile: value));
+      return _then(_value.copyWith(userProfile: value) as $Val);
     });
   }
 }
@@ -383,6 +386,7 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({AuthenticationStatus status, UserProfile userProfile});
 
   @override
@@ -390,26 +394,25 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthState>
     implements _$$_AuthStateCopyWith<$Res> {
   __$$_AuthStateCopyWithImpl(
       _$_AuthState _value, $Res Function(_$_AuthState) _then)
-      : super(_value, (v) => _then(v as _$_AuthState));
+      : super(_value, _then);
 
-  @override
-  _$_AuthState get _value => super._value as _$_AuthState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? userProfile = freezed,
+    Object? status = null,
+    Object? userProfile = null,
   }) {
     return _then(_$_AuthState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as AuthenticationStatus,
-      userProfile: userProfile == freezed
+      userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile,
@@ -441,19 +444,17 @@ class _$_AuthState implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.userProfile, userProfile));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.userProfile, userProfile) ||
+                other.userProfile == userProfile));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(userProfile));
+  int get hashCode => Object.hash(runtimeType, status, userProfile);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>
       __$$_AuthStateCopyWithImpl<_$_AuthState>(this, _$identity);
 }

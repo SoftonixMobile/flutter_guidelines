@@ -8,7 +8,7 @@ import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/screens/auth/bloc/auth_bloc.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class AuthScreen extends StatelessWidget {
             return [const LoginRoute()];
           case AuthenticationStatus.authenticated:
             FlutterNativeSplash.remove();
-            return [const HomeRoute()];
+            return [const HomeRouter()];
         }
       },
     );

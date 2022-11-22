@@ -23,7 +23,7 @@ mixin _$ChatsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult? Function()? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$ChatsEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult? Function(_Load value)? load,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,16 +54,18 @@ mixin _$ChatsEvent {
 abstract class $ChatsEventCopyWith<$Res> {
   factory $ChatsEventCopyWith(
           ChatsEvent value, $Res Function(ChatsEvent) then) =
-      _$ChatsEventCopyWithImpl<$Res>;
+      _$ChatsEventCopyWithImpl<$Res, ChatsEvent>;
 }
 
 /// @nodoc
-class _$ChatsEventCopyWithImpl<$Res> implements $ChatsEventCopyWith<$Res> {
+class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
+    implements $ChatsEventCopyWith<$Res> {
   _$ChatsEventCopyWithImpl(this._value, this._then);
 
-  final ChatsEvent _value;
   // ignore: unused_field
-  final $Res Function(ChatsEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -73,13 +75,11 @@ abstract class _$$_LoadCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadCopyWithImpl<$Res> extends _$ChatsEventCopyWithImpl<$Res>
+class __$$_LoadCopyWithImpl<$Res>
+    extends _$ChatsEventCopyWithImpl<$Res, _$_Load>
     implements _$$_LoadCopyWith<$Res> {
   __$$_LoadCopyWithImpl(_$_Load _value, $Res Function(_$_Load) _then)
-      : super(_value, (v) => _then(v as _$_Load));
-
-  @override
-  _$_Load get _value => super._value as _$_Load;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult? Function()? load,
   }) {
     return load?.call();
   }
@@ -140,7 +140,7 @@ class _$_Load implements _Load {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult? Function(_Load value)? load,
   }) {
     return load?.call(this);
   }
@@ -177,38 +177,42 @@ mixin _$ChatsState {
 abstract class $ChatsStateCopyWith<$Res> {
   factory $ChatsStateCopyWith(
           ChatsState value, $Res Function(ChatsState) then) =
-      _$ChatsStateCopyWithImpl<$Res>;
+      _$ChatsStateCopyWithImpl<$Res, ChatsState>;
+  @useResult
   $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
 }
 
 /// @nodoc
-class _$ChatsStateCopyWithImpl<$Res> implements $ChatsStateCopyWith<$Res> {
+class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
+    implements $ChatsStateCopyWith<$Res> {
   _$ChatsStateCopyWithImpl(this._value, this._then);
 
-  final ChatsState _value;
   // ignore: unused_field
-  final $Res Function(ChatsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? chats = freezed,
+    Object? status = null,
+    Object? chats = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as NetworkStatus,
-      chats: chats == freezed
+      chats: null == chats
           ? _value.chats
           : chats // ignore: cast_nullable_to_non_nullable
               as List<Chat>,
-      errorMessage: errorMessage == freezed
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -219,35 +223,35 @@ abstract class _$$_ChatsStateCopyWith<$Res>
           _$_ChatsState value, $Res Function(_$_ChatsState) then) =
       __$$_ChatsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
 }
 
 /// @nodoc
-class __$$_ChatsStateCopyWithImpl<$Res> extends _$ChatsStateCopyWithImpl<$Res>
+class __$$_ChatsStateCopyWithImpl<$Res>
+    extends _$ChatsStateCopyWithImpl<$Res, _$_ChatsState>
     implements _$$_ChatsStateCopyWith<$Res> {
   __$$_ChatsStateCopyWithImpl(
       _$_ChatsState _value, $Res Function(_$_ChatsState) _then)
-      : super(_value, (v) => _then(v as _$_ChatsState));
+      : super(_value, _then);
 
-  @override
-  _$_ChatsState get _value => super._value as _$_ChatsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
-    Object? chats = freezed,
+    Object? status = null,
+    Object? chats = null,
     Object? errorMessage = freezed,
   }) {
     return _then(_$_ChatsState(
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as NetworkStatus,
-      chats: chats == freezed
+      chats: null == chats
           ? _value._chats
           : chats // ignore: cast_nullable_to_non_nullable
               as List<Chat>,
-      errorMessage: errorMessage == freezed
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -288,21 +292,19 @@ class _$_ChatsState implements _ChatsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatsState &&
-            const DeepCollectionEquality().equals(other.status, status) &&
+            (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other._chats, _chats) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(_chats),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, status,
+      const DeepCollectionEquality().hash(_chats), errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChatsStateCopyWith<_$_ChatsState> get copyWith =>
       __$$_ChatsStateCopyWithImpl<_$_ChatsState>(this, _$identity);
 }

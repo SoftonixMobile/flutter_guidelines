@@ -10,7 +10,7 @@ class ChatsRepository {
   final HttpClient httpClient;
 
   Future<List<Chat>> getChats() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     return List.generate(
       100,

@@ -1,9 +1,14 @@
-include: package:flutter_lints/flutter.yaml
-
-linter:
-  rules:
+include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
+  language:
+    strict-casts: false
+    strict-inference: false
+    strict-raw-types: false
+  
+  errors: 
+    invalid_annotation_target: false
+
   exclude:
     - bricks/**
     - '**/*.g.dart'
@@ -11,5 +16,17 @@ analyzer:
     - '**/*.freezed.dart'
     - '**/*.gen.dart'
     - '**/*.gr.dart'
-  errors:
-    invalid_annotation_target: ignore
+
+
+linter:
+  rules:
+    always_use_package_imports: false
+    avoid_positional_boolean_parameters: false
+    prefer_asserts_with_message: false
+    public_member_api_docs: false
+    directives_ordering: false
+    sort_child_properties_last: false
+    sort_constructors_first: false
+    sort_pub_dependencies: false
+    sort_unnamed_constructors_first: false
+    unnecessary_lambdas: false

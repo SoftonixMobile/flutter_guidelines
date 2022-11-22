@@ -31,33 +31,37 @@ mixin _$Chat {
 /// @nodoc
 abstract class $ChatCopyWith<$Res> {
   factory $ChatCopyWith(Chat value, $Res Function(Chat) then) =
-      _$ChatCopyWithImpl<$Res>;
+      _$ChatCopyWithImpl<$Res, Chat>;
+  @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class _$ChatCopyWithImpl<$Res> implements $ChatCopyWith<$Res> {
+class _$ChatCopyWithImpl<$Res, $Val extends Chat>
+    implements $ChatCopyWith<$Res> {
   _$ChatCopyWithImpl(this._value, this._then);
 
-  final Chat _value;
   // ignore: unused_field
-  final $Res Function(Chat) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,28 @@ abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
   factory _$$_ChatCopyWith(_$_Chat value, $Res Function(_$_Chat) then) =
       __$$_ChatCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res>
+class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
     implements _$$_ChatCopyWith<$Res> {
   __$$_ChatCopyWithImpl(_$_Chat _value, $Res Function(_$_Chat) _then)
-      : super(_value, (v) => _then(v as _$_Chat));
+      : super(_value, _then);
 
-  @override
-  _$_Chat get _value => super._value as _$_Chat;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
   }) {
     return _then(_$_Chat(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -120,19 +123,17 @@ class _$_Chat implements _Chat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Chat &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ChatCopyWith<_$_Chat> get copyWith =>
       __$$_ChatCopyWithImpl<_$_Chat>(this, _$identity);
 

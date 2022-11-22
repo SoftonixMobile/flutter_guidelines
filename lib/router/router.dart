@@ -29,7 +29,7 @@ import 'package:flutter_guidelines/screens/index.dart';
             ...messagesModals,
             ...settingModals,
           ],
-        )
+        ),
       ],
     ),
   ],

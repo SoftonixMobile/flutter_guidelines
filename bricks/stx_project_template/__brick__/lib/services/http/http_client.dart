@@ -9,7 +9,7 @@ import 'package:{{project_name}}/services/index.dart';
 import 'options.dart';
 import 'token_storage.dart';
 
-@injectable
+@Singleton(scope: 'auth')
 class HttpClient {
   late Dio _dio;
   late Fresh<String> _fresh;
@@ -39,7 +39,6 @@ class HttpClient {
       RetryInterceptor(
         dio: _dio,
         logPrint: print,
-        retries: 3,
       ),
     ]);
   }
@@ -47,46 +46,74 @@ class HttpClient {
   Stream<AuthenticationStatus> get authenticationStatus =>
       _fresh.authenticationStatus;
 
-  Future<void> authenticate(
-    String userName,
-    String password,
-  ) async {
-    await Future.delayed(const Duration(seconds: 2));
-
-    return _fresh.setToken('token');
+  Future<void> setToken(String token) {
+    return _fresh.setToken(token);
   }
 
-  Future<void> unauthenticate() {
+  Future<void> clearToken() {
     return _fresh.clearToken();
   }
 
-  Future<Response<T>> get<T>(String url,
-      {DynamicMap? queryParameters, Options? options}) {
+  Future<Response<T>> get<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) {
     return _dio.get<T>(url, queryParameters: queryParameters, options: options);
   }
 
-  Future<Response<T>> post<T>(String url,
-      {data, DynamicMap? queryParameters, Options? options}) {
-    return _dio.post<T>(url,
-        data: data, queryParameters: queryParameters, options: options);
+  Future<Response<T>> post<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) {
+    return _dio.post<T>(
+      url,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
-  Future<Response<T>> put<T>(String url,
-      {data, DynamicMap? queryParameters, Options? options}) {
-    return _dio.put<T>(url,
-        data: data, queryParameters: queryParameters, options: options);
+  Future<Response<T>> put<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) {
+    return _dio.put<T>(
+      url,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
-  Future<Response<T>> patch<T>(String url,
-      {data, DynamicMap? queryParameters, Options? options}) {
-    return _dio.patch<T>(url,
-        data: data, queryParameters: queryParameters, options: options);
+  Future<Response<T>> patch<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) {
+    return _dio.patch<T>(
+      url,
+      data: data,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
-  Future<Response<T>> delete<T>(String url,
-      {DynamicMap? queryParameters, Options? options}) {
-    return _dio.delete<T>(url,
-        queryParameters: queryParameters, options: options);
+  Future<Response<T>> delete<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) {
+    return _dio.delete<T>(
+      url,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
   Future<Response> download(String url, String savePath) {

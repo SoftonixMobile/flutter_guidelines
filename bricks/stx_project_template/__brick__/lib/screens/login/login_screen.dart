@@ -11,8 +11,8 @@ import 'package:{{project_name}}/widgets/index.dart';
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
 
-class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
+  const LoginScreen({super.key});
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -43,7 +43,6 @@ class LoginScreen extends StatefulWidget implements AutoRouteWrapper {
                   height: 450,
                   slotWidget: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
                         margin: const EdgeInsets.only(top: 10),

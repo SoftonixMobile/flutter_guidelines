@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,7 +9,7 @@ import 'package:{{project_name}}/styles/index.dart';
 
 class TextInputFormBuilder extends StatefulWidget {
   const TextInputFormBuilder({
-    Key? key,
+    super.key,
     this.label = '',
     this.hintText,
     this.isObscureText = false,
@@ -15,7 +17,7 @@ class TextInputFormBuilder extends StatefulWidget {
     this.nextFieldFocusNode,
     this.onSubmit,
     required this.fieldBloc,
-  }) : super(key: key);
+  });
 
   final String label;
   final String? hintText;
@@ -33,7 +35,7 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
   late TextEditingController _controller;
 
   @override
-  initState() {
+  void initState() {
     _controller = TextEditingController(text: widget.fieldBloc.value);
     super.initState();
   }
@@ -43,10 +45,19 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
     return BlocBuilder<TextFieldBloc, TextFieldBlocState>(
       bloc: widget.fieldBloc,
       builder: (context, state) {
-        TextSelection previousSelection = _controller.selection;
-        _controller.text = state.value;
-        _controller.selection = previousSelection;
+        if (_controller.text != state.value) {
+          final previousSelection = _controller.selection;
 
+          final offset =
+              min(previousSelection.baseOffset, state.toString().length);
+
+          _controller
+            ..text = state.toString()
+            ..selection = previousSelection.copyWith(
+              baseOffset: offset,
+              extentOffset: offset,
+            );
+        }
         return Focus(
           onFocusChange: (value) {
             if (!value) {
@@ -64,7 +75,6 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
               widget.nextFieldFocusNode?.requestFocus();
               widget.onSubmit?.call();
             },
-            maxLines: 1,
             decoration: InputDecoration(
               hintText: widget.hintText,
               errorText: state.displayError,

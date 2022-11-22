@@ -10,7 +10,7 @@ import 'posts_bloc.dart';
 export 'pages/index.dart';
 
 class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
-  const PostsScreen({Key? key}) : super(key: key);
+  const PostsScreen({super.key});
 
   @override
   Widget wrappedRoute(BuildContext context) {
@@ -23,29 +23,42 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     EasyLocalization.of(context);
 
-    return BlocBuilder<PostsBloc, NetworkListState<Post>>(
-      builder: (context, state) {
-        switch (state.status) {
-          case NetworkStatus.initial:
-          case NetworkStatus.loading:
-            return const Center(child: CircularProgressIndicator());
-          case NetworkStatus.success:
-            return ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: state.data.length,
-              itemBuilder: (context, index) {
-                final chat = state.data[index];
+    return RefreshIndicator(
+      onRefresh: context.read<PostsBloc>().loadAsyncFuture,
+      child: CustomScrollView(
+        slivers: [
+          BlocBuilder<PostsBloc, NetworkListState<Post>>(
+            builder: (context, state) {
+              switch (state.status) {
+                case NetworkStatus.initial:
+                case NetworkStatus.loading:
+                  return const SliverFillRemaining(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                case NetworkStatus.success:
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        final post = state.data[index];
 
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(chat.name),
-                );
-              },
-            );
-          case NetworkStatus.failure:
-            return Center(child: Text(state.errorMessage ?? ''));
-        }
-      },
+                        return Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(post.name),
+                        );
+                      },
+                      childCount: state.data.length,
+                    ),
+                  );
+
+                case NetworkStatus.failure:
+                  return SliverFillRemaining(
+                    child: Center(child: Text(state.errorMessage ?? '')),
+                  );
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 }

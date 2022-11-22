@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'package:{{project_name}}/core/index.dart';
+import 'package:{{project_name}}/core/helpers/index.dart';
 import 'package:{{project_name}}/styles/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
   const CustomTabsRouter({
-    Key? key,
+    super.key,
     required this.appBarTitle,
     required this.tabs,
     required this.routes,
-  }) : super(key: key);
+  });
 
   final String appBarTitle;
   final List<String> tabs;
@@ -26,32 +27,38 @@ class CustomTabsRouter extends StatelessWidget {
         return DefaultTabController(
           length: tabs.length,
           initialIndex: context.tabsRouter.activeIndex,
-          child: NestedScrollView(
+          child: ExtendedNestedScrollView(
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) => [
               SliverAppBar(
+                floating: true,
+                pinned: true,
+                snap: true,
                 title: Text(appBarTitle),
                 elevation: 0,
+                forceElevated: innerBoxIsScrolled,
                 bottom: TabBar(
                   tabs: _buildTabs(tabs),
                   onTap: context.tabsRouter.setActiveIndex,
                   isScrollable: true,
-                  indicatorWeight: 0.0,
+                  indicatorWeight: 0,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicator: MaterialIndicator(
                     height: 5,
                     topLeftRadius: 8,
                     topRightRadius: 8,
-                    tabPosition: TabPosition.bottom,
                     color: AppColors.white,
                   ),
                 ),
-                leading: IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () => RootScaffold.openDrawer(context),
-                ),
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.menu),
+                    onPressed: () => RootScaffold.openEndDrawer(context),
+                  ),
+                ],
               ),
             ],
+            onlyOneScrollInBody: true,
             body: FadeTransition(
               opacity: animation,
               child: child,

@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/blocs/index.dart';
 import 'package:{{project_name}}/services/index.dart';
 
-class StateWrapper extends StatelessWidget {
-  const StateWrapper({
-    Key? key,
+class AppStateWrapper extends StatelessWidget {
+  const AppStateWrapper({
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 
