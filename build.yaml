@@ -1,0 +1,39 @@
+targets:
+  $default:
+    builders:
+      freezed:freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**/models.dart
+            - lib/**_event.dart
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+        options:
+          makeCollectionsUnmodifiable: false
+      json_serializable:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**/models.dart
+      auto_route_generator:autoRouteGenerator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/router/router.dart
+      flutter_gen_runner:
+        enabled: true
+      injectable_generator:injectable_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+            - lib/**_repository.dart
+            - lib/**_provider.dart
+            - lib/**_client.dart
+      injectable_generator:injectable_config_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/services/injector/injector.dart

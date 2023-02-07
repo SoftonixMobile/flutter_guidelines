@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'package:{{project_name}}/screens/index.dart';
+import 'package:{{project_name}}/screens/routes.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Page|Screen,Route',

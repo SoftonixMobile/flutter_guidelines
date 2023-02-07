@@ -37,6 +37,8 @@ class LoginFormBloc extends FormBloc<String, String> {
 
   @override
   FutureOr<void> onSubmit() async {
+    emitLoading();
+
     try {
       await repository.signIn(username.toString(), password.toString());
 

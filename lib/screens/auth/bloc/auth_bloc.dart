@@ -14,6 +14,10 @@ part 'auth_state.dart';
 
 @Singleton(scope: 'auth')
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  final AuthRepository repository;
+
+  late StreamSubscription<AuthenticationStatus> _subscription;
+
   AuthBloc({
     required this.repository,
   }) : super(const AuthState()) {
@@ -24,10 +28,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_AuthenticationStatusChanged>(_authenticationStatusChanged);
     on<_SignOut>(_signOut);
   }
-
-  final AuthRepository repository;
-
-  late StreamSubscription<AuthenticationStatus> _subscription;
 
   void signOut() => add(const AuthEvent.signOut());
 

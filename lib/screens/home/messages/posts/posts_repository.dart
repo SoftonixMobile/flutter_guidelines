@@ -5,9 +5,9 @@ import 'models/models.dart';
 
 @injectable
 class PostsRepository {
-  PostsRepository(this.httpClient);
-
   final HttpClient httpClient;
+
+  PostsRepository(this.httpClient);
 
   Future<List<Post>> getPosts() async {
     await Future.delayed(const Duration(seconds: 1));

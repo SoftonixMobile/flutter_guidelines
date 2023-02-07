@@ -5,7 +5,7 @@ import 'posts_repository.dart';
 
 @lazySingleton
 class PostsBloc extends NetworkListBloc<Post, NetworkListState<Post>> {
-  PostsBloc(this.repository) : super(const NetworkListState());
+  PostsBloc(this.repository) : super(const NetworkListState(data: []));
 
   final PostsRepository repository;
 

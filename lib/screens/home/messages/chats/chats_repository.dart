@@ -5,9 +5,9 @@ import 'models/models.dart';
 
 @injectable
 class ChatsRepository {
-  ChatsRepository(this.httpClient);
-
   final HttpClient httpClient;
+
+  ChatsRepository(this.httpClient);
 
   Future<List<Chat>> getChats() async {
     await Future.delayed(const Duration(seconds: 1));

@@ -4,9 +4,6 @@ import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
-export 'chats/chats_screen.dart';
-export 'posts/posts_screen.dart';
-
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({super.key});
 

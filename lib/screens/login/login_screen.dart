@@ -27,37 +27,40 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
     final screenSize = MediaQuery.of(context).size;
     final mainContainerWidth = screenSize.width * 0.85;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Container(
-        width: double.infinity,
-        color: Colors.lightBlue,
-        child: SingleChildScrollView(
-          child: SizedBox(
-            height: max(screenSize.height, 600),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                CustomCard(
-                  width: mainContainerWidth,
-                  height: 450,
-                  slotWidget: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        child: Assets.images.logo.image(
-                          width: 180,
-                          height: 90,
-                          fit: BoxFit.contain,
+    return CustomFormBlocListener(
+      formBloc: context.read<LoginFormBloc>(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: Container(
+          width: double.infinity,
+          color: Colors.lightBlue,
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: max(screenSize.height, 600),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CustomCard(
+                    width: mainContainerWidth,
+                    height: 450,
+                    slotWidget: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          child: Assets.images.logo.image(
+                            width: 180,
+                            height: 90,
+                            fit: BoxFit.contain,
+                          ),
                         ),
-                      ),
-                      const LoginForm(),
-                      const Spacer()
-                    ],
+                        const LoginForm(),
+                        const Spacer()
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

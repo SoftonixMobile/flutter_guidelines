@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 class CustomFormBlocListener<T extends FormBloc<SuccessResponse, String>,
@@ -30,7 +28,4 @@ class CustomFormBlocListener<T extends FormBloc<SuccessResponse, String>,
             }
           },
         );
-
-  @override
-  Widget? get child => super.child;
 }

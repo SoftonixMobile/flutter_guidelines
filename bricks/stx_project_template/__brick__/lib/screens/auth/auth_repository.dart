@@ -8,7 +8,7 @@ import 'models/models.dart';
 class AuthRepository {
   final HttpClient httpClient;
 
-  AuthRepository({required this.httpClient});
+  AuthRepository(this.httpClient);
 
   Stream<AuthenticationStatus> get authenticationStatus =>
       httpClient.authenticationStatus;

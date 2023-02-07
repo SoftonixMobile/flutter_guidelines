@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 
-export 'pages/index.dart';
-
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 

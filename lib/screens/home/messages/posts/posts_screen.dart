@@ -7,8 +7,6 @@ import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'posts_bloc.dart';
 
-export 'pages/index.dart';
-
 class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
   const PostsScreen({super.key});
 
