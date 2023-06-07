@@ -1,233 +1,181 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/cupertino.dart' as _i9;
-import 'package:flutter/material.dart' as _i8;
-import 'package:flutter_guidelines/models/index.dart' as _i10;
+import 'package:auto_route/auto_route.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
+import 'package:flutter_guidelines/models/index.dart' as _i13;
+import 'package:flutter_guidelines/screens/auth/auth_screen.dart' as _i9;
 import 'package:flutter_guidelines/screens/home/dashboard/dashboard_screen.dart'
-    as _i3;
-import 'package:flutter_guidelines/screens/home/messages/chats/index.dart'
-    as _i2;
-import 'package:flutter_guidelines/screens/home/messages/messages_screen.dart'
-    as _i4;
-import 'package:flutter_guidelines/screens/home/messages/posts/index.dart'
     as _i6;
-import 'package:flutter_guidelines/screens/home/settings/settings_screen.dart'
+import 'package:flutter_guidelines/screens/home/home_screen.dart' as _i8;
+import 'package:flutter_guidelines/screens/home/home_wrapper.dart' as _i7;
+import 'package:flutter_guidelines/screens/home/messages/chats/chats_screen.dart'
+    as _i4;
+import 'package:flutter_guidelines/screens/home/messages/chats/pages/chat_details/chat_details_screen.dart'
     as _i5;
-import 'package:flutter_guidelines/screens/routes.dart' as _i1;
+import 'package:flutter_guidelines/screens/home/messages/messages_screen.dart'
+    as _i3;
+import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart'
+    as _i2;
+import 'package:flutter_guidelines/screens/home/settings/settings_screen.dart'
+    as _i1;
+import 'package:flutter_guidelines/screens/login/login_screen.dart' as _i10;
 
-class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
-      : super(navigatorKey);
+abstract class $AppRouter extends _i11.RootStackRouter {
+  $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
-    AuthRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+  final Map<String, _i11.PageFactory> pagesMap = {
+    SettingsRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.AuthScreen(),
+        child: const _i1.SettingsScreen(),
       );
     },
-    LoginRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    PostsRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.WrappedRoute(child: const _i1.LoginScreen()),
+        child: _i11.WrappedRoute(child: const _i2.PostsScreen()),
       );
     },
-    HomeRouter.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    MessagesRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomeWrapperScreen(),
+        child: const _i3.MessagesScreen(),
       );
     },
-    HomeRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    ChatsRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomeScreen(),
+        child: _i11.WrappedRoute(child: const _i4.ChatsScreen()),
       );
     },
     ChatDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<ChatDetailsRouteArgs>();
-      return _i7.AdaptivePage<dynamic>(
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.ChatDetailsScreen(
+        child: _i5.ChatDetailsScreen(
           key: args.key,
           chat: args.chat,
         ),
       );
     },
-    DashboardRouter.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    DashboardRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.DashboardScreen(),
+        child: const _i6.DashboardScreen(),
       );
     },
-    MessagesRouter.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    HomeRouter.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.MessagesScreen(),
+        child: const _i7.HomeWrapperScreen(),
       );
     },
-    SettingsRouter.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    HomeRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.SettingsScreen(),
+        child: const _i8.HomeScreen(),
       );
     },
-    ChatsRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    AuthRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.WrappedRoute(child: const _i2.ChatsScreen()),
+        child: const _i9.AuthScreen(),
       );
     },
-    PostsRoute.name: (routeData) {
-      return _i7.AdaptivePage<dynamic>(
+    LoginRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.WrappedRoute(child: const _i6.PostsScreen()),
+        child: _i11.WrappedRoute(child: const _i10.LoginScreen()),
       );
     },
   };
-
-  @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(
-          AuthRoute.name,
-          path: '/',
-          children: [
-            _i7.RouteConfig(
-              LoginRoute.name,
-              path: 'login-screen',
-              parent: AuthRoute.name,
-            ),
-            _i7.RouteConfig(
-              HomeRouter.name,
-              path: 'home-wrapper-screen',
-              parent: AuthRoute.name,
-              children: [
-                _i7.RouteConfig(
-                  HomeRoute.name,
-                  path: '',
-                  parent: HomeRouter.name,
-                  children: [
-                    _i7.RouteConfig(
-                      DashboardRouter.name,
-                      path: '',
-                      parent: HomeRoute.name,
-                    ),
-                    _i7.RouteConfig(
-                      MessagesRouter.name,
-                      path: 'messages-screen',
-                      parent: HomeRoute.name,
-                      children: [
-                        _i7.RouteConfig(
-                          ChatsRoute.name,
-                          path: 'chats-screen',
-                          parent: MessagesRouter.name,
-                        ),
-                        _i7.RouteConfig(
-                          PostsRoute.name,
-                          path: 'posts-screen',
-                          parent: MessagesRouter.name,
-                        ),
-                      ],
-                    ),
-                    _i7.RouteConfig(
-                      SettingsRouter.name,
-                      path: 'settings-screen',
-                      parent: HomeRoute.name,
-                    ),
-                  ],
-                ),
-                _i7.RouteConfig(
-                  ChatDetailsRoute.name,
-                  path: 'chat-details-screen',
-                  parent: HomeRouter.name,
-                ),
-              ],
-            ),
-          ],
-        )
-      ];
 }
 
 /// generated route for
-/// [_i1.AuthScreen]
-class AuthRoute extends _i7.PageRouteInfo<void> {
-  const AuthRoute({List<_i7.PageRouteInfo>? children})
+/// [_i1.SettingsScreen]
+class SettingsRoute extends _i11.PageRouteInfo<void> {
+  const SettingsRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          AuthRoute.name,
-          path: '/',
+          SettingsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'AuthRoute';
+  static const String name = 'SettingsRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i1.LoginScreen]
-class LoginRoute extends _i7.PageRouteInfo<void> {
-  const LoginRoute()
+/// [_i2.PostsScreen]
+class PostsRoute extends _i11.PageRouteInfo<void> {
+  const PostsRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          LoginRoute.name,
-          path: 'login-screen',
-        );
-
-  static const String name = 'LoginRoute';
-}
-
-/// generated route for
-/// [_i1.HomeWrapperScreen]
-class HomeRouter extends _i7.PageRouteInfo<void> {
-  const HomeRouter({List<_i7.PageRouteInfo>? children})
-      : super(
-          HomeRouter.name,
-          path: 'home-wrapper-screen',
+          PostsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRouter';
+  static const String name = 'PostsRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i1.HomeScreen]
-class HomeRoute extends _i7.PageRouteInfo<void> {
-  const HomeRoute({List<_i7.PageRouteInfo>? children})
+/// [_i3.MessagesScreen]
+class MessagesRoute extends _i11.PageRouteInfo<void> {
+  const MessagesRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          HomeRoute.name,
-          path: '',
+          MessagesRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
+  static const String name = 'MessagesRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.ChatDetailsScreen]
-class ChatDetailsRoute extends _i7.PageRouteInfo<ChatDetailsRouteArgs> {
+/// [_i4.ChatsScreen]
+class ChatsRoute extends _i11.PageRouteInfo<void> {
+  const ChatsRoute({List<_i11.PageRouteInfo>? children})
+      : super(
+          ChatsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ChatsRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.ChatDetailsScreen]
+class ChatDetailsRoute extends _i11.PageRouteInfo<ChatDetailsRouteArgs> {
   ChatDetailsRoute({
-    _i9.Key? key,
-    required _i10.Chat chat,
+    _i12.Key? key,
+    required _i13.Chat chat,
+    List<_i11.PageRouteInfo>? children,
   }) : super(
           ChatDetailsRoute.name,
-          path: 'chat-details-screen',
           args: ChatDetailsRouteArgs(
             key: key,
             chat: chat,
           ),
+          initialChildren: children,
         );
 
   static const String name = 'ChatDetailsRoute';
+
+  static const _i11.PageInfo<ChatDetailsRouteArgs> page =
+      _i11.PageInfo<ChatDetailsRouteArgs>(name);
 }
 
 class ChatDetailsRouteArgs {
@@ -236,9 +184,9 @@ class ChatDetailsRouteArgs {
     required this.chat,
   });
 
-  final _i9.Key? key;
+  final _i12.Key? key;
 
-  final _i10.Chat chat;
+  final _i13.Chat chat;
 
   @override
   String toString() {
@@ -247,62 +195,71 @@ class ChatDetailsRouteArgs {
 }
 
 /// generated route for
-/// [_i3.DashboardScreen]
-class DashboardRouter extends _i7.PageRouteInfo<void> {
-  const DashboardRouter()
+/// [_i6.DashboardScreen]
+class DashboardRoute extends _i11.PageRouteInfo<void> {
+  const DashboardRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          DashboardRouter.name,
-          path: '',
-        );
-
-  static const String name = 'DashboardRouter';
-}
-
-/// generated route for
-/// [_i4.MessagesScreen]
-class MessagesRouter extends _i7.PageRouteInfo<void> {
-  const MessagesRouter({List<_i7.PageRouteInfo>? children})
-      : super(
-          MessagesRouter.name,
-          path: 'messages-screen',
+          DashboardRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'MessagesRouter';
+  static const String name = 'DashboardRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.SettingsScreen]
-class SettingsRouter extends _i7.PageRouteInfo<void> {
-  const SettingsRouter()
+/// [_i7.HomeWrapperScreen]
+class HomeRouter extends _i11.PageRouteInfo<void> {
+  const HomeRouter({List<_i11.PageRouteInfo>? children})
       : super(
-          SettingsRouter.name,
-          path: 'settings-screen',
+          HomeRouter.name,
+          initialChildren: children,
         );
 
-  static const String name = 'SettingsRouter';
+  static const String name = 'HomeRouter';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.ChatsScreen]
-class ChatsRoute extends _i7.PageRouteInfo<void> {
-  const ChatsRoute()
+/// [_i8.HomeScreen]
+class HomeRoute extends _i11.PageRouteInfo<void> {
+  const HomeRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          ChatsRoute.name,
-          path: 'chats-screen',
+          HomeRoute.name,
+          initialChildren: children,
         );
 
-  static const String name = 'ChatsRoute';
+  static const String name = 'HomeRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.PostsScreen]
-class PostsRoute extends _i7.PageRouteInfo<void> {
-  const PostsRoute()
+/// [_i9.AuthScreen]
+class AuthRoute extends _i11.PageRouteInfo<void> {
+  const AuthRoute({List<_i11.PageRouteInfo>? children})
       : super(
-          PostsRoute.name,
-          path: 'posts-screen',
+          AuthRoute.name,
+          initialChildren: children,
         );
 
-  static const String name = 'PostsRoute';
+  static const String name = 'AuthRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i10.LoginScreen]
+class LoginRoute extends _i11.PageRouteInfo<void> {
+  const LoginRoute({List<_i11.PageRouteInfo>? children})
+      : super(
+          LoginRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LoginRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }

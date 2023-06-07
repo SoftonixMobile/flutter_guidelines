@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:{{project_name}}/core/index.dart';
 import 'package:{{project_name}}/localization/index.dart';
+import 'package:{{project_name}}/router/index.dart';
 
+export 'pages/index.dart';
+
+@RoutePage()
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 

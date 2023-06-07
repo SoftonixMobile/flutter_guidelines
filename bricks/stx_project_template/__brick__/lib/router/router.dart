@@ -1,37 +1,43 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'package:{{project_name}}/screens/routes.dart';
+import 'router.gr.dart';
 
-@AdaptiveAutoRouter(
+@AutoRouterConfig(
   replaceInRouteName: 'Page|Screen,Route',
-  routes: <AutoRoute>[
+)
+class AppRouter extends $AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.adaptive();
+
+  @override
+  final List<AutoRoute> routes = [
     AutoRoute(
-      initial: true,
-      page: AuthScreen,
+      path: '/',
+      page: AuthRoute.page,
       children: [
+        AutoRoute(page: LoginRoute.page),
         AutoRoute(
-          page: LoginScreen,
-        ),
-        AutoRoute(
-          name: 'HomeRouter',
-          page: HomeWrapperScreen,
+          page: HomeRouter.page,
           children: [
             AutoRoute(
-              initial: true,
-              page: HomeScreen,
+              path: '',
+              page: HomeRoute.page,
               children: [
-                dashboardRouter,
-                messagesRouter,
-                settingsRouter,
+                AutoRoute(page: DashboardRoute.page),
+                AutoRoute(
+                  page: MessagesRoute.page,
+                  children: [
+                    AutoRoute(page: ChatsRoute.page),
+                    AutoRoute(page: PostsRoute.page),
+                  ],
+                ),
+                AutoRoute(page: SettingsRoute.page),
               ],
             ),
-            ...dashboardModals,
-            ...messagesModals,
-            ...settingModals,
+            AutoRoute(page: ChatDetailsRoute.page),
           ],
         ),
       ],
     ),
-  ],
-)
-class $AppRouter {}
+  ];
+}

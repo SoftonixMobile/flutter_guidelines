@@ -11,6 +11,7 @@ import 'package:flutter_guidelines/widgets/index.dart';
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
 
+@RoutePage()
 class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
   const LoginScreen({super.key});
 

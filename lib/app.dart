@@ -18,10 +18,9 @@ class SoftonixApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.getAppTheme(context),
-        routerDelegate: _appRouter.delegate(
+        routerConfig: _appRouter.config(
           navigatorObservers: () => [RouterObserver()],
         ),
-        routeInformationParser: _appRouter.defaultRouteParser(),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,

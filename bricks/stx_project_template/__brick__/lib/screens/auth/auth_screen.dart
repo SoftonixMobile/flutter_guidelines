@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/screens/auth/bloc/auth_bloc.dart';
 
+@RoutePage()
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 

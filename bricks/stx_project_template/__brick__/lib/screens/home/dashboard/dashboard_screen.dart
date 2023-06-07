@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:{{project_name}}/core/index.dart';
 import 'package:{{project_name}}/localization/index.dart';
+import 'package:{{project_name}}/router/index.dart';
 
+@RoutePage()
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 

@@ -19,10 +19,9 @@ class {{#pascalCase}}{{project_name}}{{/pascalCase}} extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: '{{#titleCase}}{{project_name}}{{/titleCase}}',
         theme: AppTheme.getAppTheme(context),
-        routerDelegate: _appRouter.delegate(
+        routerConfig: _appRouter.config(
           navigatorObservers: () => [RouterObserver()],
         ),
-        routeInformationParser: _appRouter.defaultRouteParser(),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,

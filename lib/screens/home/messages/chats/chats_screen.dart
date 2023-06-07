@@ -7,6 +7,7 @@ import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'bloc/chats_bloc.dart';
 
+@RoutePage()
 class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
   const ChatsScreen({super.key});
 

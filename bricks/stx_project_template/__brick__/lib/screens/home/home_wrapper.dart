@@ -6,6 +6,7 @@ import 'package:{{project_name}}/blocs/index.dart';
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
 
+@RoutePage(name: 'HomeRouter')
 class HomeWrapperScreen extends StatefulWidget {
   const HomeWrapperScreen({super.key});
 

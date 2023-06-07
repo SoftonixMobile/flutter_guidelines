@@ -6,6 +6,7 @@ import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
+@RoutePage(name: 'HomeRouter')
 class HomeWrapperScreen extends StatefulWidget {
   const HomeWrapperScreen({super.key});
 

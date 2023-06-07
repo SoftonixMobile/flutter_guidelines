@@ -7,6 +7,7 @@ import 'package:{{project_name}}/localization/index.dart';
 import 'package:{{project_name}}/models/index.dart';
 import 'posts_bloc.dart';
 
+@RoutePage()
 class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
   const PostsScreen({super.key});
 
@@ -49,8 +50,8 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                   );
 
                 case NetworkStatus.failure:
-                  return SliverFillRemaining(
-                    child: Center(child: Text(state.errorMessage ?? '')),
+                  return const SliverFillRemaining(
+                    child: Center(child: Text('Something went wrong')),
                   );
               }
             },

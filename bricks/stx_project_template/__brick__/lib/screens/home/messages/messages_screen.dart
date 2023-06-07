@@ -4,6 +4,7 @@ import 'package:{{project_name}}/localization/index.dart';
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';
 
+@RoutePage()
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({super.key});
 

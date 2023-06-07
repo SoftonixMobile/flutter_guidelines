@@ -4,6 +4,7 @@ import 'package:{{project_name}}/localization/index.dart';
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';
 
+@RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -14,9 +15,9 @@ class HomeScreen extends StatelessWidget {
     return AutoTabsScaffold(
       endDrawer: const AppDrawer(),
       routes: const [
-        DashboardRouter(),
-        MessagesRouter(),
-        SettingsRouter(),
+        DashboardRoute(),
+        MessagesRoute(),
+        SettingsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
         return DecoratedBox(

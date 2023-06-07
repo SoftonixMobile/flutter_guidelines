@@ -7,6 +7,7 @@ import 'package:{{project_name}}/localization/index.dart';
 import 'package:{{project_name}}/router/index.dart';
 import 'bloc/chats_bloc.dart';
 
+@RoutePage()
 class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
   const ChatsScreen({super.key});
 

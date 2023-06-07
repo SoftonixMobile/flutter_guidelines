@@ -23,7 +23,7 @@ class CustomTabsRouter extends StatelessWidget {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: routes,
-      builder: (context, child, animation) {
+      builder: (context, child) {
         return DefaultTabController(
           length: tabs.length,
           initialIndex: context.tabsRouter.activeIndex,
@@ -59,10 +59,7 @@ class CustomTabsRouter extends StatelessWidget {
               ),
             ],
             onlyOneScrollInBody: true,
-            body: FadeTransition(
-              opacity: animation,
-              child: child,
-            ),
+            body: child,
           ),
         );
       },

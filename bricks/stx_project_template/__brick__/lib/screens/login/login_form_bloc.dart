@@ -17,7 +17,7 @@ class LoginFormBloc extends FormBloc<String, String> {
   LoginFormBloc({
     required this.authBloc,
     required this.repository,
-  }) : super() {
+  }) : super(customSubmit: false) {
     username = TextFieldBloc(
       required: true,
       rules: {ValidationType.onBlur},
@@ -37,14 +37,8 @@ class LoginFormBloc extends FormBloc<String, String> {
 
   @override
   FutureOr<void> onSubmit() async {
-    emitLoading();
+    await repository.signIn(username.toString(), password.toString());
 
-    try {
-      await repository.signIn(username.toString(), password.toString());
-
-      emitSuccess('Success');
-    } catch (e) {
-      emitFailure('Something went wrong!');
-    }
+    emitSuccess('Success');
   }
 }
