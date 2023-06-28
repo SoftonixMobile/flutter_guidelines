@@ -5,8 +5,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/screens/auth/models/models.dart';
-import '../auth_repository.dart';
+import 'package:flutter_guidelines/models/index.dart';
+import 'package:flutter_guidelines/repositories/index.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -14,14 +14,16 @@ part 'auth_state.dart';
 
 @Singleton(scope: 'auth')
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository repository;
+  final AuthRepository authRepository;
+  final UserRepository userRepository;
 
   late StreamSubscription<AuthenticationStatus> _subscription;
 
   AuthBloc({
-    required this.repository,
+    required this.authRepository,
+    required this.userRepository,
   }) : super(const AuthState()) {
-    _subscription = repository.authenticationStatus.listen((status) {
+    _subscription = authRepository.authenticationStatus.listen((status) {
       add(AuthEvent.authenticationStatusChanged(status));
     });
 
@@ -29,15 +31,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<_SignOut>(_signOut);
   }
 
-  void signOut() => add(const AuthEvent.signOut());
-
   FutureOr<void> _authenticationStatusChanged(
     _AuthenticationStatusChanged event,
     Emitter<AuthState> emit,
   ) async {
     if (event.status == AuthenticationStatus.authenticated) {
       try {
-        final userProfile = await repository.getUserProfile();
+        final userProfile = await userRepository.getUserProfile();
 
         emit(AuthState.authenticated(userProfile));
       } catch (_) {
@@ -54,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _signOut(_SignOut event, Emitter<AuthState> emit) {
-    return repository.signOut();
+    return authRepository.signOut();
   }
 
   @override

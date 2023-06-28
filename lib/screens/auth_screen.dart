@@ -4,8 +4,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
-import 'package:flutter_guidelines/screens/auth/bloc/auth_bloc.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {

@@ -11,7 +11,7 @@
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
 import 'package:flutter_guidelines/models/index.dart' as _i13;
-import 'package:flutter_guidelines/screens/auth/auth_screen.dart' as _i9;
+import 'package:flutter_guidelines/screens/auth_screen.dart' as _i10;
 import 'package:flutter_guidelines/screens/home/dashboard/dashboard_screen.dart'
     as _i6;
 import 'package:flutter_guidelines/screens/home/home_screen.dart' as _i8;
@@ -26,7 +26,7 @@ import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart
     as _i2;
 import 'package:flutter_guidelines/screens/home/settings/settings_screen.dart'
     as _i1;
-import 'package:flutter_guidelines/screens/login/login_screen.dart' as _i10;
+import 'package:flutter_guidelines/screens/login/login_screen.dart' as _i9;
 
 abstract class $AppRouter extends _i11.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -85,16 +85,16 @@ abstract class $AppRouter extends _i11.RootStackRouter {
         child: const _i8.HomeScreen(),
       );
     },
-    AuthRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.AuthScreen(),
-      );
-    },
     LoginRoute.name: (routeData) {
       return _i11.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i11.WrappedRoute(child: const _i10.LoginScreen()),
+        child: _i11.WrappedRoute(child: const _i9.LoginScreen()),
+      );
+    },
+    AuthRoute.name: (routeData) {
+      return _i11.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i10.AuthScreen(),
       );
     },
   };
@@ -237,21 +237,7 @@ class HomeRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.AuthScreen]
-class AuthRoute extends _i11.PageRouteInfo<void> {
-  const AuthRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          AuthRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AuthRoute';
-
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i10.LoginScreen]
+/// [_i9.LoginScreen]
 class LoginRoute extends _i11.PageRouteInfo<void> {
   const LoginRoute({List<_i11.PageRouteInfo>? children})
       : super(
@@ -260,6 +246,20 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i10.AuthScreen]
+class AuthRoute extends _i11.PageRouteInfo<void> {
+  const AuthRoute({List<_i11.PageRouteInfo>? children})
+      : super(
+          AuthRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
 
   static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
 }

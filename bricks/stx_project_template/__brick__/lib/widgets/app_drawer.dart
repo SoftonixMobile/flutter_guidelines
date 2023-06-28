@@ -65,7 +65,7 @@ class AppDrawer extends StatelessWidget {
                           iconData: FontAwesomeIcons.rightFromBracket,
                         ),
                         onTap: () {
-                          getIt<AuthBloc>().signOut();
+                          getIt<AuthBloc>().add(const AuthEvent.signOut());
                         },
                       ),
                     ],

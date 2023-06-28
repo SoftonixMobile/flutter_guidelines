@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/models/index.dart';
-import 'posts_repository.dart';
+import 'package:{{project_name}}/repositories/index.dart';
 
 @lazySingleton
 class PostsBloc extends NetworkListBloc<Post, NetworkListState<Post>> {

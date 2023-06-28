@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
-import 'package:flutter_guidelines/screens/auth/auth_repository.dart';
+import 'package:flutter_guidelines/repositories/auth_repository.dart';
 
 @Injectable(scope: 'auth')
 class LoginFormBloc extends FormBloc<String, String> {

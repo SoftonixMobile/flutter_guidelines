@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
+import 'home_state_wrapper.dart';
 
 @RoutePage(name: 'HomeRouter')
 class HomeWrapperScreen extends StatefulWidget {
@@ -32,26 +30,5 @@ class _HomeWrapperScreenState extends State<HomeWrapperScreen> {
     getIt.popScope();
 
     super.dispose();
-  }
-}
-
-class HomeStateWrapper extends StatelessWidget {
-  const HomeStateWrapper({super.key, required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => getIt<ChatsBloc>(),
-        ),
-        BlocProvider(
-          create: (context) => getIt<PostsBloc>(),
-        ),
-      ],
-      child: child,
-    );
   }
 }

@@ -1,20 +1,20 @@
 import 'package:injectable/injectable.dart';
 
+import 'package:{{project_name}}/models/index.dart';
 import 'package:{{project_name}}/services/http/http_client.dart';
-import 'models/models.dart';
 
 @injectable
-class PostsRepository {
+class ChatsRepository {
   final HttpClient httpClient;
 
-  PostsRepository(this.httpClient);
+  ChatsRepository(this.httpClient);
 
-  Future<List<Post>> getPosts() async {
+  Future<List<Chat>> getChats() async {
     await Future.delayed(const Duration(seconds: 1));
 
     return List.generate(
       100,
-      (index) => Post(id: index, name: 'Post $index'),
+      (index) => Chat(id: index, name: 'Chat $index'),
     );
   }
 }

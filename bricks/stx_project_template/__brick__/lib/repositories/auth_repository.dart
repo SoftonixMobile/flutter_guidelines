@@ -2,7 +2,6 @@ import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/services/http/http_client.dart';
-import 'models/models.dart';
 
 @Injectable(scope: 'auth')
 class AuthRepository {
@@ -21,9 +20,5 @@ class AuthRepository {
 
   Future<void> signOut() {
     return httpClient.clearToken();
-  }
-
-  Future<UserProfile> getUserProfile() async {
-    return UserProfile.fromJson({'userName': 'test'});
   }
 }
