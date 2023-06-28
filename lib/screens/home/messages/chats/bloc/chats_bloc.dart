@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/models/index.dart';
-import '../chats_repository.dart';
+import 'package:flutter_guidelines/repositories/index.dart';
 
 part 'chats_event.dart';
 part 'chats_state.dart';
@@ -20,8 +20,6 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
   }
 
   final ChatsRepository repository;
-
-  void load() => add(const ChatsEvent.load());
 
   FutureOr<void> _load(_Load event, Emitter<ChatsState> emit) async {
     emit(state.copyWith(status: NetworkStatus.loading));

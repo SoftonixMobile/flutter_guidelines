@@ -27,7 +27,7 @@ class HttpClient {
       tokenHeader: (token) => {'Authorization': 'Bearer $token'},
       tokenStorage: SecureTokenStorage(),
       refreshToken: (token, client) {
-        getIt<AuthBloc>().signOut();
+        getIt<AuthBloc>().add(const AuthEvent.signOut());
 
         throw Exception('Unauthenticated');
       },

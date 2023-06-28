@@ -13,7 +13,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    context.read<ChatsBloc>().load();
+    context.read<ChatsBloc>().add(const ChatsEvent.load());
 
     return this;
   }
@@ -24,7 +24,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
 
     return RefreshIndicator(
       onRefresh: () {
-        final bloc = context.read<ChatsBloc>()..load();
+        final bloc = context.read<ChatsBloc>()..add(const ChatsEvent.load());
 
         return bloc.stream
             .firstWhere((state) => state.status != NetworkStatus.loading);
