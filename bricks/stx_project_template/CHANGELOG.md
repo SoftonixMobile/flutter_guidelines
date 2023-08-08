@@ -1,3 +1,7 @@
+# 0.4.0
+
+- Support Dart 3.
+
 # 0.1.0+8
 
 - Fix loading dialog.
