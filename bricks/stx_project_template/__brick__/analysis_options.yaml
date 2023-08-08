@@ -20,9 +20,8 @@ analyzer:
 
 linter:
   rules:
+    always_put_required_named_parameters_first: false
     always_use_package_imports: false
-    avoid_positional_boolean_parameters: false
-    prefer_asserts_with_message: false
     public_member_api_docs: false
     directives_ordering: false
     sort_child_properties_last: false
