@@ -1,25 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-
-import 'package:flutter_guidelines/blocs/observer.dart';
 import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
 import 'app.dart';
+import 'app_initialization.dart';
 
 void main() async {
-  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-
-  await EasyLocalization.ensureInitialized();
-
-  await dotenv.load();
-
-  Bloc.observer = SimpleBlocObserver();
-
-  configureAuthDependencies();
+  await initializeApp();
 
   runApp(
     EasyLocalization(

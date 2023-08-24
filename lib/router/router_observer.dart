@@ -1,27 +1,34 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 
+import 'package:flutter_guidelines/services/logger/index.dart';
+
 class RouterObserver extends AutoRouterObserver {
+  RouterObserver(this.logger);
+
+  final Logger logger;
+
   @override
   void didPush(Route route, Route? previousRoute) {
-    print('New route pushed: ${route.settings.name}');
+    logger.log(
+      'New route pushed: ${route.settings.name}',
+      category: 'navigation',
+    );
   }
 
   @override
   void didPop(Route route, Route? previousRoute) {
-    print('route popped: ${route.settings.name}');
+    logger.log('Route popped: ${route.settings.name}', category: 'navigation');
   }
 
   @override
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
-    print('Tab route visited: ${route.name}');
+    logger.log('Tab route visited: ${route.name}', category: 'navigation');
   }
 
   @override
   void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
-    print('Tab route re-visited: ${route.name}');
+    logger.log('Tab route re-visited: ${route.name}', category: 'navigation');
   }
 }
