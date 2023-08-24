@@ -17,7 +17,6 @@ class {{#pascalCase}}{{project_name}}{{/pascalCase}} extends StatelessWidget {
     return AppStateWrapper(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: '{{#titleCase}}{{project_name}}{{/titleCase}}',
         theme: AppTheme.getAppTheme(context),
         routerConfig: _appRouter.config(
           navigatorObservers: () => [RouterObserver()],
