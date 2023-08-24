@@ -3,8 +3,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:{{project_name}}/models/index.dart';
 
+import 'package:{{project_name}}/models/index.dart';
 import '../index.dart';
 
 class LoggerService extends Logger {

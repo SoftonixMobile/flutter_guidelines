@@ -1,13 +1,14 @@
 import 'dart:ui';
 
-import 'package:easy_localization/easy_localization.dart';
-
 import 'package:flutter/material.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:flutter_guidelines/blocs/observer.dart';
 import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
