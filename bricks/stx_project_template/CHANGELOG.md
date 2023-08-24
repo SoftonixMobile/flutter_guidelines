@@ -1,3 +1,7 @@
+# 0.4.3
+
+- Restrict auto_route version.
+
 # 0.4.2
 
 - Add logger.

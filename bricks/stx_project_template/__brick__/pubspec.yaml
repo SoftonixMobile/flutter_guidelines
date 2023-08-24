@@ -31,7 +31,7 @@ dependencies:
   injectable: ^2.2.0
 
   #routing
-  auto_route: ^7.8.0
+  auto_route: 7.8.0
 
   #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
   #Request Cancellation, File downloading, Timeout etc.
