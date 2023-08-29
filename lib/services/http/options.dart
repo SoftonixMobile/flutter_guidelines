@@ -1,7 +1,7 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_guidelines/core/constants/index.dart';
 
 class DioOptions {
-  static String baseUrl = dotenv.get('APP_API_URL');
+  static String baseUrl = EnvConstants.appApiUrl;
 
   static const Duration connectTimeout = Duration(seconds: 10);
 

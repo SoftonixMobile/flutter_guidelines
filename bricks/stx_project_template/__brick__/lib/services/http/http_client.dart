@@ -59,7 +59,11 @@ class HttpClient {
     DynamicMap? queryParameters,
     Options? options,
   }) {
-    return _dio.get<T>(url, queryParameters: queryParameters, options: options);
+    return _dio.get<T>(
+      url,
+      queryParameters: queryParameters,
+      options: options,
+    );
   }
 
   Future<Response<T>> post<T>(
