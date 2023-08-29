@@ -16,7 +16,7 @@ dependencies:
     sdk: flutter
   
   #splash screen
-  flutter_native_splash: ^2.2.9
+  flutter_native_splash: ^2.3.2
 
   #softonix core packages
   stx_bloc_base: ^0.5.0
@@ -28,7 +28,7 @@ dependencies:
 
   #dependency injection
   get_it: ^7.6.0
-  injectable: ^2.2.0
+  injectable: ^2.3.0
 
   #routing
   auto_route: 7.8.0
@@ -74,14 +74,14 @@ dependency_overrides:
 dev_dependencies:
   build_runner: ^2.4.6
   flutter_gen_runner: ^5.3.1
-  auto_route_generator: ^7.3.0
-  injectable_generator: ^2.1.5
+  auto_route_generator: ^7.3.1
+  injectable_generator: ^2.4.0
   json_serializable: ^6.7.1
   freezed: ^2.4.2
   import_sorter: ^4.6.0
 
   flutter_lints: ^2.0.2
-  very_good_analysis: ^5.0.0
+  very_good_analysis: ^5.0.0+1
 
 flutter:
   uses-material-design: true

@@ -11,20 +11,24 @@ import 'package:{{project_name}}/router/index.dart';
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
+  void _removeSplashScreen() {
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     final authStatus = context.watch<AuthBloc>().state.status;
 
     return AutoRouter.declarative(
-      routes: (context) {
+      routes: (_) {
         switch (authStatus) {
           case AuthenticationStatus.initial:
             return [];
           case AuthenticationStatus.unauthenticated:
-            FlutterNativeSplash.remove();
+            _removeSplashScreen();
             return [const LoginRoute()];
           case AuthenticationStatus.authenticated:
-            FlutterNativeSplash.remove();
+            _removeSplashScreen();
             return [const HomeRouter()];
         }
       },

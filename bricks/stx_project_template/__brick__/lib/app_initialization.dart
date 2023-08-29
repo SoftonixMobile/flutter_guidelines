@@ -14,9 +14,9 @@ Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   initializeSplashScreen(widgetsBinding);
+  await initializeDotenv();
   await initializeLogger();
   await initializeLocalization();
-  await initializeDotenv();
   initializeCrashlytics();
   initializeBlocObserver();
   configureAuthDependencies();

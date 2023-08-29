@@ -56,7 +56,7 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
                           ),
                         ),
                         const LoginForm(),
-                        const Spacer()
+                        const Spacer(),
                       ],
                     ),
                   ),
