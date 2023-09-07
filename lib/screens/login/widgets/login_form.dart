@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_guidelines/screens/login/widgets/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
+
 import '../login_form_bloc.dart';
 
 class LoginForm extends StatelessWidget {
@@ -16,10 +15,12 @@ class LoginForm extends StatelessWidget {
     return Column(
       children: <Widget>[
         TextInputFormBuilder(
+          key: const Key('username'),
           label: 'Username',
           fieldBloc: formBloc.username,
         ),
         TextInputFormBuilder(
+          key: const Key('password'),
           isObscureText: true,
           label: 'Password',
           fieldBloc: formBloc.password,
