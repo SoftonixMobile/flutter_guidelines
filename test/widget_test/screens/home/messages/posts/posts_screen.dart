@@ -83,7 +83,6 @@ void main() {
     'Check error',
     ($) async {
       /// Mock bloc interactions.
-
       final bloc = MockPostsBloc();
       const state = NetworkListState<Post>(
         status: NetworkStatus.failure,
