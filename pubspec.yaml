@@ -66,12 +66,21 @@ dependencies:
   tab_indicator_styler: ^2.0.0
   extended_nested_scroll_view: ^6.1.2
 
+  #testing
+  patrol: ^2.2.4
+  patrol_finders: ^1.0.0
+  mockito: ^5.4.2
+
   #other
 
 dependency_overrides: 
   analyzer: ^6.0.0
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
   build_runner: ^2.4.6
   flutter_gen_runner: ^5.3.1
   auto_route_generator: ^7.3.1
@@ -138,3 +147,10 @@ import_sorter:
     - \**/*.freezed.dart
     - \**/*.gen.dart
     - \**/*.gr.dart
+
+patrol:
+  app_name: Flutter Guidelines
+  android:
+    package_name: com.example.flutter_guidelines
+  ios:
+    bundle_id: com.example.flutterGuidelines
