@@ -13,9 +13,6 @@ Future<void> main() async {
   SharedPreferences.setMockInitialValues({});
   await EasyLocalization.ensureInitialized();
 
-  /// Call ensureInitialized, because main is async.
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   patrolWidgetTest(
     'Text field error',
     ($) async {
