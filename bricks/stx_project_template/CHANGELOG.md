@@ -1,3 +1,7 @@
+# 0.4.4
+
+- Separate env variables.
+
 # 0.4.3
 
 - Restrict auto_route version.
