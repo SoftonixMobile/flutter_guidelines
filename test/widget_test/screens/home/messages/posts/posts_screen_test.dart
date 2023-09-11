@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart';
 import 'package:patrol/patrol.dart';
 
 @GenerateNiceMocks([MockSpec<PostsBloc>()])
-import 'posts_screen.mocks.dart';
+import 'posts_screen_test.mocks.dart';
 
 void main() {
   patrolWidgetTest(

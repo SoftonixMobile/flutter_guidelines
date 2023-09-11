@@ -10,7 +10,7 @@ import 'package:patrol/patrol.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 @GenerateNiceMocks([MockSpec<LoginFormBloc>()])
-import 'login_screen.mocks.dart';
+import 'login_screen_test.mocks.dart';
 
 void main() {
   patrolWidgetTest(

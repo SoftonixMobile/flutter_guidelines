@@ -9,7 +9,7 @@ import 'package:patrol/patrol.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @GenerateNiceMocks([MockSpec<AuthBloc>()])
-import 'app_drawer.mocks.dart';
+import 'app_drawer_test.mocks.dart';
 
 Future<void> main() async {
   /// Init EasyLocalization.
