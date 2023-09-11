@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_guidelines/screens/login/login_form_bloc.dart';
-import 'package:flutter_guidelines/screens/login/login_screen.dart';
-import 'package:flutter_guidelines/screens/login/widgets/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:patrol/patrol.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-@GenerateNiceMocks([MockSpec<LoginFormBloc>()])
+import 'package:flutter_guidelines/screens/login/login_form_bloc.dart';
+import 'package:flutter_guidelines/screens/login/login_screen.dart';
+import 'package:flutter_guidelines/screens/login/widgets/index.dart';
 import 'login_screen_test.mocks.dart';
+
+@GenerateNiceMocks([MockSpec<LoginFormBloc>()])
 
 void main() {
   patrolWidgetTest(

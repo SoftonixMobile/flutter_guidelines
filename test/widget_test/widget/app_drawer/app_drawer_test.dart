@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_guidelines/blocs/index.dart';
-import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/widgets/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:patrol/patrol.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@GenerateNiceMocks([MockSpec<AuthBloc>()])
+import 'package:flutter_guidelines/blocs/index.dart';
+import 'package:flutter_guidelines/localization/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 import 'app_drawer_test.mocks.dart';
+
+@GenerateNiceMocks([MockSpec<AuthBloc>()])
 
 Future<void> main() async {
   /// Init EasyLocalization.

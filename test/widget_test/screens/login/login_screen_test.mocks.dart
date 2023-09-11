@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'dart:async' as _i6;
 
 import 'package:bloc/bloc.dart' as _i7;
+import 'package:mockito/mockito.dart' as _i1;
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart' as _i2;
+
 import 'package:flutter_guidelines/blocs/index.dart' as _i3;
 import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i4;
 import 'package:flutter_guidelines/screens/login/login_form_bloc.dart' as _i5;
-import 'package:mockito/mockito.dart' as _i1;
-import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart' as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_guidelines/blocs/index.dart';
-import 'package:flutter_guidelines/models/index.dart';
-import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:patrol/patrol.dart';
 
-@GenerateNiceMocks([MockSpec<PostsBloc>()])
+import 'package:flutter_guidelines/blocs/index.dart';
+import 'package:flutter_guidelines/models/index.dart';
+import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart';
 import 'posts_screen_test.mocks.dart';
+
+@GenerateNiceMocks([MockSpec<PostsBloc>()])
 
 void main() {
   patrolWidgetTest(
