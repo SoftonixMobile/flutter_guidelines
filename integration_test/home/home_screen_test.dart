@@ -9,18 +9,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:patrol/patrol.dart';
 
-void main() {
+Future<void> main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  // Configure the app.
+  await initializeDotenv();
+  await initializeLogger();
+  await initializeLocalization();
+  initializeCrashlytics();
+  initializeBlocObserver();
+  configureAuthDependencies();
 
   patrolWidgetTest('Home screen dashboard tab is opened initially', ($) async {
-    // Configure the app.
-    await initializeDotenv();
-    await initializeLogger();
-    await initializeLocalization();
-    initializeCrashlytics();
-    initializeBlocObserver();
-    configureAuthDependencies();
-
     // Load auth screen.
     await $.pumpWidget(
       EasyLocalization(
@@ -40,14 +39,6 @@ void main() {
   });
 
   patrolWidgetTest('Change localization', ($) async {
-    // Configure the app.
-    await initializeDotenv();
-    await initializeLogger();
-    await initializeLocalization();
-    initializeCrashlytics();
-    initializeBlocObserver();
-    configureAuthDependencies();
-
     // Get the current locale.
     final currentLocale = CodegenLoader.supportedLocales.last;
 
@@ -83,14 +74,6 @@ void main() {
   });
 
   patrolWidgetTest('Logout', ($) async {
-    // Configure the app.
-    await initializeDotenv();
-    await initializeLogger();
-    await initializeLocalization();
-    initializeCrashlytics();
-    initializeBlocObserver();
-    configureAuthDependencies();
-
     // Load auth screen.
     await $.pumpWidget(
       EasyLocalization(
@@ -111,7 +94,7 @@ void main() {
     await $.pump();
 
     // Trigger logout.
-    final logout = $('Sign Out');
+    final logout = $(ListTile).last;
     await logout.tap();
     await $.pump();
 
