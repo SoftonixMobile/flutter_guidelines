@@ -33,10 +33,7 @@ void main() {
     );
 
     // Wait couple of seconds till splash is removed.
-    await $.pump();
-
-    // If we are logged out, need to pump one more time.
-    await $.pump();
+    await $.pumpAndSettle();
 
     // Check if we are logged out by any chance.
     final loginForm = $(LoginForm);
