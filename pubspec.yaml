@@ -147,6 +147,7 @@ import_sorter:
     - \**/*.freezed.dart
     - \**/*.gen.dart
     - \**/*.gr.dart
+    - /*.mocks.dart
 
 patrol:
   app_name: Flutter Guidelines

@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_guidelines/app.dart';
 import 'package:flutter_guidelines/app_initialization.dart';
 import 'package:flutter_guidelines/localization/index.dart';
+import 'package:flutter_guidelines/screens/home/messages/chats/pages/chat_details/chat_details_screen.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -33,10 +35,44 @@ void main() {
       );
 
       // Wait couple of seconds till splash is removed.
-      await $.pump();
+      await $.pumpAndSettle();
 
       // We land on Home screen, dashboard tab.
       expect($('Dashboard Screen'), findsOneWidget);
+
+      // Open Messages tab.
+      final msgTab = $('Messages');
+      await msgTab.tap();
+      await $.pump();
+
+      // Check that we have loaded chats. At least 10, because we do not show
+      // all that are generated.
+      final chatsList = $(SliverList);
+      final chatsItems = $(Text);
+      expect(chatsList, findsOneWidget);
+      expect(chatsItems, findsAtLeastNWidgets(10));
+
+      // Switch tab to posts.
+      final postsTab = $('Posts');
+      await postsTab.tap();
+      await $.pump();
+
+      // Check that we have posts.
+      final postsList = $(SliverList);
+      final postsItems = $(Text);
+      expect(postsList, findsOneWidget);
+      expect(postsItems, findsAtLeastNWidgets(10));
+
+      // Return to previous page.
+      final chatsTab = $('Chats');
+      await chatsTab.tap();
+      await $.pump();
+
+      // Open the single chat page.
+      await $('Chat 0').tap();
+      await $.pump();
+      final chat = $(ChatDetailsScreen);
+      expect(chat, findsOneWidget);
     });
   });
 }
