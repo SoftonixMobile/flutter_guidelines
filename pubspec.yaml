@@ -61,15 +61,15 @@ dependencies:
   font_awesome_flutter: ^10.5.0
   cupertino_icons: ^1.0.5
 
-  #widgets
-  bouncing_widget: ^2.0.0
-  tab_indicator_styler: ^2.0.0
-  extended_nested_scroll_view: ^6.1.2
-
   #testing
   patrol: ^2.2.4
   patrol_finders: ^1.0.0
   mockito: ^5.4.2
+
+  #widgets
+  bouncing_widget: ^2.0.0
+  tab_indicator_styler: ^2.0.0
+  extended_nested_scroll_view: ^6.1.2
 
   #other
 
