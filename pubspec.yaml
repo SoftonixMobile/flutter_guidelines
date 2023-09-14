@@ -97,7 +97,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/dummy/
     - resources/langs/
     - .env
   fonts:

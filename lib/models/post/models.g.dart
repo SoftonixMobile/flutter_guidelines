@@ -8,10 +8,10 @@ part of 'models.dart';
 
 _$_Post _$$_PostFromJson(Map<String, dynamic> json) => _$_Post(
       id: json['id'] as int? ?? 0,
-      name: json['name'] as String? ?? '',
+      name: json['title'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_PostToJson(_$_Post instance) => <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'title': instance.name,
     };
