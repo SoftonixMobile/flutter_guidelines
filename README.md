@@ -21,3 +21,30 @@ samples, guidance on mobile development, and a full API reference.
 dart run flutter_guidelines:update_guidelines_brick
 
 ```
+
+## Patrol
+
+To be able to run patrol tests, you need to set up [Patrol CLI]('https://pub.dev/packages/patrol_cli').
+
+Run:
+```
+dart pub global activate patrol_cli
+```
+
+Follow the steps [here]('https://patrol.leancode.co/getting-started') to set up patrol for the platforms
+
+
+To run patrol tests use (the first device will be chosen):
+```
+patrol test
+```
+
+If we want to use not the first device, run:
+```
+patrol devices
+```
+
+Choose the needed device, then run (replace `iPhone 14 Pro Max` to your device name):
+```
+patrol test --device "iPhone 14 Pro Max"
+```

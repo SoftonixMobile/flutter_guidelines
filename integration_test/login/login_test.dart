@@ -1,39 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guidelines/app.dart';
-import 'package:flutter_guidelines/app_initialization.dart';
-import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/screens/home/dashboard/dashboard_screen.dart';
 import 'package:flutter_guidelines/screens/login/widgets/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:integration_test/integration_test.dart';
 import 'package:patrol/patrol.dart';
 
-void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+import '../helpers/test_helper.dart';
 
-  patrolWidgetTest('Logout first, then login', ($) async {
+void main() {
+  patrolTest('Logout first, then login', ($) async {
     // Configure the app.
-    await initializeDotenv();
-    await initializeLogger();
-    await initializeLocalization();
-    initializeCrashlytics();
-    initializeBlocObserver();
-    configureAuthDependencies();
+    await TestHelper.initApp();
 
     // Load auth screen.
-    await $.pumpWidget(
-      EasyLocalization(
-        path: CodegenLoader.path,
-        supportedLocales: CodegenLoader.supportedLocales,
-        fallbackLocale: CodegenLoader.supportedLocales.last,
-        assetLoader: const CodegenLoader(),
-        child: SoftonixApp(),
-      ),
-    );
-
-    // Wait couple of seconds till splash is removed.
-    await $.pumpAndSettle();
+    await TestHelper.pumpSoftonixApp($);
 
     // Check if we are logged out by any chance.
     final loginForm = $(LoginForm);
