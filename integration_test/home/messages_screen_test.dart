@@ -6,14 +6,17 @@ import 'package:patrol/patrol.dart';
 import '../helpers/test_helper.dart';
 
 void main() {
-  group('Messages screen test', () {
-    patrolTest('Open messages screen, check how we are navigated to the chats',
-        ($) async {
+  patrolTest(
+    'Open messages screen, check how we are navigated to the chats',
+    ($) async {
       // Configure the app.
       await TestHelper.initApp();
 
       // Load auth screen.
       await TestHelper.pumpSoftonixApp($);
+
+      // Wait couple of seconds till splash is removed.
+      await $.pumpAndSettle();
 
       // We land on Home screen, dashboard tab.
       expect($('Dashboard Screen'), findsOneWidget);
@@ -51,6 +54,6 @@ void main() {
       await $.pump();
       final chat = $(ChatDetailsScreen);
       expect(chat, findsOneWidget);
-    });
-  });
+    },
+  );
 }

@@ -7,47 +7,50 @@ import 'package:patrol/patrol.dart';
 import '../helpers/test_helper.dart';
 
 void main() {
-  patrolTest('Logout first, then login', ($) async {
-    // Configure the app.
-    await TestHelper.initApp();
+  patrolTest(
+    'Logout first, then login',
+    nativeAutomation: true,
+    ($) async {
+      await TestHelper.initApp();
+      // Replace later with your app's main widget
 
-    // Load auth screen.
-    await TestHelper.pumpSoftonixApp($);
+      await TestHelper.pumpSoftonixApp($);
 
-    // Check if we are logged out by any chance.
-    final loginForm = $(LoginForm);
+      // Wait couple of seconds till splash is removed.
+      await $.pumpAndSettle();
 
-    if (!loginForm.exists) {
-      // Open drawer.
-      final drawer = $(Scaffold).$(Icon);
-      await drawer.tap();
+      // Check if we are logged out by any chance.
+      final loginForm = $(LoginForm);
+      if (!loginForm.exists) {
+        // Open drawer.
+        final drawer = $(Scaffold).$(Icon);
+        await drawer.tap();
+        await $.pump();
+        // Trigger logout.
+        final logout = $('Sign Out');
+        await logout.tap();
+        await $.pump();
+      }
+
+      final textFields = $(TextField);
+      await textFields.first.enterText('tester@gmail.com');
+      await textFields.last.enterText('12');
+      final loginButton = $(LoginButton);
+      await loginButton.tap();
       await $.pump();
 
-      // Trigger logout.
-      final logout = $('Sign Out');
-      await logout.tap();
+      expect(
+        $('Password length must be at least 6 characters'),
+        findsOneWidget,
+      );
+
+      // Enter valid password and sign in again.
+      await textFields.last.enterText('123456');
+      await loginButton.tap();
       await $.pump();
-    }
 
-    // Trigger error.
-    final textFields = $(TextField);
-    await textFields.first.enterText('tester@gmail.com');
-    await textFields.last.enterText('12');
-    final loginButton = $(LoginButton);
-    await loginButton.tap();
-    await $.pump();
-
-    expect(
-      $('Password length must be at least 6 characters'),
-      findsOneWidget,
-    );
-
-    // Enter valid password and sign in again.
-    await textFields.last.enterText('123456');
-    await loginButton.tap();
-    await $.pump();
-
-    // Validate that dashboard is opened.
-    expect($(DashboardScreen), findsOneWidget);
-  });
+      // Validate that dashboard is opened.
+      expect($(DashboardScreen), findsOneWidget);
+    },
+  );
 }
