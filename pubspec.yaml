@@ -65,6 +65,8 @@ dependencies:
   patrol: ^2.2.4
   patrol_finders: ^1.0.0
   mockito: ^5.4.2
+  bloc_test: ^9.1.4
+
 
   #widgets
   bouncing_widget: ^2.0.0
@@ -95,6 +97,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/dummy/
     - resources/langs/
     - .env
   fonts:
