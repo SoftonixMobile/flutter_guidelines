@@ -24,14 +24,14 @@ dart run flutter_guidelines:update_guidelines_brick
 
 ## Patrol
 
-To be able to run patrol tests, you need to set up [Patrol CLI]('https://pub.dev/packages/patrol_cli').
+To be able to run patrol tests, you need to set up [Patrol CLI](https://pub.dev/packages/patrol_cli).
 
 Run:
 ```
 dart pub global activate patrol_cli
 ```
 
-Follow the steps [here]('https://patrol.leancode.co/getting-started') to set up patrol for the platforms
+Follow the steps [here](https://patrol.leancode.co/getting-started) to set up patrol for the platforms
 
 
 To run patrol tests use (the first device will be chosen):
