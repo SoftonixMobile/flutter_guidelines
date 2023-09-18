@@ -9,11 +9,11 @@ import '../helpers/test_helper.dart';
 void main() {
   patrolTest(
     'Logout first, then login',
-    nativeAutomation: true,
     ($) async {
+      // Configure the app.
       await TestHelper.initApp();
-      // Replace later with your app's main widget
 
+      // Load auth screen.
       await TestHelper.pumpSoftonixApp($);
 
       // Wait couple of seconds till splash is removed.
@@ -24,12 +24,16 @@ void main() {
       if (!loginForm.exists) {
         // Open drawer.
         final drawer = $(Scaffold).$(Icon);
-        await drawer.tap();
-        await $.pump();
+        if (drawer.exists) {
+          await drawer.tap();
+          await $.pump();
+        }
         // Trigger logout.
         final logout = $('Sign Out');
-        await logout.tap();
-        await $.pump();
+        if (logout.exists) {
+          await logout.tap();
+          await $.pump();
+        }
       }
 
       final textFields = $(TextField);

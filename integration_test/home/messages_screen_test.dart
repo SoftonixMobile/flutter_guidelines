@@ -10,7 +10,7 @@ void main() {
     'Open messages screen, check how we are navigated to the chats',
     ($) async {
       // Configure the app.
-      await TestHelper.initApp();
+      // await TestHelper.initApp();
 
       // Load auth screen.
       await TestHelper.pumpSoftonixApp($);

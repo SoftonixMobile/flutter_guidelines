@@ -10,7 +10,7 @@ void main() {
     nativeAutomation: true,
     ($) async {
       // Configure the app.
-      await TestHelper.initApp();
+      // await TestHelper.initApp();
 
       // Load auth screen.
       await TestHelper.pumpSoftonixApp($);

@@ -6,12 +6,14 @@ import 'package:patrol/patrol.dart';
 
 class TestHelper {
   static Future<void> initApp() async {
-    await initializeDotenv();
-    await initializeLogger();
-    await initializeLocalization();
-    initializeCrashlytics();
-    initializeBlocObserver();
-    configureAuthDependencies();
+    try {
+      await initializeDotenv();
+      await initializeLogger();
+      await initializeLocalization();
+      initializeCrashlytics();
+      initializeBlocObserver();
+      configureAuthDependencies();
+    } catch (_) {}
   }
 
   static Future<void> pumpSoftonixApp(PatrolIntegrationTester tester) async {

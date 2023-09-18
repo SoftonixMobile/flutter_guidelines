@@ -9,7 +9,6 @@ import '../helpers/test_helper.dart';
 void main() {
   patrolTest(
     'Home screen dashboard tab is opened initially',
-    nativeAutomation: true,
     ($) async {
       // Configure the app.
       await TestHelper.initApp();
@@ -27,7 +26,6 @@ void main() {
 
   patrolTest(
     'Change localization',
-    nativeAutomation: true,
     ($) async {
       // Get the current locale.
       final currentLocale = CodegenLoader.supportedLocales.last;
@@ -53,6 +51,14 @@ void main() {
 
       // If we don't have English button, language is changed.
       expect(language, findsNothing);
+
+      // Return language back
+      await drawer.tap();
+      await $.pump();
+      await $('French').tap();
+      await $.pump();
+
+      expect(language, findsOneWidget);
     },
   );
 }
