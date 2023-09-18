@@ -29,10 +29,10 @@ void main() {
           await $.pump();
         }
         // Trigger logout.
-        final logout = $('Sign Out');
+        final logout = $(ListTile).last;
         if (logout.exists) {
           await logout.tap();
-          await $.pump();
+          await $.pumpAndSettle();
         }
       }
 
