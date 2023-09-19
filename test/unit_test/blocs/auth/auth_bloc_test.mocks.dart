@@ -44,18 +44,8 @@ class _FakeUserProfile_1 extends _i1.SmartFake implements _i3.UserProfile {
         );
 }
 
-class _FakeFresh_2<T> extends _i1.SmartFake implements _i4.Fresh<T> {
-  _FakeFresh_2(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeResponse_3<T1> extends _i1.SmartFake implements _i4.Response<T1> {
-  _FakeResponse_3(
+class _FakeResponse_2<T1> extends _i1.SmartFake implements _i4.Response<T1> {
+  _FakeResponse_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -159,33 +149,12 @@ class MockUserRepository extends _i1.Mock implements _i7.UserRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
   @override
-  _i4.Fresh<String> get fresh => (super.noSuchMethod(
-        Invocation.getter(#fresh),
-        returnValue: _FakeFresh_2<String>(
-          this,
-          Invocation.getter(#fresh),
-        ),
-        returnValueForMissingStub: _FakeFresh_2<String>(
-          this,
-          Invocation.getter(#fresh),
-        ),
-      ) as _i4.Fresh<String>);
-  @override
   _i6.Stream<_i4.AuthenticationStatus> get authenticationStatus =>
       (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
         returnValue: _i6.Stream<_i4.AuthenticationStatus>.empty(),
         returnValueForMissingStub: _i6.Stream<_i4.AuthenticationStatus>.empty(),
       ) as _i6.Stream<_i4.AuthenticationStatus>);
-  @override
-  _i6.Future<String?> getChats() => (super.noSuchMethod(
-        Invocation.method(
-          #getChats,
-          [],
-        ),
-        returnValue: _i6.Future<String?>.value(),
-        returnValueForMissingStub: _i6.Future<String?>.value(),
-      ) as _i6.Future<String?>);
   @override
   _i6.Future<void> setToken(String? token) => (super.noSuchMethod(
         Invocation.method(
@@ -219,7 +188,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #get,
@@ -231,7 +200,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #get,
@@ -260,7 +229,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #post,
@@ -273,7 +242,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #post,
@@ -303,7 +272,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #put,
@@ -316,7 +285,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #put,
@@ -346,7 +315,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #patch,
@@ -359,7 +328,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #patch,
@@ -387,7 +356,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #delete,
@@ -399,7 +368,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_3<T>(
+            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
             #delete,
@@ -425,7 +394,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ],
         ),
         returnValue:
-            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_3<dynamic>(
+            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
           this,
           Invocation.method(
             #download,
@@ -436,7 +405,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_3<dynamic>(
+            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
           this,
           Invocation.method(
             #download,
