@@ -42,7 +42,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
 
                         return Padding(
                           padding: const EdgeInsets.all(8),
-                          child: Text(post.name),
+                          child: Text('Post ${post.id}'),
                         );
                       },
                       childCount: state.data.length,

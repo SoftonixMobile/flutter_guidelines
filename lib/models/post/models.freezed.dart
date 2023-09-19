@@ -21,6 +21,7 @@ Post _$PostFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Post {
   int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title')
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +34,7 @@ abstract class $PostCopyWith<$Res> {
   factory $PostCopyWith(Post value, $Res Function(Post) then) =
       _$PostCopyWithImpl<$Res, Post>;
   @useResult
-  $Res call({int id, String name});
+  $Res call({int id, @JsonKey(name: 'title') String name});
 }
 
 /// @nodoc
@@ -71,7 +72,7 @@ abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       __$$_PostCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name});
+  $Res call({int id, @JsonKey(name: 'title') String name});
 }
 
 /// @nodoc
@@ -102,7 +103,7 @@ class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res, _$_Post>
 /// @nodoc
 @JsonSerializable()
 class _$_Post implements _Post {
-  const _$_Post({this.id = 0, this.name = ''});
+  const _$_Post({this.id = 0, @JsonKey(name: 'title') this.name = ''});
 
   factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
@@ -110,7 +111,7 @@ class _$_Post implements _Post {
   @JsonKey()
   final int id;
   @override
-  @JsonKey()
+  @JsonKey(name: 'title')
   final String name;
 
   @override
@@ -146,13 +147,15 @@ class _$_Post implements _Post {
 }
 
 abstract class _Post implements Post {
-  const factory _Post({final int id, final String name}) = _$_Post;
+  const factory _Post(
+      {final int id, @JsonKey(name: 'title') final String name}) = _$_Post;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
 
   @override
   int get id;
   @override
+  @JsonKey(name: 'title')
   String get name;
   @override
   @JsonKey(ignore: true)

@@ -10,11 +10,13 @@ class PostsRepository {
   PostsRepository(this.httpClient);
 
   Future<List<Post>> getPosts() async {
-    await Future.delayed(const Duration(seconds: 1));
+    final response =
+        await httpClient.get('https://jsonplaceholder.typicode.com/posts');
 
-    return List.generate(
-      100,
-      (index) => Post(id: index, name: 'Post $index'),
-    );
+    if (response.statusCode == 200) {
+      return (response.data as List).map((e) => Post.fromJson(e)).toList();
+    } else {
+      return [];
+    }
   }
 }
