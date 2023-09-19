@@ -39,6 +39,15 @@ To run patrol tests use (the first device will be chosen):
 patrol test
 ```
 
+To run a specific test run (where `integration_test/home/home_screen_test.dart` may be changed).
+```
+patrol test -t integration_test/home/home_screen_test.dart
+```
+
+There is no way to run a single test for now, we can only run all tests in a file or a folder.
+
+
+
 If we want to use not the first device, run:
 ```
 patrol devices
