@@ -16,7 +16,7 @@ class TestHelper {
     } catch (_) {}
   }
 
-  static Future<void> pumpSoftonixApp(PatrolIntegrationTester tester) async {
+  static Future<void> pumpAppAndSettle(PatrolIntegrationTester tester) async {
     await tester.pumpWidgetAndSettle(
       EasyLocalization(
         path: CodegenLoader.path,
@@ -26,5 +26,8 @@ class TestHelper {
         child: SoftonixApp(),
       ),
     );
+
+    // Wait couple of seconds till splash is removed.
+    await tester.pumpAndSettle();
   }
 }

@@ -13,10 +13,7 @@ void main() {
       await TestHelper.initApp();
 
       // Load auth screen.
-      await TestHelper.pumpSoftonixApp($);
-
-      // Wait couple of seconds till splash is removed.
-      await $.pumpAndSettle();
+      await TestHelper.pumpAppAndSettle($);
 
       // We land on Home screen, dashboard tab.
       expect($('Dashboard Screen'), findsOneWidget);

@@ -14,10 +14,7 @@ void main() {
       await TestHelper.initApp();
 
       // Load auth screen.
-      await TestHelper.pumpSoftonixApp($);
-
-      // Wait couple of seconds till splash is removed.
-      await $.pumpAndSettle();
+      await TestHelper.pumpAppAndSettle($);
 
       // Check if we are logged out by any chance.
       final loginForm = $(LoginForm);

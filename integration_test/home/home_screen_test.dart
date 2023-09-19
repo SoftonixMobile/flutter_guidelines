@@ -7,58 +7,53 @@ import 'package:patrol/patrol.dart';
 import '../helpers/test_helper.dart';
 
 void main() {
-  patrolTest(
-    'Home screen dashboard tab is opened initially',
-    ($) async {
-      // Configure the app.
-      await TestHelper.initApp();
+  group('Home screen test', () {
+    setUp(() => TestHelper.initApp());
 
-      // Load auth screen.
-      await TestHelper.pumpSoftonixApp($);
+    patrolTest(
+      'Home screen dashboard tab is opened initially',
+      ($) async {
+        // Load auth screen.
+        await TestHelper.pumpAppAndSettle($);
 
-      // Wait couple of seconds till splash is removed.
-      await $.pumpAndSettle();
+        // We land on Home screen, dashboard tab.
+        expect($(DashboardScreen), findsOneWidget);
+      },
+    );
 
-      // We land on Home screen, dashboard tab.
-      expect($(DashboardScreen), findsOneWidget);
-    },
-  );
+    patrolTest(
+      'Change localization',
+      ($) async {
+        // Get the current locale.
+        final currentLocale = CodegenLoader.supportedLocales.last;
 
-  patrolTest(
-    'Change localization',
-    ($) async {
-      // Get the current locale.
-      final currentLocale = CodegenLoader.supportedLocales.last;
+        // Load auth screen.
+        await TestHelper.pumpAppAndSettle($);
 
-      // Load auth screen.
-      await TestHelper.pumpSoftonixApp($);
+        // Open drawer.
+        final drawer = $(Scaffold).$(Icon);
+        await drawer.tap();
+        await $.pump();
 
-      // Wait couple of seconds till splash is removed.
-      await $.pumpAndSettle();
+        // Trigger change of localization.
+        final words = CodegenLoader.mapLocales[
+            '${currentLocale.languageCode}_${currentLocale.countryCode}'];
+        final language = $(words?['languageName']);
 
-      // Open drawer.
-      final drawer = $(Scaffold).$(Icon);
-      await drawer.tap();
-      await $.pump();
+        await $(language).tap();
+        await $.pump();
 
-      // Trigger change of localization.
-      final words = CodegenLoader.mapLocales[
-          '${currentLocale.languageCode}_${currentLocale.countryCode}'];
-      final language = $(words?['languageName']);
+        // If we don't have English button, language is changed.
+        expect(language, findsNothing);
 
-      await $(language).tap();
-      await $.pump();
+        // Return language back
+        await drawer.tap();
+        await $.pump();
+        await $('French').tap();
+        await $.pump();
 
-      // If we don't have English button, language is changed.
-      expect(language, findsNothing);
-
-      // Return language back
-      await drawer.tap();
-      await $.pump();
-      await $('French').tap();
-      await $.pump();
-
-      expect(language, findsOneWidget);
-    },
-  );
+        expect(language, findsOneWidget);
+      },
+    );
+  });
 }
