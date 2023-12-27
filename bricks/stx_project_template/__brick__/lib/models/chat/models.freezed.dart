@@ -66,18 +66,20 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
 }
 
 /// @nodoc
-abstract class _$$_ChatCopyWith<$Res> implements $ChatCopyWith<$Res> {
-  factory _$$_ChatCopyWith(_$_Chat value, $Res Function(_$_Chat) then) =
-      __$$_ChatCopyWithImpl<$Res>;
+abstract class _$$ChatImplCopyWith<$Res> implements $ChatCopyWith<$Res> {
+  factory _$$ChatImplCopyWith(
+          _$ChatImpl value, $Res Function(_$ChatImpl) then) =
+      __$$ChatImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
 }
 
 /// @nodoc
-class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
-    implements _$$_ChatCopyWith<$Res> {
-  __$$_ChatCopyWithImpl(_$_Chat _value, $Res Function(_$_Chat) _then)
+class __$$ChatImplCopyWithImpl<$Res>
+    extends _$ChatCopyWithImpl<$Res, _$ChatImpl>
+    implements _$$ChatImplCopyWith<$Res> {
+  __$$ChatImplCopyWithImpl(_$ChatImpl _value, $Res Function(_$ChatImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +88,7 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
     Object? id = null,
     Object? name = null,
   }) {
-    return _then(_$_Chat(
+    return _then(_$ChatImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -101,10 +103,11 @@ class __$$_ChatCopyWithImpl<$Res> extends _$ChatCopyWithImpl<$Res, _$_Chat>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Chat implements _Chat {
-  const _$_Chat({this.id = 0, this.name = ''});
+class _$ChatImpl implements _Chat {
+  const _$ChatImpl({this.id = 0, this.name = ''});
 
-  factory _$_Chat.fromJson(Map<String, dynamic> json) => _$$_ChatFromJson(json);
+  factory _$ChatImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ChatImplFromJson(json);
 
   @override
   @JsonKey()
@@ -119,10 +122,10 @@ class _$_Chat implements _Chat {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Chat &&
+            other is _$ChatImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -134,21 +137,21 @@ class _$_Chat implements _Chat {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChatCopyWith<_$_Chat> get copyWith =>
-      __$$_ChatCopyWithImpl<_$_Chat>(this, _$identity);
+  _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
+      __$$ChatImplCopyWithImpl<_$ChatImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ChatToJson(
+    return _$$ChatImplToJson(
       this,
     );
   }
 }
 
 abstract class _Chat implements Chat {
-  const factory _Chat({final int id, final String name}) = _$_Chat;
+  const factory _Chat({final int id, final String name}) = _$ChatImpl;
 
-  factory _Chat.fromJson(Map<String, dynamic> json) = _$_Chat.fromJson;
+  factory _Chat.fromJson(Map<String, dynamic> json) = _$ChatImpl.fromJson;
 
   @override
   int get id;
@@ -156,5 +159,6 @@ abstract class _Chat implements Chat {
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_ChatCopyWith<_$_Chat> get copyWith => throw _privateConstructorUsedError;
+  _$$ChatImplCopyWith<_$ChatImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
