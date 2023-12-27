@@ -49,6 +49,7 @@ class CustomTabsRouter extends StatelessWidget {
                     topRightRadius: 8,
                     color: AppColors.white,
                   ),
+                  tabAlignment: TabAlignment.center,
                 ),
                 actions: [
                   IconButton(

@@ -5,9 +5,9 @@ import 'package:{{project_name}}/styles/index.dart';
 class AppTheme {
   static ThemeData getAppTheme(BuildContext context) {
     return ThemeData(
-      primaryColor: AppColors.primary,
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: AppColors.primary,
+      useMaterial3: false,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primary,
       ),
       fontFamily: FontFamily.poppins,
     );
