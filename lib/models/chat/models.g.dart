@@ -6,12 +6,13 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Chat _$$_ChatFromJson(Map<String, dynamic> json) => _$_Chat(
+_$ChatImpl _$$ChatImplFromJson(Map<String, dynamic> json) => _$ChatImpl(
       id: json['id'] as int? ?? 0,
       name: json['name'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$_ChatToJson(_$_Chat instance) => <String, dynamic>{
+Map<String, dynamic> _$$ChatImplToJson(_$ChatImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
     };

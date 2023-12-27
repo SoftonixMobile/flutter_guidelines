@@ -26,7 +26,7 @@ void main() async {
         final successMockResponse = Response(
           requestOptions: RequestOptions(),
           data: [
-            {'title': 'Post 1', 'id': 1}
+            {'title': 'Post 1', 'id': 1},
           ],
           statusCode: 200,
         );

@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/general_models.dart';
 import 'package:flutter_guidelines/services/index.dart';
+import 'interceptors/index.dart';
 import 'options.dart';
 import 'token_storage.dart';
 
@@ -36,9 +37,10 @@ class HttpClient {
 
     _dio.interceptors.addAll([
       _fresh,
+      HttpInterceptor(LoggerService.instance),
       RetryInterceptor(
         dio: _dio,
-        logPrint: print,
+        logPrint: LoggerService.instance.log,
       ),
     ]);
   }

@@ -13,7 +13,6 @@ import 'package:flutter_guidelines/screens/login/widgets/index.dart';
 import 'login_screen_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<LoginFormBloc>()])
-
 void main() {
   patrolWidgetTest(
     'Check widgets',

@@ -40,7 +40,7 @@ void main() {
       },
       expect: () => [
         defaultState.copyWithLoading(),
-        defaultState.copyWithSuccess([testItem])
+        defaultState.copyWithSuccess([testItem]),
       ],
     );
 
@@ -56,7 +56,7 @@ void main() {
         bloc.addItem(testItem);
       },
       expect: () => [
-        defaultState.copyWithSuccess([testItem])
+        defaultState.copyWithSuccess([testItem]),
       ],
     );
 

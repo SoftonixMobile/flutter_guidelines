@@ -7,7 +7,6 @@ import '../helpers/test_helper.dart';
 void main() {
   patrolTest(
     'Logout first, then login',
-    nativeAutomation: true,
     ($) async {
       // Configure the app.
       await TestHelper.initApp();
