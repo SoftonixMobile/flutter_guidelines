@@ -1,3 +1,8 @@
+# 0.4.6
+
+- Update deps.
+- Add bin/pr.dart.
+
 # 0.4.5
 
 - Update deps.
