@@ -11,6 +11,8 @@ void main(List<String> args) async {
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
   copyDirectory(Directory('resources'), brickDirectory);
 
+  copyFileWithDirectory(File('bin/pr.dart'), '$brickPath/bin', 'pr.dart');
+
   copyFile(File('.env'), '$brickPath/.env', convert: true);
   copyFile(File('.gitignore'), '$brickPath/.gitignore');
   copyFile(File('analysis_options.yaml'), '$brickPath/analysis_options.yaml');
@@ -28,6 +30,22 @@ void copyFile(
   if (convert) {
     convertToBrickFormat(File(newPath));
   }
+}
+
+void copyFileWithDirectory(
+  File file,
+  String directoryPath,
+  String fileName, {
+  bool convert = false,
+}) {
+  final destination = Directory(directoryPath);
+  if (!destination.existsSync()) {
+    destination.createSync(recursive: true);
+  }
+
+  final newPath = destination.path + Platform.pathSeparator + fileName;
+
+  copyFile(file, newPath);
 }
 
 void copyDirectory(
