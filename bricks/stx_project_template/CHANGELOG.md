@@ -1,3 +1,7 @@
+# 0.4.7
+
+- Update deps.
+
 # 0.4.6
 
 - Update deps.
