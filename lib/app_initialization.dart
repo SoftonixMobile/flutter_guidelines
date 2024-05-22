@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:flutter_guidelines/blocs/observer.dart';
+import 'package:flutter_guidelines/blocs/bloc_observer.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
 Future<void> initializeApp() async {
