@@ -10,15 +10,15 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter_guidelines/blocs/auth/auth_bloc.dart' as _i6;
 import 'package:flutter_guidelines/blocs/index.dart' as _i9;
-import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i5;
+import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i4;
 import 'package:flutter_guidelines/repositories/chats_repository.dart' as _i10;
 import 'package:flutter_guidelines/repositories/index.dart' as _i7;
 import 'package:flutter_guidelines/repositories/posts_repository.dart' as _i11;
-import 'package:flutter_guidelines/repositories/user_repository.dart' as _i4;
+import 'package:flutter_guidelines/repositories/user_repository.dart' as _i5;
 import 'package:flutter_guidelines/screens/home/messages/chats/bloc/chats_bloc.dart'
-    as _i12;
-import 'package:flutter_guidelines/screens/home/messages/posts/posts_bloc.dart'
     as _i13;
+import 'package:flutter_guidelines/screens/home/messages/posts/posts_bloc.dart'
+    as _i12;
 import 'package:flutter_guidelines/screens/login/login_form_bloc.dart' as _i8;
 import 'package:flutter_guidelines/services/http/http_client.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
@@ -31,18 +31,18 @@ extension GetItInjectableX on _i1.GetIt {
       'auth',
       dispose: dispose,
       init: (_i2.GetItHelper gh) {
-        gh.singleton<_i3.HttpClient>(_i3.HttpClient());
-        gh.factory<_i4.UserRepository>(
-            () => _i4.UserRepository(gh<_i3.HttpClient>()));
-        gh.factory<_i5.AuthRepository>(
-            () => _i5.AuthRepository(gh<_i3.HttpClient>()));
-        gh.singleton<_i6.AuthBloc>(_i6.AuthBloc(
-          authRepository: gh<_i7.AuthRepository>(),
-          userRepository: gh<_i7.UserRepository>(),
-        ));
+        gh.singleton<_i3.HttpClient>(() => _i3.HttpClient());
+        gh.factory<_i4.AuthRepository>(
+            () => _i4.AuthRepository(gh<_i3.HttpClient>()));
+        gh.factory<_i5.UserRepository>(
+            () => _i5.UserRepository(gh<_i3.HttpClient>()));
+        gh.singleton<_i6.AuthBloc>(() => _i6.AuthBloc(
+              authRepository: gh<_i7.AuthRepository>(),
+              userRepository: gh<_i7.UserRepository>(),
+            ));
         gh.factory<_i8.LoginFormBloc>(() => _i8.LoginFormBloc(
               authBloc: gh<_i9.AuthBloc>(),
-              repository: gh<_i5.AuthRepository>(),
+              repository: gh<_i4.AuthRepository>(),
             ));
       },
     );
@@ -62,10 +62,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i10.ChatsRepository(gh<_i3.HttpClient>()));
     gh.factory<_i11.PostsRepository>(
         () => _i11.PostsRepository(gh<_i3.HttpClient>()));
-    gh.lazySingleton<_i12.ChatsBloc>(
-        () => _i12.ChatsBloc(repository: gh<_i7.ChatsRepository>()));
-    gh.lazySingleton<_i13.PostsBloc>(
-        () => _i13.PostsBloc(gh<_i7.PostsRepository>()));
+    gh.lazySingleton<_i12.PostsBloc>(
+        () => _i12.PostsBloc(gh<_i7.PostsRepository>()));
+    gh.lazySingleton<_i13.ChatsBloc>(
+        () => _i13.ChatsBloc(repository: gh<_i7.ChatsRepository>()));
     return this;
   }
 }
