@@ -12,6 +12,11 @@ void main(List<String> args) async {
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
   copyDirectory(Directory('resources'), brickDirectory);
+  copyFileWithDirectory(
+    File('scripts/setup-hooks.sh'),
+    '$brickPath/scripts',
+    'setup-hooks.sh',
+  );
   copyDirectory(Directory('scripts'), brickDirectory);
 
   copyFile(File('.env'), '$brickPath/.env', convert: true);

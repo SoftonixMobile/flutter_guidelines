@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# export PATH="$PATH:/path/to/flutter"
+
+echo -e "Analyzing code...\n"
+
+# output=$(flutter analyze --no-fatal-infos)
+# status=$?
+
+# echo "$output" | grep -E "error •|warning •"
+
+flutter analyze .
+status=$?
+
+if [ "$status" = 0 ] ; then
+  echo -e "\nPerfecto!!!"
+  exit 0
+else
+  echo -e "\nOops, something is wrong. Trying to automatically fix the issues...\n"
+  dart run import_sorter:main
+  dart fix --apply
+  echo -e "\nCheck your unstaged changes or try to fix the issues by yourself."
+  exit 1
+fi
