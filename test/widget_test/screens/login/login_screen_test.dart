@@ -58,6 +58,7 @@ void main() {
 
       final password = TextFieldBloc(
         required: true,
+        // ignore: deprecated_member_use
         customValidators: {FieldBlocValidators.passwordMin6Chars},
         rules: {ValidationType.onBlur},
       );

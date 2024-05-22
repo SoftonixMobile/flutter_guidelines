@@ -12,14 +12,14 @@ void main(List<String> args) async {
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
   copyDirectory(Directory('resources'), brickDirectory);
-
-  copyFileWithDirectory(File('bin/pr.dart'), '$brickPath/bin', 'pr.dart');
+  copyDirectory(Directory('scripts'), brickDirectory);
 
   copyFile(File('.env'), '$brickPath/.env', convert: true);
   copyFile(File('.gitignore'), '$brickPath/.gitignore');
   copyFile(File('analysis_options.yaml'), '$brickPath/analysis_options.yaml');
   copyFile(File('build.yaml'), '$brickPath/build.yaml');
   copyFile(File('pubspec.yaml'), '$brickPath/pubspec.yaml', convert: true);
+  copyFile(File('Makefile'), '$brickPath/Makefile');
 }
 
 void copyFile(
