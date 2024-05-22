@@ -5,7 +5,9 @@ import 'dart:io';
 ///
 void main(List<String> args) async {
   const brickPath = 'bricks/stx_project_template/__brick__';
-  final brickDirectory = Directory(brickPath);
+  final brickDirectory = Directory(brickPath)
+    ..deleteSync(recursive: true)
+    ..createSync();
 
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);

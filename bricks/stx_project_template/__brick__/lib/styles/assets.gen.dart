@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 class $ResourcesGen {
   const $ResourcesGen();
 
+  /// Directory path: resources/langs
   $ResourcesLangsGen get langs => const $ResourcesLangsGen();
 }
 
@@ -45,14 +46,20 @@ class $ResourcesLangsGen {
 class Assets {
   Assets._();
 
+  static const String aEnv = '.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $ResourcesGen resources = $ResourcesGen();
+
+  /// List of all assets
+  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,
