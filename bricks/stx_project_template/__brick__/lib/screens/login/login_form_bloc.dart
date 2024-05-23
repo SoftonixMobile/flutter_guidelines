@@ -25,6 +25,7 @@ class LoginFormBloc extends FormBloc<String, String> {
 
     password = TextFieldBloc(
       required: true,
+      // ignore: deprecated_member_use
       customValidators: {FieldBlocValidators.passwordMin6Chars},
       rules: {ValidationType.onBlur},
     );
