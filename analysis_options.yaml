@@ -12,11 +12,9 @@ analyzer:
   exclude:
     - bricks/**
     - '**/*.g.dart'
-    - '**/*config.dart'
+    - '**/*.config.dart'
     - '**/*.freezed.dart'
     - '**/*.gen.dart'
-    - '**/*.gr.dart'
-
 
 linter:
   rules:

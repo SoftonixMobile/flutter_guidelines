@@ -1,3 +1,7 @@
+# 0.5.0
+
+- Update analyzer options.
+
 # 0.4.8
 
 - Update pre-commit hook.
