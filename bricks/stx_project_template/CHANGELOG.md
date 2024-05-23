@@ -1,3 +1,7 @@
+# 0.4.8
+
+- Update pre-commit hook.
+
 # 0.4.7
 
 - Update deps.
