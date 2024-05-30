@@ -1,3 +1,7 @@
+# 0.5.1
+
+- Update ignored files for import_sorter.
+
 # 0.5.0
 
 - Update analyzer options.
