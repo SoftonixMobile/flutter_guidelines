@@ -63,8 +63,8 @@ dependencies:
   cupertino_icons: ^1.0.8
 
   #testing
-  patrol: ^3.7.0
-  patrol_finders: ^2.1.0
+  patrol: ^3.7.2
+  patrol_finders: ^2.1.2
   mockito: ^5.4.4
   bloc_test: ^9.1.7
 
@@ -145,12 +145,12 @@ flutter_native_splash:
 import_sorter:
   comments: false
   ignored_files:
-    - \**/*.g.dart
-    - \**/*.config.dart
-    - \**/*.freezed.dart
-    - \**/*.gen.dart
-    - \**/*.gr.dart
-    - /*.mocks.dart
+    - \.g\.dart$
+    - \.config\.dart$
+    - \.freezed\.dart$
+    - \.gen\.dart$
+    - \.gr\.dart$
+    - \.mocks\.dart$
 
 patrol:
   app_name: Flutter Guidelines

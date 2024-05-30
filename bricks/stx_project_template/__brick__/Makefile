@@ -1,5 +1,8 @@
 .PHONY: build watch lang sort fix lint commit splash icon setup_hooks
 
+get:
+	dart pub get
+
 build:
 	dart run build_runner build --delete-conflicting-outputs
 
