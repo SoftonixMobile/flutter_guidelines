@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:{{project_name}}/app/index.dart';
 import 'package:{{project_name}}/localization/index.dart';
-import 'app.dart';
-import 'app_initialization.dart';
 
 void main() async {
   await initializeApp();

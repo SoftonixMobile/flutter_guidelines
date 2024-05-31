@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:flutter_guidelines/blocs/bloc_observer.dart';
@@ -14,7 +13,6 @@ Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   initializeSplashScreen(widgetsBinding);
-  await initializeDotenv();
   await initializeLogger();
   await initializeLocalization();
   initializeCrashlytics();
@@ -32,10 +30,6 @@ Future<void> initializeLogger() {
 
 Future<void> initializeLocalization() {
   return EasyLocalization.ensureInitialized();
-}
-
-Future<void> initializeDotenv() {
-  return dotenv.load();
 }
 
 void initializeCrashlytics() {

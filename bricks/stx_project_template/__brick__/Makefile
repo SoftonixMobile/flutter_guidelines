@@ -1,4 +1,4 @@
-.PHONY: build watch lang sort fix lint commit splash icon setup_hooks
+.PHONY: get build watch lang sort fix lint commit splash icon setup_hooks
 
 get:
 	dart pub get

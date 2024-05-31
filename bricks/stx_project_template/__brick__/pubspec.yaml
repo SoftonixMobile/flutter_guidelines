@@ -55,9 +55,6 @@ dependencies:
   shared_preferences: ^2.2.3
   flutter_secure_storage: ^9.2.2
 
-  #configuration
-  flutter_dotenv: ^5.1.0
-
   #icons
   font_awesome_flutter: ^10.7.0
   cupertino_icons: ^1.0.8
@@ -101,7 +98,6 @@ flutter:
   assets:
     - assets/images/
     - resources/langs/
-    - .env
   fonts:
     - family: Poppins
       fonts:
