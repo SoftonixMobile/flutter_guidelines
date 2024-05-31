@@ -15,7 +15,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  
+
   #splash screen
   flutter_native_splash: ^2.4.0
 
@@ -160,7 +160,7 @@ flutter_launcher_icons:
   image_path: "assets/images/app_icon.png"
 
 patrol:
-  app_name: SoftonixApp
+  app_name: FlutterGuidelines
   android:
     package_name: com.example.flutter_guidelines
   ios:

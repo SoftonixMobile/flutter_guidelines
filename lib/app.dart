@@ -7,8 +7,8 @@ import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
 
-class SoftonixApp extends StatelessWidget {
-  SoftonixApp({super.key});
+class FlutterGuidelines extends StatelessWidget {
+  FlutterGuidelines({super.key});
 
   final _appRouter = getIt<AppRouter>();
 

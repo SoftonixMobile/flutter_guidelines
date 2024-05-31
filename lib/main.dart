@@ -13,7 +13,7 @@ void main() async {
       supportedLocales: CodegenLoader.supportedLocales,
       fallbackLocale: CodegenLoader.supportedLocales.last,
       assetLoader: const CodegenLoader(),
-      child: SoftonixApp(),
+      child: FlutterGuidelines(),
     ),
   );
 }
