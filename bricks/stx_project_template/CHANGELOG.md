@@ -1,3 +1,7 @@
+# 0.6.1
+
+- Move packages for testing to dev_dependencies.
+
 # 0.6.0
 
 - Add launch icons.
