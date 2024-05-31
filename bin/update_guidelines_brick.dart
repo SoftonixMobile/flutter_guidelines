@@ -83,7 +83,7 @@ void convertToBrickFormat(File file) {
       fileContent.replaceAll('flutter_guidelines', '{{project_name}}');
 
   newFileContent = newFileContent.replaceAll(
-    'SoftonixApp',
+    'FlutterGuidelines',
     '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
   );
   newFileContent = newFileContent.replaceAll(
