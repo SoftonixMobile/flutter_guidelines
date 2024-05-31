@@ -1,7 +1,7 @@
-import 'package:{{project_name}}/core/constants/index.dart';
+import 'package:{{project_name}}/app/app_config.dart';
 
 class DioOptions {
-  static String baseUrl = EnvConstants.appApiUrl;
+  static String baseUrl = AppConfig.appApiUrl;
 
   static const Duration connectTimeout = Duration(seconds: 10);
 

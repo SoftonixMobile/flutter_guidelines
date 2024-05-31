@@ -1,5 +1,5 @@
-import 'package:flutter_guidelines/app.dart';
-import 'package:flutter_guidelines/app_initialization.dart';
+import 'package:flutter_guidelines/app/app.dart';
+import 'package:flutter_guidelines/app/app_initialization.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:patrol/patrol.dart';
@@ -7,7 +7,6 @@ import 'package:patrol/patrol.dart';
 class TestHelper {
   static Future<void> initApp() async {
     try {
-      await initializeDotenv();
       await initializeLogger();
       await initializeLocalization();
       initializeCrashlytics();
@@ -23,7 +22,7 @@ class TestHelper {
         supportedLocales: CodegenLoader.supportedLocales,
         fallbackLocale: CodegenLoader.supportedLocales.last,
         assetLoader: const CodegenLoader(),
-        child: SoftonixApp(),
+        child: FlutterGuidelines(),
       ),
     );
 

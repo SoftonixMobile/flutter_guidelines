@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:flutter_guidelines/app_state_wrapper.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
+import 'app_state_wrapper.dart';
 
-class SoftonixApp extends StatelessWidget {
-  SoftonixApp({super.key});
+class FlutterGuidelines extends StatelessWidget {
+  FlutterGuidelines({super.key});
 
   final _appRouter = getIt<AppRouter>();
 

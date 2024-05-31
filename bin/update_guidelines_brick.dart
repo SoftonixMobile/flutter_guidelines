@@ -9,17 +9,14 @@ void main(List<String> args) async {
     ..deleteSync(recursive: true)
     ..createSync();
 
+  copyDirectory(Directory('.vscode'), brickDirectory);
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
   copyDirectory(Directory('resources'), brickDirectory);
-  copyFileWithDirectory(
-    File('scripts/setup-hooks.sh'),
-    '$brickPath/scripts',
-    'setup-hooks.sh',
-  );
   copyDirectory(Directory('scripts'), brickDirectory);
 
-  copyFile(File('.env'), '$brickPath/.env', convert: true);
+  copyFile(File('.env.dev'), '$brickPath/.env.dev', convert: true);
+  copyFile(File('.env.prod'), '$brickPath/.env.prod', convert: true);
   copyFile(File('.gitignore'), '$brickPath/.gitignore');
   copyFile(File('analysis_options.yaml'), '$brickPath/analysis_options.yaml');
   copyFile(File('build.yaml'), '$brickPath/build.yaml');
@@ -32,6 +29,8 @@ void copyFile(
   String newPath, {
   bool convert = false,
 }) {
+  if (file.path.endsWith('DS_Store')) return;
+
   file.copySync(newPath);
 
   if (convert) {
@@ -60,6 +59,12 @@ void copyDirectory(
   Directory destination, {
   bool convert = false,
 }) {
+  final coreFolder =
+      Directory(destination.path + Platform.pathSeparator + source.path);
+  if (!coreFolder.existsSync()) {
+    coreFolder.createSync();
+  }
+
   source.listSync(recursive: true).forEach((entity) {
     final newPath = destination.path + Platform.pathSeparator + entity.path;
 
@@ -81,7 +86,7 @@ void convertToBrickFormat(File file) {
       fileContent.replaceAll('flutter_guidelines', '{{project_name}}');
 
   newFileContent = newFileContent.replaceAll(
-    'SoftonixApp',
+    'FlutterGuidelines',
     '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
   );
   newFileContent = newFileContent.replaceAll(

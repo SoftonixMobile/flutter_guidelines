@@ -1,7 +1,7 @@
 name: {{project_name}}
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -15,7 +15,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  
+
   #splash screen
   flutter_native_splash: ^2.4.0
 
@@ -55,9 +55,6 @@ dependencies:
   shared_preferences: ^2.2.3
   flutter_secure_storage: ^9.2.2
 
-  #configuration
-  flutter_dotenv: ^5.1.0
-
   #icons
   font_awesome_flutter: ^10.7.0
   cupertino_icons: ^1.0.8
@@ -67,7 +64,6 @@ dependencies:
   patrol_finders: ^2.1.2
   mockito: ^5.4.4
   bloc_test: ^9.1.7
-
 
   #widgets
   bouncing_widget: ^2.0.0
@@ -88,6 +84,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   freezed: ^2.5.3
   import_sorter: ^4.6.0
+  flutter_launcher_icons: ^0.13.1
 
   flutter_lints: ^4.0.0
   very_good_analysis: ^5.1.0
@@ -101,7 +98,6 @@ flutter:
   assets:
     - assets/images/
     - resources/langs/
-    - .env
   fonts:
     - family: Poppins
       fonts:
@@ -138,10 +134,6 @@ flutter_gen:
     inputs:
       - assets/colors/colors.xml
 
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/logo-short.png
-
 import_sorter:
   comments: false
   ignored_files:
@@ -152,9 +144,20 @@ import_sorter:
     - \.gr\.dart$
     - \.mocks\.dart$
 
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo-short.png
+
+flutter_launcher_icons:
+  ios: true
+  android: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#000000"
+  image_path: "assets/images/app_icon.png"
+
 patrol:
-  app_name: Flutter Guidelines
+  app_name: {{#pascalCase}}{{project_name}}{{/pascalCase}}
   android:
     package_name: com.example.{{project_name}}
   ios:
-    bundle_id: com.example.flutterGuidelines
+    bundle_id: com.example.{{project_name}}

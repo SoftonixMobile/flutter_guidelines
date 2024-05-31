@@ -19,6 +19,10 @@ class $ResourcesGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/images/app_icon.png');
+
   /// File path: assets/images/logo-short.png
   AssetGenImage get logoShort =>
       const AssetGenImage('assets/images/logo-short.png');
@@ -27,7 +31,7 @@ class $AssetsImagesGen {
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [logoShort, logo];
+  List<AssetGenImage> get values => [appIcon, logoShort, logo];
 }
 
 class $ResourcesLangsGen {
@@ -46,12 +50,8 @@ class $ResourcesLangsGen {
 class Assets {
   Assets._();
 
-  static const String aEnv = '.env';
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $ResourcesGen resources = $ResourcesGen();
-
-  /// List of all assets
-  static List<String> get values => [aEnv];
 }
 
 class AssetGenImage {
