@@ -1,3 +1,8 @@
+# 0.6.0
+
+- Add launch icons.
+- Add AppConfig.
+
 # 0.5.1
 
 - Update ignored files for import_sorter.
