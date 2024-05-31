@@ -1,7 +1,7 @@
 name: flutter_guidelines
 description: A new Flutter project.
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -68,7 +68,6 @@ dependencies:
   mockito: ^5.4.4
   bloc_test: ^9.1.7
 
-
   #widgets
   bouncing_widget: ^2.0.0
   tab_indicator_styler: ^2.0.0
@@ -88,6 +87,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   freezed: ^2.5.3
   import_sorter: ^4.6.0
+  flutter_launcher_icons: ^0.13.1
 
   flutter_lints: ^4.0.0
   very_good_analysis: ^5.1.0
@@ -138,10 +138,6 @@ flutter_gen:
     inputs:
       - assets/colors/colors.xml
 
-flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/logo-short.png
-
 import_sorter:
   comments: false
   ignored_files:
@@ -152,9 +148,20 @@ import_sorter:
     - \.gr\.dart$
     - \.mocks\.dart$
 
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo-short.png
+
+flutter_launcher_icons:
+  ios: true
+  android: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#000000"
+  image_path: "assets/images/app_icon.png"
+
 patrol:
-  app_name: Flutter Guidelines
+  app_name: SoftonixApp
   android:
     package_name: com.example.flutter_guidelines
   ios:
-    bundle_id: com.example.flutterGuidelines
+    bundle_id: com.example.flutter_guidelines

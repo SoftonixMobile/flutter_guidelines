@@ -32,6 +32,8 @@ void copyFile(
   String newPath, {
   bool convert = false,
 }) {
+  if (file.path.endsWith('DS_Store')) return;
+
   file.copySync(newPath);
 
   if (convert) {
