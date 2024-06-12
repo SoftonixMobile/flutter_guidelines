@@ -1,6 +1,6 @@
-import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:{{project_name}}/models/general_models.dart';
 import 'package:{{project_name}}/services/http/http_client.dart';
 
 @Injectable(scope: 'auth')
@@ -9,7 +9,7 @@ class AuthRepository {
 
   AuthRepository(this.httpClient);
 
-  Stream<AuthenticationStatus> get authenticationStatus =>
+  Stream<AuthStatus> get authenticationStatus =>
       httpClient.authenticationStatus;
 
   Future<void> signIn(String userName, String password) async {

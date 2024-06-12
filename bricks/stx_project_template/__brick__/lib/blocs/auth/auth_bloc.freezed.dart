@@ -18,20 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus status)
-        authenticationStatusChanged,
+    required TResult Function(AuthStatus status) authenticationStatusChanged,
     required TResult Function() signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function(AuthStatus status)? authenticationStatusChanged,
     TResult? Function()? signOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function(AuthStatus status)? authenticationStatusChanged,
     TResult Function()? signOut,
     required TResult orElse(),
   }) =>
@@ -84,7 +83,7 @@ abstract class _$$AuthenticationStatusChangedImplCopyWith<$Res> {
           $Res Function(_$AuthenticationStatusChangedImpl) then) =
       __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthenticationStatus status});
+  $Res call({AuthStatus status});
 }
 
 /// @nodoc
@@ -105,7 +104,7 @@ class __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+              as AuthStatus,
     ));
   }
 }
@@ -117,7 +116,7 @@ class _$AuthenticationStatusChangedImpl
   const _$AuthenticationStatusChangedImpl(this.status);
 
   @override
-  final AuthenticationStatus status;
+  final AuthStatus status;
 
   @override
   String toString() {
@@ -145,8 +144,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus status)
-        authenticationStatusChanged,
+    required TResult Function(AuthStatus status) authenticationStatusChanged,
     required TResult Function() signOut,
   }) {
     return authenticationStatusChanged(status);
@@ -155,7 +153,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function(AuthStatus status)? authenticationStatusChanged,
     TResult? Function()? signOut,
   }) {
     return authenticationStatusChanged?.call(status);
@@ -164,7 +162,7 @@ class _$AuthenticationStatusChangedImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function(AuthStatus status)? authenticationStatusChanged,
     TResult Function()? signOut,
     required TResult orElse(),
   }) {
@@ -210,10 +208,10 @@ class _$AuthenticationStatusChangedImpl
 }
 
 abstract class _AuthenticationStatusChanged implements AuthEvent {
-  const factory _AuthenticationStatusChanged(
-      final AuthenticationStatus status) = _$AuthenticationStatusChangedImpl;
+  const factory _AuthenticationStatusChanged(final AuthStatus status) =
+      _$AuthenticationStatusChangedImpl;
 
-  AuthenticationStatus get status;
+  AuthStatus get status;
   @JsonKey(ignore: true)
   _$$AuthenticationStatusChangedImplCopyWith<_$AuthenticationStatusChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -257,8 +255,7 @@ class _$SignOutImpl implements _SignOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus status)
-        authenticationStatusChanged,
+    required TResult Function(AuthStatus status) authenticationStatusChanged,
     required TResult Function() signOut,
   }) {
     return signOut();
@@ -267,7 +264,7 @@ class _$SignOutImpl implements _SignOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult? Function(AuthStatus status)? authenticationStatusChanged,
     TResult? Function()? signOut,
   }) {
     return signOut?.call();
@@ -276,7 +273,7 @@ class _$SignOutImpl implements _SignOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus status)? authenticationStatusChanged,
+    TResult Function(AuthStatus status)? authenticationStatusChanged,
     TResult Function()? signOut,
     required TResult orElse(),
   }) {
@@ -327,7 +324,7 @@ abstract class _SignOut implements AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
-  AuthenticationStatus get status => throw _privateConstructorUsedError;
+  AuthStatus get status => throw _privateConstructorUsedError;
   UserProfile get userProfile => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -340,7 +337,7 @@ abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
   @useResult
-  $Res call({AuthenticationStatus status, UserProfile userProfile});
+  $Res call({AuthStatus status, UserProfile userProfile});
 
   $UserProfileCopyWith<$Res> get userProfile;
 }
@@ -365,7 +362,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+              as AuthStatus,
       userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
@@ -390,7 +387,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthenticationStatus status, UserProfile userProfile});
+  $Res call({AuthStatus status, UserProfile userProfile});
 
   @override
   $UserProfileCopyWith<$Res> get userProfile;
@@ -414,7 +411,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus,
+              as AuthStatus,
       userProfile: null == userProfile
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
@@ -427,12 +424,12 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 
 class _$AuthStateImpl implements _AuthState {
   const _$AuthStateImpl(
-      {this.status = AuthenticationStatus.initial,
+      {this.status = AuthStatus.initial,
       this.userProfile = const UserProfile()});
 
   @override
   @JsonKey()
-  final AuthenticationStatus status;
+  final AuthStatus status;
   @override
   @JsonKey()
   final UserProfile userProfile;
@@ -464,11 +461,11 @@ class _$AuthStateImpl implements _AuthState {
 
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
-      {final AuthenticationStatus status,
+      {final AuthStatus status,
       final UserProfile userProfile}) = _$AuthStateImpl;
 
   @override
-  AuthenticationStatus get status;
+  AuthStatus get status;
   @override
   UserProfile get userProfile;
   @override

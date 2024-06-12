@@ -1,3 +1,7 @@
+# 0.6.2
+
+- Fix logging user properties and minor improvements.
+
 # 0.6.1
 
 - Move packages for testing to dev_dependencies.
