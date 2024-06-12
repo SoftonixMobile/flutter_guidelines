@@ -5,12 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i6;
 
-import 'package:dio/dio.dart' as _i8;
+import 'package:dio/dio.dart' as _i4;
+import 'package:flutter_guidelines/models/general_models.dart' as _i7;
 import 'package:flutter_guidelines/models/index.dart' as _i3;
 import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i5;
-import 'package:flutter_guidelines/repositories/user_repository.dart' as _i7;
+import 'package:flutter_guidelines/repositories/user_repository.dart' as _i8;
 import 'package:flutter_guidelines/services/http/http_client.dart' as _i2;
-import 'package:fresh_dio/fresh_dio.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -74,12 +74,11 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
       ) as _i2.HttpClient);
 
   @override
-  _i6.Stream<_i4.AuthenticationStatus> get authenticationStatus =>
-      (super.noSuchMethod(
+  _i6.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
-        returnValue: _i6.Stream<_i4.AuthenticationStatus>.empty(),
-        returnValueForMissingStub: _i6.Stream<_i4.AuthenticationStatus>.empty(),
-      ) as _i6.Stream<_i4.AuthenticationStatus>);
+        returnValue: _i6.Stream<_i7.AuthStatus>.empty(),
+        returnValueForMissingStub: _i6.Stream<_i7.AuthStatus>.empty(),
+      ) as _i6.Stream<_i7.AuthStatus>);
 
   @override
   _i6.Future<void> signIn(
@@ -112,7 +111,7 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
 /// A class which mocks [UserRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUserRepository extends _i1.Mock implements _i7.UserRepository {
+class MockUserRepository extends _i1.Mock implements _i8.UserRepository {
   @override
   _i2.HttpClient get httpClient => (super.noSuchMethod(
         Invocation.getter(#httpClient),
@@ -155,12 +154,11 @@ class MockUserRepository extends _i1.Mock implements _i7.UserRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
   @override
-  _i6.Stream<_i4.AuthenticationStatus> get authenticationStatus =>
-      (super.noSuchMethod(
+  _i6.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
-        returnValue: _i6.Stream<_i4.AuthenticationStatus>.empty(),
-        returnValueForMissingStub: _i6.Stream<_i4.AuthenticationStatus>.empty(),
-      ) as _i6.Stream<_i4.AuthenticationStatus>);
+        returnValue: _i6.Stream<_i7.AuthStatus>.empty(),
+        returnValueForMissingStub: _i6.Stream<_i7.AuthStatus>.empty(),
+      ) as _i6.Stream<_i7.AuthStatus>);
 
   @override
   _i6.Future<void> setToken(String? token) => (super.noSuchMethod(
@@ -186,7 +184,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
   _i6.Future<_i4.Response<T>> get<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
-    _i8.Options? options,
+    _i4.Options? options,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -227,7 +225,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    _i8.Options? options,
+    _i4.Options? options,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -271,7 +269,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    _i8.Options? options,
+    _i4.Options? options,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -315,7 +313,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
-    _i8.Options? options,
+    _i4.Options? options,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -358,7 +356,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
   _i6.Future<_i4.Response<T>> delete<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
-    _i8.Options? options,
+    _i4.Options? options,
   }) =>
       (super.noSuchMethod(
         Invocation.method(

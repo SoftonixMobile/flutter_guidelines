@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:fresh_dio/fresh_dio.dart';
-import 'package:provider/provider.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
+import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
+import 'package:flutter_guidelines/services/index.dart';
 
 @RoutePage()
 class AuthScreen extends StatelessWidget {
@@ -17,20 +18,27 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authStatus = context.watch<AuthBloc>().state.status;
-
-    return AutoRouter.declarative(
-      routes: (_) {
-        switch (authStatus) {
-          case AuthenticationStatus.initial:
-            return [];
-          case AuthenticationStatus.unauthenticated:
-            _removeSplashScreen();
-            return [const LoginRoute()];
-          case AuthenticationStatus.authenticated:
-            _removeSplashScreen();
-            return [const HomeRouter()];
+    return BlocConsumer<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.status == AuthStatus.authenticated) {
+          LoggerService.instance.registerUserProfile(state.userProfile);
         }
+      },
+      builder: (context, state) {
+        return AutoRouter.declarative(
+          routes: (_) {
+            switch (state.status) {
+              case AuthStatus.initial:
+                return [];
+              case AuthStatus.unauthenticated:
+                _removeSplashScreen();
+                return [const LoginRoute()];
+              case AuthStatus.authenticated:
+                _removeSplashScreen();
+                return [const HomeRouter()];
+            }
+          },
+        );
       },
     );
   }
