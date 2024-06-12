@@ -1,6 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fresh_dio/fresh_dio.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -27,7 +26,7 @@ void main() {
 
   /// Defining state for success login to simplify code
   const authenticatedState = AuthState(
-    status: AuthenticationStatus.authenticated,
+    status: AuthStatus.authenticated,
     userProfile: fullUserProfile,
   );
 
@@ -78,7 +77,7 @@ void main() {
 
         bloc.add(
           const AuthEvent.authenticationStatusChanged(
-            AuthenticationStatus.authenticated,
+            AuthStatus.authenticated,
           ),
         );
       },
@@ -106,7 +105,7 @@ void main() {
         authRepo.signIn(testEmail, testPassword);
         bloc.add(
           const AuthEvent.authenticationStatusChanged(
-            AuthenticationStatus.authenticated,
+            AuthStatus.authenticated,
           ),
         );
       },
@@ -136,7 +135,7 @@ void main() {
 
         bloc.add(
           const AuthEvent.authenticationStatusChanged(
-            AuthenticationStatus.unauthenticated,
+            AuthStatus.unauthenticated,
           ),
         );
       },

@@ -32,7 +32,6 @@ class HttpClient {
 
         throw Exception('Unauthenticated');
       },
-      httpClient: _dio,
     );
 
     _dio.interceptors.addAll([
@@ -45,8 +44,17 @@ class HttpClient {
     ]);
   }
 
-  Stream<AuthenticationStatus> get authenticationStatus =>
-      _fresh.authenticationStatus;
+  Stream<AuthStatus> get authenticationStatus =>
+      _fresh.authenticationStatus.map((status) {
+        switch (status) {
+          case AuthenticationStatus.initial:
+            return AuthStatus.initial;
+          case AuthenticationStatus.unauthenticated:
+            return AuthStatus.unauthenticated;
+          case AuthenticationStatus.authenticated:
+            return AuthStatus.authenticated;
+        }
+      });
 
   Future<void> setToken(String token) {
     return _fresh.setToken(token);

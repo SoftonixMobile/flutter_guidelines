@@ -6,8 +6,8 @@
 import 'dart:async' as _i4;
 
 import 'package:dio/dio.dart' as _i2;
+import 'package:flutter_guidelines/models/general_models.dart' as _i5;
 import 'package:flutter_guidelines/services/index.dart' as _i3;
-import 'package:fresh_dio/fresh_dio.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -38,12 +38,11 @@ class _FakeResponse_0<T1> extends _i1.SmartFake implements _i2.Response<T1> {
 /// See the documentation for Mockito's code generation for more information.
 class MockHttpClient extends _i1.Mock implements _i3.HttpClient {
   @override
-  _i4.Stream<_i5.AuthenticationStatus> get authenticationStatus =>
-      (super.noSuchMethod(
+  _i4.Stream<_i5.AuthStatus> get authenticationStatus => (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
-        returnValue: _i4.Stream<_i5.AuthenticationStatus>.empty(),
-        returnValueForMissingStub: _i4.Stream<_i5.AuthenticationStatus>.empty(),
-      ) as _i4.Stream<_i5.AuthenticationStatus>);
+        returnValue: _i4.Stream<_i5.AuthStatus>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i5.AuthStatus>.empty(),
+      ) as _i4.Stream<_i5.AuthStatus>);
 
   @override
   _i4.Future<void> setToken(String? token) => (super.noSuchMethod(

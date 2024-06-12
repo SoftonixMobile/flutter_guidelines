@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/models/index.dart';
@@ -17,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   final UserRepository userRepository;
 
-  late StreamSubscription<AuthenticationStatus> _subscription;
+  late StreamSubscription<AuthStatus> _subscription;
 
   AuthBloc({
     required this.authRepository,
@@ -35,7 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _AuthenticationStatusChanged event,
     Emitter<AuthState> emit,
   ) async {
-    if (event.status == AuthenticationStatus.authenticated) {
+    if (event.status == AuthStatus.authenticated) {
       try {
         final userProfile = await userRepository.getUserProfile();
 
