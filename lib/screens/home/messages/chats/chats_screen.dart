@@ -6,6 +6,7 @@ import 'package:stx_bloc_base/stx_bloc_base.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'bloc/chats_bloc.dart';
+import 'widgets/index.dart';
 
 @RoutePage()
 class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
@@ -51,7 +52,9 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8),
-                            child: Text(chat.name),
+                            child: ChatItem(
+                              chat: chat,
+                            ),
                           ),
                         );
                       },

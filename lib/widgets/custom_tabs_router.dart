@@ -6,6 +6,7 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'package:flutter_guidelines/core/helpers/index.dart';
 import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
   const CustomTabsRouter({
@@ -34,7 +35,7 @@ class CustomTabsRouter extends StatelessWidget {
                 floating: true,
                 pinned: true,
                 snap: true,
-                title: Text(appBarTitle),
+                title: AppText(appBarTitle),
                 elevation: 0,
                 forceElevated: innerBoxIsScrolled,
                 bottom: TabBar(

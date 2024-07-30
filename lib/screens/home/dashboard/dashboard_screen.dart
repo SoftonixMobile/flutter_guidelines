@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
 class DashboardScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleKeys.dashboard.tr()),
+        title: AppText.subhead1(LocaleKeys.dashboard.tr()),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -23,7 +24,7 @@ class DashboardScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text(
+        child: AppText.body1(
           LocaleKeys.dashboardScreenTitle.tr(),
         ),
       ),

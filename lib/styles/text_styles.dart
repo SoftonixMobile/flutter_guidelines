@@ -1,8 +1,58 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/widgets/base/app_text.dart';
 
+/// Text styles of the app.
+/// Should contain info only about unmodifiable props of typography.
+/// The props such as colors and decoration will be added via [AppText].
 class AppTextStyles {
+  // Head 1-2
+  static const TextStyle head1 = TextStyle(
+    fontSize: 48,
+    fontWeight: FontWeight.w700,
+  );
+
+  static const TextStyle head2 = TextStyle(
+    fontSize: 36,
+    fontWeight: FontWeight.w900,
+  );
+
+  // Subhead 1-2
+  static const TextStyle subhead1 = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const TextStyle subhead2 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+  );
+
+  // Body 1-2
+  static const TextStyle body1 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+
+  static const TextStyle body2 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
+  // Caption 1-2
+  static const TextStyle caption1 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  );
+
+  static const TextStyle caption2 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+
+  // other (maybe remove later)
+
   static TextStyle get appTitle => const TextStyle(
         color: AppColors.white,
         fontSize: 18,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
 class ChatDetailsScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class ChatDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(chat.name),
+        child: AppText.body1(chat.name),
       ),
     );
   }
