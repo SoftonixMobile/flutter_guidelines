@@ -2,6 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import 'data/theme_data.dart';
 
+// TODO(Kostia): Add InheritedTheme later. Check how is it using in Material.
+
 class AppTheme extends InheritedWidget {
   const AppTheme({
     super.key,

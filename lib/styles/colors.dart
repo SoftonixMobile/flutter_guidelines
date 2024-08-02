@@ -10,5 +10,7 @@ class AppColors {
   static const white = Colors.white;
 
   // System colors go here (e.g error, warning, info, success)
-  static const add = Color(0xFF10C659);
+  static const success = Color(0xFF10C659);
+  static const warning = Color(0xFFFFCC00);
+  static const error = Color(0xFFCC3300);
 }

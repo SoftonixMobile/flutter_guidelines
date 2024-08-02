@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/app_theme.dart';
 
 class TextInputFormBuilder extends StatefulWidget {
   const TextInputFormBuilder({
@@ -42,6 +42,10 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+
+    final typography = theme.textTheme;
+
     return BlocBuilder<TextFieldBloc, TextFieldBlocState>(
       bloc: widget.fieldBloc,
       builder: (context, state) {
@@ -81,8 +85,10 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
               helperText: '',
               helperMaxLines: 1,
               errorMaxLines: 1,
-              helperStyle: AppTextStyles.error,
-              errorStyle: AppTextStyles.error,
+              helperStyle:
+                  typography.caption1.copyWith(color: theme.colors.error),
+              errorStyle:
+                  typography.caption1.copyWith(color: theme.colors.error),
             ),
           ),
         );

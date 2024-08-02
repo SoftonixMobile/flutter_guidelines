@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../theme/app_theme.dart';
 
@@ -116,7 +116,10 @@ class AppText extends Text {
 
   @override
   Widget build(BuildContext context) {
-    final typography = AppTheme.of(context).typography;
+    final themeData = AppTheme.of(context);
+
+    final colors = themeData.colors;
+    final typography = themeData.textTheme;
 
     final themeTextStyle = switch (typographyStyle) {
       TypographyStyle.head1 => typography.head1,
@@ -133,7 +136,7 @@ class AppText extends Text {
 
     final effectiveStyle = style ??
         themeTextStyle?.copyWith(
-          color: color,
+          color: color ?? colors.foreground,
           decoration: decoration,
           overflow: overflow,
         );

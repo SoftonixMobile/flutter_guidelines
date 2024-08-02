@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppThemeData {
   AppColorsData get colors => throw _privateConstructorUsedError;
-  AppTypographyData get typography => throw _privateConstructorUsedError;
+  AppTextThemeData get textTheme => throw _privateConstructorUsedError;
 
   /// Create a copy of AppThemeData
   /// with the given fields replaced by the non-null parameter values.
@@ -32,10 +32,10 @@ abstract class $AppThemeDataCopyWith<$Res> {
           AppThemeData value, $Res Function(AppThemeData) then) =
       _$AppThemeDataCopyWithImpl<$Res, AppThemeData>;
   @useResult
-  $Res call({AppColorsData colors, AppTypographyData typography});
+  $Res call({AppColorsData colors, AppTextThemeData textTheme});
 
   $AppColorsDataCopyWith<$Res> get colors;
-  $AppTypographyDataCopyWith<$Res> get typography;
+  $AppTextThemeDataCopyWith<$Res> get textTheme;
 }
 
 /// @nodoc
@@ -54,17 +54,17 @@ class _$AppThemeDataCopyWithImpl<$Res, $Val extends AppThemeData>
   @override
   $Res call({
     Object? colors = null,
-    Object? typography = null,
+    Object? textTheme = null,
   }) {
     return _then(_value.copyWith(
       colors: null == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as AppColorsData,
-      typography: null == typography
-          ? _value.typography
-          : typography // ignore: cast_nullable_to_non_nullable
-              as AppTypographyData,
+      textTheme: null == textTheme
+          ? _value.textTheme
+          : textTheme // ignore: cast_nullable_to_non_nullable
+              as AppTextThemeData,
     ) as $Val);
   }
 
@@ -82,9 +82,9 @@ class _$AppThemeDataCopyWithImpl<$Res, $Val extends AppThemeData>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AppTypographyDataCopyWith<$Res> get typography {
-    return $AppTypographyDataCopyWith<$Res>(_value.typography, (value) {
-      return _then(_value.copyWith(typography: value) as $Val);
+  $AppTextThemeDataCopyWith<$Res> get textTheme {
+    return $AppTextThemeDataCopyWith<$Res>(_value.textTheme, (value) {
+      return _then(_value.copyWith(textTheme: value) as $Val);
     });
   }
 }
@@ -97,12 +97,12 @@ abstract class _$$AppThemeDataImplCopyWith<$Res>
       __$$AppThemeDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AppColorsData colors, AppTypographyData typography});
+  $Res call({AppColorsData colors, AppTextThemeData textTheme});
 
   @override
   $AppColorsDataCopyWith<$Res> get colors;
   @override
-  $AppTypographyDataCopyWith<$Res> get typography;
+  $AppTextThemeDataCopyWith<$Res> get textTheme;
 }
 
 /// @nodoc
@@ -119,34 +119,43 @@ class __$$AppThemeDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? colors = null,
-    Object? typography = null,
+    Object? textTheme = null,
   }) {
     return _then(_$AppThemeDataImpl(
       colors: null == colors
           ? _value.colors
           : colors // ignore: cast_nullable_to_non_nullable
               as AppColorsData,
-      typography: null == typography
-          ? _value.typography
-          : typography // ignore: cast_nullable_to_non_nullable
-              as AppTypographyData,
+      textTheme: null == textTheme
+          ? _value.textTheme
+          : textTheme // ignore: cast_nullable_to_non_nullable
+              as AppTextThemeData,
     ));
   }
 }
 
 /// @nodoc
 
-class _$AppThemeDataImpl implements _AppThemeData {
-  const _$AppThemeDataImpl({required this.colors, required this.typography});
+class _$AppThemeDataImpl with DiagnosticableTreeMixin implements _AppThemeData {
+  const _$AppThemeDataImpl({required this.colors, required this.textTheme});
 
   @override
   final AppColorsData colors;
   @override
-  final AppTypographyData typography;
+  final AppTextThemeData textTheme;
 
   @override
-  String toString() {
-    return 'AppThemeData(colors: $colors, typography: $typography)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppThemeData(colors: $colors, textTheme: $textTheme)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppThemeData'))
+      ..add(DiagnosticsProperty('colors', colors))
+      ..add(DiagnosticsProperty('textTheme', textTheme));
   }
 
   @override
@@ -155,12 +164,12 @@ class _$AppThemeDataImpl implements _AppThemeData {
         (other.runtimeType == runtimeType &&
             other is _$AppThemeDataImpl &&
             (identical(other.colors, colors) || other.colors == colors) &&
-            (identical(other.typography, typography) ||
-                other.typography == typography));
+            (identical(other.textTheme, textTheme) ||
+                other.textTheme == textTheme));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, colors, typography);
+  int get hashCode => Object.hash(runtimeType, colors, textTheme);
 
   /// Create a copy of AppThemeData
   /// with the given fields replaced by the non-null parameter values.
@@ -174,12 +183,12 @@ class _$AppThemeDataImpl implements _AppThemeData {
 abstract class _AppThemeData implements AppThemeData {
   const factory _AppThemeData(
       {required final AppColorsData colors,
-      required final AppTypographyData typography}) = _$AppThemeDataImpl;
+      required final AppTextThemeData textTheme}) = _$AppThemeDataImpl;
 
   @override
   AppColorsData get colors;
   @override
-  AppTypographyData get typography;
+  AppTextThemeData get textTheme;
 
   /// Create a copy of AppThemeData
   /// with the given fields replaced by the non-null parameter values.

@@ -17,10 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppColorsData {
   Color get primary => throw _privateConstructorUsedError;
-  Color get add => throw _privateConstructorUsedError;
   Color get grey => throw _privateConstructorUsedError;
   Color get black => throw _privateConstructorUsedError;
   Color get white => throw _privateConstructorUsedError;
+  Color get background => throw _privateConstructorUsedError;
+  Color get foreground => throw _privateConstructorUsedError;
+  Color get success => throw _privateConstructorUsedError;
+  Color get warning => throw _privateConstructorUsedError;
+  Color get error => throw _privateConstructorUsedError;
 
   /// Create a copy of AppColorsData
   /// with the given fields replaced by the non-null parameter values.
@@ -35,7 +39,16 @@ abstract class $AppColorsDataCopyWith<$Res> {
           AppColorsData value, $Res Function(AppColorsData) then) =
       _$AppColorsDataCopyWithImpl<$Res, AppColorsData>;
   @useResult
-  $Res call({Color primary, Color add, Color grey, Color black, Color white});
+  $Res call(
+      {Color primary,
+      Color grey,
+      Color black,
+      Color white,
+      Color background,
+      Color foreground,
+      Color success,
+      Color warning,
+      Color error});
 }
 
 /// @nodoc
@@ -54,19 +67,19 @@ class _$AppColorsDataCopyWithImpl<$Res, $Val extends AppColorsData>
   @override
   $Res call({
     Object? primary = null,
-    Object? add = null,
     Object? grey = null,
     Object? black = null,
     Object? white = null,
+    Object? background = null,
+    Object? foreground = null,
+    Object? success = null,
+    Object? warning = null,
+    Object? error = null,
   }) {
     return _then(_value.copyWith(
       primary: null == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      add: null == add
-          ? _value.add
-          : add // ignore: cast_nullable_to_non_nullable
               as Color,
       grey: null == grey
           ? _value.grey
@@ -80,6 +93,26 @@ class _$AppColorsDataCopyWithImpl<$Res, $Val extends AppColorsData>
           ? _value.white
           : white // ignore: cast_nullable_to_non_nullable
               as Color,
+      background: null == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color,
+      foreground: null == foreground
+          ? _value.foreground
+          : foreground // ignore: cast_nullable_to_non_nullable
+              as Color,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as Color,
+      warning: null == warning
+          ? _value.warning
+          : warning // ignore: cast_nullable_to_non_nullable
+              as Color,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Color,
     ) as $Val);
   }
 }
@@ -92,7 +125,16 @@ abstract class _$$AppColorsDataImplCopyWith<$Res>
       __$$AppColorsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color primary, Color add, Color grey, Color black, Color white});
+  $Res call(
+      {Color primary,
+      Color grey,
+      Color black,
+      Color white,
+      Color background,
+      Color foreground,
+      Color success,
+      Color warning,
+      Color error});
 }
 
 /// @nodoc
@@ -109,19 +151,19 @@ class __$$AppColorsDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? primary = null,
-    Object? add = null,
     Object? grey = null,
     Object? black = null,
     Object? white = null,
+    Object? background = null,
+    Object? foreground = null,
+    Object? success = null,
+    Object? warning = null,
+    Object? error = null,
   }) {
     return _then(_$AppColorsDataImpl(
       primary: null == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      add: null == add
-          ? _value.add
-          : add // ignore: cast_nullable_to_non_nullable
               as Color,
       grey: null == grey
           ? _value.grey
@@ -135,6 +177,26 @@ class __$$AppColorsDataImplCopyWithImpl<$Res>
           ? _value.white
           : white // ignore: cast_nullable_to_non_nullable
               as Color,
+      background: null == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color,
+      foreground: null == foreground
+          ? _value.foreground
+          : foreground // ignore: cast_nullable_to_non_nullable
+              as Color,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as Color,
+      warning: null == warning
+          ? _value.warning
+          : warning // ignore: cast_nullable_to_non_nullable
+              as Color,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Color,
     ));
   }
 }
@@ -144,25 +206,37 @@ class __$$AppColorsDataImplCopyWithImpl<$Res>
 class _$AppColorsDataImpl implements _AppColorsData {
   const _$AppColorsDataImpl(
       {required this.primary,
-      required this.add,
       required this.grey,
       required this.black,
-      required this.white});
+      required this.white,
+      required this.background,
+      required this.foreground,
+      required this.success,
+      required this.warning,
+      required this.error});
 
   @override
   final Color primary;
-  @override
-  final Color add;
   @override
   final Color grey;
   @override
   final Color black;
   @override
   final Color white;
+  @override
+  final Color background;
+  @override
+  final Color foreground;
+  @override
+  final Color success;
+  @override
+  final Color warning;
+  @override
+  final Color error;
 
   @override
   String toString() {
-    return 'AppColorsData(primary: $primary, add: $add, grey: $grey, black: $black, white: $white)';
+    return 'AppColorsData(primary: $primary, grey: $grey, black: $black, white: $white, background: $background, foreground: $foreground, success: $success, warning: $warning, error: $error)';
   }
 
   @override
@@ -171,15 +245,21 @@ class _$AppColorsDataImpl implements _AppColorsData {
         (other.runtimeType == runtimeType &&
             other is _$AppColorsDataImpl &&
             (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.add, add) || other.add == add) &&
             (identical(other.grey, grey) || other.grey == grey) &&
             (identical(other.black, black) || other.black == black) &&
-            (identical(other.white, white) || other.white == white));
+            (identical(other.white, white) || other.white == white) &&
+            (identical(other.background, background) ||
+                other.background == background) &&
+            (identical(other.foreground, foreground) ||
+                other.foreground == foreground) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.warning, warning) || other.warning == warning) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, primary, add, grey, black, white);
+  int get hashCode => Object.hash(runtimeType, primary, grey, black, white,
+      background, foreground, success, warning, error);
 
   /// Create a copy of AppColorsData
   /// with the given fields replaced by the non-null parameter values.
@@ -193,21 +273,33 @@ class _$AppColorsDataImpl implements _AppColorsData {
 abstract class _AppColorsData implements AppColorsData {
   const factory _AppColorsData(
       {required final Color primary,
-      required final Color add,
       required final Color grey,
       required final Color black,
-      required final Color white}) = _$AppColorsDataImpl;
+      required final Color white,
+      required final Color background,
+      required final Color foreground,
+      required final Color success,
+      required final Color warning,
+      required final Color error}) = _$AppColorsDataImpl;
 
   @override
   Color get primary;
-  @override
-  Color get add;
   @override
   Color get grey;
   @override
   Color get black;
   @override
   Color get white;
+  @override
+  Color get background;
+  @override
+  Color get foreground;
+  @override
+  Color get success;
+  @override
+  Color get warning;
+  @override
+  Color get error;
 
   /// Create a copy of AppColorsData
   /// with the given fields replaced by the non-null parameter values.

@@ -5,7 +5,7 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'package:flutter_guidelines/core/helpers/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/app_theme.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
@@ -22,6 +22,10 @@ class CustomTabsRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+
+    final colors = theme.colors;
+
     return AutoTabsRouter(
       routes: routes,
       builder: (context, child) {
@@ -35,11 +39,16 @@ class CustomTabsRouter extends StatelessWidget {
                 floating: true,
                 pinned: true,
                 snap: true,
-                title: AppText(appBarTitle),
+                backgroundColor: colors.background,
+                title: AppText.subhead1(
+                  appBarTitle,
+                ),
                 elevation: 0,
                 forceElevated: innerBoxIsScrolled,
                 bottom: TabBar(
                   tabs: _buildTabs(tabs),
+                  labelColor: colors.primary,
+                  unselectedLabelColor: colors.foreground,
                   onTap: context.tabsRouter.setActiveIndex,
                   isScrollable: true,
                   indicatorWeight: 0,
@@ -48,13 +57,16 @@ class CustomTabsRouter extends StatelessWidget {
                     height: 5,
                     topLeftRadius: 8,
                     topRightRadius: 8,
-                    color: AppColors.white,
+                    color: colors.primary,
                   ),
                   tabAlignment: TabAlignment.center,
                 ),
                 actions: [
                   IconButton(
-                    icon: const Icon(Icons.menu),
+                    icon: Icon(
+                      Icons.menu,
+                      color: colors.grey,
+                    ),
                     onPressed: () => RootScaffold.openEndDrawer(context),
                   ),
                 ],

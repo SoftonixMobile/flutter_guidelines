@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'typography_data.dart';
+part of 'text_theme_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AppTypographyData {
+mixin _$AppTextThemeData {
   TextStyle get head1 => throw _privateConstructorUsedError;
   TextStyle get head2 => throw _privateConstructorUsedError;
   TextStyle get subhead1 => throw _privateConstructorUsedError;
@@ -25,18 +25,18 @@ mixin _$AppTypographyData {
   TextStyle get caption1 => throw _privateConstructorUsedError;
   TextStyle get caption2 => throw _privateConstructorUsedError;
 
-  /// Create a copy of AppTypographyData
+  /// Create a copy of AppTextThemeData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AppTypographyDataCopyWith<AppTypographyData> get copyWith =>
+  $AppTextThemeDataCopyWith<AppTextThemeData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppTypographyDataCopyWith<$Res> {
-  factory $AppTypographyDataCopyWith(
-          AppTypographyData value, $Res Function(AppTypographyData) then) =
-      _$AppTypographyDataCopyWithImpl<$Res, AppTypographyData>;
+abstract class $AppTextThemeDataCopyWith<$Res> {
+  factory $AppTextThemeDataCopyWith(
+          AppTextThemeData value, $Res Function(AppTextThemeData) then) =
+      _$AppTextThemeDataCopyWithImpl<$Res, AppTextThemeData>;
   @useResult
   $Res call(
       {TextStyle head1,
@@ -50,16 +50,16 @@ abstract class $AppTypographyDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppTypographyDataCopyWithImpl<$Res, $Val extends AppTypographyData>
-    implements $AppTypographyDataCopyWith<$Res> {
-  _$AppTypographyDataCopyWithImpl(this._value, this._then);
+class _$AppTextThemeDataCopyWithImpl<$Res, $Val extends AppTextThemeData>
+    implements $AppTextThemeDataCopyWith<$Res> {
+  _$AppTextThemeDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AppTypographyData
+  /// Create a copy of AppTextThemeData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -111,11 +111,11 @@ class _$AppTypographyDataCopyWithImpl<$Res, $Val extends AppTypographyData>
 }
 
 /// @nodoc
-abstract class _$$AppTypographyDataImplCopyWith<$Res>
-    implements $AppTypographyDataCopyWith<$Res> {
-  factory _$$AppTypographyDataImplCopyWith(_$AppTypographyDataImpl value,
-          $Res Function(_$AppTypographyDataImpl) then) =
-      __$$AppTypographyDataImplCopyWithImpl<$Res>;
+abstract class _$$AppTextThemeDataImplCopyWith<$Res>
+    implements $AppTextThemeDataCopyWith<$Res> {
+  factory _$$AppTextThemeDataImplCopyWith(_$AppTextThemeDataImpl value,
+          $Res Function(_$AppTextThemeDataImpl) then) =
+      __$$AppTextThemeDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -130,14 +130,14 @@ abstract class _$$AppTypographyDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$AppTypographyDataImplCopyWithImpl<$Res>
-    extends _$AppTypographyDataCopyWithImpl<$Res, _$AppTypographyDataImpl>
-    implements _$$AppTypographyDataImplCopyWith<$Res> {
-  __$$AppTypographyDataImplCopyWithImpl(_$AppTypographyDataImpl _value,
-      $Res Function(_$AppTypographyDataImpl) _then)
+class __$$AppTextThemeDataImplCopyWithImpl<$Res>
+    extends _$AppTextThemeDataCopyWithImpl<$Res, _$AppTextThemeDataImpl>
+    implements _$$AppTextThemeDataImplCopyWith<$Res> {
+  __$$AppTextThemeDataImplCopyWithImpl(_$AppTextThemeDataImpl _value,
+      $Res Function(_$AppTextThemeDataImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AppTypographyData
+  /// Create a copy of AppTextThemeData
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -151,7 +151,7 @@ class __$$AppTypographyDataImplCopyWithImpl<$Res>
     Object? caption1 = null,
     Object? caption2 = null,
   }) {
-    return _then(_$AppTypographyDataImpl(
+    return _then(_$AppTextThemeDataImpl(
       head1: null == head1
           ? _value.head1
           : head1 // ignore: cast_nullable_to_non_nullable
@@ -190,8 +190,8 @@ class __$$AppTypographyDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AppTypographyDataImpl implements _AppTypographyData {
-  const _$AppTypographyDataImpl(
+class _$AppTextThemeDataImpl extends _AppTextThemeData {
+  const _$AppTextThemeDataImpl(
       {required this.head1,
       required this.head2,
       required this.subhead1,
@@ -199,7 +199,8 @@ class _$AppTypographyDataImpl implements _AppTypographyData {
       required this.body1,
       required this.body2,
       required this.caption1,
-      required this.caption2});
+      required this.caption2})
+      : super._();
 
   @override
   final TextStyle head1;
@@ -220,14 +221,14 @@ class _$AppTypographyDataImpl implements _AppTypographyData {
 
   @override
   String toString() {
-    return 'AppTypographyData(head1: $head1, head2: $head2, subhead1: $subhead1, subhead2: $subhead2, body1: $body1, body2: $body2, caption1: $caption1, caption2: $caption2)';
+    return 'AppTextThemeData(head1: $head1, head2: $head2, subhead1: $subhead1, subhead2: $subhead2, body1: $body1, body2: $body2, caption1: $caption1, caption2: $caption2)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AppTypographyDataImpl &&
+            other is _$AppTextThemeDataImpl &&
             (identical(other.head1, head1) || other.head1 == head1) &&
             (identical(other.head2, head2) || other.head2 == head2) &&
             (identical(other.subhead1, subhead1) ||
@@ -246,18 +247,18 @@ class _$AppTypographyDataImpl implements _AppTypographyData {
   int get hashCode => Object.hash(runtimeType, head1, head2, subhead1, subhead2,
       body1, body2, caption1, caption2);
 
-  /// Create a copy of AppTypographyData
+  /// Create a copy of AppTextThemeData
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$AppTypographyDataImplCopyWith<_$AppTypographyDataImpl> get copyWith =>
-      __$$AppTypographyDataImplCopyWithImpl<_$AppTypographyDataImpl>(
+  _$$AppTextThemeDataImplCopyWith<_$AppTextThemeDataImpl> get copyWith =>
+      __$$AppTextThemeDataImplCopyWithImpl<_$AppTextThemeDataImpl>(
           this, _$identity);
 }
 
-abstract class _AppTypographyData implements AppTypographyData {
-  const factory _AppTypographyData(
+abstract class _AppTextThemeData extends AppTextThemeData {
+  const factory _AppTextThemeData(
       {required final TextStyle head1,
       required final TextStyle head2,
       required final TextStyle subhead1,
@@ -265,7 +266,8 @@ abstract class _AppTypographyData implements AppTypographyData {
       required final TextStyle body1,
       required final TextStyle body2,
       required final TextStyle caption1,
-      required final TextStyle caption2}) = _$AppTypographyDataImpl;
+      required final TextStyle caption2}) = _$AppTextThemeDataImpl;
+  const _AppTextThemeData._() : super._();
 
   @override
   TextStyle get head1;
@@ -284,10 +286,10 @@ abstract class _AppTypographyData implements AppTypographyData {
   @override
   TextStyle get caption2;
 
-  /// Create a copy of AppTypographyData
+  /// Create a copy of AppTextThemeData
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AppTypographyDataImplCopyWith<_$AppTypographyDataImpl> get copyWith =>
+  _$$AppTextThemeDataImplCopyWith<_$AppTextThemeDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
