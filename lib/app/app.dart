@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_guidelines/theme/app_theme.dart' as custom_theme;
-import 'package:flutter_guidelines/theme/data/theme_data.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 import 'app_state_wrapper.dart';
 
 class SwitchProvider extends ChangeNotifier {
   bool isDarkTheme = false;
 
+  // ignore: avoid_positional_boolean_parameters
   void changeTheme(bool newValue) {
     isDarkTheme = newValue;
 
@@ -30,31 +30,23 @@ class FlutterGuidelines extends StatelessWidget {
       create: (context) => SwitchProvider(),
       child: Builder(
         builder: (context) {
-          final provider = context.watch<SwitchProvider>();
+          context.watch<SwitchProvider>();
 
           return AppStateWrapper(
-            child: custom_theme.AppTheme(
-              data: provider.isDarkTheme
-                  ? AppThemeData.regular().copyWith.colors(
-                        foreground: Colors.white,
-                        background: Colors.black,
-                      )
-                  : AppThemeData.regular(),
-              child: Builder(
-                builder: (context) {
-                  return WidgetsApp.router(
-                    debugShowCheckedModeBanner: false,
-                    color: custom_theme.AppTheme.of(context).colors.primary,
-                    routerConfig: _appRouter.config(
-                      navigatorObservers: () =>
-                          [RouterObserver(LoggerService.instance)],
-                    ),
-                    localizationsDelegates: context.localizationDelegates,
-                    supportedLocales: context.supportedLocales,
-                    locale: context.locale,
-                  );
-                },
-              ),
+            child: Builder(
+              builder: (context) {
+                return MaterialApp.router(
+                  theme: AppTheme.getAppTheme(context),
+                  debugShowCheckedModeBanner: false,
+                  routerConfig: _appRouter.config(
+                    navigatorObservers: () =>
+                        [RouterObserver(LoggerService.instance)],
+                  ),
+                  localizationsDelegates: context.localizationDelegates,
+                  supportedLocales: context.supportedLocales,
+                  locale: context.locale,
+                );
+              },
             ),
           );
         },

@@ -4,8 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'package:flutter_guidelines/core/helpers/index.dart';
-import 'package:flutter_guidelines/theme/app_theme.dart';
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
@@ -22,9 +21,7 @@ class CustomTabsRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = AppTheme.of(context);
-
-    final colors = theme.colors;
+    final colors = context.theme.colors;
 
     return AutoTabsRouter(
       routes: routes,
@@ -63,9 +60,9 @@ class CustomTabsRouter extends StatelessWidget {
                 ),
                 actions: [
                   IconButton(
-                    icon: Icon(
+                    color: colors.foreground,
+                    icon: const Icon(
                       Icons.menu,
-                      color: colors.grey,
                     ),
                     onPressed: () => RootScaffold.openEndDrawer(context),
                   ),

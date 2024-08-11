@@ -5,10 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter_guidelines/app/app.dart';
 import 'package:flutter_guidelines/blocs/index.dart';
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/styles/assets.gen.dart';
-import 'package:flutter_guidelines/theme/app_theme.dart';
+import 'package:flutter_guidelines/theme/data/colors_data.dart';
 import 'package:flutter_guidelines/widgets/base/app_text.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -21,13 +22,13 @@ class AppDrawer extends StatefulWidget {
 class _AppDrawerState extends State<AppDrawer> {
   @override
   Widget build(BuildContext context) {
-    final themeData = AppTheme.of(context);
+    final colors = context.theme.colors;
 
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.75,
       height: MediaQuery.of(context).size.height,
       child: Drawer(
-        backgroundColor: themeData.colors.foreground,
+        backgroundColor: colors.foreground,
         elevation: 3,
         child: SafeArea(
           child: Container(
@@ -42,7 +43,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   children: [
                     CircleAvatar(
                       radius: 60,
-                      backgroundColor: themeData.colors.background,
+                      backgroundColor: colors.background,
                       backgroundImage: AssetImage(Assets.images.logoShort.path),
                     ),
                   ],
@@ -102,16 +103,18 @@ class _AppDrawerState extends State<AppDrawer> {
     required String text,
     required IconData iconData,
   }) {
-    final themeData = AppTheme.of(context);
+    final themeData = context.theme;
+
+    final colors = themeData.extension<AppColorsData>()!;
 
     return ListTile(
       leading: Icon(
         iconData,
-        color: themeData.colors.grey,
+        color: colors.grey,
       ),
       title: AppText.body1(
         text,
-        color: themeData.colors.background,
+        color: colors.background,
       ),
     );
   }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
-import 'package:flutter_guidelines/theme/app_theme.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
@@ -14,8 +13,7 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     EasyLocalization.of(context);
 
-    final theme = AppTheme.of(context);
-    final colors = theme.colors;
+    final colors = context.theme.colors;
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -25,6 +23,7 @@ class DashboardScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
+            color: colors.foreground,
             onPressed: () => RootScaffold.openEndDrawer(context),
           ),
         ],

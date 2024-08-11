@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../../theme/app_theme.dart';
+import 'package:flutter_guidelines/core/index.dart';
 
 enum TypographyStyle {
   head1,
@@ -13,8 +13,6 @@ enum TypographyStyle {
   caption2,
 }
 
-// TODO(Kostia): Think about making sealed or use freezed, to make it exhaustive and use switch later
-// So no need to use [TypographyStyle] later
 class AppText extends Text {
   const AppText(
     super.data, {
@@ -32,7 +30,6 @@ class AppText extends Text {
           '"style: TextStyle(color:color, decoration:decoration)".',
         );
 
-  // TODO(Kostia): Add a default color or it will be coming from AppTheme later?
   final Color? color;
   final TextDecoration? decoration;
 
@@ -116,10 +113,8 @@ class AppText extends Text {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = AppTheme.of(context);
-
-    final colors = themeData.colors;
-    final typography = themeData.textTheme;
+    final colors = context.theme.colors;
+    final typography = context.theme.text;
 
     final themeTextStyle = switch (typographyStyle) {
       TypographyStyle.head1 => typography.head1,

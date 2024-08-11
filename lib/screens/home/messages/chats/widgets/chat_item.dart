@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
-import 'package:flutter_guidelines/theme/app_theme.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 class ChatItem extends StatelessWidget {
@@ -14,7 +14,9 @@ class ChatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = AppTheme.of(context).colors.grey;
+    final colors = context.theme.colors;
+
+    final borderColor = colors.grey;
 
     return SizedBox(
       height: 60,

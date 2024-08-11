@@ -7,7 +7,8 @@ import 'package:flutter_guidelines/widgets/base/app_text.dart';
 /// Should contain info only about unmodifiable props of typography.
 /// The props such as colors and decoration will be added via [AppText].
 class AppTextStyles {
-  static const _family = '';
+  static const _family = FontFamily.poppins;
+
   // Head 1-2
   static const TextStyle head1 = TextStyle(
     fontFamily: _family,
@@ -59,18 +60,4 @@ class AppTextStyles {
     fontSize: 12,
     fontWeight: FontWeight.w400,
   );
-
-  // other (maybe remove later)
-
-  static TextStyle get appTitle => const TextStyle(
-        color: AppColors.white,
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-      );
-
-  static TextStyle get error => const TextStyle(
-        color: Colors.red,
-        fontSize: 10,
-        height: 0.5,
-      );
 }
