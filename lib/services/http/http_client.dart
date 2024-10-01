@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
+import 'package:flutter_guidelines/models/index.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,11 +10,13 @@ import 'package:flutter_guidelines/services/index.dart';
 import 'interceptors/index.dart';
 import 'options.dart';
 import 'token_storage.dart';
+import 'json_data_parser.dart';
 
 @Singleton(scope: 'auth')
 class HttpClient {
   late Dio _dio;
   late Fresh<String> _fresh;
+  late JsonDataParser _parser;
 
   HttpClient() {
     _dio = Dio(
@@ -42,6 +45,8 @@ class HttpClient {
         logPrint: LoggerService.instance.log,
       ),
     ]);
+
+    _parser = JsonDataParser()..registerType(Post.fromJson);
   }
 
   Stream<AuthStatus> get authenticationStatus =>
@@ -68,12 +73,13 @@ class HttpClient {
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.get<T>(
+  }) async {
+    final response = await _dio.get(
       url,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
   Future<Response<T>> post<T>(
@@ -81,13 +87,14 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.post<T>(
+  }) async {
+    final response = await _dio.post(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
   Future<Response<T>> put<T>(
@@ -95,13 +102,14 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.put<T>(
+  }) async {
+    final response = await _dio.put(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
   Future<Response<T>> patch<T>(
@@ -109,28 +117,43 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.patch<T>(
+  }) async {
+    final response = await _dio.patch(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
   Future<Response<T>> delete<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.delete<T>(
+  }) async {
+    final response = await _dio.delete(
       url,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
   Future<Response> download(String url, String savePath) {
     return _dio.download(url, savePath);
   }
+}
+
+extension on Response {
+  Response<T> convert<T>(JsonDataParser parser) => Response(
+        data: parser.convert<T>(data),
+        requestOptions: requestOptions,
+        extra: extra,
+        headers: headers,
+        isRedirect: isRedirect,
+        redirects: redirects,
+        statusCode: statusCode,
+        statusMessage: statusMessage,
+      );
 }
