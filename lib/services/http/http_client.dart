@@ -16,7 +16,7 @@ import 'json_data_parser.dart';
 class HttpClient {
   late Dio _dio;
   late Fresh<String> _fresh;
-  late JsonDataParser _parser;
+  final _parser = JsonDataParser();
 
   HttpClient() {
     _dio = Dio(
@@ -45,8 +45,6 @@ class HttpClient {
         logPrint: LoggerService.instance.log,
       ),
     ]);
-
-    _parser = JsonDataParser()..registerType(Post.fromJson);
   }
 
   Stream<AuthStatus> get authenticationStatus =>
@@ -69,7 +67,7 @@ class HttpClient {
     return _fresh.clearToken();
   }
 
-  Future<Response<T>> get<T>(
+  Future<Response<T>> getR<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
@@ -82,7 +80,18 @@ class HttpClient {
     return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> post<T>(
+  Future<T> get<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      getR<T>(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> postR<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
@@ -97,7 +106,20 @@ class HttpClient {
     return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> put<T>(
+  Future<T> post<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      postR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> putR<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
@@ -112,7 +134,20 @@ class HttpClient {
     return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> patch<T>(
+  Future<T> put<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      putR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> patchR<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
@@ -127,7 +162,20 @@ class HttpClient {
     return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> delete<T>(
+  Future<T> patch<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      patchR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> deleteR<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
@@ -139,6 +187,17 @@ class HttpClient {
     );
     return response.convert<T>(_parser);
   }
+
+  Future<T> delete<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      deleteR<T>(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
 
   Future<Response> download(String url, String savePath) {
     return _dio.download(url, savePath);
