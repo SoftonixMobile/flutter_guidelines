@@ -7,6 +7,7 @@ import 'package:{{project_name}}/blocs/index.dart';
 import 'package:{{project_name}}/models/general_models.dart';
 import 'package:{{project_name}}/services/index.dart';
 import 'interceptors/index.dart';
+import 'json_data_parser.dart';
 import 'options.dart';
 import 'token_storage.dart';
 
@@ -14,6 +15,7 @@ import 'token_storage.dart';
 class HttpClient {
   late Dio _dio;
   late Fresh<String> _fresh;
+  final _parser = JsonDataParser();
 
   HttpClient() {
     _dio = Dio(
@@ -64,73 +66,152 @@ class HttpClient {
     return _fresh.clearToken();
   }
 
-  Future<Response<T>> get<T>(
+  Future<Response<T>> getR<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.get<T>(
+  }) async {
+    final response = await _dio.get(
       url,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> post<T>(
+  Future<T> get<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      getR<T>(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> postR<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.post<T>(
+  }) async {
+    final response = await _dio.post(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> put<T>(
+  Future<T> post<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.put<T>(
+  }) =>
+      postR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> putR<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) async {
+    final response = await _dio.put(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> patch<T>(
+  Future<T> put<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.patch<T>(
+  }) =>
+      putR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> patchR<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) async {
+    final response = await _dio.patch(
       url,
       data: data,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
 
-  Future<Response<T>> delete<T>(
+  Future<T> patch<T>(
+    String url, {
+    dynamic data,
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      patchR<T>(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
+
+  Future<Response<T>> deleteR<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) {
-    return _dio.delete<T>(
+  }) async {
+    final response = await _dio.delete(
       url,
       queryParameters: queryParameters,
       options: options,
     );
+    return response.convert<T>(_parser);
   }
+
+  Future<T> delete<T>(
+    String url, {
+    DynamicMap? queryParameters,
+    Options? options,
+  }) =>
+      deleteR<T>(
+        url,
+        queryParameters: queryParameters,
+        options: options,
+      ).then((r) => r.data!);
 
   Future<Response> download(String url, String savePath) {
     return _dio.download(url, savePath);
   }
+}
+
+extension on Response {
+  Response<T> convert<T>(JsonDataParser parser) => Response(
+        data: parser.convert<T>(data),
+        requestOptions: requestOptions,
+        extra: extra,
+        headers: headers,
+        isRedirect: isRedirect,
+        redirects: redirects,
+        statusCode: statusCode,
+        statusMessage: statusMessage,
+      );
 }

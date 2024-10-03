@@ -1,3 +1,7 @@
+# 0.7.0
+
+- Add JsonDataParser to HttpClient.
+
 # 0.6.2
 
 - Fix logging user properties and minor improvements.
