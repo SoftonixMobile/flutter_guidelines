@@ -9,14 +9,6 @@ class PostsRepository {
 
   PostsRepository(this.httpClient);
 
-  Future<List<Post>> getPosts() async {
-    final response =
-        await httpClient.get('https://jsonplaceholder.typicode.com/posts');
-
-    if (response.statusCode == 200) {
-      return (response.data as List).map((e) => Post.fromJson(e)).toList();
-    } else {
-      return [];
-    }
-  }
+  Future<List<Post>> getPosts() =>
+      httpClient.get<List<Post>>('https://jsonplaceholder.typicode.com/posts');
 }

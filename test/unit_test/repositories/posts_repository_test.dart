@@ -34,7 +34,7 @@ void main() async {
         // Define success result of converting to app model
         final expectedResult = [const Post(id: 1, name: 'Post 1')];
 
-        when(mockClient.get('https://jsonplaceholder.typicode.com/posts'))
+        when(mockClient.getR('https://jsonplaceholder.typicode.com/posts'))
             .thenAnswer(
           (_) async => successMockResponse,
         );
@@ -55,7 +55,7 @@ void main() async {
           statusCode: 500,
         );
 
-        when(mockClient.get('https://jsonplaceholder.typicode.com/posts'))
+        when(mockClient.getR('https://jsonplaceholder.typicode.com/posts'))
             .thenAnswer((_) async => failureMockResponse);
 
         final actual = await postRepo.getPosts();

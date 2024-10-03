@@ -181,7 +181,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       ) as _i6.Future<void>);
 
   @override
-  _i6.Future<_i4.Response<T>> get<T>(
+  _i6.Future<_i4.Response<T>> getR<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
     _i4.Options? options,
@@ -221,7 +221,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       ) as _i6.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> post<T>(
+  _i6.Future<_i4.Response<T>> postR<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -265,7 +265,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       ) as _i6.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> put<T>(
+  _i6.Future<_i4.Response<T>> putR<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -309,7 +309,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       ) as _i6.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> patch<T>(
+  _i6.Future<_i4.Response<T>> patchR<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -353,7 +353,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
       ) as _i6.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> delete<T>(
+  _i6.Future<_i4.Response<T>> deleteR<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
     _i4.Options? options,
