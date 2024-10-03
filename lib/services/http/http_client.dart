@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:flutter_guidelines/models/index.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,9 +7,9 @@ import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/general_models.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'interceptors/index.dart';
+import 'json_data_parser.dart';
 import 'options.dart';
 import 'token_storage.dart';
-import 'json_data_parser.dart';
 
 @Singleton(scope: 'auth')
 class HttpClient {
