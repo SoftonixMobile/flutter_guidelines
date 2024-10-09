@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
@@ -10,9 +11,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.theme.colors;
+
     EasyLocalization.of(context);
 
     return AutoTabsScaffold(
+      backgroundColor: colors.background,
       endDrawer: const AppDrawer(),
       routes: const [
         DashboardRoute(),
@@ -31,6 +35,9 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           child: BottomNavigationBar(
+            backgroundColor: colors.background,
+            unselectedItemColor: colors.foreground,
+            selectedItemColor: colors.primary,
             type: BottomNavigationBarType.fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,

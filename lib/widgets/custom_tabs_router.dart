@@ -4,8 +4,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
-import 'package:flutter_guidelines/core/helpers/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
   const CustomTabsRouter({
@@ -21,6 +21,8 @@ class CustomTabsRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.theme.colors;
+
     return AutoTabsRouter(
       routes: routes,
       builder: (context, child) {
@@ -34,11 +36,16 @@ class CustomTabsRouter extends StatelessWidget {
                 floating: true,
                 pinned: true,
                 snap: true,
-                title: Text(appBarTitle),
+                backgroundColor: colors.background,
+                title: AppText.subhead1(
+                  appBarTitle,
+                ),
                 elevation: 0,
                 forceElevated: innerBoxIsScrolled,
                 bottom: TabBar(
                   tabs: _buildTabs(tabs),
+                  labelColor: colors.primary,
+                  unselectedLabelColor: colors.foreground,
                   onTap: context.tabsRouter.setActiveIndex,
                   isScrollable: true,
                   indicatorWeight: 0,
@@ -47,13 +54,16 @@ class CustomTabsRouter extends StatelessWidget {
                     height: 5,
                     topLeftRadius: 8,
                     topRightRadius: 8,
-                    color: AppColors.white,
+                    color: colors.primary,
                   ),
                   tabAlignment: TabAlignment.center,
                 ),
                 actions: [
                   IconButton(
-                    icon: const Icon(Icons.menu),
+                    color: colors.foreground,
+                    icon: const Icon(
+                      Icons.menu,
+                    ),
                     onPressed: () => RootScaffold.openEndDrawer(context),
                   ),
                 ],

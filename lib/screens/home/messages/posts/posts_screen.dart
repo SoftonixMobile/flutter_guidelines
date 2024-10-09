@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
+import 'package:flutter_guidelines/widgets/index.dart';
 import 'posts_bloc.dart';
 
 @RoutePage()
@@ -42,7 +43,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
 
                         return Padding(
                           padding: const EdgeInsets.all(8),
-                          child: Text('Post ${post.id}'),
+                          child: AppText.body1('Post ${post.id}'),
                         );
                       },
                       childCount: state.data.length,

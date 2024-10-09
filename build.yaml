@@ -9,6 +9,7 @@ targets:
             - lib/**_event.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
+            - lib/theme/**.dart
         options:
           makeCollectionsUnmodifiable: false
       json_serializable:
@@ -16,6 +17,8 @@ targets:
         generate_for:
           include:
             - lib/**/models.dart
+          exclude:
+            - lib/theme/**.dart
       auto_route_generator:autoRouteGenerator:
         enabled: true
         generate_for:
