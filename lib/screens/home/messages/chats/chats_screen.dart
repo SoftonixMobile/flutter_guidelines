@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
 import 'bloc/chats_bloc.dart';
 
@@ -20,8 +19,6 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     return RefreshIndicator(
       onRefresh: () {
         final bloc = context.read<ChatsBloc>()..add(const ChatsEvent.load());
