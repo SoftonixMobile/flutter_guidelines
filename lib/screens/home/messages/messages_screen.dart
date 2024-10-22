@@ -10,11 +10,9 @@ class MessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     final tabs = [
-      LocaleKeys.chats.tr(),
-      LocaleKeys.posts.tr(),
+      context.tr(LocaleKeys.chats),
+      context.tr(LocaleKeys.posts),
     ];
 
     const routes = <PageRouteInfo<dynamic>>[
@@ -23,7 +21,7 @@ class MessagesScreen extends StatelessWidget {
     ];
 
     return CustomTabsRouter(
-      appBarTitle: LocaleKeys.messages.tr(),
+      appBarTitle: context.tr(LocaleKeys.messages),
       tabs: tabs,
       routes: routes,
     );

@@ -10,8 +10,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     return AutoTabsScaffold(
       endDrawer: const AppDrawer(),
       routes: const [
@@ -37,15 +35,15 @@ class HomeScreen extends StatelessWidget {
             items: [
               BottomNavigationBarItem(
                 icon: const Icon(Icons.dashboard),
-                label: LocaleKeys.dashboard.tr(),
+                label: context.tr(LocaleKeys.dashboard),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.message),
-                label: LocaleKeys.messages.tr(),
+                label: context.tr(LocaleKeys.messages),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.settings),
-                label: LocaleKeys.settings.tr(),
+                label: context.tr(LocaleKeys.settings),
               ),
             ],
           ),

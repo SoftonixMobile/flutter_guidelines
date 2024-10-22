@@ -12,11 +12,9 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleKeys.settings.tr()),
+        title: Text(context.tr(LocaleKeys.settings)),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -26,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          LocaleKeys.settingsScreenTitle.tr(),
+          context.tr(LocaleKeys.settingsScreenTitle),
         ),
       ),
     );
