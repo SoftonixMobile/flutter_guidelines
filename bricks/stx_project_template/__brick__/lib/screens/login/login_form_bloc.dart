@@ -8,8 +8,8 @@ import 'package:{{project_name}}/repositories/auth_repository.dart';
 
 @Injectable(scope: 'auth')
 class LoginFormBloc extends FormBloc<String, String> {
-  late TextFieldBloc username;
-  late TextFieldBloc password;
+  late final TextFieldBloc username;
+  late final TextFieldBloc password;
 
   final AuthBloc authBloc;
   final AuthRepository repository;

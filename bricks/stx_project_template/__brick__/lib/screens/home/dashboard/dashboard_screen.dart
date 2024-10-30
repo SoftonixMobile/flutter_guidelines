@@ -10,11 +10,9 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(LocaleKeys.dashboard.tr()),
+        title: Text(context.tr(LocaleKeys.dashboard)),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -24,7 +22,7 @@ class DashboardScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          LocaleKeys.dashboardScreenTitle.tr(),
+          context.tr(LocaleKeys.dashboardScreenTitle),
         ),
       ),
     );

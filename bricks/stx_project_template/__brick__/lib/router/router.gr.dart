@@ -28,78 +28,6 @@ import 'package:{{project_name}}/screens/home/settings/settings_screen.dart'
     as _i10;
 import 'package:{{project_name}}/screens/login/login_screen.dart' as _i7;
 
-abstract class $AppRouter extends _i11.RootStackRouter {
-  $AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, _i11.PageFactory> pagesMap = {
-    AuthRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.AuthScreen(),
-      );
-    },
-    ChatDetailsRoute.name: (routeData) {
-      final args = routeData.argsAs<ChatDetailsRouteArgs>();
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i2.ChatDetailsScreen(
-          key: args.key,
-          chat: args.chat,
-        ),
-      );
-    },
-    ChatsRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.WrappedRoute(child: const _i3.ChatsScreen()),
-      );
-    },
-    DashboardRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i4.DashboardScreen(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i5.HomeScreen(),
-      );
-    },
-    HomeRouter.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i6.HomeWrapperScreen(),
-      );
-    },
-    LoginRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.WrappedRoute(child: const _i7.LoginScreen()),
-      );
-    },
-    MessagesRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i8.MessagesScreen(),
-      );
-    },
-    PostsRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i11.WrappedRoute(child: const _i9.PostsScreen()),
-      );
-    },
-    SettingsRoute.name: (routeData) {
-      return _i11.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i10.SettingsScreen(),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [_i1.AuthScreen]
 class AuthRoute extends _i11.PageRouteInfo<void> {
@@ -111,7 +39,12 @@ class AuthRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'AuthRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i1.AuthScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -132,8 +65,16 @@ class ChatDetailsRoute extends _i11.PageRouteInfo<ChatDetailsRouteArgs> {
 
   static const String name = 'ChatDetailsRoute';
 
-  static const _i11.PageInfo<ChatDetailsRouteArgs> page =
-      _i11.PageInfo<ChatDetailsRouteArgs>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ChatDetailsRouteArgs>();
+      return _i2.ChatDetailsScreen(
+        key: args.key,
+        chat: args.chat,
+      );
+    },
+  );
 }
 
 class ChatDetailsRouteArgs {
@@ -163,7 +104,12 @@ class ChatsRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'ChatsRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return _i11.WrappedRoute(child: const _i3.ChatsScreen());
+    },
+  );
 }
 
 /// generated route for
@@ -177,7 +123,12 @@ class DashboardRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i4.DashboardScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -191,7 +142,12 @@ class HomeRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i5.HomeScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -205,7 +161,12 @@ class HomeRouter extends _i11.PageRouteInfo<void> {
 
   static const String name = 'HomeRouter';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i6.HomeWrapperScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -219,7 +180,12 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'LoginRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return _i11.WrappedRoute(child: const _i7.LoginScreen());
+    },
+  );
 }
 
 /// generated route for
@@ -233,7 +199,12 @@ class MessagesRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'MessagesRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i8.MessagesScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -247,7 +218,12 @@ class PostsRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'PostsRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return _i11.WrappedRoute(child: const _i9.PostsScreen());
+    },
+  );
 }
 
 /// generated route for
@@ -261,5 +237,10 @@ class SettingsRoute extends _i11.PageRouteInfo<void> {
 
   static const String name = 'SettingsRoute';
 
-  static const _i11.PageInfo<void> page = _i11.PageInfo<void>(name);
+  static _i11.PageInfo page = _i11.PageInfo(
+    name,
+    builder: (data) {
+      return const _i10.SettingsScreen();
+    },
+  );
 }

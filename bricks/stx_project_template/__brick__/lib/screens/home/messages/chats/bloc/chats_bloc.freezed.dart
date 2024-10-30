@@ -66,6 +66,9 @@ class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ChatsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -81,6 +84,9 @@ class __$$LoadImplCopyWithImpl<$Res>
     implements _$$LoadImplCopyWith<$Res> {
   __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ChatsEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -169,7 +175,9 @@ mixin _$ChatsState {
   List<Chat> get chats => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatsStateCopyWith<ChatsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -193,6 +201,8 @@ class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -236,6 +246,8 @@ class __$$ChatsStateImplCopyWithImpl<$Res>
       _$ChatsStateImpl _value, $Res Function(_$ChatsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,7 +316,9 @@ class _$ChatsStateImpl implements _ChatsState {
   int get hashCode => Object.hash(runtimeType, status,
       const DeepCollectionEquality().hash(_chats), errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
@@ -323,8 +337,11 @@ abstract class _ChatsState implements ChatsState {
   List<Chat> get chats;
   @override
   String? get errorMessage;
+
+  /// Create a copy of ChatsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

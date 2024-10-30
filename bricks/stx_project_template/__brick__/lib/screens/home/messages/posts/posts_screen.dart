@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:{{project_name}}/localization/index.dart';
 import 'package:{{project_name}}/models/index.dart';
 import 'posts_bloc.dart';
 
@@ -20,8 +19,6 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    EasyLocalization.of(context);
-
     return RefreshIndicator(
       onRefresh: context.read<PostsBloc>().loadAsyncFuture,
       child: CustomScrollView(

@@ -42,12 +42,12 @@ class AppDrawer extends StatelessWidget {
                   child: Column(
                     children: [
                       buildMenuItem(
-                        text: LocaleKeys.changePassword.tr(),
+                        text: context.tr(LocaleKeys.changePassword),
                         iconData: FontAwesomeIcons.lock,
                       ),
                       GestureDetector(
                         child: buildMenuItem(
-                          text: LocaleKeys.languageName.tr(),
+                          text: context.tr(LocaleKeys.languageName),
                           iconData: FontAwesomeIcons.globe,
                         ),
                         onTap: () async {
@@ -61,7 +61,7 @@ class AppDrawer extends StatelessWidget {
                       ),
                       GestureDetector(
                         child: buildMenuItem(
-                          text: LocaleKeys.signOut.tr(),
+                          text: context.tr(LocaleKeys.signOut),
                           iconData: FontAwesomeIcons.rightFromBracket,
                         ),
                         onTap: () {
