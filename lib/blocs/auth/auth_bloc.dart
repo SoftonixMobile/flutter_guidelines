@@ -16,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   final UserRepository userRepository;
 
-  late StreamSubscription<AuthStatus> _subscription;
+  late final StreamSubscription<AuthStatus> _subscription;
 
   AuthBloc({
     required this.authRepository,

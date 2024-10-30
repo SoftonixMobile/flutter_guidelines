@@ -38,7 +38,7 @@ void main() {
   final authRepo = AuthRepository(MockHttpClient());
   final mockUserRepo = MockUserRepository();
 
-  late AuthBloc authBloc;
+  late final AuthBloc authBloc;
 
   group('Auth bloc tests', () {
     ///Creating bloc forEach test

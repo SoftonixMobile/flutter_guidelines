@@ -5,6 +5,7 @@ targets:
         enabled: true
         generate_for:
           include:
+            - lib/models/**.dart
             - lib/**/models.dart
             - lib/**_event.dart
             - lib/**_bloc.dart
@@ -15,13 +16,14 @@ targets:
         enabled: true
         generate_for:
           include:
+            - lib/models/**.dart
             - lib/**/models.dart
-      auto_route_generator:autoRouteGenerator:
+      auto_route_generator:
         enabled: true
         generate_for:
           include:
             - lib/router/router.dart
-            - lib/**_screen.dart
+            - lib/screens/**.dart
       flutter_gen_runner:
         enabled: true
       injectable_generator:injectable_builder:

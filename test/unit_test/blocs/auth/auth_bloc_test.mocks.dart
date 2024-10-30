@@ -3,15 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i5;
 
 import 'package:dio/dio.dart' as _i4;
 import 'package:flutter_guidelines/models/general_models.dart' as _i7;
 import 'package:flutter_guidelines/models/index.dart' as _i3;
-import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i5;
+import 'package:flutter_guidelines/repositories/auth_repository.dart' as _i6;
 import 'package:flutter_guidelines/repositories/user_repository.dart' as _i8;
 import 'package:flutter_guidelines/services/http/http_client.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -56,10 +57,20 @@ class _FakeResponse_2<T1> extends _i1.SmartFake implements _i4.Response<T1> {
         );
 }
 
+class _FakeFuture_3<T1> extends _i1.SmartFake implements _i5.Future<T1> {
+  _FakeFuture_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
+class MockAuthRepository extends _i1.Mock implements _i6.AuthRepository {
   @override
   _i2.HttpClient get httpClient => (super.noSuchMethod(
         Invocation.getter(#httpClient),
@@ -74,14 +85,14 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
       ) as _i2.HttpClient);
 
   @override
-  _i6.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
+  _i5.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
-        returnValue: _i6.Stream<_i7.AuthStatus>.empty(),
-        returnValueForMissingStub: _i6.Stream<_i7.AuthStatus>.empty(),
-      ) as _i6.Stream<_i7.AuthStatus>);
+        returnValue: _i5.Stream<_i7.AuthStatus>.empty(),
+        returnValueForMissingStub: _i5.Stream<_i7.AuthStatus>.empty(),
+      ) as _i5.Stream<_i7.AuthStatus>);
 
   @override
-  _i6.Future<void> signIn(
+  _i5.Future<void> signIn(
     String? userName,
     String? password,
   ) =>
@@ -93,19 +104,19 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
             password,
           ],
         ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i6.Future<void> signOut() => (super.noSuchMethod(
+  _i5.Future<void> signOut() => (super.noSuchMethod(
         Invocation.method(
           #signOut,
           [],
         ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 }
 
 /// A class which mocks [UserRepository].
@@ -126,12 +137,12 @@ class MockUserRepository extends _i1.Mock implements _i8.UserRepository {
       ) as _i2.HttpClient);
 
   @override
-  _i6.Future<_i3.UserProfile> getUserProfile() => (super.noSuchMethod(
+  _i5.Future<_i3.UserProfile> getUserProfile() => (super.noSuchMethod(
         Invocation.method(
           #getUserProfile,
           [],
         ),
-        returnValue: _i6.Future<_i3.UserProfile>.value(_FakeUserProfile_1(
+        returnValue: _i5.Future<_i3.UserProfile>.value(_FakeUserProfile_1(
           this,
           Invocation.method(
             #getUserProfile,
@@ -139,14 +150,14 @@ class MockUserRepository extends _i1.Mock implements _i8.UserRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i3.UserProfile>.value(_FakeUserProfile_1(
+            _i5.Future<_i3.UserProfile>.value(_FakeUserProfile_1(
           this,
           Invocation.method(
             #getUserProfile,
             [],
           ),
         )),
-      ) as _i6.Future<_i3.UserProfile>);
+      ) as _i5.Future<_i3.UserProfile>);
 }
 
 /// A class which mocks [HttpClient].
@@ -154,34 +165,74 @@ class MockUserRepository extends _i1.Mock implements _i8.UserRepository {
 /// See the documentation for Mockito's code generation for more information.
 class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
   @override
-  _i6.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
+  _i5.Stream<_i7.AuthStatus> get authenticationStatus => (super.noSuchMethod(
         Invocation.getter(#authenticationStatus),
-        returnValue: _i6.Stream<_i7.AuthStatus>.empty(),
-        returnValueForMissingStub: _i6.Stream<_i7.AuthStatus>.empty(),
-      ) as _i6.Stream<_i7.AuthStatus>);
+        returnValue: _i5.Stream<_i7.AuthStatus>.empty(),
+        returnValueForMissingStub: _i5.Stream<_i7.AuthStatus>.empty(),
+      ) as _i5.Stream<_i7.AuthStatus>);
 
   @override
-  _i6.Future<void> setToken(String? token) => (super.noSuchMethod(
+  _i5.Future<void> setToken(String? token) => (super.noSuchMethod(
         Invocation.method(
           #setToken,
           [token],
         ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i6.Future<void> clearToken() => (super.noSuchMethod(
+  _i5.Future<void> clearToken() => (super.noSuchMethod(
         Invocation.method(
           #clearToken,
           [],
         ),
-        returnValue: _i6.Future<void>.value(),
-        returnValueForMissingStub: _i6.Future<void>.value(),
-      ) as _i6.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i6.Future<_i4.Response<T>> getR<T>(
+  _i5.Future<_i4.Response<T>> getR<T>(
+    String? url, {
+    Map<String, dynamic>? queryParameters,
+    _i4.Options? options,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getR,
+          [url],
+          {
+            #queryParameters: queryParameters,
+            #options: options,
+          },
+        ),
+        returnValue: _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+          this,
+          Invocation.method(
+            #getR,
+            [url],
+            {
+              #queryParameters: queryParameters,
+              #options: options,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+          this,
+          Invocation.method(
+            #getR,
+            [url],
+            {
+              #queryParameters: queryParameters,
+              #options: options,
+            },
+          ),
+        )),
+      ) as _i5.Future<_i4.Response<T>>);
+
+  @override
+  _i5.Future<T> get<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
     _i4.Options? options,
@@ -195,33 +246,104 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+        returnValue: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #get,
+                  [url],
+                  {
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #get,
+                [url],
+                {
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+        returnValueForMissingStub: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #get,
+                  [url],
+                  {
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #get,
+                [url],
+                {
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+      ) as _i5.Future<T>);
+
+  @override
+  _i5.Future<_i4.Response<T>> postR<T>(
+    String? url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    _i4.Options? options,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #postR,
+          [url],
+          {
+            #data: data,
+            #queryParameters: queryParameters,
+            #options: options,
+          },
+        ),
+        returnValue: _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #get,
+            #postR,
             [url],
             {
+              #data: data,
               #queryParameters: queryParameters,
               #options: options,
             },
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+            _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #get,
+            #postR,
             [url],
             {
+              #data: data,
               #queryParameters: queryParameters,
               #options: options,
             },
           ),
         )),
-      ) as _i6.Future<_i4.Response<T>>);
+      ) as _i5.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> postR<T>(
+  _i5.Future<T> post<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -237,10 +359,83 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+        returnValue: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #post,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #post,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+        returnValueForMissingStub: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #post,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #post,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+      ) as _i5.Future<T>);
+
+  @override
+  _i5.Future<_i4.Response<T>> putR<T>(
+    String? url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    _i4.Options? options,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #putR,
+          [url],
+          {
+            #data: data,
+            #queryParameters: queryParameters,
+            #options: options,
+          },
+        ),
+        returnValue: _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #post,
+            #putR,
             [url],
             {
               #data: data,
@@ -250,10 +445,10 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+            _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #post,
+            #putR,
             [url],
             {
               #data: data,
@@ -262,10 +457,10 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             },
           ),
         )),
-      ) as _i6.Future<_i4.Response<T>>);
+      ) as _i5.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> putR<T>(
+  _i5.Future<T> put<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -281,10 +476,83 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+        returnValue: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #put,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #put,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+        returnValueForMissingStub: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #put,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #put,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+      ) as _i5.Future<T>);
+
+  @override
+  _i5.Future<_i4.Response<T>> patchR<T>(
+    String? url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    _i4.Options? options,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #patchR,
+          [url],
+          {
+            #data: data,
+            #queryParameters: queryParameters,
+            #options: options,
+          },
+        ),
+        returnValue: _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #put,
+            #patchR,
             [url],
             {
               #data: data,
@@ -294,10 +562,10 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+            _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #put,
+            #patchR,
             [url],
             {
               #data: data,
@@ -306,10 +574,10 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             },
           ),
         )),
-      ) as _i6.Future<_i4.Response<T>>);
+      ) as _i5.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> patchR<T>(
+  _i5.Future<T> patch<T>(
     String? url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -325,35 +593,104 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+        returnValue: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #patch,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #patch,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+        returnValueForMissingStub: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #patch,
+                  [url],
+                  {
+                    #data: data,
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #patch,
+                [url],
+                {
+                  #data: data,
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+      ) as _i5.Future<T>);
+
+  @override
+  _i5.Future<_i4.Response<T>> deleteR<T>(
+    String? url, {
+    Map<String, dynamic>? queryParameters,
+    _i4.Options? options,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteR,
+          [url],
+          {
+            #queryParameters: queryParameters,
+            #options: options,
+          },
+        ),
+        returnValue: _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #patch,
+            #deleteR,
             [url],
             {
-              #data: data,
               #queryParameters: queryParameters,
               #options: options,
             },
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
+            _i5.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
           this,
           Invocation.method(
-            #patch,
+            #deleteR,
             [url],
             {
-              #data: data,
               #queryParameters: queryParameters,
               #options: options,
             },
           ),
         )),
-      ) as _i6.Future<_i4.Response<T>>);
+      ) as _i5.Future<_i4.Response<T>>);
 
   @override
-  _i6.Future<_i4.Response<T>> deleteR<T>(
+  _i5.Future<T> delete<T>(
     String? url, {
     Map<String, dynamic>? queryParameters,
     _i4.Options? options,
@@ -367,33 +704,60 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             #options: options,
           },
         ),
-        returnValue: _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
-          this,
-          Invocation.method(
-            #delete,
-            [url],
-            {
-              #queryParameters: queryParameters,
-              #options: options,
-            },
-          ),
-        )),
-        returnValueForMissingStub:
-            _i6.Future<_i4.Response<T>>.value(_FakeResponse_2<T>(
-          this,
-          Invocation.method(
-            #delete,
-            [url],
-            {
-              #queryParameters: queryParameters,
-              #options: options,
-            },
-          ),
-        )),
-      ) as _i6.Future<_i4.Response<T>>);
+        returnValue: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #delete,
+                  [url],
+                  {
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #delete,
+                [url],
+                {
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+        returnValueForMissingStub: _i9.ifNotNull(
+              _i9.dummyValueOrNull<T>(
+                this,
+                Invocation.method(
+                  #delete,
+                  [url],
+                  {
+                    #queryParameters: queryParameters,
+                    #options: options,
+                  },
+                ),
+              ),
+              (T v) => _i5.Future<T>.value(v),
+            ) ??
+            _FakeFuture_3<T>(
+              this,
+              Invocation.method(
+                #delete,
+                [url],
+                {
+                  #queryParameters: queryParameters,
+                  #options: options,
+                },
+              ),
+            ),
+      ) as _i5.Future<T>);
 
   @override
-  _i6.Future<_i4.Response<dynamic>> download(
+  _i5.Future<_i4.Response<dynamic>> download(
     String? url,
     String? savePath,
   ) =>
@@ -406,7 +770,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ],
         ),
         returnValue:
-            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
+            _i5.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
           this,
           Invocation.method(
             #download,
@@ -417,7 +781,7 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
           ),
         )),
         returnValueForMissingStub:
-            _i6.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
+            _i5.Future<_i4.Response<dynamic>>.value(_FakeResponse_2<dynamic>(
           this,
           Invocation.method(
             #download,
@@ -427,5 +791,5 @@ class MockHttpClient extends _i1.Mock implements _i2.HttpClient {
             ],
           ),
         )),
-      ) as _i6.Future<_i4.Response<dynamic>>);
+      ) as _i5.Future<_i4.Response<dynamic>>);
 }

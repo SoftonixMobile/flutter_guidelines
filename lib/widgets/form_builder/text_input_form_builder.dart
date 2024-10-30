@@ -32,7 +32,7 @@ class TextInputFormBuilder extends StatefulWidget {
 }
 
 class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
-  late TextEditingController _controller;
+  late final TextEditingController _controller;
 
   @override
   void initState() {
