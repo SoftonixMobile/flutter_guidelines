@@ -17,7 +17,7 @@ void main() {
 
   final mockPostRepository = MockPostsRepository();
 
-  late PostsBloc postsBloc;
+  late final PostsBloc postsBloc;
 
   group('Post bloc tests', () {
     /// Creating bloc forEach test

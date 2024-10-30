@@ -13,8 +13,8 @@ import 'token_storage.dart';
 
 @Singleton(scope: 'auth')
 class HttpClient {
-  late Dio _dio;
-  late Fresh<String> _fresh;
+  late final Dio _dio;
+  late final Fresh<String> _fresh;
   final _parser = JsonDataParser();
 
   HttpClient() {
