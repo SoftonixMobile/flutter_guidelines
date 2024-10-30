@@ -1,3 +1,9 @@
+# 0.8.0
+
+- Use context.tr().
+- Rename models.dart to specific model names (example: user.dart).
+- Update deps.
+
 # 0.7.0
 
 - Add JsonDataParser to HttpClient.
