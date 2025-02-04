@@ -1,3 +1,8 @@
+# 0.9.0
+
+- Update app icon/splash configuration.
+- Update deps.
+
 # 0.8.0
 
 - Use context.tr().
