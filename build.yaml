@@ -23,7 +23,7 @@ targets:
         generate_for:
           include:
             - lib/router/router.dart
-            - lib/screens/**.dart
+            - lib/screens/**
       flutter_gen_runner:
         enabled: true
       injectable_generator:injectable_builder:

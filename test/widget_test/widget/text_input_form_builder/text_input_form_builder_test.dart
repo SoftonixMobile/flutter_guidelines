@@ -14,6 +14,7 @@ Future<void> main() async {
       final bloc = TextFieldBloc(
         required: true,
         rules: {ValidationType.onChange},
+        // Will be changed later
         // ignore: deprecated_member_use
         customValidators: {FieldBlocValidators.passwordMin6Chars},
       );

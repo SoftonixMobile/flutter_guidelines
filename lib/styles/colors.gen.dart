@@ -24,19 +24,16 @@ class ColorName {
   ///   700: #FF0C73FB
   ///   800: #FF0A69FB
   ///   900: #FF0556FA
-  static const MaterialColor primary = MaterialColor(
-    0xFF1186FC,
-    <int, Color>{
-      50: Color(0xFFE2F0FF),
-      100: Color(0xFFB8DBFE),
-      200: Color(0xFF88C3FE),
-      300: Color(0xFF58AAFD),
-      400: Color(0xFF3598FC),
-      500: Color(0xFF1186FC),
-      600: Color(0xFF0F7EFC),
-      700: Color(0xFF0C73FB),
-      800: Color(0xFF0A69FB),
-      900: Color(0xFF0556FA),
-    },
-  );
+  static const MaterialColor primary = MaterialColor(0xFF1186FC, <int, Color>{
+    50: Color(0xFFE2F0FF),
+    100: Color(0xFFB8DBFE),
+    200: Color(0xFF88C3FE),
+    300: Color(0xFF58AAFD),
+    400: Color(0xFF3598FC),
+    500: Color(0xFF1186FC),
+    600: Color(0xFF0F7EFC),
+    700: Color(0xFF0C73FB),
+    800: Color(0xFF0A69FB),
+    900: Color(0xFF0556FA),
+  });
 }
