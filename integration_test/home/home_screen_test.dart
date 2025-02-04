@@ -8,7 +8,7 @@ import '../helpers/test_helper.dart';
 
 void main() {
   group('Home screen test', () {
-    setUp(() => TestHelper.initApp());
+    setUp(TestHelper.initApp);
 
     patrolTest(
       'Home screen dashboard tab is opened initially',

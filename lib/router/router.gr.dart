@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -32,10 +33,7 @@ import 'package:flutter_guidelines/screens/login/login_screen.dart' as _i7;
 /// [_i1.AuthScreen]
 class AuthRoute extends _i11.PageRouteInfo<void> {
   const AuthRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          AuthRoute.name,
-          initialChildren: children,
-        );
+    : super(AuthRoute.name, initialChildren: children);
 
   static const String name = 'AuthRoute';
 
@@ -55,13 +53,10 @@ class ChatDetailsRoute extends _i11.PageRouteInfo<ChatDetailsRouteArgs> {
     required _i13.Chat chat,
     List<_i11.PageRouteInfo>? children,
   }) : super(
-          ChatDetailsRoute.name,
-          args: ChatDetailsRouteArgs(
-            key: key,
-            chat: chat,
-          ),
-          initialChildren: children,
-        );
+         ChatDetailsRoute.name,
+         args: ChatDetailsRouteArgs(key: key, chat: chat),
+         initialChildren: children,
+       );
 
   static const String name = 'ChatDetailsRoute';
 
@@ -69,19 +64,13 @@ class ChatDetailsRoute extends _i11.PageRouteInfo<ChatDetailsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<ChatDetailsRouteArgs>();
-      return _i2.ChatDetailsScreen(
-        key: args.key,
-        chat: args.chat,
-      );
+      return _i2.ChatDetailsScreen(key: args.key, chat: args.chat);
     },
   );
 }
 
 class ChatDetailsRouteArgs {
-  const ChatDetailsRouteArgs({
-    this.key,
-    required this.chat,
-  });
+  const ChatDetailsRouteArgs({this.key, required this.chat});
 
   final _i12.Key? key;
 
@@ -97,10 +86,7 @@ class ChatDetailsRouteArgs {
 /// [_i3.ChatsScreen]
 class ChatsRoute extends _i11.PageRouteInfo<void> {
   const ChatsRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          ChatsRoute.name,
-          initialChildren: children,
-        );
+    : super(ChatsRoute.name, initialChildren: children);
 
   static const String name = 'ChatsRoute';
 
@@ -116,10 +102,7 @@ class ChatsRoute extends _i11.PageRouteInfo<void> {
 /// [_i4.DashboardScreen]
 class DashboardRoute extends _i11.PageRouteInfo<void> {
   const DashboardRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          DashboardRoute.name,
-          initialChildren: children,
-        );
+    : super(DashboardRoute.name, initialChildren: children);
 
   static const String name = 'DashboardRoute';
 
@@ -135,10 +118,7 @@ class DashboardRoute extends _i11.PageRouteInfo<void> {
 /// [_i5.HomeScreen]
 class HomeRoute extends _i11.PageRouteInfo<void> {
   const HomeRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
+    : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
@@ -154,10 +134,7 @@ class HomeRoute extends _i11.PageRouteInfo<void> {
 /// [_i6.HomeWrapperScreen]
 class HomeRouter extends _i11.PageRouteInfo<void> {
   const HomeRouter({List<_i11.PageRouteInfo>? children})
-      : super(
-          HomeRouter.name,
-          initialChildren: children,
-        );
+    : super(HomeRouter.name, initialChildren: children);
 
   static const String name = 'HomeRouter';
 
@@ -173,10 +150,7 @@ class HomeRouter extends _i11.PageRouteInfo<void> {
 /// [_i7.LoginScreen]
 class LoginRoute extends _i11.PageRouteInfo<void> {
   const LoginRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          LoginRoute.name,
-          initialChildren: children,
-        );
+    : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
@@ -192,10 +166,7 @@ class LoginRoute extends _i11.PageRouteInfo<void> {
 /// [_i8.MessagesScreen]
 class MessagesRoute extends _i11.PageRouteInfo<void> {
   const MessagesRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          MessagesRoute.name,
-          initialChildren: children,
-        );
+    : super(MessagesRoute.name, initialChildren: children);
 
   static const String name = 'MessagesRoute';
 
@@ -211,10 +182,7 @@ class MessagesRoute extends _i11.PageRouteInfo<void> {
 /// [_i9.PostsScreen]
 class PostsRoute extends _i11.PageRouteInfo<void> {
   const PostsRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          PostsRoute.name,
-          initialChildren: children,
-        );
+    : super(PostsRoute.name, initialChildren: children);
 
   static const String name = 'PostsRoute';
 
@@ -230,10 +198,7 @@ class PostsRoute extends _i11.PageRouteInfo<void> {
 /// [_i10.SettingsScreen]
 class SettingsRoute extends _i11.PageRouteInfo<void> {
   const SettingsRoute({List<_i11.PageRouteInfo>? children})
-      : super(
-          SettingsRoute.name,
-          initialChildren: children,
-        );
+    : super(SettingsRoute.name, initialChildren: children);
 
   static const String name = 'SettingsRoute';
 

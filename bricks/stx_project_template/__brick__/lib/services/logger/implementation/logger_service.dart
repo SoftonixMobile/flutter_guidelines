@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_constructors_over_static_methods
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';

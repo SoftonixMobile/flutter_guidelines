@@ -7,7 +7,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=3.4.0 <4.0.0"
-  flutter: ">=3.22.0"
+  flutter: ">=3.27.0"
 
 dependencies:
   flutter:
@@ -17,26 +17,26 @@ dependencies:
     sdk: flutter
 
   #splash screen
-  flutter_native_splash: ^2.4.2
+  flutter_native_splash: ^2.4.4
 
   #softonix core packages
-  stx_bloc_base: ^0.5.1
-  stx_flutter_form_bloc: ^2.3.0
+  stx_bloc_base: ^0.6.0
+  stx_flutter_form_bloc: ^3.0.0
 
   #state management
   provider: ^6.1.2
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.0.0
 
   #dependency injection
-  get_it: ^8.0.2
+  get_it: ^8.0.3
   injectable: ^2.5.0
 
   #routing
-  auto_route: ^9.2.2
+  auto_route: ^9.3.0
 
   #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
   #Request Cancellation, File downloading, Timeout etc.
-  dio: ^5.7.0
+  dio: ^5.8.0+1
   fresh_dio: ^0.4.2
   dio_smart_retry: ^7.0.1
 
@@ -52,11 +52,11 @@ dependencies:
   darq: ^2.0.0
 
   #local storage
-  shared_preferences: ^2.3.2
-  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.5.1
+  flutter_secure_storage: ^9.2.4
 
   #icons
-  font_awesome_flutter: ^10.7.0
+  font_awesome_flutter: ^10.8.0
   cupertino_icons: ^1.0.8
 
   #widgets
@@ -72,29 +72,35 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  patrol: ^3.11.2
-  patrol_finders: ^2.1.3
-  mockito: ^5.4.4
-  bloc_test: ^9.1.7
+  patrol: ^3.14.0
+  patrol_finders: ^2.7.0
+  mockito: ^5.4.5
+  bloc_test: ^10.0.0
 
   #builders
-  build_runner: ^2.4.13
+  build_runner: ^2.4.14
   flutter_gen_runner: ^5.8.0
-  auto_route_generator: ^9.0.0
-  injectable_generator: ^2.6.2
-  json_serializable: ^6.8.0
-  freezed: ^2.5.7
+  auto_route_generator: ^9.3.1
+  injectable_generator: ^2.7.0
+  json_serializable: ^6.9.3
+  freezed: ^2.5.8
 
   #lints
   flutter_lints: ^5.0.0
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0
 
   #other
   import_sorter: ^4.6.0
-  flutter_launcher_icons: ^0.14.1
+  flutter_launcher_icons: ^0.14.3
 
 dependency_overrides:
-  collection: ^1.19.0
+  flutter_gen_core:
+    git:
+      url: https://github.com/FlutterGen/flutter_gen.git
+      path: packages/core/
+  intl: ^0.20.2
+  test: ^1.25.14
+  test_api: ^0.7.4
 
 flutter:
   uses-material-design: true
@@ -122,7 +128,7 @@ flutter_gen:
 
   integrations:
     flutter_svg: true
-    flare_flutter: true
+    lottie: true
     rive: true
 
   assets:
@@ -149,15 +155,24 @@ import_sorter:
     - \.mocks\.dart$
 
 flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/logo-short.png
+  web: false
+  color: "#000000"
+  image: assets/images/config/splash.png
+  branding: assets/images/config/branding.png
+  branding_mode: bottom
+  branding_bottom_padding: 40
+  android_12:
+    color: "#000000"
+    image: assets/images/config/splash.png
+    branding: assets/images/config/branding.png
 
 flutter_launcher_icons:
   ios: true
   android: true
   remove_alpha_ios: true
+  image_path: "assets/images/config/app-icon.png"
   adaptive_icon_background: "#000000"
-  image_path: "assets/images/app_icon.png"
+  adaptive_icon_foreground: "assets/images/config/app-icon.png"
 
 patrol:
   app_name: FlutterGuidelines
