@@ -149,15 +149,24 @@ import_sorter:
     - \.mocks\.dart$
 
 flutter_native_splash:
-  color: "#ffffff"
-  image: assets/images/logo-short.png
+  web: false
+  color: "#000000"
+  image: assets/images/config/splash.png
+  branding: assets/images/config/branding.png
+  branding_mode: bottom
+  branding_bottom_padding: 40
+  android_12:
+    color: "#000000"
+    image: assets/images/config/splash.png
+    branding: assets/images/config/branding.png
 
 flutter_launcher_icons:
   ios: true
   android: true
   remove_alpha_ios: true
+  image_path: "assets/images/config/app-icon.png"
   adaptive_icon_background: "#000000"
-  image_path: "assets/images/app_icon.png"
+  adaptive_icon_foreground: "assets/images/config/app-icon.png"
 
 patrol:
   app_name: FlutterGuidelines
