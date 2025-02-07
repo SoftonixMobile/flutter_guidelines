@@ -1,3 +1,7 @@
+# 0.10.0
+
+- Update mason deps.
+
 # 0.9.0
 
 - Update app icon/splash configuration.
