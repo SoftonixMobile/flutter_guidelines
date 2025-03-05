@@ -17,7 +17,7 @@ dependencies:
     sdk: flutter
 
   #splash screen
-  flutter_native_splash: ^2.4.4
+  flutter_native_splash: ^2.4.5
 
   #softonix core packages
   stx_bloc_base: ^0.6.0
@@ -25,7 +25,7 @@ dependencies:
 
   #state management
   provider: ^6.1.2
-  flutter_bloc: ^9.0.0
+  flutter_bloc: ^9.1.0
 
   #dependency injection
   get_it: ^8.0.3
@@ -37,7 +37,7 @@ dependencies:
   #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
   #Request Cancellation, File downloading, Timeout etc.
   dio: ^5.8.0+1
-  fresh_dio: ^0.4.2
+  fresh_dio: ^0.4.3
   dio_smart_retry: ^7.0.1
 
   #code generator for unions/pattern-matching/copy.
@@ -52,7 +52,7 @@ dependencies:
   darq: ^2.0.0
 
   #local storage
-  shared_preferences: ^2.5.1
+  shared_preferences: ^2.5.2
   flutter_secure_storage: ^9.2.4
 
   #icons
@@ -75,17 +75,17 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  patrol: ^3.14.0
+  patrol: ^3.14.1
   patrol_finders: ^2.7.0
   mockito: ^5.4.5
   bloc_test: ^10.0.0
 
   #builders
-  build_runner: ^2.4.14
-  flutter_gen_runner: ^5.8.0
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.10.0
   auto_route_generator: ^9.3.1
   injectable_generator: ^2.7.0
-  json_serializable: ^6.9.3
+  json_serializable: ^6.9.4
   freezed: ^2.5.8
 
   #lints

@@ -12,49 +12,43 @@ part of 'chats_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ChatsEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-  }) =>
+  TResult when<TResult extends Object?>({required TResult Function() load}) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-  }) =>
+  TResult? whenOrNull<TResult extends Object?>({TResult? Function()? load}) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ChatsEventCopyWith<$Res> {
   factory $ChatsEventCopyWith(
-          ChatsEvent value, $Res Function(ChatsEvent) then) =
-      _$ChatsEventCopyWithImpl<$Res, ChatsEvent>;
+    ChatsEvent value,
+    $Res Function(ChatsEvent) then,
+  ) = _$ChatsEventCopyWithImpl<$Res, ChatsEvent>;
 }
 
 /// @nodoc
@@ -74,8 +68,9 @@ class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
 /// @nodoc
 abstract class _$$LoadImplCopyWith<$Res> {
   factory _$$LoadImplCopyWith(
-          _$LoadImpl value, $Res Function(_$LoadImpl) then) =
-      __$$LoadImplCopyWithImpl<$Res>;
+    _$LoadImpl value,
+    $Res Function(_$LoadImpl) then,
+  ) = __$$LoadImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -83,7 +78,7 @@ class __$$LoadImplCopyWithImpl<$Res>
     extends _$ChatsEventCopyWithImpl<$Res, _$LoadImpl>
     implements _$$LoadImplCopyWith<$Res> {
   __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of ChatsEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -110,17 +105,13 @@ class _$LoadImpl implements _Load {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-  }) {
+  TResult when<TResult extends Object?>({required TResult Function() load}) {
     return load();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-  }) {
+  TResult? whenOrNull<TResult extends Object?>({TResult? Function()? load}) {
     return load?.call();
   }
 
@@ -185,8 +176,9 @@ mixin _$ChatsState {
 /// @nodoc
 abstract class $ChatsStateCopyWith<$Res> {
   factory $ChatsStateCopyWith(
-          ChatsState value, $Res Function(ChatsState) then) =
-      _$ChatsStateCopyWithImpl<$Res, ChatsState>;
+    ChatsState value,
+    $Res Function(ChatsState) then,
+  ) = _$ChatsStateCopyWithImpl<$Res, ChatsState>;
   @useResult
   $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
 }
@@ -210,20 +202,26 @@ class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
     Object? chats = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as NetworkStatus,
-      chats: null == chats
-          ? _value.chats
-          : chats // ignore: cast_nullable_to_non_nullable
-              as List<Chat>,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            status:
+                null == status
+                    ? _value.status
+                    : status // ignore: cast_nullable_to_non_nullable
+                        as NetworkStatus,
+            chats:
+                null == chats
+                    ? _value.chats
+                    : chats // ignore: cast_nullable_to_non_nullable
+                        as List<Chat>,
+            errorMessage:
+                freezed == errorMessage
+                    ? _value.errorMessage
+                    : errorMessage // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -231,8 +229,9 @@ class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
 abstract class _$$ChatsStateImplCopyWith<$Res>
     implements $ChatsStateCopyWith<$Res> {
   factory _$$ChatsStateImplCopyWith(
-          _$ChatsStateImpl value, $Res Function(_$ChatsStateImpl) then) =
-      __$$ChatsStateImplCopyWithImpl<$Res>;
+    _$ChatsStateImpl value,
+    $Res Function(_$ChatsStateImpl) then,
+  ) = __$$ChatsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
@@ -243,8 +242,9 @@ class __$$ChatsStateImplCopyWithImpl<$Res>
     extends _$ChatsStateCopyWithImpl<$Res, _$ChatsStateImpl>
     implements _$$ChatsStateImplCopyWith<$Res> {
   __$$ChatsStateImplCopyWithImpl(
-      _$ChatsStateImpl _value, $Res Function(_$ChatsStateImpl) _then)
-      : super(_value, _then);
+    _$ChatsStateImpl _value,
+    $Res Function(_$ChatsStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ChatsState
   /// with the given fields replaced by the non-null parameter values.
@@ -255,31 +255,36 @@ class __$$ChatsStateImplCopyWithImpl<$Res>
     Object? chats = null,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$ChatsStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as NetworkStatus,
-      chats: null == chats
-          ? _value._chats
-          : chats // ignore: cast_nullable_to_non_nullable
-              as List<Chat>,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$ChatsStateImpl(
+        status:
+            null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                    as NetworkStatus,
+        chats:
+            null == chats
+                ? _value._chats
+                : chats // ignore: cast_nullable_to_non_nullable
+                    as List<Chat>,
+        errorMessage:
+            freezed == errorMessage
+                ? _value.errorMessage
+                : errorMessage // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ChatsStateImpl implements _ChatsState {
-  const _$ChatsStateImpl(
-      {this.status = NetworkStatus.loading,
-      final List<Chat> chats = const [],
-      this.errorMessage})
-      : _chats = chats;
+  const _$ChatsStateImpl({
+    this.status = NetworkStatus.loading,
+    final List<Chat> chats = const [],
+    this.errorMessage,
+  }) : _chats = chats;
 
   @override
   @JsonKey()
@@ -313,8 +318,12 @@ class _$ChatsStateImpl implements _ChatsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_chats), errorMessage);
+  int get hashCode => Object.hash(
+    runtimeType,
+    status,
+    const DeepCollectionEquality().hash(_chats),
+    errorMessage,
+  );
 
   /// Create a copy of ChatsState
   /// with the given fields replaced by the non-null parameter values.
@@ -326,10 +335,11 @@ class _$ChatsStateImpl implements _ChatsState {
 }
 
 abstract class _ChatsState implements ChatsState {
-  const factory _ChatsState(
-      {final NetworkStatus status,
-      final List<Chat> chats,
-      final String? errorMessage}) = _$ChatsStateImpl;
+  const factory _ChatsState({
+    final NetworkStatus status,
+    final List<Chat> chats,
+    final String? errorMessage,
+  }) = _$ChatsStateImpl;
 
   @override
   NetworkStatus get status;
