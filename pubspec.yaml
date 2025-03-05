@@ -65,6 +65,9 @@ dependencies:
   extended_nested_scroll_view: ^6.2.1
 
   #other
+  upgrader: ^11.3.1
+  customizable_cupertino_dialog:
+    path: packages/customizable_cupertino_dialog
 
 dev_dependencies:
   #testing
