@@ -12,7 +12,8 @@ part of 'chat.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Chat _$ChatFromJson(Map<String, dynamic> json) {
   return _Chat.fromJson(json);
@@ -54,28 +55,31 @@ class _$ChatCopyWithImpl<$Res, $Val extends Chat>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? id = null, Object? name = null}) {
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$ChatImplCopyWith<$Res> implements $ChatCopyWith<$Res> {
   factory _$$ChatImplCopyWith(
-          _$ChatImpl value, $Res Function(_$ChatImpl) then) =
-      __$$ChatImplCopyWithImpl<$Res>;
+    _$ChatImpl value,
+    $Res Function(_$ChatImpl) then,
+  ) = __$$ChatImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, String name});
@@ -86,26 +90,27 @@ class __$$ChatImplCopyWithImpl<$Res>
     extends _$ChatCopyWithImpl<$Res, _$ChatImpl>
     implements _$$ChatImplCopyWith<$Res> {
   __$$ChatImplCopyWithImpl(_$ChatImpl _value, $Res Function(_$ChatImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Chat
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-  }) {
-    return _then(_$ChatImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? id = null, Object? name = null}) {
+    return _then(
+      _$ChatImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -152,9 +157,7 @@ class _$ChatImpl implements _Chat {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ChatImplToJson(
-      this,
-    );
+    return _$$ChatImplToJson(this);
   }
 }
 

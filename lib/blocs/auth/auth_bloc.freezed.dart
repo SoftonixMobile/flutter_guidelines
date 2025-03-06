@@ -12,7 +12,8 @@ part of 'auth_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AuthEvent {
@@ -20,43 +21,37 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(AuthStatus status) authenticationStatusChanged,
     required TResult Function() signOut,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AuthStatus status)? authenticationStatusChanged,
     TResult? Function()? signOut,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AuthStatus status)? authenticationStatusChanged,
     TResult Function()? signOut,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     required TResult Function(_SignOut value) signOut,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult? Function(_SignOut value)? signOut,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -82,9 +77,9 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 /// @nodoc
 abstract class _$$AuthenticationStatusChangedImplCopyWith<$Res> {
   factory _$$AuthenticationStatusChangedImplCopyWith(
-          _$AuthenticationStatusChangedImpl value,
-          $Res Function(_$AuthenticationStatusChangedImpl) then) =
-      __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>;
+    _$AuthenticationStatusChangedImpl value,
+    $Res Function(_$AuthenticationStatusChangedImpl) then,
+  ) = __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthStatus status});
 }
@@ -94,23 +89,23 @@ class __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$AuthenticationStatusChangedImpl>
     implements _$$AuthenticationStatusChangedImplCopyWith<$Res> {
   __$$AuthenticationStatusChangedImplCopyWithImpl(
-      _$AuthenticationStatusChangedImpl _value,
-      $Res Function(_$AuthenticationStatusChangedImpl) _then)
-      : super(_value, _then);
+    _$AuthenticationStatusChangedImpl _value,
+    $Res Function(_$AuthenticationStatusChangedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-  }) {
-    return _then(_$AuthenticationStatusChangedImpl(
-      null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-    ));
+  $Res call({Object? status = null}) {
+    return _then(
+      _$AuthenticationStatusChangedImpl(
+        null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                as AuthStatus,
+      ),
+    );
   }
 }
 
@@ -145,8 +140,9 @@ class _$AuthenticationStatusChangedImpl
   @override
   @pragma('vm:prefer-inline')
   _$$AuthenticationStatusChangedImplCopyWith<_$AuthenticationStatusChangedImpl>
-      get copyWith => __$$AuthenticationStatusChangedImplCopyWithImpl<
-          _$AuthenticationStatusChangedImpl>(this, _$identity);
+  get copyWith => __$$AuthenticationStatusChangedImplCopyWithImpl<
+    _$AuthenticationStatusChangedImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -183,7 +179,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     required TResult Function(_SignOut value) signOut,
   }) {
     return authenticationStatusChanged(this);
@@ -193,7 +189,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult? Function(_SignOut value)? signOut,
   }) {
     return authenticationStatusChanged?.call(this);
@@ -203,7 +199,7 @@ class _$AuthenticationStatusChangedImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
@@ -224,14 +220,15 @@ abstract class _AuthenticationStatusChanged implements AuthEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthenticationStatusChangedImplCopyWith<_$AuthenticationStatusChangedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SignOutImplCopyWith<$Res> {
   factory _$$SignOutImplCopyWith(
-          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
-      __$$SignOutImplCopyWithImpl<$Res>;
+    _$SignOutImpl value,
+    $Res Function(_$SignOutImpl) then,
+  ) = __$$SignOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -239,8 +236,9 @@ class __$$SignOutImplCopyWithImpl<$Res>
     extends _$AuthEventCopyWithImpl<$Res, _$SignOutImpl>
     implements _$$SignOutImplCopyWith<$Res> {
   __$$SignOutImplCopyWithImpl(
-      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
-      : super(_value, _then);
+    _$SignOutImpl _value,
+    $Res Function(_$SignOutImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -300,7 +298,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     required TResult Function(_SignOut value) signOut,
   }) {
     return signOut(this);
@@ -310,7 +308,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult? Function(_SignOut value)? signOut,
   }) {
     return signOut?.call(this);
@@ -320,7 +318,7 @@ class _$SignOutImpl implements _SignOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
+    authenticationStatusChanged,
     TResult Function(_SignOut value)? signOut,
     required TResult orElse(),
   }) {
@@ -371,20 +369,22 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? userProfile = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-    ) as $Val);
+  $Res call({Object? status = null, Object? userProfile = null}) {
+    return _then(
+      _value.copyWith(
+            status:
+                null == status
+                    ? _value.status
+                    : status // ignore: cast_nullable_to_non_nullable
+                        as AuthStatus,
+            userProfile:
+                null == userProfile
+                    ? _value.userProfile
+                    : userProfile // ignore: cast_nullable_to_non_nullable
+                        as UserProfile,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of AuthState
@@ -402,8 +402,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
 abstract class _$$AuthStateImplCopyWith<$Res>
     implements $AuthStateCopyWith<$Res> {
   factory _$$AuthStateImplCopyWith(
-          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
-      __$$AuthStateImplCopyWithImpl<$Res>;
+    _$AuthStateImpl value,
+    $Res Function(_$AuthStateImpl) then,
+  ) = __$$AuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AuthStatus status, UserProfile userProfile});
@@ -417,36 +418,39 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
     implements _$$AuthStateImplCopyWith<$Res> {
   __$$AuthStateImplCopyWithImpl(
-      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
-      : super(_value, _then);
+    _$AuthStateImpl _value,
+    $Res Function(_$AuthStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? status = null,
-    Object? userProfile = null,
-  }) {
-    return _then(_$AuthStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-    ));
+  $Res call({Object? status = null, Object? userProfile = null}) {
+    return _then(
+      _$AuthStateImpl(
+        status:
+            null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                    as AuthStatus,
+        userProfile:
+            null == userProfile
+                ? _value.userProfile
+                : userProfile // ignore: cast_nullable_to_non_nullable
+                    as UserProfile,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl(
-      {this.status = AuthStatus.initial,
-      this.userProfile = const UserProfile()});
+  const _$AuthStateImpl({
+    this.status = AuthStatus.initial,
+    this.userProfile = const UserProfile(),
+  });
 
   @override
   @JsonKey()
@@ -483,9 +487,10 @@ class _$AuthStateImpl implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState(
-      {final AuthStatus status,
-      final UserProfile userProfile}) = _$AuthStateImpl;
+  const factory _AuthState({
+    final AuthStatus status,
+    final UserProfile userProfile,
+  }) = _$AuthStateImpl;
 
   @override
   AuthStatus get status;
