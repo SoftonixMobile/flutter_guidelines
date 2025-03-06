@@ -7,7 +7,8 @@ import 'package:upgrader/upgrader.dart';
 
 import 'app_upgrade_alert.dart';
 
-/// Dialog to notify user if new version of app is exist
+/// Dialog that prompts the user to update the app
+///  when a new version is available.
 class AppUpgraderDialog extends StatelessWidget {
   const AppUpgraderDialog({super.key, required this.navigatorKey, this.child});
 
