@@ -9,12 +9,17 @@ void main(List<String> args) async {
     ..deleteSync(recursive: true)
     ..createSync();
 
-  copyDirectory(Directory('.vscode'), brickDirectory);
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
   copyDirectory(Directory('packages'), brickDirectory);
   copyDirectory(Directory('resources'), brickDirectory);
   copyDirectory(Directory('scripts'), brickDirectory);
+
+  copyFileWithDirectory(
+    File('.vscode/launch.json'),
+    '$brickPath/.vscode',
+    'launch.json',
+  );
 
   copyFile(File('.env.dev'), '$brickPath/.env.dev', convert: true);
   copyFile(File('.env.prod'), '$brickPath/.env.prod', convert: true);
