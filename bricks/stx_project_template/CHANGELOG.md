@@ -1,3 +1,9 @@
+# 0.11.0
+
+- Add UpgraderDialog.
+- Update commands.
+- Update deps.
+
 # 0.10.0
 
 - Update mason deps.
