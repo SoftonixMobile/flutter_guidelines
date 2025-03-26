@@ -16,8 +16,9 @@
 #uncomment in a real project
 #*.env
 
-#flutter version managers
+# FVM Version Cache
 .fvm/
+.fvmrc
 
 # IntelliJ related
 *.iml

@@ -1,4 +1,4 @@
-.PHONY: get build watch lang sort fix lint commit splash icon setup_hooks
+.PHONY: get build watch lang sort fix format lint refactor splash icon setup_hooks
 
 get:
 	dart pub get
@@ -19,13 +19,20 @@ sort:
 fix:
 	dart fix --apply
 
+format:
+	dart format .
+
 lint:
 	flutter analyze .
 	# flutter analyze --no-fatal-infos | grep -E "error •|warning •" || true
 
-commit:
-	make sort
+refactor:
+	make get
+	make build
+	make lang
 	make fix
+	# make format
+	make sort
 	make lint
 
 splash:

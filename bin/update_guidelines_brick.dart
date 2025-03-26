@@ -12,6 +12,7 @@ void main(List<String> args) async {
   copyDirectory(Directory('.vscode'), brickDirectory);
   copyDirectory(Directory('assets'), brickDirectory);
   copyDirectory(Directory('lib'), brickDirectory, convert: true);
+  copyDirectory(Directory('packages'), brickDirectory);
   copyDirectory(Directory('resources'), brickDirectory);
   copyDirectory(Directory('scripts'), brickDirectory);
 
