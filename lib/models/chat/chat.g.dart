@@ -7,9 +7,12 @@ part of 'chat.dart';
 // **************************************************************************
 
 _$ChatImpl _$$ChatImplFromJson(Map<String, dynamic> json) => _$ChatImpl(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  name: json['name'] as String? ?? '',
-);
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: json['name'] as String? ?? '',
+    );
 
 Map<String, dynamic> _$$ChatImplToJson(_$ChatImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'name': instance.name};
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+    };

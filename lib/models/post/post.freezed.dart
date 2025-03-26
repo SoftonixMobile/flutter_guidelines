@@ -12,8 +12,7 @@ part of 'post.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Post _$PostFromJson(Map<String, dynamic> json) {
   return _Post.fromJson(json);
@@ -56,31 +55,28 @@ class _$PostCopyWithImpl<$Res, $Val extends Post>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _value.copyWith(
-            id:
-                null == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int,
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-          )
-          as $Val,
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$PostImplCopyWith<$Res> implements $PostCopyWith<$Res> {
   factory _$$PostImplCopyWith(
-    _$PostImpl value,
-    $Res Function(_$PostImpl) then,
-  ) = __$$PostImplCopyWithImpl<$Res>;
+          _$PostImpl value, $Res Function(_$PostImpl) then) =
+      __$$PostImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int id, @JsonKey(name: 'title') String name});
@@ -91,27 +87,26 @@ class __$$PostImplCopyWithImpl<$Res>
     extends _$PostCopyWithImpl<$Res, _$PostImpl>
     implements _$$PostImplCopyWith<$Res> {
   __$$PostImplCopyWithImpl(_$PostImpl _value, $Res Function(_$PostImpl) _then)
-    : super(_value, _then);
+      : super(_value, _then);
 
   /// Create a copy of Post
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null}) {
-    return _then(
-      _$PostImpl(
-        id:
-            null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-      ),
-    );
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(_$PostImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
   }
 }
 
@@ -158,15 +153,15 @@ class _$PostImpl implements _Post {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PostImplToJson(this);
+    return _$$PostImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _Post implements Post {
-  const factory _Post({
-    final int id,
-    @JsonKey(name: 'title') final String name,
-  }) = _$PostImpl;
+  const factory _Post(
+      {final int id, @JsonKey(name: 'title') final String name}) = _$PostImpl;
 
   factory _Post.fromJson(Map<String, dynamic> json) = _$PostImpl.fromJson;
 

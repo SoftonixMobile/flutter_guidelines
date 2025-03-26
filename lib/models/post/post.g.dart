@@ -7,9 +7,12 @@ part of 'post.dart';
 // **************************************************************************
 
 _$PostImpl _$$PostImplFromJson(Map<String, dynamic> json) => _$PostImpl(
-  id: (json['id'] as num?)?.toInt() ?? 0,
-  name: json['title'] as String? ?? '',
-);
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: json['title'] as String? ?? '',
+    );
 
 Map<String, dynamic> _$$PostImplToJson(_$PostImpl instance) =>
-    <String, dynamic>{'id': instance.id, 'title': instance.name};
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.name,
+    };
