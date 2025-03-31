@@ -7,6 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Docs',
+			favicon: 'favicon.png',
 			social: {
 				github: 'https://github.com/SoftonixMobile',
 			},
