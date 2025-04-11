@@ -1,0 +1,390 @@
+---
+title: Localization
+---
+
+import { TabItem, Tabs } from '@astrojs/starlight/components';
+
+Localization is the process of adapting your application for different languages and regions.
+It goes beyond mere translation; it involves adjusting content, formatting, and functionality to meet cultural expectations.
+For businesses, effective localization is crucial for reaching diverse markets, enhancing user experience, and improving customer satisfaction.
+In this section, we will explore how to implement localization in Flutter and why we chose the `easy_localization` package for our projects.
+
+Flutter provides built-in support for localization through the `flutter_localizations` package.
+While this is a solid option, we opted for `easy_localization` due to its simplicity and flexibility.
+This package streamlines the localization process, making it easier for developers to manage and implement translations.
+
+## Easy Localization Package
+
+The `easy_localization` package offers a straightforward approach to localization in Flutter applications.
+It allows you to easily manage translation files and provides a convenient API for accessing translations.
+
+For detailed documentation and usage instructions, please visit the [easy_localization package page](https://pub.dev/packages/easy_localization).
+
+## Example Usage of Easy Localization
+
+To demonstrate how to use `easy_localization`, we will set up a parent widget that incorporates localization.
+
+### Parent Widget Configuration
+
+Here's an example of how to configure EasyLocalization in your main widget:
+
+```dart title='main.dart'
+Future<void> main() async {
+  // ...
+  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+  // ...
+
+  runApp(
+    EasyLocalization(
+      path: 'resources/langs', // Path to a folder, where the translation files are stored
+      supportedLocales: [Locale('en'), Locale('uk')],
+      fallbackLocale: Locale('en'), // Default locale
+      child: App(),
+    ),
+  );
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      home: HomeScreen(),
+    );
+  }
+}
+```
+
+### Translation Files
+
+The translation files are stored in the `resources/langs` folder by default.
+They are structured as JSON files, where keys correspond to text strings in different languages.
+For example, `en.json` might look like this:
+
+```json title='en.json'
+{
+  "hello": "Hello",
+  "welcome": "Welcome to our app!"
+}
+```
+
+The `easy_localization` package also supports plural, gender, nesting, RTL locales and different file formats, including YAML and CSV.
+Please visit the [easy_localization package page](https://pub.dev/packages/easy_localization) if you want to learn more about these features.
+
+
+### Using Translations in Code
+
+<Tabs>
+  <TabItem label='Good ✅'>
+There are several ways to use translations in your code. Whenever you have access to a BuildContext, we recommend using the context extension method. This approach allows you to easily retrieve translations within widgets and ensures that your widgets automatically rebuild when the locale changes:
+
+  ```dart
+Text(context.tr('key'));
+```
+
+If you need to access translations outside of a widget's build method—for example, in an extension method that returns a translated label—make sure to accept a BuildContext parameter. This ensures that the widget invoking the method will rebuild properly when the locale changes.
+
+```dart title='project_type_extension.dart'
+extension ProjectTypeX on ProjectType {
+  String getLabel(BuildContext context) => switch (this) {
+    ProjectType.mobile: context.tr('mobile'),
+    ProjectType.web: context.tr('web'),
+    _ => context.tr('unknown'),
+  };
+}
+```
+
+```dart title='project_card.dart'
+import 'project_type_extension.dart';
+
+class ProjectCard extends StatelessWidget {
+  // ...
+
+  @override
+  Widget build(BuildContext context) {
+    // ...
+
+    return Card(
+      child: Column(
+        children: [
+          Text(projectType.getLabel(context)),
+          // ...
+        ],
+      ),
+    );
+  }
+}
+```
+
+We strongly recommend generating keys for your translations and using them alongside the approaches mentioned above. The key generation process is explained in the [Generating Localization Files](#generating-localization-files) section.
+
+Once generated, you can use these keys just like runtime keys, but through the LocaleKeys class:
+
+```dart
+Text(context.tr(LocaleKeys.key));
+```
+
+This method minimizes manual work, reduces the risk of errors, and improves code maintainability. It also enables your IDE to provide autocompletion for translation keys, making development faster and more reliable.
+
+Using generated keys with BuildContext is the preferred way to handle translations in your widgets. However, if you need to access translations without a context, refer to the `Bad ❗️` tab for alternative (but less recommended) approaches.
+  </TabItem>
+  <TabItem label='Bad ❗️'>
+The following approaches do **not** require a BuildContext, but they also won't trigger widget rebuilds when the locale changes.
+```dart
+Text('key'.tr());
+const Text('key').tr();
+```
+
+:::note
+You can also access translations and trigger widget rebuilds by explicitly passing the BuildContext to the method. For example:
+```dart
+Text('key'.tr(context: context));
+```
+However, this approach is more verbose and generally less preferred than using the more concise `context.tr()`.
+:::
+
+You can force widgets to rebuild on locale change by explicitly subscribing to the EasyLocalization dependency. However, this approach is not recommended—it's verbose and easy to overlook, as you would need to remember to do it in every widget manually.
+```dart
+// Widget class ...
+
+@override
+Widget build(BuildContext context) {
+  EasyLocalization.of(context);
+
+  // ...
+
+  return Text('key'.tr());
+}
+
+// ...
+```
+
+:::caution
+While the `.tr()` method without a context can be convenient in situations where a BuildContext isn't available or needed, it's important to note that widgets using this approach won't automatically rebuild when the locale changes.
+To ensure your widgets respond to locale updates, prefer using `context.tr()` whenever possible.
+:::
+  </TabItem>
+</Tabs>
+
+### Store & Manage Locale
+
+The `easy_localization` package offers a built-in solution for seamlessly changing and persisting the application's language. Here's how to use it:
+
+#### Set/Get Locale
+
+```dart
+context.setLocale(Locale('en', 'US'));
+
+print(context.locale.toString()); // OUTPUT: en_US
+```
+
+#### Reset Locale
+
+```dart
+context.resetLocale();
+```
+
+#### Get Device Locale
+
+```dart
+print(context.deviceLocale.toString()) // OUTPUT: uk_UA
+```
+
+#### Clear the saved locale from device storage
+
+```dart
+context.deleteSaveLocale();
+```
+
+## Generating Localization Files
+
+In `easy_localization`, there is a built-in localization generator.
+You can read its documentation [here](https://pub.dev/packages/easy_localization#-code-generation).
+
+If you have many localization keys and find it hard to manage them, using key generation can help. It enables your code editor to provide autocompletion for keys, reducing errors and improving productivity.
+
+However, the built-in generator does have some limitations:
+
+### Drawbacks of Built-in Generator
+
+For example, when configuring the localization asset loader, you need to manually define both the `supportedLocales` and the `path`.
+This manual setup can lead to potential issues, such as mismatches or incorrect localization paths.
+
+Here's what a typical setup looks like:
+
+```dart
+import 'generated/codegen_loader.g.dart';
+
+void main() {
+  runApp(
+    EasyLocalization(
+      child: MyApp(),
+      supportedLocales: [Locale('en', 'US'), Locale('fr', 'FR')],
+      path: 'resources/langs',
+      assetLoader: CodegenLoader(),
+    ),
+  );
+}
+```
+
+### Our Solution: stx_easy_localization_generator
+
+To address these issues, we developed our own generator package: [stx_easy_localization_generator](https://pub.dev/packages/stx_easy_localization_generator).
+
+The usage is similar, but this generator automatically generates the `path` and `supportedLocales` in the `CodegenLoader`.
+This allows us to simplify our widget configuration:
+
+```dart
+EasyLocalization(
+  path: CodegenLoader.path,
+  supportedLocales: CodegenLoader.supportedLocales,
+  assetLoader: const CodegenLoader(),
+  child: App(),
+),
+```
+
+### Generating Localization Files with Makefile
+
+To generate localization files in our projects, we have a Makefile in the root directory that includes a lang command.
+
+#### How to Use the Makefile
+
+Simply run the following command in your terminal:
+
+```bash
+make lang
+```
+
+#### What Happens When You Run `make lang`
+
+This command will automatically execute the following:
+
+1. Generate Localization Files:
+```bash
+dart run stx_easy_localization_generator:generate
+```
+
+2. Generate Localization Keys:
+```bash
+dart run stx_easy_localization_generator:generate -f keys -o locale_keys.g.dart
+```
+
+This directory will contain:
+
+- `codegen_loader.g.dart`: The generated localization asset loader
+- `locale_keys.g.dart`: The generated localization keys
+
+### Generated Files
+
+The generated files using our generator by default can be found in the following directory:
+```bash
+lib/localization
+```
+
+Two files will be generated:
+
+`codegen_loader.g.dart`: This file contains the generated localization asset loader, which includes translations for all supported locales. It eliminates the need to load and parse localization files from assets. Additionally, it contains the `supportedLocales` and `path` properties.
+
+`locale_keys.g.dart`: This file contains the generated localization keys.
+
+```dart title='locale_keys.g.dart'
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+abstract class LocaleKeys {
+  static const screenText = 'screenText';
+  static const dashboard = 'dashboard';
+  static const dashboardScreenTitle = 'dashboardScreenTitle';
+  static const messages = 'messages';
+  static const chats = 'chats';
+  static const chatsScreenTitle = 'chatsScreenTitle';
+  static const posts = 'posts';
+  static const postsScreenTitle = 'postsScreenTitle';
+  static const settings = 'settings';
+  static const settingsScreenTitle = 'settingsScreenTitle';
+  static const changePassword = 'changePassword';
+  static const languageName = 'languageName';
+  static const signOut = 'signOut';
+}
+```
+
+You can use these keys in your code like this:
+
+```dart
+Text(LocaleKeys.screenText.tr());
+```
+
+### Parent Widget Configuration with Generation
+
+Now, you can configure EasyLocalization in your app as follows, without manually specifying the `path` and `supportedLocales`. This approach loads your translations directly into the code, eliminating the need for additional translation file parsing:
+
+```dart title='main.dart'
+Future<void> main() async {
+  // ...
+  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+  // ...
+
+  runApp(
+    EasyLocalization(
+      path: CodegenLoader.path,
+      supportedLocales: CodegenLoader.supportedLocales,
+      fallbackLocale: CodegenLoader.supportedLocales.last,
+      assetLoader: const CodegenLoader(),
+      child: App(),
+    ),
+  );
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      home: HomeScreen(),
+    );
+  }
+}
+```
+
+## Easy Localization for Visual Studio Code
+
+To streamline our workflow, we developed a Visual Studio Code extension that enhances the management of localization in Dart/Flutter projects using the `easy_localization` library.
+
+For more information, including installation instructions and detailed documentation, please visit the repository for the [Easy Localization for Visual Studio Code](https://github.com/prflutter/stx-easy-localization).
+
+### Extract Strings
+
+The extension simplifies the process of extracting strings directly from your Dart code. Here's how it works:
+
+- **Automatic Recognition**: The extension automatically identifies strings in your Dart code.
+- **Quick Fixes**: Place the cursor on a string and select **"Extract String"** from the Quick Fixes menu.
+- **Key Name Input**: A dialog will prompt you to enter the key name. A standard key name will be generated, which you can modify as needed.
+- **Localization File Update**: The extracted string will be added to the localization file specified in your configuration as the `defaultLocale`.
+
+### Generate Files
+
+Files will be automatically generated based on the following triggers:
+
+- **Extracting a String**: Automatically generates files when you extract a string from your Dart code.
+- **Saving Loaded Localization Files**: Automatically generates files when you save any of the loaded localization files.
+- **Executing Commands**: You can manually execute the **"Generate Localization Files"** command.
+- **Generate Button**: Clicking the **"Generate"** button in the **"Localizations"** window will also trigger file generation.
+
+### Manage Localizations
+
+The extension provides a dedicated **"Localizations"** window in the explorer, allowing you to:
+
+- **Add New Localizations**: Easily add new localization files.
+- **Set a Default Locale**: Specify which locale should be the default for your project.
+- **Remove Locales**: Manage and remove unnecessary locales from your project.
+
+### Configuration
+
+All settings for the extension are configured via an `easy-localization.json` file located in your project's root directory.
+This allows for easy customization and management. More information about configuration [here](https://github.com/prflutter/stx-easy-localization?tab=readme-ov-file#configuration).

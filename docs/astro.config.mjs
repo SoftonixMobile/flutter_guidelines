@@ -13,12 +13,17 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Project Setup',
+					label: '📦 Project Setup',
 					items: [
-						
 						{ label: 'Create a project', slug: 'project_setup/create_project' },
 					],
 				},
+				{
+					label: '🌐 Internationalization',
+					items: [
+						{ label: 'Localization', slug: 'internationalization/localization' },
+					],
+				}
 			],
 		}),
 	],
