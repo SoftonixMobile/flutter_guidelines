@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart';
-import 'posts_screen_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<PostsBloc>()])
+class MockPostsBloc extends Mock implements PostsBloc {}
 
 void main() {
   patrolWidgetTest(
     'Check successfully displaying list',
     ($) async {
       /// Mock bloc interactions.
-      final bloc = MockPostsBloc();
+      final postsBloc = MockPostsBloc();
       final state = NetworkListState<Post>(
         status: NetworkStatus.success,
         data: List.generate(
@@ -27,13 +25,15 @@ void main() {
         ),
       );
 
-      when(bloc.state).thenAnswer((_) => state);
+      when(() => postsBloc.stream).thenAnswer((_) => Stream.value(state));
+      when(() => postsBloc.state).thenReturn(state);
+      when(postsBloc.close).thenAnswer((_) async {});
 
       /// Get the widget.
       await $.pumpWidget(
         MaterialApp(
           home: BlocProvider<PostsBloc>(
-            create: (_) => bloc,
+            create: (_) => postsBloc,
             child: const Material(child: PostsScreen()),
           ),
         ),
@@ -60,7 +60,9 @@ void main() {
         data: [],
       );
 
-      when(bloc.state).thenAnswer((_) => state);
+      when(() => bloc.stream).thenAnswer((_) => Stream.value(state));
+      when(() => bloc.state).thenReturn(state);
+      when(bloc.close).thenAnswer((_) async {});
 
       /// Get the widget.
       await $.pumpWidget(
@@ -91,7 +93,9 @@ void main() {
         data: [],
       );
 
-      when(bloc.state).thenAnswer((_) => state);
+      when(() => bloc.stream).thenAnswer((_) => Stream.value(state));
+      when(() => bloc.state).thenReturn(state);
+      when(bloc.close).thenAnswer((_) async {});
 
       /// Get the widget.
       await $.pumpWidget(

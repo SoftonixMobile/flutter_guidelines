@@ -30,35 +30,35 @@ class CustomTabsRouter extends StatelessWidget {
           child: ExtendedNestedScrollView(
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) => [
-              SliverAppBar(
-                floating: true,
-                pinned: true,
-                snap: true,
-                title: Text(appBarTitle),
-                elevation: 0,
-                forceElevated: innerBoxIsScrolled,
-                bottom: TabBar(
-                  tabs: _buildTabs(tabs),
-                  onTap: context.tabsRouter.setActiveIndex,
-                  isScrollable: true,
-                  indicatorWeight: 0,
-                  indicatorSize: TabBarIndicatorSize.label,
-                  indicator: MaterialIndicator(
-                    height: 5,
-                    topLeftRadius: 8,
-                    topRightRadius: 8,
-                    color: AppColors.white,
-                  ),
-                  tabAlignment: TabAlignment.center,
-                ),
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.menu),
-                    onPressed: () => RootScaffold.openEndDrawer(context),
+                  SliverAppBar(
+                    floating: true,
+                    pinned: true,
+                    snap: true,
+                    title: Text(appBarTitle),
+                    elevation: 0,
+                    forceElevated: innerBoxIsScrolled,
+                    bottom: TabBar(
+                      tabs: _buildTabs(tabs),
+                      onTap: context.tabsRouter.setActiveIndex,
+                      isScrollable: true,
+                      indicatorWeight: 0,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      indicator: MaterialIndicator(
+                        height: 5,
+                        topLeftRadius: 8,
+                        topRightRadius: 8,
+                        color: AppColors.white,
+                      ),
+                      tabAlignment: TabAlignment.center,
+                    ),
+                    actions: [
+                      IconButton(
+                        icon: const Icon(Icons.menu),
+                        onPressed: () => RootScaffold.openEndDrawer(context),
+                      ),
+                    ],
                   ),
                 ],
-              ),
-            ],
             onlyOneScrollInBody: true,
             body: child,
           ),

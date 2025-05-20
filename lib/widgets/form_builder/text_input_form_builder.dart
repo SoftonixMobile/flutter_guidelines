@@ -48,8 +48,10 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
         if (_controller.text != state.value) {
           final previousSelection = _controller.selection;
 
-          final offset =
-              min(previousSelection.baseOffset, state.toString().length);
+          final offset = min(
+            previousSelection.baseOffset,
+            state.toString().length,
+          );
 
           _controller
             ..text = state.toString()

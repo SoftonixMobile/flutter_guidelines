@@ -4,7 +4,7 @@ part 'chat.freezed.dart';
 part 'chat.g.dart';
 
 @freezed
-class Chat with _$Chat {
+sealed class Chat with _$Chat {
   const factory Chat({
     @Default(0) int id,
     @Default('') String name,

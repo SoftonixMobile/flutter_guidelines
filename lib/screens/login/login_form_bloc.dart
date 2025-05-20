@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/repositories/auth_repository.dart';
 
 @Injectable(scope: 'auth')
@@ -11,12 +10,10 @@ class LoginFormBloc extends FormBloc<String, String> {
   late final TextFieldBloc username;
   late final TextFieldBloc password;
 
-  final AuthBloc authBloc;
-  final AuthRepository repository;
+  final AuthRepository authRepository;
 
   LoginFormBloc({
-    required this.authBloc,
-    required this.repository,
+    required this.authRepository,
   }) : super(customSubmit: false) {
     username = TextFieldBloc(
       required: true,
@@ -39,7 +36,7 @@ class LoginFormBloc extends FormBloc<String, String> {
 
   @override
   FutureOr<void> onSubmit() async {
-    await repository.signIn(username.toString(), password.toString());
+    await authRepository.signIn(username.toString(), password.toString());
 
     emitSuccess('Success');
   }

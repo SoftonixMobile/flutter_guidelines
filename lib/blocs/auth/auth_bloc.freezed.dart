@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,493 +10,282 @@ part of 'auth_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AuthEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AuthStatus status) authenticationStatusChanged,
-    required TResult Function() signOut,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthStatus status)? authenticationStatusChanged,
-    TResult? Function()? signOut,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
-    required TResult Function(_SignOut value) signOut,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult? Function(_SignOut value)? signOut,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AuthEventCopyWith<$Res> {
-  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) then) =
-      _$AuthEventCopyWithImpl<$Res, AuthEvent>;
+class $AuthEventCopyWith<$Res>  {
+$AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
+}
+
+
+/// @nodoc
+
+
+class _AuthenticationStatusChanged implements AuthEvent {
+  const _AuthenticationStatusChanged(this.status);
+  
+
+ final  AuthStatus status;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AuthenticationStatusChangedCopyWith<_AuthenticationStatusChanged> get copyWith => __$AuthenticationStatusChangedCopyWithImpl<_AuthenticationStatusChanged>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthenticationStatusChanged&&(identical(other.status, status) || other.status == status));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status);
+
+@override
+String toString() {
+  return 'AuthEvent.authenticationStatusChanged(status: $status)';
+}
+
+
 }
 
 /// @nodoc
-class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
-    implements $AuthEventCopyWith<$Res> {
-  _$AuthEventCopyWithImpl(this._value, this._then);
+abstract mixin class _$AuthenticationStatusChangedCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory _$AuthenticationStatusChangedCopyWith(_AuthenticationStatusChanged value, $Res Function(_AuthenticationStatusChanged) _then) = __$AuthenticationStatusChangedCopyWithImpl;
+@useResult
+$Res call({
+ AuthStatus status
+});
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
+
+
+}
+/// @nodoc
+class __$AuthenticationStatusChangedCopyWithImpl<$Res>
+    implements _$AuthenticationStatusChangedCopyWith<$Res> {
+  __$AuthenticationStatusChangedCopyWithImpl(this._self, this._then);
+
+  final _AuthenticationStatusChanged _self;
+  final $Res Function(_AuthenticationStatusChanged) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? status = null,}) {
+  return _then(_AuthenticationStatusChanged(
+null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as AuthStatus,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AuthenticationStatusChangedImplCopyWith<$Res> {
-  factory _$$AuthenticationStatusChangedImplCopyWith(
-          _$AuthenticationStatusChangedImpl value,
-          $Res Function(_$AuthenticationStatusChangedImpl) then) =
-      __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AuthStatus status});
-}
 
-/// @nodoc
-class __$$AuthenticationStatusChangedImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$AuthenticationStatusChangedImpl>
-    implements _$$AuthenticationStatusChangedImplCopyWith<$Res> {
-  __$$AuthenticationStatusChangedImplCopyWithImpl(
-      _$AuthenticationStatusChangedImpl _value,
-      $Res Function(_$AuthenticationStatusChangedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-  }) {
-    return _then(_$AuthenticationStatusChangedImpl(
-      null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$AuthenticationStatusChangedImpl
-    implements _AuthenticationStatusChanged {
-  const _$AuthenticationStatusChangedImpl(this.status);
 
-  @override
-  final AuthStatus status;
+class _SignOut implements AuthEvent {
+  const _SignOut();
+  
 
-  @override
-  String toString() {
-    return 'AuthEvent.authenticationStatusChanged(status: $status)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthenticationStatusChangedImpl &&
-            (identical(other.status, status) || other.status == status));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, status);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthenticationStatusChangedImplCopyWith<_$AuthenticationStatusChangedImpl>
-      get copyWith => __$$AuthenticationStatusChangedImplCopyWithImpl<
-          _$AuthenticationStatusChangedImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AuthStatus status) authenticationStatusChanged,
-    required TResult Function() signOut,
-  }) {
-    return authenticationStatusChanged(status);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthStatus status)? authenticationStatusChanged,
-    TResult? Function()? signOut,
-  }) {
-    return authenticationStatusChanged?.call(status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
-    required TResult orElse(),
-  }) {
-    if (authenticationStatusChanged != null) {
-      return authenticationStatusChanged(status);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
-    required TResult Function(_SignOut value) signOut,
-  }) {
-    return authenticationStatusChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult? Function(_SignOut value)? signOut,
-  }) {
-    return authenticationStatusChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
-    required TResult orElse(),
-  }) {
-    if (authenticationStatusChanged != null) {
-      return authenticationStatusChanged(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SignOut);
 }
 
-abstract class _AuthenticationStatusChanged implements AuthEvent {
-  const factory _AuthenticationStatusChanged(final AuthStatus status) =
-      _$AuthenticationStatusChangedImpl;
 
-  AuthStatus get status;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthenticationStatusChangedImplCopyWith<_$AuthenticationStatusChangedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AuthEvent.signOut()';
 }
 
-/// @nodoc
-abstract class _$$SignOutImplCopyWith<$Res> {
-  factory _$$SignOutImplCopyWith(
-          _$SignOutImpl value, $Res Function(_$SignOutImpl) then) =
-      __$$SignOutImplCopyWithImpl<$Res>;
+
 }
 
-/// @nodoc
-class __$$SignOutImplCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$SignOutImpl>
-    implements _$$SignOutImplCopyWith<$Res> {
-  __$$SignOutImplCopyWithImpl(
-      _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
 
-/// @nodoc
-
-class _$SignOutImpl implements _SignOut {
-  const _$SignOutImpl();
-
-  @override
-  String toString() {
-    return 'AuthEvent.signOut()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignOutImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(AuthStatus status) authenticationStatusChanged,
-    required TResult Function() signOut,
-  }) {
-    return signOut();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthStatus status)? authenticationStatusChanged,
-    TResult? Function()? signOut,
-  }) {
-    return signOut?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthStatus status)? authenticationStatusChanged,
-    TResult Function()? signOut,
-    required TResult orElse(),
-  }) {
-    if (signOut != null) {
-      return signOut();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticationStatusChanged value)
-        authenticationStatusChanged,
-    required TResult Function(_SignOut value) signOut,
-  }) {
-    return signOut(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult? Function(_SignOut value)? signOut,
-  }) {
-    return signOut?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticationStatusChanged value)?
-        authenticationStatusChanged,
-    TResult Function(_SignOut value)? signOut,
-    required TResult orElse(),
-  }) {
-    if (signOut != null) {
-      return signOut(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SignOut implements AuthEvent {
-  const factory _SignOut() = _$SignOutImpl;
-}
 
 /// @nodoc
 mixin _$AuthState {
-  AuthStatus get status => throw _privateConstructorUsedError;
-  UserProfile get userProfile => throw _privateConstructorUsedError;
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthStateCopyWith<AuthState> get copyWith =>
-      throw _privateConstructorUsedError;
+ AuthStatus get status; UserProfile get userProfile;
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AuthStateCopyWith<AuthState> get copyWith => _$AuthStateCopyWithImpl<AuthState>(this as AuthState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState&&(identical(other.status, status) || other.status == status)&&(identical(other.userProfile, userProfile) || other.userProfile == userProfile));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,userProfile);
+
+@override
+String toString() {
+  return 'AuthState(status: $status, userProfile: $userProfile)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AuthStateCopyWith<$Res> {
-  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res, AuthState>;
-  @useResult
-  $Res call({AuthStatus status, UserProfile userProfile});
+abstract mixin class $AuthStateCopyWith<$Res>  {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) _then) = _$AuthStateCopyWithImpl;
+@useResult
+$Res call({
+ AuthStatus status, UserProfile userProfile
+});
 
-  $UserProfileCopyWith<$Res> get userProfile;
+
+$UserProfileCopyWith<$Res> get userProfile;
+
 }
-
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+class _$AuthStateCopyWithImpl<$Res>
     implements $AuthStateCopyWith<$Res> {
-  _$AuthStateCopyWithImpl(this._value, this._then);
+  _$AuthStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AuthState _self;
+  final $Res Function(AuthState) _then;
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? userProfile = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-    ) as $Val);
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get userProfile {
-    return $UserProfileCopyWith<$Res>(_value.userProfile, (value) {
-      return _then(_value.copyWith(userProfile: value) as $Val);
-    });
-  }
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? userProfile = null,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as AuthStatus,userProfile: null == userProfile ? _self.userProfile : userProfile // ignore: cast_nullable_to_non_nullable
+as UserProfile,
+  ));
+}
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserProfileCopyWith<$Res> get userProfile {
+  
+  return $UserProfileCopyWith<$Res>(_self.userProfile, (value) {
+    return _then(_self.copyWith(userProfile: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$AuthStateImplCopyWith<$Res>
-    implements $AuthStateCopyWith<$Res> {
-  factory _$$AuthStateImplCopyWith(
-          _$AuthStateImpl value, $Res Function(_$AuthStateImpl) then) =
-      __$$AuthStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AuthStatus status, UserProfile userProfile});
-
-  @override
-  $UserProfileCopyWith<$Res> get userProfile;
-}
-
-/// @nodoc
-class __$$AuthStateImplCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthStateImpl>
-    implements _$$AuthStateImplCopyWith<$Res> {
-  __$$AuthStateImplCopyWithImpl(
-      _$AuthStateImpl _value, $Res Function(_$AuthStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? userProfile = null,
-  }) {
-    return _then(_$AuthStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as AuthStatus,
-      userProfile: null == userProfile
-          ? _value.userProfile
-          : userProfile // ignore: cast_nullable_to_non_nullable
-              as UserProfile,
-    ));
-  }
-}
 
 /// @nodoc
 
-class _$AuthStateImpl implements _AuthState {
-  const _$AuthStateImpl(
-      {this.status = AuthStatus.initial,
-      this.userProfile = const UserProfile()});
 
-  @override
-  @JsonKey()
-  final AuthStatus status;
-  @override
-  @JsonKey()
-  final UserProfile userProfile;
+class _AuthState implements AuthState {
+  const _AuthState({this.status = AuthStatus.initial, this.userProfile = const UserProfile()});
+  
 
-  @override
-  String toString() {
-    return 'AuthState(status: $status, userProfile: $userProfile)';
-  }
+@override@JsonKey() final  AuthStatus status;
+@override@JsonKey() final  UserProfile userProfile;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile));
-  }
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AuthStateCopyWith<_AuthState> get copyWith => __$AuthStateCopyWithImpl<_AuthState>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, status, userProfile);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
-      __$$AuthStateImplCopyWithImpl<_$AuthStateImpl>(this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthState&&(identical(other.status, status) || other.status == status)&&(identical(other.userProfile, userProfile) || other.userProfile == userProfile));
 }
 
-abstract class _AuthState implements AuthState {
-  const factory _AuthState(
-      {final AuthStatus status,
-      final UserProfile userProfile}) = _$AuthStateImpl;
 
-  @override
-  AuthStatus get status;
-  @override
-  UserProfile get userProfile;
+@override
+int get hashCode => Object.hash(runtimeType,status,userProfile);
 
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthStateImplCopyWith<_$AuthStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'AuthState(status: $status, userProfile: $userProfile)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$AuthStateCopyWith(_AuthState value, $Res Function(_AuthState) _then) = __$AuthStateCopyWithImpl;
+@override @useResult
+$Res call({
+ AuthStatus status, UserProfile userProfile
+});
+
+
+@override $UserProfileCopyWith<$Res> get userProfile;
+
+}
+/// @nodoc
+class __$AuthStateCopyWithImpl<$Res>
+    implements _$AuthStateCopyWith<$Res> {
+  __$AuthStateCopyWithImpl(this._self, this._then);
+
+  final _AuthState _self;
+  final $Res Function(_AuthState) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? userProfile = null,}) {
+  return _then(_AuthState(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as AuthStatus,userProfile: null == userProfile ? _self.userProfile : userProfile // ignore: cast_nullable_to_non_nullable
+as UserProfile,
+  ));
+}
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserProfileCopyWith<$Res> get userProfile {
+  
+  return $UserProfileCopyWith<$Res>(_self.userProfile, (value) {
+    return _then(_self.copyWith(userProfile: value));
+  });
+}
+}
+
+// dart format on

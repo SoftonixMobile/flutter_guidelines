@@ -2,32 +2,34 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/screens/login/login_form_bloc.dart';
 import 'package:flutter_guidelines/screens/login/login_screen.dart';
 import 'package:flutter_guidelines/screens/login/widgets/index.dart';
-import 'login_screen_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<LoginFormBloc>()])
+class MockLoginFormBloc extends Mock implements LoginFormBloc {}
+
 void main() {
   patrolWidgetTest(
     'Check widgets',
     ($) async {
       /// Mock bloc interactions.
-      final bloc = MockLoginFormBloc();
+      final formBloc = MockLoginFormBloc();
 
-      when(bloc.username).thenAnswer((_) => TextFieldBloc());
-      when(bloc.password).thenAnswer((_) => TextFieldBloc());
+      when(() => formBloc.stream).thenAnswer((_) => const Stream.empty());
+      when(() => formBloc.state).thenAnswer((_) => FormBlocState());
+      when(() => formBloc.username).thenAnswer((_) => TextFieldBloc());
+      when(() => formBloc.password).thenAnswer((_) => TextFieldBloc());
+      when(formBloc.close).thenAnswer((_) async {});
 
       /// Get the widget.
       await $.pumpWidget(
         MaterialApp(
           home: BlocProvider<LoginFormBloc>(
-            create: (_) => bloc,
+            create: (_) => formBloc,
             child: const LoginScreen(),
           ),
         ),
@@ -50,7 +52,7 @@ void main() {
     'Check errors',
     ($) async {
       /// Mock bloc interactions.
-      final bloc = MockLoginFormBloc();
+      final formBloc = MockLoginFormBloc();
       final username = TextFieldBloc(
         required: true,
         rules: {ValidationType.onBlur},
@@ -64,10 +66,13 @@ void main() {
         rules: {ValidationType.onBlur},
       );
 
-      when(bloc.username).thenAnswer((_) => username);
-      when(bloc.password).thenAnswer((_) => password);
+      when(() => formBloc.stream).thenAnswer((_) => const Stream.empty());
+      when(() => formBloc.state).thenAnswer((_) => FormBlocState());
+      when(() => formBloc.username).thenAnswer((_) => username);
+      when(() => formBloc.password).thenAnswer((_) => password);
+      when(formBloc.close).thenAnswer((_) async {});
 
-      when(bloc.submit()).thenAnswer((_) {
+      when(formBloc.submit).thenAnswer((_) {
         username.validate();
         password.validate();
       });
@@ -76,7 +81,7 @@ void main() {
       await $.pumpWidget(
         MaterialApp(
           home: BlocProvider<LoginFormBloc>(
-            create: (_) => bloc,
+            create: (_) => formBloc,
             child: const LoginScreen(),
           ),
         ),

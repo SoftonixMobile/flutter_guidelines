@@ -21,10 +21,12 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () {
-        final bloc = context.read<ChatsBloc>()..add(const ChatsEvent.load());
+        final chatsBloc = context.read<ChatsBloc>()
+          ..add(const ChatsEvent.load());
 
-        return bloc.stream
-            .firstWhere((state) => state.status != NetworkStatus.loading);
+        return chatsBloc.stream.firstWhere(
+          (state) => state.status != NetworkStatus.loading,
+        );
       },
       child: CustomScrollView(
         slivers: [

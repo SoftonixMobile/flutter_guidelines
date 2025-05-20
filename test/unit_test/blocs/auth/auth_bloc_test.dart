@@ -1,146 +1,132 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:flutter_guidelines/blocs/auth/auth_bloc.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/repositories/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
-import 'auth_bloc_test.mocks.dart';
 
-// Annotation which generates .mocks.dart library and the Mock class.
-@GenerateNiceMocks([MockSpec<AuthRepository>()])
-@GenerateNiceMocks([MockSpec<UserRepository>()])
-@GenerateNiceMocks([MockSpec<HttpClient>()])
+class _MockAuthRepository extends Mock implements AuthRepository {}
 
-/// Tests for Auth Bloc using bloc_test lib
+class _MockUserRepository extends Mock implements UserRepository {}
+
+// Tests for AuthBloc using bloc_test lib
 void main() {
-  /// Define test credential for login .
-  /// If you have specific requirements, for test failure login
-  /// define its inside  needed test
-  const testEmail = 'test';
-  const testPassword = 'password';
-
   const fullUserProfile = UserProfile(userName: 'test');
 
-  /// Defining state for success login to simplify code
-  const authenticatedState = AuthState(
-    status: AuthStatus.authenticated,
-    userProfile: fullUserProfile,
-  );
-
-  /// Defining state for success logout to simplify code
-  final unauthenticatedState = AuthState.unauthenticated();
-
-  /// Define mock instance with uses for all tests
-  final mockAuthRepo = MockAuthRepository();
-  final authRepo = AuthRepository(MockHttpClient());
-  final mockUserRepo = MockUserRepository();
-
-  late final AuthBloc authBloc;
+  // Define mock instance with uses for all tests
+  late AuthRepository mockAuthRepo;
+  late UserRepository mockUserRepo;
 
   group('Auth bloc tests', () {
-    ///Creating bloc forEach test
+    // Creating mock instance for each test
     setUp(() {
-      authBloc =
-          AuthBloc(authRepository: mockAuthRepo, userRepository: mockUserRepo);
+      mockAuthRepo = _MockAuthRepository();
+      mockUserRepo = _MockUserRepository();
+
+      // Using 'when' method for simulate fake call
+      // Mock the authentication status stream
+      when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+        return const Stream<AuthStatus>.empty();
+      });
     });
 
-    /// Test for bloc initialization ,
-    /// If you have complex init method it would be helpfully
     blocTest(
-      'Successful initialization ',
-      build: () => authBloc,
-      expect: () => [],
-    );
-
-    /// Test for success sing in flow,
-    /// GIVEN no user is log in
-    /// WHEN call signIn method with right credential
-    /// THEN state should be {authenticated}
-    blocTest(
-      'Successful sing in',
-
+      'Initial state',
+      setUp: () {
+        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+          return Stream<AuthStatus>.value(AuthStatus.initial);
+        });
+      },
       // Provide creating bloc method here
       // (its better to create new instance of bloc for each test
       // to avoid mess up)
-      build: () => authBloc,
-      // Set actions which you should do for test
-      act: (bloc) {
-        //Using 'when' method for simulate fake call
-        when(mockUserRepo.getUserProfile())
-            .thenAnswer((realInvocation) async => fullUserProfile);
-
-        //Using 'when' method for simulate fake call
-        authRepo.signIn(testEmail, testPassword);
-
-        bloc.add(
-          const AuthEvent.authenticationStatusChanged(
-            AuthStatus.authenticated,
-          ),
-        );
-      },
-
-      // Set duration to wait before check result
-      wait: const Duration(milliseconds: 200),
-
+      build: () => AuthBloc(
+        authRepository: mockAuthRepo,
+        userRepository: mockUserRepo,
+      ),
       // Here you only need to specify states which you receive from bloc
       // in right order
-      expect: () => [authenticatedState],
+      expect: () => [const AuthState()],
     );
 
-    /// Test unsuccessful signIn attempt
-    /// GIVEN no user is log in
-    /// WHEN call signIn method with wrong credential
-    /// THEN state should be {unauthenticated}
     blocTest(
-      'Failure sing in  ',
+      'Authenticated state',
+      setUp: () {
+        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+          return Stream<AuthStatus>.value(AuthStatus.authenticated);
+        });
 
-      // Provide creating bloc method here
-      build: () => authBloc,
-      // Set actions which you should do for test
-      act: (bloc) {
-        when(mockUserRepo.getUserProfile()).thenThrow(UnimplementedError());
-        authRepo.signIn(testEmail, testPassword);
-        bloc.add(
-          const AuthEvent.authenticationStatusChanged(
-            AuthStatus.authenticated,
-          ),
-        );
+        when(
+          mockUserRepo.getUserProfile,
+        ).thenAnswer((_) async => fullUserProfile);
       },
-
-      // Set duration to wait before check result
-      wait: const Duration(milliseconds: 200),
-
-      // Here you only need to specify the states
-      // that you want to get from the bloc in the correct order
-      expect: () => [unauthenticatedState],
+      build: () => AuthBloc(
+        authRepository: mockAuthRepo,
+        userRepository: mockUserRepo,
+      ),
+      expect: () => [AuthState.authenticated(fullUserProfile)],
     );
 
-    /// Test successful signOut attempt
-    /// GIVEN user is log in
-    /// WHEN call signOut method
-    /// THEN state should be {unauthenticated}
     blocTest(
-      'Successful Sing out ',
-      build: () => authBloc,
+      'Unauthenticated state when getUserProfile throws error',
+      setUp: () {
+        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+          return Stream<AuthStatus>.value(AuthStatus.authenticated);
+        });
 
-      //Set the previous state in a bloc for testing specific cases
-      //without unnecessary actions
-      //(to prevent test failure due to unrelated methods)
-      seed: () => authenticatedState,
-      act: (bloc) {
-        authRepo.signOut();
-
-        bloc.add(
-          const AuthEvent.authenticationStatusChanged(
-            AuthStatus.unauthenticated,
-          ),
-        );
+        when(mockUserRepo.getUserProfile).thenThrow(UnimplementedError());
       },
-      wait: const Duration(milliseconds: 200),
-      expect: () => [unauthenticatedState],
+      build: () => AuthBloc(
+        authRepository: mockAuthRepo,
+        userRepository: mockUserRepo,
+      ),
+      expect: () => [AuthState.unauthenticated()],
+    );
+
+    blocTest(
+      'Unauthenticated state',
+      setUp: () {
+        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+          return Stream<AuthStatus>.value(AuthStatus.unauthenticated);
+        });
+      },
+      build: () => AuthBloc(
+        authRepository: mockAuthRepo,
+        userRepository: mockUserRepo,
+      ),
+      expect: () => [AuthState.unauthenticated()],
+    );
+
+    blocTest(
+      'Sign out',
+      setUp: () {
+        when(
+          mockAuthRepo.signOut,
+        ).thenAnswer((_) async => {});
+      },
+      build: () => AuthBloc(
+        authRepository: mockAuthRepo,
+        userRepository: mockUserRepo,
+      ),
+      // Set the previous state in a bloc for testing specific cases
+      // without unnecessary actions
+      // (to prevent test failure due to unrelated methods)
+      seed: () => AuthState.authenticated(fullUserProfile),
+      act: (bloc) {
+        bloc
+          ..add(const AuthEvent.signOut())
+          ..add(
+            const AuthEvent.authenticationStatusChanged(
+              AuthStatus.unauthenticated,
+            ),
+          );
+      },
+      // Verify that signOut method was called
+      verify: (bloc) {
+        verify(mockAuthRepo.signOut).called(1);
+      },
+      expect: () => [AuthState.unauthenticated()],
     );
   });
 }

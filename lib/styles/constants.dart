@@ -1,4 +1,4 @@
-class AppStyleConstants {
+abstract final class AppStyleConstants {
   static const fieldHeight = 40.0;
   static const errorHeight = 14;
   static const borderWidth = 1.0;
