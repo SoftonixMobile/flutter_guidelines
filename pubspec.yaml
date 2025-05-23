@@ -77,7 +77,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   patrol: ^3.15.1
-  patrol_finders: ^2.8.2
+  patrol_finders: ^2.7.2
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
 
@@ -96,6 +96,9 @@ dev_dependencies:
   #other
   import_sorter: ^4.6.0
   flutter_launcher_icons: ^0.14.3
+
+dependency_overrides: 
+    patrol: 3.15.1
 
 flutter:
   uses-material-design: true
@@ -175,3 +178,4 @@ patrol:
     package_name: com.example.flutter_guidelines
   ios:
     bundle_id: com.example.flutter_guidelines
+  

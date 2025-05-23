@@ -18,8 +18,8 @@ class HttpClient {
   final _parser = JsonDataParser();
 
   HttpClient({
-    Dio? dio,
-    Fresh<String>? fresh,
+    @ignoreParam Dio? dio,
+    @ignoreParam Fresh<String>? fresh,
   }) {
     _dio =
         dio ??
