@@ -53,8 +53,8 @@ class AppDrawer extends StatelessWidget {
                         onTap: () async {
                           final newLocale =
                               context.locale == context.supportedLocales[0]
-                                  ? context.supportedLocales[1]
-                                  : context.supportedLocales[0];
+                              ? context.supportedLocales[1]
+                              : context.supportedLocales[0];
 
                           await context.setLocale(newLocale);
                         },

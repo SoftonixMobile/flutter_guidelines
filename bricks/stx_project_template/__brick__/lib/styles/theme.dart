@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:{{project_name}}/styles/index.dart';
 
-class AppTheme {
+abstract final class AppTheme {
   static ThemeData getAppTheme(BuildContext context) {
     return ThemeData(
       useMaterial3: false,

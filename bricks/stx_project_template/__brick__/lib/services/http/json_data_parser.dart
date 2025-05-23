@@ -12,8 +12,8 @@ class JsonDataParser {
 
   void registerType<T>(JsonConverter<T> converter) {
     _converters[T] = (input) => converter(input);
-    _converters[List<T>] =
-        (input) => (input as List).map((e) => converter(e)).toList();
+    _converters[List<T>] = (input) =>
+        (input as List).map((e) => converter(e)).toList();
   }
 
   void unregisterType<T>() => _converters

@@ -32,10 +32,9 @@ class AppUpgraderDialog extends StatelessWidget {
       ),
       child: AppUpgradeAlert(
         navigatorKey: navigatorKey,
-        dialogStyle:
-            Platform.isIOS
-                ? UpgradeDialogStyle.cupertino
-                : UpgradeDialogStyle.material,
+        dialogStyle: Platform.isIOS
+            ? UpgradeDialogStyle.cupertino
+            : UpgradeDialogStyle.material,
         cupertinoButtonTextStyle: const TextStyle(
           color: CupertinoColors.systemBlue,
         ),

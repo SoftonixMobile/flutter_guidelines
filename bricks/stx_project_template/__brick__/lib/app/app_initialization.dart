@@ -17,7 +17,7 @@ Future<void> initializeApp() async {
   await initializeLocalization();
   initializeCrashlytics();
   initializeBlocObserver();
-  configureAuthDependencies();
+  initializeDependencies();
 }
 
 void initializeSplashScreen(WidgetsBinding widgetsBinding) {
@@ -46,4 +46,8 @@ void initializeCrashlytics() {
 
 void initializeBlocObserver() {
   Bloc.observer = SimpleBlocObserver(LoggerService.instance);
+}
+
+void initializeDependencies() {
+  configureAuthDependencies();
 }
