@@ -6,8 +6,8 @@ publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.6.0"
-  flutter: ">=3.27.0"
+  sdk: ">=3.8.0"
+  flutter: ">=3.32.0"
 
 dependencies:
   flutter:
@@ -16,23 +16,26 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  customizable_cupertino_dialog:
+    path: packages/customizable_cupertino_dialog
+
   #splash screen
-  flutter_native_splash: ^2.4.5
+  flutter_native_splash: ^2.4.6
 
   #softonix core packages
   stx_bloc_base: ^0.6.0
   stx_flutter_form_bloc: ^3.0.0
 
   #state management
-  provider: ^6.1.2
-  flutter_bloc: ^9.1.0
+  provider: ^6.1.5
+  flutter_bloc: ^9.1.1
 
   #dependency injection
   get_it: ^8.0.3
   injectable: ^2.5.0
 
   #routing
-  auto_route: ^9.3.0
+  auto_route: ^10.0.1
 
   #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
   #Request Cancellation, File downloading, Timeout etc.
@@ -41,18 +44,18 @@ dependencies:
   dio_smart_retry: ^7.0.1
 
   #code generator for unions/pattern-matching/copy.
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
 
   #easy_localization and generator
-  easy_localization: ^3.0.7
+  easy_localization: ^3.0.7+1
   stx_easy_localization_generator: ^1.0.1
 
   #this package extends the native Iterable type with all of the LINQ methods that do not exist in native Dart
   darq: ^2.0.0
 
   #local storage
-  shared_preferences: ^2.5.2
+  shared_preferences: ^2.5.3
   flutter_secure_storage: ^9.2.4
 
   #icons
@@ -64,10 +67,8 @@ dependencies:
   tab_indicator_styler: ^2.0.0
   extended_nested_scroll_view: ^6.2.1
 
-  #other
-  upgrader: ^11.3.1
-  customizable_cupertino_dialog:
-    path: packages/customizable_cupertino_dialog
+  #others
+  upgrader: ^11.4.0
 
 dev_dependencies:
   #testing
@@ -75,31 +76,29 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  patrol: ^3.14.1
-  patrol_finders: ^2.7.0
-  mockito: ^5.4.5
+  patrol: ^3.15.2
+  patrol_finders: ^2.7.2
+  mocktail: ^1.0.4
   bloc_test: ^10.0.0
 
   #builders
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
-  auto_route_generator: ^9.3.1
+  auto_route_generator: ^10.0.1
   injectable_generator: ^2.7.0
-  json_serializable: ^6.9.4
-  freezed: ^2.5.8
+  json_serializable: ^6.9.5
+  freezed: ^3.0.6
 
   #lints
   flutter_lints: ^5.0.0
   very_good_analysis: ^7.0.0
 
-  #other
+  #others
   import_sorter: ^4.6.0
   flutter_launcher_icons: ^0.14.3
 
-dependency_overrides:
-  flutter_native_splash: 2.4.4
-  intl: ^0.20.2
-  test_api: ^0.7.4
+dependency_overrides: 
+    patrol: 3.15.2
 
 flutter:
   uses-material-design: true
@@ -179,3 +178,4 @@ patrol:
     package_name: com.example.flutter_guidelines
   ios:
     bundle_id: com.example.flutter_guidelines
+  

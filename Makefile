@@ -1,7 +1,10 @@
-.PHONY: get build watch lang sort fix format lint refactor splash icon setup_hooks
+.PHONY: get upgrade build watch lang sort fix format lint refactor splash icon setup_hooks
 
 get:
 	dart pub get
+
+upgrade:
+	dart pub upgrade
 
 build:
 	dart run build_runner build --delete-conflicting-outputs
@@ -27,7 +30,7 @@ lint:
 	# flutter analyze --no-fatal-infos | grep -E "error •|warning •" || true
 
 refactor:
-	make get
+	make upgrade
 	make build
 	make lang
 	make fix

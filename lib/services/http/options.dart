@@ -1,6 +1,6 @@
 import 'package:flutter_guidelines/app/app_config.dart';
 
-class DioOptions {
+abstract final class DioOptions {
   static String baseUrl = AppConfig.appApiUrl;
 
   static const Duration connectTimeout = Duration(seconds: 10);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class RootScaffold {
+abstract final class RootScaffold {
   static void openDrawer(BuildContext context) {
     final scaffoldState = context.findRootAncestorStateOfType<ScaffoldState>();
     scaffoldState?.openDrawer();

@@ -54,8 +54,9 @@ class AppUpgradeAlertState extends UpgradeAlertState {
         padding: const EdgeInsets.only(top: 15),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment:
-              cupertino ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+          crossAxisAlignment: cupertino
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               messages.message(UpgraderMessage.releaseNotes) ?? '',
@@ -71,8 +72,9 @@ class AppUpgradeAlertState extends UpgradeAlertState {
       constraints: const BoxConstraints(maxHeight: 400),
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment:
-              cupertino ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+          crossAxisAlignment: cupertino
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(message),
@@ -116,17 +118,17 @@ class AppUpgradeAlertState extends UpgradeAlertState {
 
     return cupertino
         ? CustomizableCupertinoAlertDialog(
-          key: key,
-          title: textTitle,
-          content: content,
-          actions: actions,
-          dialogColor: cupertinoDialogColor,
-        )
+            key: key,
+            title: textTitle,
+            content: content,
+            actions: actions,
+            dialogColor: cupertinoDialogColor,
+          )
         : AlertDialog(
-          key: key,
-          title: textTitle,
-          content: content,
-          actions: actions,
-        );
+            key: key,
+            title: textTitle,
+            content: content,
+            actions: actions,
+          );
   }
 }

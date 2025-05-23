@@ -5,13 +5,15 @@ import 'package:flutter_guidelines/repositories/index.dart';
 
 @lazySingleton
 class PostsBloc extends NetworkListBloc<Post, NetworkListState<Post>> {
-  PostsBloc(this.repository) : super(const NetworkListState(data: []));
+  final PostsRepository postsRepository;
 
-  final PostsRepository repository;
+  PostsBloc({
+    required this.postsRepository,
+  }) : super(const NetworkListState(data: []));
 
   @override
   Future<List<Post>> onLoadAsync() {
-    return repository.getPosts();
+    return postsRepository.getPosts();
   }
 
   @override

@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
-import 'app_drawer_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<AuthBloc>()])
+class MockAuthBloc extends Mock implements AuthBloc {}
 
 Future<void> main() async {
   /// Init EasyLocalization.
@@ -25,7 +24,7 @@ Future<void> main() async {
     'Check widgets',
     ($) async {
       /// Mock bloc interactions.
-      final bloc = MockAuthBloc();
+      final authBloc = MockAuthBloc();
 
       /// Get the widget.
       await $.pumpWidget(
@@ -40,8 +39,8 @@ Future<void> main() async {
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
                 localizationsDelegates: context.localizationDelegates,
-                home: BlocProvider<MockAuthBloc>(
-                  create: (_) => bloc,
+                home: BlocProvider<AuthBloc>(
+                  create: (_) => authBloc,
                   child: const AppDrawer(),
                 ),
               );
@@ -71,7 +70,7 @@ Future<void> main() async {
     'Check change localization',
     ($) async {
       /// Mock bloc interactions.
-      final bloc = MockAuthBloc();
+      final authBloc = MockAuthBloc();
 
       /// Get the widget.
       await $.pumpWidget(
@@ -86,8 +85,8 @@ Future<void> main() async {
                 supportedLocales: context.supportedLocales,
                 locale: context.locale,
                 localizationsDelegates: context.localizationDelegates,
-                home: BlocProvider<MockAuthBloc>(
-                  create: (_) => bloc,
+                home: BlocProvider<AuthBloc>(
+                  create: (_) => authBloc,
                   child: const AppDrawer(),
                 ),
               );

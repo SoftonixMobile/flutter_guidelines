@@ -1,14 +1,13 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/repositories/index.dart';
-import 'posts_bloc_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<PostsRepository>()])
+class MockPostsRepository extends Mock implements PostsRepository {}
+
 void main() {
   /// Default state instance to avoid code repeating
   const defaultState = NetworkListState<Post>(data: []);
@@ -17,12 +16,12 @@ void main() {
 
   final mockPostRepository = MockPostsRepository();
 
-  late final PostsBloc postsBloc;
+  late PostsBloc postsBloc;
 
   group('Post bloc tests', () {
     /// Creating bloc forEach test
     setUp(() {
-      postsBloc = PostsBloc(mockPostRepository);
+      postsBloc = PostsBloc(postsRepository: mockPostRepository);
     });
 
     /// Test for success loading items,
@@ -30,12 +29,12 @@ void main() {
     /// WHEN call .load()
     /// THEN states should be loading and success
     blocTest(
-      'Success state with data after load  ',
+      'Success state with data after load',
+      setUp: () {
+        when(mockPostRepository.getPosts).thenAnswer((_) async => [testItem]);
+      },
       build: () => postsBloc,
       act: (bloc) {
-        when(mockPostRepository.getPosts())
-            .thenAnswer((realInvocation) async => [testItem]);
-
         bloc.load();
       },
       expect: () => [

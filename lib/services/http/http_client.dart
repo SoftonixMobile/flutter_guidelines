@@ -17,24 +17,31 @@ class HttpClient {
   late final Fresh<String> _fresh;
   final _parser = JsonDataParser();
 
-  HttpClient() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: DioOptions.baseUrl,
-        receiveTimeout: DioOptions.receiveTimeout,
-        connectTimeout: DioOptions.connectTimeout,
-      ),
-    );
+  HttpClient({
+    @ignoreParam Dio? dio,
+    @ignoreParam Fresh<String>? fresh,
+  }) {
+    _dio =
+        dio ??
+        Dio(
+          BaseOptions(
+            baseUrl: DioOptions.baseUrl,
+            receiveTimeout: DioOptions.receiveTimeout,
+            connectTimeout: DioOptions.connectTimeout,
+          ),
+        );
 
-    _fresh = Fresh<String>(
-      tokenHeader: (token) => {'Authorization': 'Bearer $token'},
-      tokenStorage: SecureTokenStorage(),
-      refreshToken: (token, client) {
-        getIt<AuthBloc>().add(const AuthEvent.signOut());
+    _fresh =
+        fresh ??
+        Fresh<String>(
+          tokenHeader: (token) => {'Authorization': 'Bearer $token'},
+          tokenStorage: SecureTokenStorage(),
+          refreshToken: (token, client) {
+            getIt<AuthBloc>().add(const AuthEvent.signOut());
 
-        throw Exception('Unauthenticated');
-      },
-    );
+            throw Exception('Unauthenticated');
+          },
+        );
 
     _dio.interceptors.addAll([
       _fresh,
@@ -83,12 +90,11 @@ class HttpClient {
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) =>
-      getR<T>(
-        url,
-        queryParameters: queryParameters,
-        options: options,
-      ).then((r) => r.data!);
+  }) => getR<T>(
+    url,
+    queryParameters: queryParameters,
+    options: options,
+  ).then((r) => r.data!);
 
   Future<Response<T>> postR<T>(
     String url, {
@@ -110,13 +116,12 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) =>
-      postR<T>(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-      ).then((r) => r.data!);
+  }) => postR<T>(
+    url,
+    data: data,
+    queryParameters: queryParameters,
+    options: options,
+  ).then((r) => r.data!);
 
   Future<Response<T>> putR<T>(
     String url, {
@@ -138,13 +143,12 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) =>
-      putR<T>(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-      ).then((r) => r.data!);
+  }) => putR<T>(
+    url,
+    data: data,
+    queryParameters: queryParameters,
+    options: options,
+  ).then((r) => r.data!);
 
   Future<Response<T>> patchR<T>(
     String url, {
@@ -166,13 +170,12 @@ class HttpClient {
     dynamic data,
     DynamicMap? queryParameters,
     Options? options,
-  }) =>
-      patchR<T>(
-        url,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-      ).then((r) => r.data!);
+  }) => patchR<T>(
+    url,
+    data: data,
+    queryParameters: queryParameters,
+    options: options,
+  ).then((r) => r.data!);
 
   Future<Response<T>> deleteR<T>(
     String url, {
@@ -191,12 +194,11 @@ class HttpClient {
     String url, {
     DynamicMap? queryParameters,
     Options? options,
-  }) =>
-      deleteR<T>(
-        url,
-        queryParameters: queryParameters,
-        options: options,
-      ).then((r) => r.data!);
+  }) => deleteR<T>(
+    url,
+    queryParameters: queryParameters,
+    options: options,
+  ).then((r) => r.data!);
 
   Future<Response> download(String url, String savePath) {
     return _dio.download(url, savePath);
@@ -205,13 +207,13 @@ class HttpClient {
 
 extension on Response {
   Response<T> convert<T>(JsonDataParser parser) => Response(
-        data: parser.convert<T>(data),
-        requestOptions: requestOptions,
-        extra: extra,
-        headers: headers,
-        isRedirect: isRedirect,
-        redirects: redirects,
-        statusCode: statusCode,
-        statusMessage: statusMessage,
-      );
+    data: parser.convert<T>(data),
+    requestOptions: requestOptions,
+    extra: extra,
+    headers: headers,
+    isRedirect: isRedirect,
+    redirects: redirects,
+    statusCode: statusCode,
+    statusMessage: statusMessage,
+  );
 }

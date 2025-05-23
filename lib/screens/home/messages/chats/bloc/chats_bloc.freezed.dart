@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,339 +10,207 @@ part of 'chats_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$ChatsEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatsEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ChatsEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ChatsEventCopyWith<$Res> {
-  factory $ChatsEventCopyWith(
-          ChatsEvent value, $Res Function(ChatsEvent) then) =
-      _$ChatsEventCopyWithImpl<$Res, ChatsEvent>;
+class $ChatsEventCopyWith<$Res>  {
+$ChatsEventCopyWith(ChatsEvent _, $Res Function(ChatsEvent) __);
 }
 
-/// @nodoc
-class _$ChatsEventCopyWithImpl<$Res, $Val extends ChatsEvent>
-    implements $ChatsEventCopyWith<$Res> {
-  _$ChatsEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ChatsEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$LoadImplCopyWith<$Res> {
-  factory _$$LoadImplCopyWith(
-          _$LoadImpl value, $Res Function(_$LoadImpl) then) =
-      __$$LoadImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadImplCopyWithImpl<$Res>
-    extends _$ChatsEventCopyWithImpl<$Res, _$LoadImpl>
-    implements _$$LoadImplCopyWith<$Res> {
-  __$$LoadImplCopyWithImpl(_$LoadImpl _value, $Res Function(_$LoadImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ChatsEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
 
 /// @nodoc
 
-class _$LoadImpl implements _Load {
-  const _$LoadImpl();
 
-  @override
-  String toString() {
-    return 'ChatsEvent.load()';
-  }
+class _Load implements ChatsEvent {
+  const _Load();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-  }) {
-    return load();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-  }) {
-    return load?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-  }) {
-    return load(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-  }) {
-    return load?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    required TResult orElse(),
-  }) {
-    if (load != null) {
-      return load(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Load);
 }
 
-abstract class _Load implements ChatsEvent {
-  const factory _Load() = _$LoadImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'ChatsEvent.load()';
 }
+
+
+}
+
+
+
 
 /// @nodoc
 mixin _$ChatsState {
-  NetworkStatus get status => throw _privateConstructorUsedError;
-  List<Chat> get chats => throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
 
-  /// Create a copy of ChatsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ChatsStateCopyWith<ChatsState> get copyWith =>
-      throw _privateConstructorUsedError;
+ NetworkStatus get status; List<Chat> get chats; String? get errorMessage;
+/// Create a copy of ChatsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ChatsStateCopyWith<ChatsState> get copyWith => _$ChatsStateCopyWithImpl<ChatsState>(this as ChatsState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other.chats, chats)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(chats),errorMessage);
+
+@override
+String toString() {
+  return 'ChatsState(status: $status, chats: $chats, errorMessage: $errorMessage)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ChatsStateCopyWith<$Res> {
-  factory $ChatsStateCopyWith(
-          ChatsState value, $Res Function(ChatsState) then) =
-      _$ChatsStateCopyWithImpl<$Res, ChatsState>;
-  @useResult
-  $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
-}
+abstract mixin class $ChatsStateCopyWith<$Res>  {
+  factory $ChatsStateCopyWith(ChatsState value, $Res Function(ChatsState) _then) = _$ChatsStateCopyWithImpl;
+@useResult
+$Res call({
+ NetworkStatus status, List<Chat> chats, String? errorMessage
+});
 
+
+
+
+}
 /// @nodoc
-class _$ChatsStateCopyWithImpl<$Res, $Val extends ChatsState>
+class _$ChatsStateCopyWithImpl<$Res>
     implements $ChatsStateCopyWith<$Res> {
-  _$ChatsStateCopyWithImpl(this._value, this._then);
+  _$ChatsStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ChatsState _self;
+  final $Res Function(ChatsState) _then;
 
-  /// Create a copy of ChatsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? chats = null,
-    Object? errorMessage = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as NetworkStatus,
-      chats: null == chats
-          ? _value.chats
-          : chats // ignore: cast_nullable_to_non_nullable
-              as List<Chat>,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
+/// Create a copy of ChatsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? chats = null,Object? errorMessage = freezed,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as NetworkStatus,chats: null == chats ? _self.chats : chats // ignore: cast_nullable_to_non_nullable
+as List<Chat>,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ChatsStateImplCopyWith<$Res>
-    implements $ChatsStateCopyWith<$Res> {
-  factory _$$ChatsStateImplCopyWith(
-          _$ChatsStateImpl value, $Res Function(_$ChatsStateImpl) then) =
-      __$$ChatsStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({NetworkStatus status, List<Chat> chats, String? errorMessage});
 }
 
-/// @nodoc
-class __$$ChatsStateImplCopyWithImpl<$Res>
-    extends _$ChatsStateCopyWithImpl<$Res, _$ChatsStateImpl>
-    implements _$$ChatsStateImplCopyWith<$Res> {
-  __$$ChatsStateImplCopyWithImpl(
-      _$ChatsStateImpl _value, $Res Function(_$ChatsStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ChatsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? chats = null,
-    Object? errorMessage = freezed,
-  }) {
-    return _then(_$ChatsStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as NetworkStatus,
-      chats: null == chats
-          ? _value._chats
-          : chats // ignore: cast_nullable_to_non_nullable
-              as List<Chat>,
-      errorMessage: freezed == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
 
 /// @nodoc
 
-class _$ChatsStateImpl implements _ChatsState {
-  const _$ChatsStateImpl(
-      {this.status = NetworkStatus.loading,
-      final List<Chat> chats = const [],
-      this.errorMessage})
-      : _chats = chats;
 
-  @override
-  @JsonKey()
-  final NetworkStatus status;
-  final List<Chat> _chats;
-  @override
-  @JsonKey()
-  List<Chat> get chats {
-    if (_chats is EqualUnmodifiableListView) return _chats;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_chats);
-  }
+class _ChatsState implements ChatsState {
+  const _ChatsState({this.status = NetworkStatus.loading, final  List<Chat> chats = const [], this.errorMessage}): _chats = chats;
+  
 
-  @override
-  final String? errorMessage;
-
-  @override
-  String toString() {
-    return 'ChatsState(status: $status, chats: $chats, errorMessage: $errorMessage)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChatsStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._chats, _chats) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, status,
-      const DeepCollectionEquality().hash(_chats), errorMessage);
-
-  /// Create a copy of ChatsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
-      __$$ChatsStateImplCopyWithImpl<_$ChatsStateImpl>(this, _$identity);
+@override@JsonKey() final  NetworkStatus status;
+ final  List<Chat> _chats;
+@override@JsonKey() List<Chat> get chats {
+  if (_chats is EqualUnmodifiableListView) return _chats;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_chats);
 }
 
-abstract class _ChatsState implements ChatsState {
-  const factory _ChatsState(
-      {final NetworkStatus status,
-      final List<Chat> chats,
-      final String? errorMessage}) = _$ChatsStateImpl;
+@override final  String? errorMessage;
 
-  @override
-  NetworkStatus get status;
-  @override
-  List<Chat> get chats;
-  @override
-  String? get errorMessage;
+/// Create a copy of ChatsState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ChatsStateCopyWith<_ChatsState> get copyWith => __$ChatsStateCopyWithImpl<_ChatsState>(this, _$identity);
 
-  /// Create a copy of ChatsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ChatsStateImplCopyWith<_$ChatsStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatsState&&(identical(other.status, status) || other.status == status)&&const DeepCollectionEquality().equals(other._chats, _chats)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,const DeepCollectionEquality().hash(_chats),errorMessage);
+
+@override
+String toString() {
+  return 'ChatsState(status: $status, chats: $chats, errorMessage: $errorMessage)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ChatsStateCopyWith<$Res> implements $ChatsStateCopyWith<$Res> {
+  factory _$ChatsStateCopyWith(_ChatsState value, $Res Function(_ChatsState) _then) = __$ChatsStateCopyWithImpl;
+@override @useResult
+$Res call({
+ NetworkStatus status, List<Chat> chats, String? errorMessage
+});
+
+
+
+
+}
+/// @nodoc
+class __$ChatsStateCopyWithImpl<$Res>
+    implements _$ChatsStateCopyWith<$Res> {
+  __$ChatsStateCopyWithImpl(this._self, this._then);
+
+  final _ChatsState _self;
+  final $Res Function(_ChatsState) _then;
+
+/// Create a copy of ChatsState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? chats = null,Object? errorMessage = freezed,}) {
+  return _then(_ChatsState(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as NetworkStatus,chats: null == chats ? _self._chats : chats // ignore: cast_nullable_to_non_nullable
+as List<Chat>,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on
