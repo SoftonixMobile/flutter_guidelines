@@ -1,3 +1,9 @@
+# 0.12.0
+
+- Support flutter 3.32.
+- use Kotlin DSL for Gradle files.
+- Use Swift Package Manager.
+
 # 0.11.1
 
 - Fix .vscode folder.
