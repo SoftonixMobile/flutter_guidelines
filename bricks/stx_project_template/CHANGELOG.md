@@ -1,3 +1,8 @@
+# 0.12.1
+
+- Update deps.
+- Add .lock files to the repository.
+
 # 0.12.0
 
 - Support flutter 3.32.
