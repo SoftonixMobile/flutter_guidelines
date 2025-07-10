@@ -11,19 +11,32 @@ targets:
             - lib/**_bloc.dart
             - lib/**_cubit.dart
         options:
+          format: true
           makeCollectionsUnmodifiable: false
+          # legacy
+          map: false
+          maybeMap: false
+          mapOrNull: false
+          when: false
+          maybeWhen: false
+          whenOrNull: false
       json_serializable:
         enabled: true
         generate_for:
           include:
             - lib/models/**.dart
             - lib/**/models.dart
-      auto_route_generator:
+      auto_route_generator:auto_route_generator:
         enabled: true
         generate_for:
           include:
             - lib/router/router.dart
-            - lib/screens/**
+            - lib/**_screen.dart
+      auto_route_generator:auto_router_generator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/router/router.dart
       flutter_gen_runner:
         enabled: true
       injectable_generator:injectable_builder:

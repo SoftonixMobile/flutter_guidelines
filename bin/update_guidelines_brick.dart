@@ -65,8 +65,9 @@ void copyDirectory(
   Directory destination, {
   bool convert = false,
 }) {
-  final coreFolder =
-      Directory(destination.path + Platform.pathSeparator + source.path);
+  final coreFolder = Directory(
+    destination.path + Platform.pathSeparator + source.path,
+  );
   if (!coreFolder.existsSync()) {
     coreFolder.createSync();
   }
@@ -88,8 +89,10 @@ void copyDirectory(
 void convertToBrickFormat(File file) {
   final fileContent = file.readAsStringSync();
 
-  var newFileContent =
-      fileContent.replaceAll('flutter_guidelines', '{{project_name}}');
+  var newFileContent = fileContent.replaceAll(
+    'flutter_guidelines',
+    '{{project_name}}',
+  );
 
   newFileContent = newFileContent.replaceAll(
     'FlutterGuidelines',
