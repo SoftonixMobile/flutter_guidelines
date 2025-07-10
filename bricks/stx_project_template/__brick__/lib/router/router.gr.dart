@@ -16,7 +16,8 @@ import 'package:{{project_name}}/screens/auth_screen.dart' as _i1;
 import 'package:{{project_name}}/screens/home/dashboard/dashboard_screen.dart'
     as _i4;
 import 'package:{{project_name}}/screens/home/home_screen.dart' as _i5;
-import 'package:{{project_name}}/screens/home/home_wrapper.dart' as _i6;
+import 'package:{{project_name}}/screens/home/home_wrapper_screen.dart'
+    as _i6;
 import 'package:{{project_name}}/screens/home/messages/chats/chats_screen.dart'
     as _i3;
 import 'package:{{project_name}}/screens/home/messages/chats/pages/chat_details/chat_details_screen.dart'
@@ -80,6 +81,16 @@ class ChatDetailsRouteArgs {
   String toString() {
     return 'ChatDetailsRouteArgs{key: $key, chat: $chat}';
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ChatDetailsRouteArgs) return false;
+    return key == other.key && chat == other.chat;
+  }
+
+  @override
+  int get hashCode => key.hashCode ^ chat.hashCode;
 }
 
 /// generated route for

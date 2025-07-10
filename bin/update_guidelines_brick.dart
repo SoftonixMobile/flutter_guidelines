@@ -26,6 +26,7 @@ void main(List<String> args) async {
   copyFile(File('.gitignore'), '$brickPath/.gitignore');
   copyFile(File('analysis_options.yaml'), '$brickPath/analysis_options.yaml');
   copyFile(File('build.yaml'), '$brickPath/build.yaml');
+  copyFile(File('pubspec.lock'), '$brickPath/pubspec.lock');
   copyFile(File('pubspec.yaml'), '$brickPath/pubspec.yaml', convert: true);
   copyFile(File('Makefile'), '$brickPath/Makefile');
 }
