@@ -130,9 +130,9 @@ const Color _kActionSheetCancelColor = CupertinoDynamicColor.withBrightness(
 );
 const Color _kActionSheetCancelPressedColor =
     CupertinoDynamicColor.withBrightness(
-      color: Color(0xFFECECEC),
-      darkColor: Color(0xFF494949),
-    );
+  color: Color(0xFFECECEC),
+  darkColor: Color(0xFF494949),
+);
 
 // Translucent, very light gray that is painted on top of the blurred backdrop
 // as the action sheet's background color.
@@ -147,9 +147,9 @@ const Color _kActionSheetBackgroundColor = CupertinoDynamicColor.withBrightness(
 // Eyeballed from iOS 17 simulator.
 const Color _kActionSheetContentTextColor =
     CupertinoDynamicColor.withBrightness(
-      color: Color(0x851D1D1D),
-      darkColor: Color(0x96F1F1F1),
-    );
+  color: Color(0x851D1D1D),
+  darkColor: Color(0x96F1F1F1),
+);
 
 // Translucent gray that is painted on top of the blurred backdrop in the gap
 // areas between the content section and actions section, as well as between
@@ -157,9 +157,9 @@ const Color _kActionSheetContentTextColor =
 // Eyeballed from iOS 17 simulator.
 const Color _kActionSheetButtonDividerColor =
     CupertinoDynamicColor.withBrightness(
-      color: Color(0xD4C9C9C9),
-      darkColor: Color(0xD57D7D7D),
-    );
+  color: Color(0xD4C9C9C9),
+  darkColor: Color(0xD57D7D7D),
+);
 
 // The alert dialog layout policy changes depending on whether the user is using
 // a "regular" font size vs a "large" font size. This is a spectrum. There are
@@ -237,9 +237,9 @@ class CustomizableCupertinoAlertDialog extends StatefulWidget {
 
   static const opaqueCupertinoDialogColor =
       CupertinoDynamicColor.withBrightness(
-        color: CupertinoColors.white,
-        darkColor: Color(0xFF2D2D2D),
-      );
+    color: CupertinoColors.white,
+    darkColor: Color(0xFF2D2D2D),
+  );
 
   /// The (optional) title of the dialog is displayed in a large font at the top
   /// of the dialog.
@@ -324,7 +324,7 @@ class _CustomizableCupertinoAlertDialogState
     const double defaultFontSize = 14;
     final effectiveTextScaleFactor =
         MediaQuery.textScalerOf(context).scale(defaultFontSize) /
-        defaultFontSize;
+            defaultFontSize;
 
     final Widget child = _CupertinoAlertContentSection(
       title: widget.title,
@@ -422,10 +422,9 @@ class _CustomizableCupertinoAlertDialogState
           }
           // It is observed on the simulator that the minimal height varies
           // depending on whether the device is in accessibility mode.
-          final actionsMinHeight =
-              _isInAccessibilityMode(context)
-                  ? constraints.maxHeight / 2 + _kDividerThickness
-                  : _kDialogActionsSectionMinHeight + _kDividerThickness;
+          final actionsMinHeight = _isInAccessibilityMode(context)
+              ? constraints.maxHeight / 2 + _kDividerThickness
+              : _kDialogActionsSectionMinHeight + _kDividerThickness;
           return _PriorityColumn(
             top: contentSection,
             bottom: Column(
@@ -460,8 +459,7 @@ class _CustomizableCupertinoAlertDialogState
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return AnimatedPadding(
-                padding:
-                    MediaQuery.viewInsetsOf(context) +
+                padding: MediaQuery.viewInsetsOf(context) +
                     const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
                 duration: widget.insetAnimationDuration,
                 curve: widget.insetAnimationCurve,
@@ -477,10 +475,9 @@ class _CustomizableCupertinoAlertDialogState
                         vertical: _kDialogEdgePadding,
                       ),
                       child: SizedBox(
-                        width:
-                            isInAccessibilityMode
-                                ? _kAccessibilityCupertinoDialogWidth
-                                : _kCupertinoDialogWidth,
+                        width: isInAccessibilityMode
+                            ? _kAccessibilityCupertinoDialogWidth
+                            : _kCupertinoDialogWidth,
                         child: _ActionSheetGestureDetector(
                           child: CupertinoPopupSurface(
                             dialogColor: widget.dialogColor,
@@ -560,9 +557,9 @@ class CupertinoPopupSurface extends StatelessWidget {
     this.dialogColor,
     required this.child,
   }) : assert(
-         blurSigma >= 0,
-         'CupertinoPopupSurface requires a non-negative blur sigma.',
-       );
+          blurSigma >= 0,
+          'CupertinoPopupSurface requires a non-negative blur sigma.',
+        );
 
   /// The strength of the gaussian blur applied to the area beneath this
   /// surface.
@@ -722,7 +719,8 @@ class CupertinoPopupSurface extends StatelessWidget {
     final colorFilter = switch (brightness) {
       Brightness.dark => const ColorFilter.matrix(_darkSaturationMatrix),
       Brightness.light ||
-      null => const ColorFilter.matrix(_lightSaturationMatrix),
+      null =>
+        const ColorFilter.matrix(_lightSaturationMatrix),
     };
 
     if (blurSigma == 0) {
@@ -915,7 +913,7 @@ abstract class _SlideTarget {
 // https://github.com/flutter/flutter/issues/155266
 class _TargetSelectionGestureRecognizer extends GestureRecognizer {
   _TargetSelectionGestureRecognizer({super.debugOwner, required this.hitTest})
-    : _slidingTap = _SlidingTapGestureRecognizer(debugOwner: debugOwner) {
+      : _slidingTap = _SlidingTapGestureRecognizer(debugOwner: debugOwner) {
     _slidingTap
       ..onDown = _onDown
       ..onResponsiveUpdate = _onUpdate
@@ -1047,13 +1045,12 @@ class _ActionSheetGestureDetector extends StatelessWidget {
     final gestures = <Type, GestureRecognizerFactory>{};
     gestures[_TargetSelectionGestureRecognizer] =
         GestureRecognizerFactoryWithHandlers<_TargetSelectionGestureRecognizer>(
-          () => _TargetSelectionGestureRecognizer(
-            debugOwner: this,
-            hitTest:
-                (Offset globalPosition) => _hitTest(context, globalPosition),
-          ),
-          (_TargetSelectionGestureRecognizer instance) {},
-        );
+      () => _TargetSelectionGestureRecognizer(
+        debugOwner: this,
+        hitTest: (Offset globalPosition) => _hitTest(context, globalPosition),
+      ),
+      (_TargetSelectionGestureRecognizer instance) {},
+    );
 
     return RawGestureDetector(
       excludeFromSemantics: true,
@@ -1117,13 +1114,13 @@ class CupertinoActionSheet extends StatefulWidget {
     this.actionScrollController,
     this.cancelButton,
   }) : assert(
-         actions != null ||
-             title != null ||
-             message != null ||
-             cancelButton != null,
-         'An action sheet must have a non-null value for at least one of the following arguments: '
-         'actions, title, message, or cancelButton',
-       );
+          actions != null ||
+              title != null ||
+              message != null ||
+              cancelButton != null,
+          'An action sheet must have a non-null value for at least one of the following arguments: '
+          'actions, title, message, or cancelButton',
+        );
 
   /// An optional title of the action sheet. When the [message] is non-null,
   /// the font of the [title] is bold.
@@ -1213,10 +1210,9 @@ class _CupertinoActionSheetState extends State<CupertinoActionSheet> {
         titlePadding: EdgeInsets.only(
           left: _kActionSheetContentHorizontalPadding,
           right: _kActionSheetContentHorizontalPadding,
-          bottom:
-              widget.message == null
-                  ? _kActionSheetContentVerticalPadding
-                  : 0.0,
+          bottom: widget.message == null
+              ? _kActionSheetContentVerticalPadding
+              : 0.0,
           top: _kActionSheetContentVerticalPadding,
         ),
         messagePadding: EdgeInsets.only(
@@ -1225,14 +1221,12 @@ class _CupertinoActionSheetState extends State<CupertinoActionSheet> {
           bottom: _kActionSheetContentVerticalPadding,
           top: widget.title == null ? _kActionSheetContentVerticalPadding : 0.0,
         ),
-        titleTextStyle:
-            widget.message == null
-                ? textStyle
-                : textStyle.copyWith(fontWeight: FontWeight.w600),
-        messageTextStyle:
-            widget.title == null
-                ? textStyle.copyWith(fontWeight: FontWeight.w600)
-                : textStyle,
+        titleTextStyle: widget.message == null
+            ? textStyle
+            : textStyle.copyWith(fontWeight: FontWeight.w600),
+        messageTextStyle: widget.title == null
+            ? textStyle.copyWith(fontWeight: FontWeight.w600)
+            : textStyle,
         additionalPaddingBetweenTitleAndMessage: const EdgeInsets.only(top: 4),
       ),
     );
@@ -1254,12 +1248,11 @@ class _CupertinoActionSheetState extends State<CupertinoActionSheet> {
 
   Widget _buildCancelButton() {
     assert(widget.cancelButton != null);
-    final cancelPadding =
-        (widget.actions != null ||
-                widget.message != null ||
-                widget.title != null)
-            ? _kActionSheetCancelButtonPadding
-            : 0.0;
+    final cancelPadding = (widget.actions != null ||
+            widget.message != null ||
+            widget.title != null)
+        ? _kActionSheetCancelButtonPadding
+        : 0.0;
     return Padding(
       padding: EdgeInsets.only(top: cancelPadding),
       child: _ActionSheetButtonBackground(
@@ -1540,26 +1533,23 @@ class _CupertinoActionSheetActionState extends State<CupertinoActionSheetAction>
       // `Text` will scale the provided font size inside, so its parameter is
       // unscaled first.
       fontSize: fontSize / contextScaleFactor,
-      color:
-          widget.isDestructiveAction
-              ? CupertinoDynamicColor.resolve(
-                CupertinoColors.systemRed,
-                context,
-              )
-              : CupertinoTheme.of(context).primaryColor,
+      color: widget.isDestructiveAction
+          ? CupertinoDynamicColor.resolve(
+              CupertinoColors.systemRed,
+              context,
+            )
+          : CupertinoTheme.of(context).primaryColor,
     );
 
     if (widget.isDefaultAction) {
       style = style.copyWith(fontWeight: FontWeight.w600);
     }
 
-    final verticalPadding =
-        _kActionSheetButtonVerticalPaddingBase +
+    final verticalPadding = _kActionSheetButtonVerticalPaddingBase +
         fontSize * _kActionSheetButtonVerticalPaddingFactor;
 
     return MouseRegion(
-      cursor:
-          widget.mouseCursor ??
+      cursor: widget.mouseCursor ??
           (kIsWeb ? SystemMouseCursors.click : MouseCursor.defer),
       child: MetaData(
         metaData: this,
@@ -1626,8 +1616,7 @@ class _ActionSheetButtonBackground extends StatefulWidget {
 }
 
 class _ActionSheetButtonBackgroundState
-    extends State<_ActionSheetButtonBackground>
-    implements _SlideTarget {
+    extends State<_ActionSheetButtonBackground> implements _SlideTarget {
   void _emitVibration() {
     switch (defaultTargetPlatform) {
       case TargetPlatform.iOS:
@@ -1671,15 +1660,13 @@ class _ActionSheetButtonBackgroundState
     late final Color backgroundColor;
     BorderRadius? borderRadius;
     if (!widget.isCancel) {
-      backgroundColor =
-          widget.pressed
-              ? _kActionSheetPressedColor
-              : _kActionSheetBackgroundColor;
+      backgroundColor = widget.pressed
+          ? _kActionSheetPressedColor
+          : _kActionSheetBackgroundColor;
     } else {
-      backgroundColor =
-          widget.pressed
-              ? _kActionSheetCancelPressedColor
-              : _kActionSheetCancelColor;
+      backgroundColor = widget.pressed
+          ? _kActionSheetCancelPressedColor
+          : _kActionSheetCancelColor;
       borderRadius = const BorderRadius.all(Radius.circular(_kCornerRadius));
     }
     return MetaData(
@@ -1735,10 +1722,9 @@ class _Divider extends StatelessWidget {
         ),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color:
-                hidden
-                    ? CupertinoDynamicColor.resolve(hiddenColor, context)
-                    : dividerColor,
+            color: hidden
+                ? CupertinoDynamicColor.resolve(hiddenColor, context)
+                : dividerColor,
           ),
         ),
       ),
@@ -1973,10 +1959,10 @@ class _CupertinoAlertContentSection extends StatelessWidget {
     this.titleTextStyle,
     this.messageTextStyle,
     this.additionalPaddingBetweenTitleAndMessage,
-  }) : assert(title == null || titlePadding != null && titleTextStyle != null),
-       assert(
-         message == null || messagePadding != null && messageTextStyle != null,
-       );
+  })  : assert(title == null || titlePadding != null && titleTextStyle != null),
+        assert(
+          message == null || messagePadding != null && messageTextStyle != null,
+        );
 
   // The (optional) title of the dialog is displayed in a large font at the top
   // of the dialog.
@@ -2173,8 +2159,7 @@ class _AlertDialogButtonBackground extends StatefulWidget {
 }
 
 class _AlertDialogButtonBackgroundState
-    extends State<_AlertDialogButtonBackground>
-    implements _SlideTarget {
+    extends State<_AlertDialogButtonBackground> implements _SlideTarget {
   void _emitVibration() {
     switch (defaultTargetPlatform) {
       case TargetPlatform.iOS:
@@ -2317,17 +2302,16 @@ class _CupertinoDialogActionState extends State<CupertinoDialogAction>
     required double padding,
   }) {
     final isInAccessibilityMode = _isInAccessibilityMode(context);
-    final dialogWidth =
-        isInAccessibilityMode
-            ? _kAccessibilityCupertinoDialogWidth
-            : _kCupertinoDialogWidth;
+    final dialogWidth = isInAccessibilityMode
+        ? _kAccessibilityCupertinoDialogWidth
+        : _kCupertinoDialogWidth;
     // The fontSizeRatio is the ratio of the current text size (including any
     // iOS scale factor) vs the minimum text size that we allow in action
     // buttons. This ratio information is used to automatically scale down action
     // button text to fit the available space.
     final fontSizeRatio =
         MediaQuery.textScalerOf(context).scale(textStyle.fontSize!) /
-        _kDialogMinButtonFontSize;
+            _kDialogMinButtonFontSize;
 
     return FittedBox(
       fit: BoxFit.scaleDown,
@@ -2388,31 +2372,29 @@ class _CupertinoDialogActionState extends State<CupertinoDialogAction>
     final fontSizeToScale = fontSize == 0.0 ? kDefaultFontSize : fontSize;
     final effectiveTextScale =
         MediaQuery.textScalerOf(context).scale(fontSizeToScale) /
-        fontSizeToScale;
+            fontSizeToScale;
     final padding = 8.0 * effectiveTextScale;
     // Apply a sizing policy to the action button's content based on whether or
     // not the device is in accessibility mode.
     // the case that if content text does not contain a space, it should also
     // wrap instead of ellipsizing. We are consciously not implementing that
     // now due to complexity.
-    final sizedContent =
-        _isInAccessibilityMode(context)
-            ? _buildContentWithAccessibilitySizingPolicy(
-              textStyle: style,
-              content: widget.child,
-            )
-            : _buildContentWithRegularSizingPolicy(
-              context: context,
-              textStyle: style,
-              content: widget.child,
-              padding: padding,
-            );
+    final sizedContent = _isInAccessibilityMode(context)
+        ? _buildContentWithAccessibilitySizingPolicy(
+            textStyle: style,
+            content: widget.child,
+          )
+        : _buildContentWithRegularSizingPolicy(
+            context: context,
+            textStyle: style,
+            content: widget.child,
+            padding: padding,
+          );
 
     return MouseRegion(
-      cursor:
-          widget.onPressed != null && kIsWeb
-              ? SystemMouseCursors.click
-              : MouseCursor.defer,
+      cursor: widget.onPressed != null && kIsWeb
+          ? SystemMouseCursors.click
+          : MouseCursor.defer,
       child: MetaData(
         metaData: this,
         behavior: HitTestBehavior.opaque,
@@ -2471,12 +2453,12 @@ class _RenderAlertDialogActionsLayout extends RenderFlex {
   _RenderAlertDialogActionsLayout({
     List<RenderBox>? children,
     required double dividerThickness,
-  }) : _dividerThickness = dividerThickness,
-       super(
-         direction: Axis.vertical,
-         mainAxisSize: MainAxisSize.min,
-         crossAxisAlignment: CrossAxisAlignment.stretch,
-       ) {
+  })  : _dividerThickness = dividerThickness,
+        super(
+          direction: Axis.vertical,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+        ) {
     addAll(children);
   }
 
@@ -2638,8 +2620,10 @@ class _RenderAlertDialogActionsLayout extends RenderFlex {
   }
 }
 
-typedef _TwoChildrenHeights =
-    ({double topChildHeight, double bottomChildHeight});
+typedef _TwoChildrenHeights = ({
+  double topChildHeight,
+  double bottomChildHeight
+});
 
 // A column layout with two widgets, where the top widget expands vertically as
 // needed, and the bottom widget has a minimum height.
@@ -2691,12 +2675,12 @@ class _RenderPriorityColumn extends RenderFlex {
   _RenderPriorityColumn({
     List<RenderBox>? children,
     required double bottomMinHeight,
-  }) : _bottomMinHeight = bottomMinHeight,
-       super(
-         direction: Axis.vertical,
-         mainAxisSize: MainAxisSize.min,
-         crossAxisAlignment: CrossAxisAlignment.stretch,
-       ) {
+  })  : _bottomMinHeight = bottomMinHeight,
+        super(
+          direction: Axis.vertical,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+        ) {
     addAll(children);
   }
 
