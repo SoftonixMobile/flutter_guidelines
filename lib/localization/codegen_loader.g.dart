@@ -9,33 +9,33 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
   static const Map<String,dynamic> frFR = {
-  "screenText": "Filtrer",
-  "dashboard": "Tableau de bord",
-  "dashboardScreenTitle": "@:dashboard @:screenText",
-  "messages": "Messages",
+  "changePassword": "Changer le mot de passe",
   "chats": "Chats",
   "chatsScreenTitle": "@:chats @:screenText",
+  "dashboard": "Tableau de bord",
+  "dashboardScreenTitle": "@:dashboard @:screenText",
+  "languageName": "French",
+  "messages": "Messages",
   "posts": "Des postes",
   "postsScreenTitle": "@:posts @:screenText",
+  "screenText": "Filtrer",
   "settings": "Réglages",
   "settingsScreenTitle": "@:settings @:screenText",
-  "changePassword": "Changer le mot de passe",
-  "languageName": "French",
   "signOut": "Se déconnecter"
 };
 static const Map<String,dynamic> enUS = {
-  "screenText": "Screen",
-  "dashboard": "Dashboard",
-  "dashboardScreenTitle": "@:dashboard @:screenText",
-  "messages": "Messages",
+  "changePassword": "Change Password",
   "chats": "Chats",
   "chatsScreenTitle": "@:chats @:screenText",
+  "dashboard": "Dashboard",
+  "dashboardScreenTitle": "@:dashboard @:screenText",
+  "languageName": "English",
+  "messages": "Messages",
   "posts": "Posts",
   "postsScreenTitle": "@:posts @:screenText",
+  "screenText": "Screen",
   "settings": "Settings",
   "settingsScreenTitle": "@:settings @:screenText",
-  "changePassword": "Change Password",
-  "languageName": "English",
   "signOut": "Sign Out"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"fr_FR": frFR, "en_US": enUS};

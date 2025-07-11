@@ -1,19 +1,15 @@
 {
-    "screenText": "Screen",
-
-    "dashboard" : "Dashboard",
-    "dashboardScreenTitle": "@:dashboard @:screenText",
-
-    "messages": "Messages",
-    "chats": "Chats",
-    "chatsScreenTitle" : "@:chats @:screenText",
-    "posts": "Posts",
-    "postsScreenTitle" : "@:posts @:screenText",
-
-    "settings" : "Settings",
-    "settingsScreenTitle" : "@:settings @:screenText",
-
     "changePassword": "Change Password",
+    "chats": "Chats",
+    "chatsScreenTitle": "@:chats @:screenText",
+    "dashboard": "Dashboard",
+    "dashboardScreenTitle": "@:dashboard @:screenText",
     "languageName": "English",
+    "messages": "Messages",
+    "posts": "Posts",
+    "postsScreenTitle": "@:posts @:screenText",
+    "screenText": "Screen",
+    "settings": "Settings",
+    "settingsScreenTitle": "@:settings @:screenText",
     "signOut": "Sign Out"
 }
