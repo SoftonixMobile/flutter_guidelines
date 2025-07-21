@@ -162,58 +162,6 @@ The repository that contains methods for logging in and out of the system is log
 
 ## Best practices
 
-### Passing default values to instances or functions 
-Omit passing values that are the same as provided inside the item's constructor or method
-
-Lint rule - [avoid_redundant_argument_values](https://dart.dev/tools/linter-rules/avoid_redundant_argument_values)
-
-**Class and method from example**
-```dart
-    T? firstOrDefault({T? defaultValue = null}){
-        /// Some logic
-    }
-
-     class Example extends StatelessWidget {
-        const Example({
-            super.key,
-            required this.title,
-            this.isCompleted = false,
-        });
-
-        final String title;
-        final bool isCompleted
-
-        @override
-        Widget build(...)
-    }
-```
-    
-
-**BAD:**
-```dart
-    Widget build(BuildContext context){
-     // null is default for defaultValue
-      final user = data.firstOrDefault(defaultValue = null);
-
-     // false is the default for isCompleted
-      return Example(
-        title: user?.name,
-        isCompleted: false,
-       );
-    }
-```
-
-**GOOD:**
-```dart
-   Widget build(BuildContext context){
-      final user = data.firstOrDefault();
-
-      return Example(
-        title: user?.name,
-       );
-    }
-```
-
 ### Imports Styles 
 #### Sort Imports
    It's a GOOD practice to sort imports for several reasons: ***Readability and Consistency, Avoiding Conflicts, Easier Maintenance, Helpful for Version Control***
@@ -677,19 +625,19 @@ class EntityRepository {
 ####  Constructing instances     
 The parameters passed to the constructor must be sorted according to their importance and length.  
   
-**Explanation to example:** someReallyLongButNecessaryFiled must be first due to its importance, and the location of the other two fields (dates, caption) is not so important, so we can locate them according to genal line length  
+**Explanation to example:** someReallyLongButNecessaryField must be first due to its importance, and the location of the other two fields (dates, caption) is not so important, so we can locate them according to genal line length  
     
  Widget class  
 ```dart  
     class Example extends StatelessWidget {  
         const Example({  
             super.key,  
-            required this.someReallyLongButNecessaryFiled,  
+            required this.someReallyLongButNecessaryField,  
             required this.title,  
             required this.caption,  
         });  
   
-        final String someReallyLongButNecessaryFiled;  
+        final String someReallyLongButNecessaryField;  
   
         final List<DateTime> dates;  
         final String caption;  
@@ -778,14 +726,14 @@ The parameters passed to the constructor must be sorted according to their impor
         final ExampleModel? initial;  
   
         final UserData userData;  
-        final UserRepository repository;  
+        final UserRepository userRepository;  
         final List<UserSettings> settings;  
   
         ExampleBloc({  
             required this.initial;  
             required this.userData,  
             required this.settings,  
-            required this.repository,  
+            required this.userRepository,  
         });  
         ...  
     }  
@@ -814,12 +762,12 @@ The parameters passed to the constructor must be sorted according to their impor
         final ExampleModel? initial;  
   
         final UserData userData;  
-        final UserRepository repository;  
+        final UserRepository userRepository;  
   
         ExampleBloc({  
             @factoryParam this.initial;  
             required this.userData,  
-            required this.repository,  
+            required this.userRepository,  
         });  
         ...  
     }  
@@ -885,7 +833,7 @@ The parameters passed to the constructor must be sorted according to their impor
 ```  
 ---
 #### Using typedef for State Annotation
- In the process of writing BLoC using stx_bloc_base sometimes states can be very long. Use ```typedef ``` to shorten the state name and make it more understandable.  
+ In the process of writing BLoC using stx_bloc_base sometimes states can be very long. Use ```typedef``` to shorten the state name and make it more understandable.  
   
 **BAD:**  
  ```dart  
@@ -913,8 +861,7 @@ The parameters passed to the constructor must be sorted according to their impor
    ```  
    ---
 #### Naming for repository instance 
- If bloc uses a single repository, then it should be named a 'repository' (see example 1)  
- else name instances according to the class name (see example 2)  
+ Always name repository instances according to the class name, even if there is only one repository used in the BLoC.  
   
 **Example 1**  
  
@@ -922,11 +869,11 @@ The parameters passed to the constructor must be sorted according to their impor
  ```dart  
     class ExampleBloc extends NetworkBloc<..., ...>{  
         final int id;  
-        final UserRepository userRepository;  
+        final UserRepository repository;  
   
         ExampleBloc({  
             required this.id,  
-            required this.userRepository,  
+            required this.repository,  
         });  
   
         ...  
@@ -936,11 +883,11 @@ The parameters passed to the constructor must be sorted according to their impor
  ```dart  
      class ExampleBloc extends NetworkBloc<..., ...>{  
         final int id;  
-        final UserRepository repository;  
+        final UserRepository userRepository;  
   
         ExampleBloc({  
             required this.id,  
-            required this.repository,  
+            required this.userRepository,  
         });  
   
         ...  
@@ -953,6 +900,7 @@ The parameters passed to the constructor must be sorted according to their impor
  ```dart  
     class ExampleBloc extends Bloc<..., ...>{  
         final int id;  
+
         final UserRepository repository;  
         final DashboardRepository dashboard;  
         final SettingsRepository settingsRepository;  
@@ -971,6 +919,7 @@ The parameters passed to the constructor must be sorted according to their impor
  ```dart  
      class ExampleBloc extends Bloc<..., ...>{  
         final int id;  
+
         final UserRepository userRepository;  
         final SettingsRepository settingsRepository;  
         final DashboardRepository dashboardRepository;  
@@ -1020,12 +969,14 @@ Attributes in data or BLoC classes should be placed ***BEFORE*** constructor.
             required this.title,
             required this.description,
         });
+    }
 ```
 #### Creating models with Freezed 
-   - Instead of the keyword 'required', user '@Default(defaultValue)'. 
+    - Instead of the keyword 'required', user '@Default(defaultValue)'. 
     - Use '@Default(defaultValue)' for optional parameters, in case logic for default value behaves the same as null-value.
+    - Use @JsonKey(unknownEnumValue: CustomEnum.myValue) or @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) for enums
 
-This is useful for creating default values payloads and omitting the use of redundant null-safety  
+This is useful for creating default values payloads and omitting the use of redundant null-safety as well as handling production error when BE has breaking changes
 
     
 **BAD:**
@@ -1037,6 +988,7 @@ This is useful for creating default values payloads and omitting the use of redu
             required String name,
             bool? isCompleted,
             int? assignedTo,
+            @Default(ExampleType.model) ExampleType type
         }) = _ExampleModel;
 
         factory ExampleModel.fromJson(Map<String, dynamic> json) =>
@@ -1053,6 +1005,8 @@ This is useful for creating default values payloads and omitting the use of redu
             @Default('') String name,
             @Default(false) bool isCompleted,
             int? assignedTo,
+            @JsonKey(unknownEnumValue: ExampleType.model)
+            @Default(ExampleType.model) ExampleType type
         }) = _ExampleModel;
 
         factory ExampleModel.fromJson(Map<String, dynamic> json) =>
