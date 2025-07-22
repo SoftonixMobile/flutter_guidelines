@@ -7,7 +7,9 @@ import 'package:flutter_guidelines/services/http/http_client.dart';
 class PostsRepository {
   final HttpClient httpClient;
 
-  PostsRepository(this.httpClient);
+  PostsRepository(this.httpClient) {
+    httpClient.registerType<Post>(Post.fromJson);
+  }
 
   Future<List<Post>> getPosts() =>
       httpClient.get<List<Post>>('https://jsonplaceholder.typicode.com/posts');

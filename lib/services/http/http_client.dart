@@ -203,6 +203,12 @@ class HttpClient {
   }
 }
 
+extension HttpClientX on HttpClient {
+  void registerType<T>(JsonConverter<T> converter) {
+    _parser.registerType<T>(converter);
+  }
+}
+
 extension on Response {
   Response<T> convert<T>(JsonDataParser parser) => Response(
     data: parser.convert<T>(data),
