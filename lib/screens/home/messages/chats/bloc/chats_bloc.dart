@@ -28,7 +28,9 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
       final chats = await chatsRepository.getChats();
 
       emit(ChatsState.success(chats));
-    } catch (_) {
+    } catch (e, stackTrace) {
+      addError(e, stackTrace);
+
       emit(state.copyWith(status: NetworkStatus.failure));
     }
   }

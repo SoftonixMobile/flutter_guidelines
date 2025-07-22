@@ -12,9 +12,11 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
+
     return Container(
-      width: MediaQuery.of(context).size.width * 0.75,
-      height: MediaQuery.of(context).size.height,
+      width: screenSize.width * 0.75,
+      height: screenSize.height,
       color: AppColors.white,
       child: Drawer(
         elevation: 3,
@@ -22,7 +24,7 @@ class AppDrawer extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10),
             width: double.infinity,
-            height: MediaQuery.of(context).size.height,
+            height: screenSize.height,
             child: Column(
               children: [
                 Row(

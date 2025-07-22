@@ -3,7 +3,6 @@ import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/general_models.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'interceptors/index.dart';
@@ -26,8 +25,8 @@ class HttpClient {
         Dio(
           BaseOptions(
             baseUrl: DioOptions.baseUrl,
-            receiveTimeout: DioOptions.receiveTimeout,
             connectTimeout: DioOptions.connectTimeout,
+            receiveTimeout: DioOptions.receiveTimeout,
           ),
         );
 
@@ -37,9 +36,8 @@ class HttpClient {
           tokenHeader: (token) => {'Authorization': 'Bearer $token'},
           tokenStorage: SecureTokenStorage(),
           refreshToken: (token, client) {
-            getIt<AuthBloc>().add(const AuthEvent.signOut());
-
-            throw Exception('Unauthenticated');
+            // throws a RevokeTokenException to trigger a logout
+            throw RevokeTokenException();
           },
         );
 
