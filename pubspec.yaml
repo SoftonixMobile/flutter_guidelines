@@ -48,7 +48,7 @@ dependencies:
   json_annotation: ^4.9.0
 
   #easy_localization and generator
-  easy_localization: ^3.0.7+1
+  easy_localization: ^3.0.8
   stx_easy_localization_generator: ^1.0.1
 
   #this package extends the native Iterable type with all of the LINQ methods that do not exist in native Dart
