@@ -32,7 +32,7 @@ dependencies:
 
   #dependency injection
   get_it: ^8.0.3
-  injectable: ^2.5.0
+  injectable: ^2.5.1
 
   #routing
   auto_route: ^10.1.0
