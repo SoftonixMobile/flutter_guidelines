@@ -59,7 +59,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
 
   #icons
-  font_awesome_flutter: ^10.8.0
+  font_awesome_flutter: ^10.9.0
   cupertino_icons: ^1.0.8
 
   #widgets
