@@ -39,7 +39,7 @@ dependencies:
 
   #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
   #Request Cancellation, File downloading, Timeout etc.
-  dio: ^5.8.0+1
+  dio: ^5.9.0
   fresh_dio: ^0.4.3
   dio_smart_retry: ^7.0.1
 
