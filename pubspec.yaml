@@ -68,7 +68,7 @@ dependencies:
   extended_nested_scroll_view: ^6.2.1
 
   #others
-  upgrader: ^11.4.0
+  upgrader: ^11.5.0
 
 dev_dependencies:
   #testing
