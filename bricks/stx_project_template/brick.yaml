@@ -2,7 +2,7 @@ name: stx_project_template
 description: Softonix project template.
 repository: https://github.com/VSydorko/flutter_guidelines/tree/main/bricks/stx_project_template
 
-version: 0.12.1
+version: 0.13.0
 
 environment:
   mason: ^0.1.0

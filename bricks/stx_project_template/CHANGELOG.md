@@ -1,3 +1,7 @@
+# 0.13.10
+
+- Support flutter 3.35.
+
 # 0.12.1
 
 - Update deps.
