@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/models/index.dart';
-import 'package:{{project_name}}/services/http/http_client.dart';
+import 'package:{{project_name}}/services/http/index.dart';
 
 @injectable
 class ChatsRepository {
