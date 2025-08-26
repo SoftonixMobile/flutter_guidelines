@@ -25,7 +25,10 @@ void main() async {
 
     when(() => mockDio.interceptors).thenReturn(MockInterceptors());
 
-    httpClient = HttpClient(dio: mockDio, fresh: mockFresh);
+    httpClient = HttpClient(
+      dio: mockDio,
+      fresh: mockFresh,
+    );
   });
 
   group('HttpClient tests', () {
@@ -47,6 +50,7 @@ void main() async {
           (_) async => successMockResponse,
         );
 
+        httpClient.registerType(Post.fromJson);
         final actual = await httpClient.get<List<Post>>('/posts');
 
         // Check if actual & expected are equal
