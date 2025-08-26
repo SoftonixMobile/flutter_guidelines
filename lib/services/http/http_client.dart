@@ -5,21 +5,18 @@ import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/models/general_models.dart';
 import 'package:flutter_guidelines/services/index.dart';
-import 'interceptors/index.dart';
-import 'json_data_parser.dart';
-import 'options.dart';
-import 'token_storage.dart';
 
 @Singleton(scope: 'auth')
 class HttpClient {
   late final Dio _dio;
   late final Fresh<String> _fresh;
-  final _parser = JsonDataParser();
+  final JsonDataParser _parser;
 
   HttpClient({
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
-  }) {
+    @ignoreParam JsonDataParser? parser,
+  }) : _parser = parser ?? JsonDataParser() {
     _dio =
         dio ??
         Dio(

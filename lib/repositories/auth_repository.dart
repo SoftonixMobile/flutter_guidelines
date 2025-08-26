@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/models/general_models.dart';
-import 'package:flutter_guidelines/services/http/http_client.dart';
+import 'package:flutter_guidelines/services/http/index.dart';
 
 @Injectable(scope: 'auth')
 class AuthRepository {
