@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/models/general_models.dart';
-import 'package:{{project_name}}/services/http/http_client.dart';
+import 'package:{{project_name}}/services/http/index.dart';
 
 @Injectable(scope: 'auth')
 class AuthRepository {

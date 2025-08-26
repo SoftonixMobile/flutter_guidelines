@@ -3,31 +3,27 @@ import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:{{project_name}}/blocs/index.dart';
 import 'package:{{project_name}}/models/general_models.dart';
 import 'package:{{project_name}}/services/index.dart';
-import 'interceptors/index.dart';
-import 'json_data_parser.dart';
-import 'options.dart';
-import 'token_storage.dart';
 
 @Singleton(scope: 'auth')
 class HttpClient {
   late final Dio _dio;
   late final Fresh<String> _fresh;
-  final _parser = JsonDataParser();
+  final JsonDataParser _parser;
 
   HttpClient({
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
-  }) {
+    @ignoreParam JsonDataParser? parser,
+  }) : _parser = parser ?? JsonDataParser() {
     _dio =
         dio ??
         Dio(
           BaseOptions(
             baseUrl: DioOptions.baseUrl,
-            receiveTimeout: DioOptions.receiveTimeout,
             connectTimeout: DioOptions.connectTimeout,
+            receiveTimeout: DioOptions.receiveTimeout,
           ),
         );
 
@@ -37,9 +33,8 @@ class HttpClient {
           tokenHeader: (token) => {'Authorization': 'Bearer $token'},
           tokenStorage: SecureTokenStorage(),
           refreshToken: (token, client) {
-            getIt<AuthBloc>().add(const AuthEvent.signOut());
-
-            throw Exception('Unauthenticated');
+            // throws a RevokeTokenException to trigger a logout
+            throw RevokeTokenException();
           },
         );
 
@@ -202,6 +197,12 @@ class HttpClient {
 
   Future<Response> download(String url, String savePath) {
     return _dio.download(url, savePath);
+  }
+}
+
+extension HttpClientX on HttpClient {
+  void registerType<T>(JsonConverter<T> converter) {
+    _parser.registerType<T>(converter);
   }
 }
 

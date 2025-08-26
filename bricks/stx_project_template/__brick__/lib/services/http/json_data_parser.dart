@@ -1,5 +1,3 @@
-import 'package:{{project_name}}/models/index.dart';
-
 typedef JsonMap = Map<String, dynamic>;
 typedef JsonConverter<T> = T Function(JsonMap);
 
@@ -7,7 +5,7 @@ class JsonDataParser {
   final _converters = <Type, Function(dynamic)>{};
 
   JsonDataParser() {
-    registerType(Post.fromJson);
+    // Register default converters if needed
   }
 
   void registerType<T>(JsonConverter<T> converter) {
