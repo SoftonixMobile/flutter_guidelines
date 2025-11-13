@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guidelines/screens/home/messages/chats/pages/chat_details/chat_details_screen.dart';
+import 'package:flutter_guidelines/screens/main/messages/chats/pages/chat_details/chat_details_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 

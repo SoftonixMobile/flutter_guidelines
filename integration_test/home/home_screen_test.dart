@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/screens/home/dashboard/dashboard_screen.dart';
+import 'package:flutter_guidelines/screens/main/dashboard/dashboard_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
@@ -36,8 +36,8 @@ void main() {
         await $.pump();
 
         // Trigger change of localization.
-        final words = CodegenLoader.mapLocales[
-            '${currentLocale.languageCode}_${currentLocale.countryCode}'];
+        final words = CodegenLoader
+            .mapLocales['${currentLocale.languageCode}_${currentLocale.countryCode}'];
         final language = $(words?['languageName']);
 
         await $(language).tap();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 
 abstract final class AppTheme {
   static ThemeData getAppTheme(BuildContext context) {

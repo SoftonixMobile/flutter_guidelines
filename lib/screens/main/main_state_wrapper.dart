@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
-class HomeStateWrapper extends StatelessWidget {
-  const HomeStateWrapper({super.key, required this.child});
+class MainStateWrapper extends StatelessWidget {
+  const MainStateWrapper({super.key, required this.child});
 
   final Widget child;
 

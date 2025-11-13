@@ -41,10 +41,7 @@ void main() {
       // Provide creating bloc method here
       // (its better to create new instance of bloc for each test
       // to avoid mess up)
-      build: () => AuthBloc(
-        authRepository: mockAuthRepo,
-        userRepository: mockUserRepo,
-      ),
+      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
       // Here you only need to specify states which you receive from bloc
       // in right order
       expect: () => [const AuthState()],
@@ -61,10 +58,7 @@ void main() {
           mockUserRepo.getUserProfile,
         ).thenAnswer((_) async => fullUserProfile);
       },
-      build: () => AuthBloc(
-        authRepository: mockAuthRepo,
-        userRepository: mockUserRepo,
-      ),
+      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
       expect: () => [AuthState.authenticated(fullUserProfile)],
     );
 
@@ -77,10 +71,7 @@ void main() {
 
         when(mockUserRepo.getUserProfile).thenThrow(UnimplementedError());
       },
-      build: () => AuthBloc(
-        authRepository: mockAuthRepo,
-        userRepository: mockUserRepo,
-      ),
+      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
       expect: () => [AuthState.unauthenticated()],
     );
 
@@ -91,10 +82,7 @@ void main() {
           return Stream<AuthStatus>.value(AuthStatus.unauthenticated);
         });
       },
-      build: () => AuthBloc(
-        authRepository: mockAuthRepo,
-        userRepository: mockUserRepo,
-      ),
+      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
       expect: () => [AuthState.unauthenticated()],
     );
 
@@ -105,10 +93,7 @@ void main() {
           mockAuthRepo.signOut,
         ).thenAnswer((_) async => {});
       },
-      build: () => AuthBloc(
-        authRepository: mockAuthRepo,
-        userRepository: mockUserRepo,
-      ),
+      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
       // Set the previous state in a bloc for testing specific cases
       // without unnecessary actions
       // (to prevent test failure due to unrelated methods)

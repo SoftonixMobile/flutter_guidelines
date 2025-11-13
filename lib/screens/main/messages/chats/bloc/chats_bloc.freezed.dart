@@ -140,7 +140,7 @@ class _$ChatsStateCopyWithImpl<$Res> implements $ChatsStateCopyWith<$Res> {
 
 class _ChatsState implements ChatsState {
   const _ChatsState({
-    this.status = NetworkStatus.loading,
+    this.status = NetworkStatus.initial,
     final List<Chat> chats = const [],
     this.errorMessage,
   }) : _chats = chats;

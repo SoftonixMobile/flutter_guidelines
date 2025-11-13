@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import 'router.gr.dart';
 
-@AutoRouterConfig(
-  replaceInRouteName: 'Page|Screen,Route',
-)
+@AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.adaptive();
@@ -13,15 +11,15 @@ class AppRouter extends RootStackRouter {
   final List<AutoRoute> routes = [
     AutoRoute(
       path: '/',
-      page: AuthRoute.page,
+      page: RootRoute.page,
       children: [
         AutoRoute(page: LoginRoute.page),
         AutoRoute(
-          page: HomeRouter.page,
+          page: MainRouter.page,
           children: [
             AutoRoute(
               path: '',
-              page: HomeRoute.page,
+              page: MainRoute.page,
               children: [
                 AutoRoute(page: DashboardRoute.page),
                 AutoRoute(

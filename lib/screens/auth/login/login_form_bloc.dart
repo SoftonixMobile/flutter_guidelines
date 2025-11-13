@@ -3,18 +3,17 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/repositories/auth_repository.dart';
+import 'package:flutter_guidelines/repositories/index.dart';
 
+// TODO(Vova): add validators
 @Injectable(scope: 'auth')
-class LoginFormBloc extends FormBloc<String, String> {
+class LoginFormBloc extends FormBloc<bool, String> {
   late final TextFieldBloc username;
   late final TextFieldBloc password;
 
-  final AuthRepository authRepository;
+  final AuthRepository _authRepository;
 
-  LoginFormBloc({
-    required this.authRepository,
-  }) : super(customSubmit: false) {
+  LoginFormBloc(this._authRepository) : super(customSubmit: false) {
     username = TextFieldBloc(
       required: true,
       rules: {ValidationType.onBlur},
@@ -36,8 +35,11 @@ class LoginFormBloc extends FormBloc<String, String> {
 
   @override
   FutureOr<void> onSubmit() async {
-    await authRepository.signIn(username.toString(), password.toString());
+    await _authRepository.signIn(
+      username.toString(),
+      password.toString(),
+    );
 
-    emitSuccess('Success');
+    emitSuccess(true);
   }
 }

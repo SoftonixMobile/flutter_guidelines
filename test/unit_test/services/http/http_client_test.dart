@@ -10,24 +10,29 @@ class MockDio extends Mock implements Dio {}
 
 class MockFresh extends Mock implements Fresh<String> {}
 
+class MockLogger extends Mock implements Logger {}
+
 class MockInterceptors extends Mock implements Interceptors {}
 
 // Tests for HttpClient methods
 void main() async {
   late final Dio mockDio;
   late final Fresh<String> mockFresh;
+  late final Logger mockLogger;
 
   late HttpClient httpClient;
 
   setUp(() {
     mockDio = MockDio();
     mockFresh = MockFresh();
+    mockLogger = MockLogger();
 
     when(() => mockDio.interceptors).thenReturn(MockInterceptors());
 
     httpClient = HttpClient(
       dio: mockDio,
       fresh: mockFresh,
+      logger: mockLogger,
     );
   });
 

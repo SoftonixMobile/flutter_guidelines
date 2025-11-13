@@ -57,10 +57,11 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                       childCount: state.chats.length,
                     ),
                   );
-
                 case NetworkStatus.failure:
                   return SliverFillRemaining(
-                    child: Center(child: Text(state.errorMessage ?? '')),
+                    child: Center(
+                      child: Text(state.errorMessage ?? 'Something went wrong'),
+                    ),
                   );
               }
             },

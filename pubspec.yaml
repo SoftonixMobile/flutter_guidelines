@@ -6,8 +6,8 @@ publish_to: "none"
 version: 0.0.1+1
 
 environment:
-  sdk: ">=3.9.0 <4.0.0"
-  flutter: ">=3.35.0"
+  sdk: ^3.10.0
+  flutter: ^3.38.0
 
 dependencies:
   flutter:
@@ -20,7 +20,7 @@ dependencies:
     path: packages/customizable_cupertino_dialog
 
   #splash screen
-  flutter_native_splash: ^2.4.6
+  flutter_native_splash: ^2.4.7
 
   #softonix core packages
   stx_bloc_base: ^0.6.1
@@ -31,16 +31,15 @@ dependencies:
   flutter_bloc: ^9.1.1
 
   #dependency injection
-  get_it: ^8.2.0
-  injectable: ^2.5.1
+  get_it: ^9.0.5
+  injectable: ^2.6.0
 
   #routing
-  auto_route: ^10.1.2
+  auto_route: ^10.2.2
 
-  #a powerful Http client for Dart, which supports Interceptors, Global configuration, FormData,
-  #Request Cancellation, File downloading, Timeout etc.
+  #http
   dio: ^5.9.0
-  fresh_dio: ^0.4.3
+  fresh_dio: ^0.4.4
   dio_smart_retry: ^7.0.1
 
   #code generator for unions/pattern-matching/copy.
@@ -51,15 +50,12 @@ dependencies:
   easy_localization: ^3.0.8
   stx_easy_localization_generator: ^1.0.1
 
-  #this package extends the native Iterable type with all of the LINQ methods that do not exist in native Dart
-  darq: ^2.1.0
-
   #local storage
   shared_preferences: ^2.5.3
   flutter_secure_storage: ^9.2.4
 
   #icons
-  font_awesome_flutter: ^10.10.0
+  font_awesome_flutter: ^10.12.0
   cupertino_icons: ^1.0.8
 
   #widgets
@@ -68,7 +64,9 @@ dependencies:
   extended_nested_scroll_view: ^6.2.1
 
   #others
-  upgrader: ^11.5.0
+  darq: ^2.1.0
+  collection: ^1.19.1
+  upgrader: ^12.3.0
 
 dev_dependencies:
   #testing
@@ -82,16 +80,16 @@ dev_dependencies:
   bloc_test: ^10.0.0
 
   #builders
-  build_runner: ^2.7.0
-  flutter_gen_runner: ^5.11.0
-  auto_route_generator: ^10.2.4
-  injectable_generator: ^2.8.1
-  json_serializable: ^6.11.0
-  freezed: ^3.2.0
+  build_runner: ^2.10.2
+  flutter_gen_runner: ^5.12.0
+  auto_route_generator: ^10.2.6
+  injectable_generator: ^2.9.1
+  json_serializable: ^6.11.1
+  freezed: ^3.2.3
 
   #lints
   flutter_lints: ^6.0.0
-  very_good_analysis: ^9.0.0
+  very_good_analysis: ^10.0.0
 
   #others
   import_sorter: ^4.6.0
@@ -118,7 +116,7 @@ flutter:
           style: italic
 
 flutter_gen:
-  output: lib/styles/
+  output: lib/theme/
   line_length: 80
 
   integrations:
@@ -152,12 +150,14 @@ import_sorter:
 flutter_native_splash:
   web: false
   color: "#000000"
+  color_dark: "#FFFFFF"
   image: assets/images/config/splash.png
   branding: assets/images/config/branding.png
   branding_mode: bottom
   branding_bottom_padding: 40
   android_12:
     color: "#000000"
+    color_dark: "#FFFFFF"
     image: assets/images/config/splash.png
     branding: assets/images/config/branding.png
 
@@ -175,4 +175,3 @@ patrol:
     package_name: com.example.flutter_guidelines
   ios:
     bundle_id: com.example.flutter_guidelines
-  

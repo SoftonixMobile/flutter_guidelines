@@ -5,7 +5,7 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'package:flutter_guidelines/core/helpers/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
   const CustomTabsRouter({
@@ -16,8 +16,13 @@ class CustomTabsRouter extends StatelessWidget {
   });
 
   final String appBarTitle;
+
   final List<String> tabs;
   final List<PageRouteInfo<dynamic>> routes;
+
+  List<Widget> _buildTabs(List<String> tabs) {
+    return tabs.map((tab) => Tab(text: tab, height: 46)).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +70,5 @@ class CustomTabsRouter extends StatelessWidget {
         );
       },
     );
-  }
-
-  List<Widget> _buildTabs(List<String> tabs) {
-    return tabs.map((tab) => Tab(text: tab, height: 46)).toList();
   }
 }

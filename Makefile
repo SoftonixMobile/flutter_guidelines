@@ -7,10 +7,10 @@ upgrade:
 	dart pub upgrade
 
 build:
-	dart run build_runner build --delete-conflicting-outputs
+	dart run build_runner build --delete-conflicting-outputs --enable-experiment=dot-shorthands
 
 watch:
-	dart run build_runner watch --delete-conflicting-outputs
+	dart run build_runner watch --delete-conflicting-outputs --enable-experiment=dot-shorthands
 
 lang:
 	dart run stx_easy_localization_generator:generate

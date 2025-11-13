@@ -6,9 +6,9 @@ import 'package:mocktail/mocktail.dart';
 import 'package:patrol/patrol.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/screens/login/login_form_bloc.dart';
-import 'package:flutter_guidelines/screens/login/login_screen.dart';
-import 'package:flutter_guidelines/screens/login/widgets/index.dart';
+import 'package:flutter_guidelines/screens/auth/login/login_form_bloc.dart';
+import 'package:flutter_guidelines/screens/auth/login/login_screen.dart';
+import 'package:flutter_guidelines/screens/auth/login/widgets/index.dart';
 
 class MockLoginFormBloc extends Mock implements LoginFormBloc {}
 

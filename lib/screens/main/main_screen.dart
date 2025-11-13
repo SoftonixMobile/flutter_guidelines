@@ -5,8 +5,8 @@ import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

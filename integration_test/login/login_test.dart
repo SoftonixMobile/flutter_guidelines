@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guidelines/screens/home/dashboard/dashboard_screen.dart';
-import 'package:flutter_guidelines/screens/login/widgets/index.dart';
+import 'package:flutter_guidelines/screens/main/dashboard/dashboard_screen.dart';
+import 'package:flutter_guidelines/screens/auth/login/widgets/index.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 

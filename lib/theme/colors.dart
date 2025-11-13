@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/styles/colors.gen.dart';
+import 'package:flutter_guidelines/theme/colors.gen.dart';
 
 abstract final class AppColors {
   static const primary = ColorName.primary;

@@ -15,7 +15,7 @@ class MessagesScreen extends StatelessWidget {
       context.tr(LocaleKeys.posts),
     ];
 
-    const routes = <PageRouteInfo<dynamic>>[
+    const routes = [
       ChatsRoute(),
       PostsRoute(),
     ];

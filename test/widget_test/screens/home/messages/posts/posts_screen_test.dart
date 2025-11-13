@@ -7,7 +7,7 @@ import 'package:patrol/patrol.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
-import 'package:flutter_guidelines/screens/home/messages/posts/posts_screen.dart';
+import 'package:flutter_guidelines/screens/main/messages/posts/posts_screen.dart';
 
 class MockPostsBloc extends Mock implements PostsBloc {}
 
