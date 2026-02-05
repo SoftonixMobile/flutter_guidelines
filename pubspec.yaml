@@ -68,7 +68,7 @@ dependencies:
   collection: ^1.19.1
   upgrader: ^12.5.0
 
-dependency_overrides: 
+dependency_overrides:
   test: ^1.26.3
   analyzer: ^9.0.0
 
@@ -78,8 +78,6 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  patrol: ^4.1.0
-  patrol_finders: ^3.0.0
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
 
@@ -172,10 +170,3 @@ flutter_launcher_icons:
   image_path: "assets/images/config/app-icon.png"
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/images/config/app-icon.png"
-
-patrol:
-  app_name: FlutterGuidelines
-  android:
-    package_name: com.example.flutter_guidelines
-  ios:
-    bundle_id: com.example.flutter_guidelines
