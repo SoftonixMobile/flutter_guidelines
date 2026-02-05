@@ -34,7 +34,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                 case NetworkStatus.success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
+                      (context, index) {
                         final post = state.data[index];
 
                         return Padding(

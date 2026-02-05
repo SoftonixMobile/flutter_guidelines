@@ -41,7 +41,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                 case NetworkStatus.success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
+                      (context, index) {
                         final chat = state.chats[index];
 
                         return InkWell(
