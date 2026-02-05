@@ -69,24 +69,23 @@ dependencies:
   upgrader: ^12.5.0
 
 dependency_overrides:
-  test: ^1.26.3
-  analyzer: ^9.0.0
+  test: 1.29.0
+  test_api: 0.7.9
+  path_provider_foundation: 2.5.1 # https://github.com/flutter/flutter/issues/180163
 
 dev_dependencies:
   #testing
-  integration_test:
-    sdk: flutter
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
 
   #builders
-  build_runner: ^2.10.5
+  build_runner: ^2.11.0
   flutter_gen_runner: ^5.12.0
   auto_route_generator: ^10.4.0
   injectable_generator: ^2.12.0
-  json_serializable: ^6.11.1
+  json_serializable: ^6.12.0
   freezed: ^3.2.5
 
   #lints

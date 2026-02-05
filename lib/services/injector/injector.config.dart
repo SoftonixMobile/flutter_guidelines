@@ -34,11 +34,11 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     gh.factory<_i66.ChatsRepository>(() => _i66.ChatsRepository());
-    gh.lazySingleton<_i219.ChatsBloc>(
-      () => _i219.ChatsBloc(gh<_i293.ChatsRepository>()),
-    );
     gh.factory<_i879.PostsRepository>(
       () => _i879.PostsRepository(gh<_i647.HttpClient>()),
+    );
+    gh.lazySingleton<_i219.ChatsBloc>(
+      () => _i219.ChatsBloc(gh<_i293.ChatsRepository>()),
     );
     gh.lazySingleton<_i624.PostsBloc>(
       () => _i624.PostsBloc(gh<_i293.PostsRepository>()),
@@ -59,14 +59,14 @@ extension GetItInjectableX on _i174.GetIt {
         gh.factory<_i567.AuthRepository>(
           () => _i567.AuthRepository(gh<_i647.HttpClient>()),
         );
+        gh.factory<_i70.LoginFormBloc>(
+          () => _i70.LoginFormBloc(gh<_i293.AuthRepository>()),
+        );
         gh.singleton<_i495.AuthBloc>(
           () => _i495.AuthBloc(
             gh<_i293.AuthRepository>(),
             gh<_i293.UserRepository>(),
           ),
-        );
-        gh.factory<_i70.LoginFormBloc>(
-          () => _i70.LoginFormBloc(gh<_i293.AuthRepository>()),
         );
       },
     );
