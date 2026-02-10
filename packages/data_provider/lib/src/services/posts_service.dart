@@ -6,13 +6,13 @@ import 'package:injectable/injectable.dart';
 class PostsService {
   final NetworkBaseClient _networkClient;
 
-  PostsService(this._networkClient);
+  PostsService(this._networkClient) {
+    _networkClient.registerType(Post.fromJson);
+  }
 
   Future<List<Post>> getPosts() async {
-    final response = await _networkClient.get(
+    return _networkClient.getData<List<Post>>(
       'https://jsonplaceholder.typicode.com/posts',
     );
-
-    return (response.data as List).map((json) => Post.fromJson(json)).toList();
   }
 }

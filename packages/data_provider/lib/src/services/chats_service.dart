@@ -7,15 +7,15 @@ import '../../models.dart';
 class ChatsService {
   final NetworkBaseClient _network;
 
-  ChatsService(this._network);
+  ChatsService(this._network) {
+    _network.registerType(Chat.fromJson);
+  }
 
   Future<List<Chat>> getChats() async {
-    final response = await _network.get('/chats');
-    return (response.data as List).map((json) => Chat.fromJson(json)).toList();
+    return _network.getData<List<Chat>>('/chats');
   }
 
   Future<Chat> getChat(int id) async {
-    final response = await _network.get('/chats/$id');
-    return Chat.fromJson(response.data);
+    return _network.getData<Chat>('/chats/$id');
   }
 }

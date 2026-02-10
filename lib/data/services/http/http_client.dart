@@ -8,15 +8,19 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'adapters/index.dart';
 
-class HttpClient implements NetworkBaseClient {
+class HttpClient extends NetworkBaseClient {
   late final Dio _dio;
   late final Fresh<String> _fresh;
+  late final JsonDataParser _jsonParser;
 
   HttpClient({
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
+    @ignoreParam JsonDataParser? jsonParser,
     required Logger logger,
   }) {
+    _jsonParser = jsonParser ?? JsonDataParser();
+
     _dio =
         dio ??
         Dio(
@@ -59,6 +63,11 @@ class HttpClient implements NetworkBaseClient {
       });
 
   @override
+  void registerType<T>(JsonConverter<T> fromJson) {
+    _jsonParser.registerType(fromJson);
+  }
+
+  @override
   Future<void> setToken(String authResponse) {
     return _fresh.setToken(authResponse);
   }
@@ -80,7 +89,9 @@ class HttpClient implements NetworkBaseClient {
       queryParameters: queryParameters,
     );
 
-    return DioResponseAdapter(response);
+    return DioResponseAdapter(
+      response.parse<T>(_jsonParser),
+    );
   }
 
   @override
@@ -97,7 +108,9 @@ class HttpClient implements NetworkBaseClient {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(response);
+    return DioResponseAdapter(
+      response.parse<T>(_jsonParser),
+    );
   }
 
   @override
@@ -114,7 +127,9 @@ class HttpClient implements NetworkBaseClient {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(response);
+    return DioResponseAdapter(
+      response.parse<T>(_jsonParser),
+    );
   }
 
   @override
@@ -131,7 +146,9 @@ class HttpClient implements NetworkBaseClient {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(response);
+    return DioResponseAdapter(
+      response.parse<T>(_jsonParser),
+    );
   }
 
   @override
@@ -146,7 +163,9 @@ class HttpClient implements NetworkBaseClient {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(response);
+    return DioResponseAdapter(
+      response.parse<T>(_jsonParser),
+    );
   }
 
   @override
