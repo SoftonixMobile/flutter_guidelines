@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/core/router/index.dart';
+import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/data/services/index.dart';
 import 'bloc/chats_bloc.dart';
 
 @RoutePage()
@@ -12,9 +12,10 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    context.read<ChatsBloc>().add(const ChatsEvent.load());
-
-    return this;
+    return BlocProvider(
+      create: (context) => getIt<ChatsBloc>()..add(const ChatsEvent.load()),
+      child: this,
+    );
   }
 
   @override
@@ -25,7 +26,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
           ..add(const ChatsEvent.load());
 
         return chatsBloc.stream.firstWhere(
-          (state) => state.status != NetworkStatus.loading,
+          (state) => state.status != .loading,
         );
       },
       child: CustomScrollView(
@@ -33,12 +34,12 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
           BlocBuilder<ChatsBloc, ChatsState>(
             builder: (context, state) {
               switch (state.status) {
-                case NetworkStatus.initial:
-                case NetworkStatus.loading:
+                case .initial:
+                case .loading:
                   return const SliverFillRemaining(
                     child: Center(child: CircularProgressIndicator()),
                   );
-                case NetworkStatus.success:
+                case .success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
@@ -57,7 +58,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                       childCount: state.chats.length,
                     ),
                   );
-                case NetworkStatus.failure:
+                case .failure:
                   return SliverFillRemaining(
                     child: Center(
                       child: Text(state.errorMessage ?? 'Something went wrong'),

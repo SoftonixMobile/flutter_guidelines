@@ -1,11 +1,12 @@
+import 'package:data_provider/models.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/data/repositories/index.dart';
 
 typedef PostsState = NetworkListState<Post>;
 
-@lazySingleton
+@injectable
 class PostsBloc extends NetworkListBloc<Post, PostsState> {
   final PostsRepository _postsRepository;
 

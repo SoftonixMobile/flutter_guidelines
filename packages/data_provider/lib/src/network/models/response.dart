@@ -1,8 +1,8 @@
 class Response<T> {
   final T? data;
   final int statusCode;
-  final String statusMessage;
-  final Map<String, String> headers;
+  final String? statusMessage;
+  final Map<String, List<String>> headers;
 
   Response({
     required this.data,

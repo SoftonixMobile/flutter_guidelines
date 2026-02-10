@@ -4,10 +4,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/router/index.dart';
-import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/core/theme/index.dart';
+import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
-import 'blocs/index.dart';
+import 'blocs/auth/auth_bloc.dart';
 
 class FlutterGuidelines extends StatelessWidget {
   FlutterGuidelines({super.key});

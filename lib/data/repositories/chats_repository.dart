@@ -1,17 +1,24 @@
+import 'package:data_provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
+@lazySingleton
+class ChatsRepository extends Cubit<List<Chat>> {
+  final ChatsService _chatsService;
 
-@injectable
-class ChatsRepository {
-  ChatsRepository();
+  ChatsRepository(this._chatsService) : super([]);
 
   Future<List<Chat>> getChats() async {
-    await Future.delayed(const Duration(seconds: 1));
+    final chats = await _chatsService.getChats();
 
-    return List.generate(
-      100,
-      (index) => Chat(id: index, name: 'Chat $index'),
-    );
+    emit(chats);
+
+    return chats;
+  }
+
+  @override
+  @disposeMethod
+  Future<void> close() {
+    return super.close();
   }
 }

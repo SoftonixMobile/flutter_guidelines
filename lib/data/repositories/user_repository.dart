@@ -1,12 +1,17 @@
+import 'package:data_provider/data_provider.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
-
-@Injectable(scope: 'auth')
+@LazySingleton(scope: 'auth')
 class UserRepository {
-  UserRepository();
+  final UserService _userService;
+
+  UserProfile? _userProfile;
+
+  UserRepository(this._userService);
+
+  UserProfile get userProfile => _userProfile ?? const UserProfile();
 
   Future<UserProfile> getUserProfile() async {
-    return UserProfile.fromJson({'userName': 'test'});
+    return _userProfile ??= await _userService.getUserProfile();
   }
 }

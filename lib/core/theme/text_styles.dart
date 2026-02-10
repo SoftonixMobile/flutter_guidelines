@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/core/theme/index.dart';
+import 'index.dart';
 
 abstract final class AppTextStyles {
   static TextStyle get appTitle => const TextStyle(

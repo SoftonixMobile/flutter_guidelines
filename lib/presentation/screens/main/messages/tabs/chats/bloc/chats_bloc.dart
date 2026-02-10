@@ -1,17 +1,18 @@
 import 'dart:async';
 
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/data/repositories/index.dart';
 
 part 'chats_event.dart';
 part 'chats_state.dart';
 part 'chats_bloc.freezed.dart';
 
-@lazySingleton
+@injectable
 class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
   final ChatsRepository _chatsRepository;
 

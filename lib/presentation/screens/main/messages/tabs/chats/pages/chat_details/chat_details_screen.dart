@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
-import 'package:flutter_guidelines/core/router/index.dart';
+import 'package:data_provider/models.dart';
+
+import 'package:flutter_guidelines/core/index.dart';
 
 @RoutePage()
 class ChatDetailsScreen extends StatelessWidget {

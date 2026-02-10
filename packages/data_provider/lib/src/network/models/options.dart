@@ -10,4 +10,18 @@ class NetworkOptions {
   bool? receiveDataWhenStatusError;
   bool? followRedirects;
   int? maxRedirects;
+
+  NetworkOptions({
+    this.method,
+    this.sendTimeout,
+    this.receiveTimeout,
+    this.connectTimeout,
+    this.extra,
+    this.headers,
+    this.preserveHeaderCase,
+    this.contentType,
+    this.receiveDataWhenStatusError,
+    this.followRedirects,
+    this.maxRedirects,
+  });
 }

@@ -1,24 +1,20 @@
+import 'package:data_provider/data_provider.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
-import 'package:flutter_guidelines/data/services/index.dart';
-
-@Injectable(scope: 'auth')
+@LazySingleton(scope: 'auth')
 class AuthRepository {
-  final HttpClient _httpClient;
+  final AuthService _authService;
 
-  AuthRepository(this._httpClient);
+  AuthRepository(this._authService);
 
   Stream<AuthStatus> get authenticationStatus =>
-      _httpClient.authenticationStatus;
+      _authService.authenticationStatus;
 
   Future<void> signIn(String userName, String password) async {
-    await Future.delayed(const Duration(seconds: 2));
-
-    return _httpClient.setToken('token');
+    return _authService.signIn(userName, password);
   }
 
   Future<void> signOut() {
-    return _httpClient.clearToken();
+    return _authService.signOut();
   }
 }

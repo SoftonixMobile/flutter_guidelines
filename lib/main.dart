@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/core/localization/index.dart';
-
 import 'core/initialization/app_initialization.dart';
 import 'presentation/app.dart';
 

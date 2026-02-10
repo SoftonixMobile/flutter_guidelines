@@ -1,16 +1,24 @@
+import 'package:data_provider/data_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
-import 'package:flutter_guidelines/data/services/index.dart';
+@lazySingleton
+class PostsRepository extends Cubit<List<Post>> {
+  final PostsService _postsService;
 
-@injectable
-class PostsRepository {
-  final HttpClient _httpClient;
+  PostsRepository(this._postsService) : super([]);
 
-  PostsRepository(this._httpClient) {
-    _httpClient.registerType<Post>(Post.fromJson);
+  Future<List<Post>> getPosts() async {
+    final posts = await _postsService.getPosts();
+
+    emit(posts);
+
+    return posts;
   }
 
-  Future<List<Post>> getPosts() =>
-      _httpClient.get<List<Post>>('https://jsonplaceholder.typicode.com/posts');
+  @override
+  @disposeMethod
+  Future<void> close() {
+    return super.close();
+  }
 }

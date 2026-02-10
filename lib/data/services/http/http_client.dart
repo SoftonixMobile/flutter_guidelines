@@ -1,23 +1,22 @@
-import 'package:dio/dio.dart';
+import 'package:data_provider/network.dart';
+import 'package:dio/dio.dart' hide Response;
 import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:fresh_dio/fresh_dio.dart';
+import 'package:fresh_dio/fresh_dio.dart' hide Response;
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/domain/models/general_models.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
+import 'adapters/index.dart';
 
-@Singleton(scope: 'auth')
-class HttpClient {
+class HttpClient implements NetworkBaseClient {
   late final Dio _dio;
   late final Fresh<String> _fresh;
-  final JsonDataParser _parser;
 
   HttpClient({
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
-    @ignoreParam JsonDataParser? parser,
     required Logger logger,
-  }) : _parser = parser ?? JsonDataParser() {
+  }) {
     _dio =
         dio ??
         Dio(
@@ -49,7 +48,8 @@ class HttpClient {
     ]);
   }
 
-  Stream<AuthStatus> get authenticationStatus =>
+  @override
+  Stream<AuthStatus> get authStatusStream =>
       _fresh.authenticationStatus.map((status) {
         return switch (status) {
           AuthenticationStatus.initial => AuthStatus.initial,
@@ -58,161 +58,111 @@ class HttpClient {
         };
       });
 
-  Future<void> setToken(String token) {
-    return _fresh.setToken(token);
+  @override
+  Future<void> setToken(String authResponse) {
+    return _fresh.setToken(authResponse);
   }
 
+  @override
   Future<void> clearToken() {
     return _fresh.clearToken();
   }
 
-  Future<Response<T>> getR<T>(
+  @override
+  Future<Response<T>> get<T>(
     String url, {
     DynamicMap? queryParameters,
-    Options? options,
+    NetworkOptions? options,
   }) async {
     final response = await _dio.get(
       url,
+      options: RequestOptionsAdapter.fromOptional(options),
       queryParameters: queryParameters,
-      options: options,
     );
-    return response.convert<T>(_parser);
+
+    return DioResponseAdapter(response);
   }
 
-  Future<T> get<T>(
-    String url, {
-    DynamicMap? queryParameters,
-    Options? options,
-  }) => getR<T>(
-    url,
-    queryParameters: queryParameters,
-    options: options,
-  ).then((r) => r.data!);
-
-  Future<Response<T>> postR<T>(
+  @override
+  Future<Response<T>> post<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
-    Options? options,
+    NetworkOptions? options,
   }) async {
     final response = await _dio.post(
       url,
       data: data,
       queryParameters: queryParameters,
-      options: options,
+      options: RequestOptionsAdapter.fromOptional(options),
     );
-    return response.convert<T>(_parser);
+
+    return DioResponseAdapter(response);
   }
 
-  Future<T> post<T>(
+  @override
+  Future<Response<T>> put<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
-    Options? options,
-  }) => postR<T>(
-    url,
-    data: data,
-    queryParameters: queryParameters,
-    options: options,
-  ).then((r) => r.data!);
-
-  Future<Response<T>> putR<T>(
-    String url, {
-    dynamic data,
-    DynamicMap? queryParameters,
-    Options? options,
+    NetworkOptions? options,
   }) async {
     final response = await _dio.put(
       url,
       data: data,
       queryParameters: queryParameters,
-      options: options,
+      options: RequestOptionsAdapter.fromOptional(options),
     );
-    return response.convert<T>(_parser);
+
+    return DioResponseAdapter(response);
   }
 
-  Future<T> put<T>(
+  @override
+  Future<Response<T>> patch<T>(
     String url, {
     dynamic data,
     DynamicMap? queryParameters,
-    Options? options,
-  }) => putR<T>(
-    url,
-    data: data,
-    queryParameters: queryParameters,
-    options: options,
-  ).then((r) => r.data!);
-
-  Future<Response<T>> patchR<T>(
-    String url, {
-    dynamic data,
-    DynamicMap? queryParameters,
-    Options? options,
+    NetworkOptions? options,
   }) async {
     final response = await _dio.patch(
       url,
       data: data,
       queryParameters: queryParameters,
-      options: options,
+      options: RequestOptionsAdapter.fromOptional(options),
     );
-    return response.convert<T>(_parser);
+
+    return DioResponseAdapter(response);
   }
 
-  Future<T> patch<T>(
-    String url, {
-    dynamic data,
-    DynamicMap? queryParameters,
-    Options? options,
-  }) => patchR<T>(
-    url,
-    data: data,
-    queryParameters: queryParameters,
-    options: options,
-  ).then((r) => r.data!);
-
-  Future<Response<T>> deleteR<T>(
+  @override
+  Future<Response<T>> delete<T>(
     String url, {
     DynamicMap? queryParameters,
-    Options? options,
+    NetworkOptions? options,
   }) async {
     final response = await _dio.delete(
       url,
       queryParameters: queryParameters,
-      options: options,
+      options: RequestOptionsAdapter.fromOptional(options),
     );
-    return response.convert<T>(_parser);
+
+    return DioResponseAdapter(response);
   }
 
-  Future<T> delete<T>(
-    String url, {
+  @override
+  Future<Response<T>> download<T>(
+    String url,
+    String path, {
     DynamicMap? queryParameters,
-    Options? options,
-  }) => deleteR<T>(
-    url,
-    queryParameters: queryParameters,
-    options: options,
-  ).then((r) => r.data!);
+    NetworkOptions? options,
+  }) async {
+    final response = await _dio.download(
+      url,
+      path,
+      queryParameters: queryParameters,
+      options: RequestOptionsAdapter.fromOptional(options),
+    );
 
-  Future<Response> download(String url, String savePath) {
-    return _dio.download(url, savePath);
+    return DioResponseAdapter(response);
   }
-}
-
-extension HttpClientX on HttpClient {
-  void registerType<T>(JsonConverter<T> converter) {
-    _parser.registerType<T>(converter);
-  }
-}
-
-extension on Response {
-  Response<T> convert<T>(JsonDataParser parser) => Response(
-    data: parser.convert<T>(data),
-    requestOptions: requestOptions,
-    extra: extra,
-    headers: headers,
-    isRedirect: isRedirect,
-    redirects: redirects,
-    statusCode: statusCode,
-    statusMessage: statusMessage,
-  );
 }

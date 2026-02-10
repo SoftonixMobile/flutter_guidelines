@@ -5,11 +5,10 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/models/**.dart
-            - lib/**/models.dart
-            - lib/**_event.dart
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
+            - lib/domain/models/**.dart
+            - lib/presentation/**_event.dart
+            - lib/presentation/**_bloc.dart
+            - lib/presentation/**_cubit.dart
         options:
           format: true
           makeCollectionsUnmodifiable: false
@@ -24,32 +23,30 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/models/**.dart
-            - lib/**/models.dart
+            - lib/domain/models/**.dart
       auto_route_generator:auto_route_generator:
         enabled: true
         generate_for:
           include:
-            - lib/router/router.dart
-            - lib/**_screen.dart
+            - lib/core/router/router.dart
+            - lib/presentation/**_screen.dart
       auto_route_generator:auto_router_generator:
         enabled: true
         generate_for:
           include:
-            - lib/router/router.dart
+            - lib/core/router/router.dart
       flutter_gen_runner:
         enabled: true
       injectable_generator:injectable_builder:
         enabled: true
         generate_for:
           include:
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
-            - lib/**_repository.dart
-            - lib/**_provider.dart
-            - lib/**_client.dart
+            - lib/presentation/**_bloc.dart
+            - lib/presentation/**_cubit.dart
+            - lib/data/**_repository.dart
+            - lib/data/**_provider.dart
       injectable_generator:injectable_config_builder:
         enabled: true
         generate_for:
           include:
-            - lib/services/injector/injector.dart
+            - lib/data/services/injector/injector.dart

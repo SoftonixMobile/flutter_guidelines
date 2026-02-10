@@ -14,7 +14,7 @@ class MainScreen extends StatelessWidget {
       endDrawer: const AppDrawer(),
       routes: const [
         DashboardRoute(),
-        MessagesRoute(),
+        MessagesTabsRoute(),
         SettingsRoute(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {

@@ -1,3 +1,4 @@
+import 'package:data_provider/data_provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -7,12 +8,22 @@ import 'injector.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit()
+@InjectableInit(
+  externalPackageModulesBefore: [
+    ExternalModule(DataProviderPackageModule),
+  ],
+)
 //register only auth dependencies
 void configureAuthDependencies() {
+  final logger = LoggerService.instance;
+  final networkClient = HttpClient(logger: logger);
+
   getIt
     ..registerSingleton(AppRouter())
-    ..registerSingleton<Logger>(LoggerService.instance)
+    ..registerSingleton<Logger>(logger)
+    ..registerSingleton<NetworkBaseClient>(networkClient)
+    ..registerFactory(() => AuthService(networkClient))
+    ..registerFactory(() => UserService(networkClient))
     ..initAuthScope();
 }
 

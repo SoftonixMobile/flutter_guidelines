@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:flutter_guidelines/presentation/blocs/index.dart';
 import 'package:flutter_guidelines/core/localization/index.dart';
 import 'package:flutter_guidelines/core/theme/index.dart';
+import '../blocs/auth/auth_bloc.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});

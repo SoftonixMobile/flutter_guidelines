@@ -10,8 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i11;
+import 'package:data_provider/models.dart' as _i13;
 import 'package:flutter/material.dart' as _i12;
-import 'package:flutter_guidelines/domain/models/index.dart' as _i13;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_screen.dart'
     as _i4;
 import 'package:flutter_guidelines/presentation/screens/main/dashboard/dashboard_screen.dart'
@@ -20,13 +20,13 @@ import 'package:flutter_guidelines/presentation/screens/main/main_screen.dart'
     as _i5;
 import 'package:flutter_guidelines/presentation/screens/main/main_wrapper_screen.dart'
     as _i6;
-import 'package:flutter_guidelines/presentation/screens/main/messages/chats/chats_screen.dart'
-    as _i2;
-import 'package:flutter_guidelines/presentation/screens/main/messages/chats/pages/chat_details/chat_details_screen.dart'
-    as _i1;
-import 'package:flutter_guidelines/presentation/screens/main/messages/messages_screen.dart'
+import 'package:flutter_guidelines/presentation/screens/main/messages/messages_tags_screen.dart'
     as _i7;
-import 'package:flutter_guidelines/presentation/screens/main/messages/posts/posts_screen.dart'
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/chats_screen.dart'
+    as _i2;
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/pages/chat_details/chat_details_screen.dart'
+    as _i1;
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_screen.dart'
     as _i8;
 import 'package:flutter_guidelines/presentation/screens/main/settings/settings_screen.dart'
     as _i10;
@@ -161,17 +161,17 @@ class MainRouter extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.MessagesScreen]
-class MessagesRoute extends _i11.PageRouteInfo<void> {
-  const MessagesRoute({List<_i11.PageRouteInfo>? children})
-    : super(MessagesRoute.name, initialChildren: children);
+/// [_i7.MessagesTabsScreen]
+class MessagesTabsRoute extends _i11.PageRouteInfo<void> {
+  const MessagesTabsRoute({List<_i11.PageRouteInfo>? children})
+    : super(MessagesTabsRoute.name, initialChildren: children);
 
-  static const String name = 'MessagesRoute';
+  static const String name = 'MessagesTabsRoute';
 
   static _i11.PageInfo page = _i11.PageInfo(
     name,
     builder: (data) {
-      return const _i7.MessagesScreen();
+      return const _i7.MessagesTabsScreen();
     },
   );
 }

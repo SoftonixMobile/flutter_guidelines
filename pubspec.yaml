@@ -19,6 +19,9 @@ dependencies:
   customizable_cupertino_dialog:
     path: packages/customizable_cupertino_dialog
 
+  data_provider:
+    path: packages/data_provider
+
   #splash screen
   flutter_native_splash: ^2.4.7
 
