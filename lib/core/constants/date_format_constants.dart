@@ -1,4 +1,4 @@
-import 'package:flutter_guidelines/localization/index.dart';
+import 'package:flutter_guidelines/core/localization/index.dart';
 
 abstract final class DateFormatConstants {
   static DateFormat defaultDateFormat = DateFormat('EE MM/dd/yyyy', 'en');

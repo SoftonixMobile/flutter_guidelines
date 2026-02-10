@@ -1,4 +1,4 @@
-import 'package:flutter_guidelines/app/index.dart';
+import '../config/app_config.dart';
 
 abstract final class AppKeys {
   static const String tokenKey = '${AppConfig.appPrefix}Token';

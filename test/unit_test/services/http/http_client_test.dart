@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:flutter_guidelines/models/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/data/services/index.dart';
 
 class MockDio extends Mock implements Dio {}
 
