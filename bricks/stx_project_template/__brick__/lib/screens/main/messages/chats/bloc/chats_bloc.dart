@@ -13,11 +13,9 @@ part 'chats_bloc.freezed.dart';
 
 @lazySingleton
 class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
-  final ChatsRepository chatsRepository;
+  final ChatsRepository _chatsRepository;
 
-  ChatsBloc({
-    required this.chatsRepository,
-  }) : super(const ChatsState()) {
+  ChatsBloc(this._chatsRepository) : super(const ChatsState()) {
     on<_Load>(_load);
   }
 
@@ -25,7 +23,7 @@ class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
     emit(state.copyWith(status: NetworkStatus.loading));
 
     try {
-      final chats = await chatsRepository.getChats();
+      final chats = await _chatsRepository.getChats();
 
       emit(ChatsState.success(chats));
     } catch (e, stackTrace) {

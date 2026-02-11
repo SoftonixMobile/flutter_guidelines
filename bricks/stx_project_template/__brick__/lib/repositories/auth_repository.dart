@@ -1,24 +1,24 @@
 import 'package:injectable/injectable.dart';
 
-import 'package:{{project_name}}/models/general_models.dart';
-import 'package:{{project_name}}/services/http/index.dart';
+import 'package:{{project_name}}/models/index.dart';
+import 'package:{{project_name}}/services/index.dart';
 
 @Injectable(scope: 'auth')
 class AuthRepository {
-  final HttpClient httpClient;
+  final HttpClient _httpClient;
 
-  AuthRepository(this.httpClient);
+  AuthRepository(this._httpClient);
 
   Stream<AuthStatus> get authenticationStatus =>
-      httpClient.authenticationStatus;
+      _httpClient.authenticationStatus;
 
   Future<void> signIn(String userName, String password) async {
     await Future.delayed(const Duration(seconds: 2));
 
-    return httpClient.setToken('token');
+    return _httpClient.setToken('token');
   }
 
   Future<void> signOut() {
-    return httpClient.clearToken();
+    return _httpClient.clearToken();
   }
 }
