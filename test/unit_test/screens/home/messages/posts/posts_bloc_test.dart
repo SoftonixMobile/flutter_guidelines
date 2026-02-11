@@ -21,7 +21,7 @@ void main() {
   group('Post bloc tests', () {
     /// Creating bloc forEach test
     setUp(() {
-      postsBloc = PostsBloc(postsRepository: mockPostRepository);
+      postsBloc = PostsBloc(mockPostRepository);
     });
 
     /// Test for success loading items,

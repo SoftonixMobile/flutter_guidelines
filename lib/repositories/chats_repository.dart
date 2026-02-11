@@ -1,13 +1,10 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/models/index.dart';
-import 'package:flutter_guidelines/services/http/index.dart';
 
 @injectable
 class ChatsRepository {
-  final HttpClient httpClient;
-
-  ChatsRepository(this.httpClient);
+  ChatsRepository();
 
   Future<List<Chat>> getChats() async {
     await Future.delayed(const Duration(seconds: 1));

@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 import 'app_state_wrapper.dart';
 
@@ -26,7 +26,10 @@ class FlutterGuidelines extends StatelessWidget {
           );
         },
         routerConfig: _appRouter.config(
-          navigatorObservers: () => [RouterObserver(LoggerService.instance)],
+          navigatorObservers: () => [
+            RouterObserver(LoggerService.instance),
+            AutoRouteObserver(),
+          ],
         ),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

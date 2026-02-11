@@ -22,6 +22,7 @@ class JsonDataParser {
 
   T convert<T>(dynamic input) {
     final converter = _converters[T];
+
     if (converter != null) {
       return converter(input);
     } else {

@@ -82,7 +82,7 @@ class AppUpgradeAlertState extends UpgradeAlertState {
               padding: const EdgeInsets.only(top: 15),
               child: Text(messages.message(UpgraderMessage.prompt) ?? ''),
             ),
-            if (notes != null) notes,
+            ?notes,
           ],
         ),
       ),

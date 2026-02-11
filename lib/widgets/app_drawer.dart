@@ -1,14 +1,32 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
-import 'package:flutter_guidelines/services/index.dart';
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
+
+  Widget _buildMenuItem({
+    required String text,
+    required IconData iconData,
+  }) {
+    return ListTile(
+      leading: Icon(
+        iconData,
+        color: AppColors.grey,
+      ),
+      title: Text(
+        text,
+        style: const TextStyle(
+          color: AppColors.grey,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +61,12 @@ class AppDrawer extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 20),
                   child: Column(
                     children: [
-                      buildMenuItem(
+                      _buildMenuItem(
                         text: context.tr(LocaleKeys.changePassword),
                         iconData: FontAwesomeIcons.lock,
                       ),
                       GestureDetector(
-                        child: buildMenuItem(
+                        child: _buildMenuItem(
                           text: context.tr(LocaleKeys.languageName),
                           iconData: FontAwesomeIcons.globe,
                         ),
@@ -62,12 +80,14 @@ class AppDrawer extends StatelessWidget {
                         },
                       ),
                       GestureDetector(
-                        child: buildMenuItem(
+                        child: _buildMenuItem(
                           text: context.tr(LocaleKeys.signOut),
                           iconData: FontAwesomeIcons.rightFromBracket,
                         ),
                         onTap: () {
-                          getIt<AuthBloc>().add(const AuthEvent.signOut());
+                          context.read<AuthBloc>().add(
+                            const AuthEvent.signOut(),
+                          );
                         },
                       ),
                     ],
@@ -76,24 +96,6 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildMenuItem({
-    required String text,
-    required IconData iconData,
-  }) {
-    return ListTile(
-      leading: Icon(
-        iconData,
-        color: AppColors.grey,
-      ),
-      title: Text(
-        text,
-        style: const TextStyle(
-          color: AppColors.grey,
         ),
       ),
     );

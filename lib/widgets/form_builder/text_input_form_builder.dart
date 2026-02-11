@@ -5,27 +5,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/styles/index.dart';
+import 'package:flutter_guidelines/theme/index.dart';
 
 class TextInputFormBuilder extends StatefulWidget {
   const TextInputFormBuilder({
     super.key,
+    required this.fieldBloc,
     this.label = '',
     this.hintText,
     this.isObscureText = false,
     this.fieldFocusNode,
     this.nextFieldFocusNode,
     this.onSubmit,
-    required this.fieldBloc,
   });
 
+  final TextFieldBloc fieldBloc;
+
   final String label;
+
   final String? hintText;
+
   final bool isObscureText;
+
   final FocusNode? fieldFocusNode;
   final FocusNode? nextFieldFocusNode;
+
   final VoidCallback? onSubmit;
-  final TextFieldBloc fieldBloc;
 
   @override
   State<TextInputFormBuilder> createState() => _TextInputFormBuilderState();
@@ -36,8 +41,16 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
 
   @override
   void initState() {
-    _controller = TextEditingController(text: widget.fieldBloc.value);
     super.initState();
+
+    _controller = TextEditingController(text: widget.fieldBloc.value);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -72,7 +85,7 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
             textInputAction: TextInputAction.next,
             focusNode: widget.fieldFocusNode,
             obscureText: widget.isObscureText,
-            onChanged: (value) => widget.fieldBloc.changeValue(value),
+            onChanged: widget.fieldBloc.changeValue,
             onSubmitted: (value) {
               widget.nextFieldFocusNode?.requestFocus();
               widget.onSubmit?.call();
@@ -90,11 +103,5 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
         );
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
