@@ -6,7 +6,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:{{project_name}}/services/index.dart';
-import 'package:{{project_name}}/styles/index.dart';
+import 'package:{{project_name}}/theme/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';
 import 'login_form_bloc.dart';
 import 'widgets/index.dart';
@@ -25,11 +25,10 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
+    final screenSize = MediaQuery.sizeOf(context);
     final mainContainerWidth = screenSize.width * 0.85;
 
-    return CustomFormBlocListener(
-      formBloc: context.read<LoginFormBloc>(),
+    return CustomFormBlocListener<LoginFormBloc, bool>(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         body: Container(
@@ -40,11 +39,11 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
               height: max(screenSize.height, 600),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
+                children: [
                   CustomCard(
                     width: mainContainerWidth,
                     height: 450,
-                    slotWidget: Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(

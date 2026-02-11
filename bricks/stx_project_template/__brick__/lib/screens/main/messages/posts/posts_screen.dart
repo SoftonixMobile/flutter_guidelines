@@ -23,7 +23,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
       onRefresh: context.read<PostsBloc>().loadAsyncFuture,
       child: CustomScrollView(
         slivers: [
-          BlocBuilder<PostsBloc, NetworkListState<Post>>(
+          BlocBuilder<PostsBloc, PostsState>(
             builder: (context, state) {
               switch (state.status) {
                 case NetworkStatus.initial:
@@ -34,7 +34,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                 case NetworkStatus.success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
+                      (context, index) {
                         final post = state.data[index];
 
                         return Padding(
@@ -45,7 +45,6 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                       childCount: state.data.length,
                     ),
                   );
-
                 case NetworkStatus.failure:
                   return const SliverFillRemaining(
                     child: Center(child: Text('Something went wrong')),

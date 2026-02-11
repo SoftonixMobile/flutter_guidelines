@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
-import 'package:{{project_name}}/styles/index.dart';
+import 'package:{{project_name}}/theme/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';
 import 'app_state_wrapper.dart';
 
@@ -26,7 +26,10 @@ class {{#pascalCase}}{{project_name}}{{/pascalCase}} extends StatelessWidget {
           );
         },
         routerConfig: _appRouter.config(
-          navigatorObservers: () => [RouterObserver(LoggerService.instance)],
+          navigatorObservers: () => [
+            RouterObserver(LoggerService.instance),
+            AutoRouteObserver(),
+          ],
         ),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

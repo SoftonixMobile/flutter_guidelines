@@ -3,17 +3,17 @@ import 'package:injectable/injectable.dart';
 import 'package:{{project_name}}/models/index.dart';
 import 'package:{{project_name}}/repositories/index.dart';
 
-@lazySingleton
-class PostsBloc extends NetworkListBloc<Post, NetworkListState<Post>> {
-  final PostsRepository postsRepository;
+typedef PostsState = NetworkListState<Post>;
 
-  PostsBloc({
-    required this.postsRepository,
-  }) : super(const NetworkListState(data: []));
+@lazySingleton
+class PostsBloc extends NetworkListBloc<Post, PostsState> {
+  final PostsRepository _postsRepository;
+
+  PostsBloc(this._postsRepository) : super(const NetworkListState(data: []));
 
   @override
   Future<List<Post>> onLoadAsync() {
-    return postsRepository.getPosts();
+    return _postsRepository.getPosts();
   }
 
   @override

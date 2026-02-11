@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
-    required this.slotWidget,
+    required this.child,
     this.width,
     this.height,
     super.key,
@@ -11,7 +11,7 @@ class CustomCard extends StatelessWidget {
   final double? width;
   final double? height;
 
-  final Widget slotWidget;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CustomCard extends StatelessWidget {
           vertical: 20,
           horizontal: 14,
         ),
-        child: slotWidget,
+        child: child,
       ),
     );
   }

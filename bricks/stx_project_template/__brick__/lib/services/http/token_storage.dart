@@ -1,10 +1,10 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 
-import 'package:{{project_name}}/app/app_config.dart';
+import 'package:{{project_name}}/core/index.dart';
 
 class SecureTokenStorage extends TokenStorage<String> {
-  static const _tokenKey = '${AppConfig.appPrefix}Auth_Data';
+  static const _tokenKey = AppKeys.tokenKey;
 
   final _storage = const FlutterSecureStorage();
 

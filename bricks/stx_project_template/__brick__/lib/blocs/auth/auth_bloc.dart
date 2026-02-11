@@ -13,16 +13,16 @@ part 'auth_state.dart';
 
 @Singleton(scope: 'auth')
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository authRepository;
-  final UserRepository userRepository;
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
 
-  late final StreamSubscription<AuthStatus> _subscription;
+  late final StreamSubscription<AuthStatus> _statusSubscription;
 
-  AuthBloc({
-    required this.authRepository,
-    required this.userRepository,
-  }) : super(const AuthState()) {
-    _subscription = authRepository.authenticationStatus.listen((status) {
+  AuthBloc(
+    this._authRepository,
+    this._userRepository,
+  ) : super(const AuthState()) {
+    _statusSubscription = _authRepository.authenticationStatus.listen((status) {
       add(AuthEvent.authenticationStatusChanged(status));
     });
 
@@ -34,9 +34,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _AuthenticationStatusChanged event,
     Emitter<AuthState> emit,
   ) async {
-    if (event.status == AuthStatus.authenticated) {
+    if (event.status == .authenticated) {
       try {
-        final userProfile = await userRepository.getUserProfile();
+        final userProfile = await _userRepository.getUserProfile();
 
         emit(AuthState.authenticated(userProfile));
       } catch (e, stackTrace) {
@@ -55,12 +55,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   FutureOr<void> _signOut(_SignOut event, Emitter<AuthState> emit) {
-    return authRepository.signOut();
+    return _authRepository.signOut();
   }
 
   @override
   Future<void> close() async {
-    await _subscription.cancel();
+    await _statusSubscription.cancel();
     return super.close();
   }
 }

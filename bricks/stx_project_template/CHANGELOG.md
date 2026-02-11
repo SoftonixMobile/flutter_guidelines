@@ -1,3 +1,9 @@
+# 0.14.0
+
+- Support flutter 3.38.
+- Update deps.
+- Update structure of the screen folder.
+
 # 0.13.10
 
 - Support flutter 3.35.

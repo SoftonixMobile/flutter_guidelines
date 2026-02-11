@@ -1,13 +1,10 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/models/index.dart';
-import 'package:{{project_name}}/services/http/index.dart';
 
 @Injectable(scope: 'auth')
 class UserRepository {
-  final HttpClient httpClient;
-
-  UserRepository(this.httpClient);
+  UserRepository();
 
   Future<UserProfile> getUserProfile() async {
     return UserProfile.fromJson({'userName': 'test'});

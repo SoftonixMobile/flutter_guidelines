@@ -16,6 +16,7 @@ class HttpClient {
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
     @ignoreParam JsonDataParser? parser,
+    required Logger logger,
   }) : _parser = parser ?? JsonDataParser() {
     _dio =
         dio ??
@@ -40,24 +41,21 @@ class HttpClient {
 
     _dio.interceptors.addAll([
       _fresh,
-      HttpInterceptor(LoggerService.instance),
+      HttpInterceptor(logger),
       RetryInterceptor(
         dio: _dio,
-        logPrint: LoggerService.instance.log,
+        logPrint: logger.log,
       ),
     ]);
   }
 
   Stream<AuthStatus> get authenticationStatus =>
       _fresh.authenticationStatus.map((status) {
-        switch (status) {
-          case AuthenticationStatus.initial:
-            return AuthStatus.initial;
-          case AuthenticationStatus.unauthenticated:
-            return AuthStatus.unauthenticated;
-          case AuthenticationStatus.authenticated:
-            return AuthStatus.authenticated;
-        }
+        return switch (status) {
+          AuthenticationStatus.initial => AuthStatus.initial,
+          AuthenticationStatus.unauthenticated => AuthStatus.unauthenticated,
+          AuthenticationStatus.authenticated => AuthStatus.authenticated,
+        };
       });
 
   Future<void> setToken(String token) {
