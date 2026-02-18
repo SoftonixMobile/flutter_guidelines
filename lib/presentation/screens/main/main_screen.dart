@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/core/localization/index.dart';
-import 'package:flutter_guidelines/core/router/index.dart';
-import 'package:flutter_guidelines/presentation/widgets/index.dart';
+import 'package:flutter_guidelines/core/index.dart';
+import 'drawer/app_drawer.dart';
 
 @RoutePage()
 class MainScreen extends StatelessWidget {

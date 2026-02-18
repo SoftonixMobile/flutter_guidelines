@@ -10,7 +10,7 @@ class UserService {
     _networkBaseClient.registerType(UserProfile.fromJson);
   }
 
-  Future<UserProfile> getUserProfile() async {
+  Future<UserProfile> get() async {
     return UserProfile.fromJson({'userName': 'test'});
   }
 }

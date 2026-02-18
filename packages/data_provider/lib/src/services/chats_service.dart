@@ -11,11 +11,11 @@ class ChatsService {
     _network.registerType(Chat.fromJson);
   }
 
-  Future<List<Chat>> getChats() async {
+  Future<List<Chat>> getAll() async {
     return _network.getData<List<Chat>>('/chats');
   }
 
-  Future<Chat> getChat(int id) async {
+  Future<Chat> getById(int id) async {
     return _network.getData<Chat>('/chats/$id');
   }
 }

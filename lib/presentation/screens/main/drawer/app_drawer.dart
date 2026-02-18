@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'package:flutter_guidelines/core/localization/index.dart';
-import 'package:flutter_guidelines/core/theme/index.dart';
-import '../blocs/auth/auth_bloc.dart';
+import 'package:flutter_guidelines/core/index.dart';
+
+import 'drawer_bloc.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -87,6 +88,22 @@ class AppDrawer extends StatelessWidget {
                         onTap: () {
                           context.read<AuthBloc>().add(
                             const AuthEvent.signOut(),
+                          );
+                        },
+                      ),
+
+                      BlocBuilder<DrawerBloc, DrawerState>(
+                        builder: (context, state) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: state.data.length,
+                            itemBuilder: (context, index) {
+                              final post = state.data[index];
+
+                              return ListTile(
+                                title: Text(post.name),
+                              );
+                            },
                           );
                         },
                       ),

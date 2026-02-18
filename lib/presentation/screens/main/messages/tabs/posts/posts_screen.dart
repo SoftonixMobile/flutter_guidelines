@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'posts_bloc.dart';
 
@@ -20,8 +20,10 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
+    final postsBloc = context.read<PostsBloc>();
+
     return RefreshIndicator(
-      onRefresh: context.read<PostsBloc>().loadAsyncFuture,
+      onRefresh: postsBloc.loadAsyncFuture,
       child: CustomScrollView(
         slivers: [
           BlocBuilder<PostsBloc, PostsState>(
@@ -38,9 +40,24 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                       (context, index) {
                         final post = state.data[index];
 
-                        return Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Text('Post ${post.id}'),
+                        return GestureDetector(
+                          behavior: .opaque,
+                          onTap: () => context.pushRoute(
+                            PostModalRoute(
+                              post: post,
+                              onSuccess: (post, {required isEditing}) {
+                                if (isEditing) {
+                                  postsBloc.editItem(post);
+                                } else {
+                                  postsBloc.addItem(post);
+                                }
+                              },
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const .all(8),
+                            child: Text('Post ${post.name}'),
+                          ),
                         );
                       },
                       childCount: state.data.length,

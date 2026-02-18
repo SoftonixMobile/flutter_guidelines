@@ -2,8 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/core/router/index.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'drawer/drawer_bloc.dart';
 
 @RoutePage(name: 'MainRouter')
 class MainWrapperScreen extends StatefulWidget {
@@ -30,6 +33,9 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const AutoRouter();
+    return BlocProvider(
+      create: (context) => getIt<DrawerBloc>()..load(),
+      child: const AutoRouter(),
+    );
   }
 }

@@ -10,9 +10,17 @@ class PostsService {
     _networkClient.registerType(Post.fromJson);
   }
 
-  Future<List<Post>> getPosts() async {
+  Future<List<Post>> getAll() async {
     return _networkClient.getData<List<Post>>(
       'https://jsonplaceholder.typicode.com/posts',
     );
+  }
+
+  Future<Post> create(Post post) {
+    return Future.delayed(Duration(seconds: 1), () => post);
+  }
+
+  Future<Post> update(Post post) {
+    return Future.delayed(Duration(seconds: 1), () => post);
   }
 }

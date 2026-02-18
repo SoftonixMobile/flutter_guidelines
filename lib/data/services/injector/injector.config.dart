@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:data_provider/data_provider.dart' as _i117;
+import 'package:data_provider/models.dart' as _i921;
 import 'package:flutter_guidelines/data/repositories/auth_repository.dart'
     as _i776;
 import 'package:flutter_guidelines/data/repositories/chats_repository.dart'
@@ -23,8 +24,12 @@ import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
     as _i883;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_form_bloc.dart'
     as _i175;
+import 'package:flutter_guidelines/presentation/screens/main/drawer/drawer_bloc.dart'
+    as _i1061;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/bloc/chats_bloc.dart'
     as _i440;
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_modal_bloc.dart'
+    as _i387;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_bloc.dart'
     as _i521;
 import 'package:get_it/get_it.dart' as _i174;
@@ -65,6 +70,7 @@ extension GetItInjectableX on _i174.GetIt {
     await _i117.DataProviderPackageModule().init(gh);
     gh.lazySingleton<_i1049.PostsRepository>(
       () => _i1049.PostsRepository(gh<_i117.PostsService>()),
+      dispose: (i) => i.close(),
     );
     gh.lazySingleton<_i148.ChatsRepository>(
       () => _i148.ChatsRepository(gh<_i117.ChatsService>()),
@@ -72,8 +78,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i440.ChatsBloc>(
       () => _i440.ChatsBloc(gh<_i44.ChatsRepository>()),
     );
+    gh.factory<_i1061.DrawerBloc>(
+      () => _i1061.DrawerBloc(gh<_i44.PostsRepository>()),
+    );
     gh.factory<_i521.PostsBloc>(
       () => _i521.PostsBloc(gh<_i44.PostsRepository>()),
+    );
+    gh.factoryParam<_i387.PostModalBloc, _i921.Post?, dynamic>(
+      (initial, _) => _i387.PostModalBloc(initial, gh<_i44.PostsRepository>()),
     );
     return this;
   }

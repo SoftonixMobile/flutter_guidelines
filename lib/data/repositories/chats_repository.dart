@@ -11,7 +11,7 @@ class ChatsRepository extends ListRepositoryBase<Chat> {
   ChatsRepository(this._chatsService);
 
   FutureOr<List<Chat>> getChats() {
-    return load(_chatsService.getChats);
+    return load(_chatsService.getAll);
   }
 
   @override

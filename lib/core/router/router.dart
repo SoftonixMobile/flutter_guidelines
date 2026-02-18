@@ -32,6 +32,7 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(page: SettingsRoute.page),
               ],
             ),
+            AutoRoute(page: PostModalRoute.page),
             AutoRoute(page: ChatDetailsRoute.page),
           ],
         ),
