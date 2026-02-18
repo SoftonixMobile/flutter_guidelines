@@ -36,7 +36,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     if (event.status == .authenticated) {
       try {
-        final userProfile = await _userRepository.getUserProfile();
+        final userProfile = await _userRepository.getUserProfile(
+          forceLoad: true,
+        );
 
         emit(AuthState.authenticated(userProfile));
       } catch (e, stackTrace) {

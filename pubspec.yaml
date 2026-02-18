@@ -22,6 +22,9 @@ dependencies:
   data_provider:
     path: packages/data_provider
 
+  stx_repository:
+    path: packages/stx_repository
+
   #splash screen
   flutter_native_splash: ^2.4.7
 

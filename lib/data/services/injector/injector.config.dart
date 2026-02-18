@@ -65,11 +65,9 @@ extension GetItInjectableX on _i174.GetIt {
     await _i117.DataProviderPackageModule().init(gh);
     gh.lazySingleton<_i1049.PostsRepository>(
       () => _i1049.PostsRepository(gh<_i117.PostsService>()),
-      dispose: (i) => i.close(),
     );
     gh.lazySingleton<_i148.ChatsRepository>(
       () => _i148.ChatsRepository(gh<_i117.ChatsService>()),
-      dispose: (i) => i.close(),
     );
     gh.factory<_i440.ChatsBloc>(
       () => _i440.ChatsBloc(gh<_i44.ChatsRepository>()),

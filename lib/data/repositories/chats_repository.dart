@@ -1,24 +1,21 @@
+import 'dart:async';
+
 import 'package:data_provider/data_provider.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stx_repository/stx_repository.dart';
 
 @lazySingleton
-class ChatsRepository extends Cubit<List<Chat>> {
+class ChatsRepository extends ListRepositoryBase<Chat> {
   final ChatsService _chatsService;
 
-  ChatsRepository(this._chatsService) : super([]);
+  ChatsRepository(this._chatsService);
 
-  Future<List<Chat>> getChats() async {
-    final chats = await _chatsService.getChats();
-
-    emit(chats);
-
-    return chats;
+  FutureOr<List<Chat>> getChats() {
+    return load(_chatsService.getChats);
   }
 
   @override
-  @disposeMethod
-  Future<void> close() {
-    return super.close();
+  bool equals(Chat item1, Chat item2) {
+    return item1.id == item2.id;
   }
 }

@@ -1,24 +1,21 @@
+import 'dart:async';
+
 import 'package:data_provider/data_provider.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stx_repository/stx_repository.dart';
 
 @lazySingleton
-class PostsRepository extends Cubit<List<Post>> {
+class PostsRepository extends ListRepositoryBase<Post> {
   final PostsService _postsService;
 
-  PostsRepository(this._postsService) : super([]);
+  PostsRepository(this._postsService);
 
-  Future<List<Post>> getPosts() async {
-    final posts = await _postsService.getPosts();
-
-    emit(posts);
-
-    return posts;
+  Future<List<Post>> getPosts() {
+    return load(_postsService.getPosts);
   }
 
   @override
-  @disposeMethod
-  Future<void> close() {
-    return super.close();
+  bool equals(Post item1, Post item2) {
+    return item1.id == item2.id;
   }
 }
