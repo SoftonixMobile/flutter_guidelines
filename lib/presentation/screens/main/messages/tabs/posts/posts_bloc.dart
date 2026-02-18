@@ -19,6 +19,6 @@ class PostsBloc extends NetworkListBloc<Post, PostsState> {
 
   @override
   bool equals(Post item1, Post item2) {
-    return _postsRepository.equals(item1, item2);
+    return item1.id == item2.id;
   }
 }

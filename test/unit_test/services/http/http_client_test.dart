@@ -56,7 +56,7 @@ void main() async {
         );
 
         httpClient.registerType(Post.fromJson);
-        final actual = await httpClient.get<List<Post>>('/posts');
+        final actual = await httpClient.getData<List<Post>>('/posts');
 
         // Check if actual & expected are equal
         expect(actual, [const Post(id: 1, name: 'Post 1')]);
