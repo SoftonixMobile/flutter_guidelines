@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/data/repositories/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';

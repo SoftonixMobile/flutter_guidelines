@@ -45,6 +45,7 @@ targets:
             - lib/presentation/**_cubit.dart
             - lib/data/**_repository.dart
             - lib/data/**_provider.dart
+            - lib/data/**_manager.dart
       injectable_generator:injectable_config_builder:
         enabled: true
         generate_for:

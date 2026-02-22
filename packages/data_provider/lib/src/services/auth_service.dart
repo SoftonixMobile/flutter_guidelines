@@ -8,16 +8,13 @@ class AuthService {
 
   AuthService(this._networkClient);
 
-  Stream<AuthStatus> get authenticationStatus =>
-      _networkClient.authStatusStream;
-
-  Future<void> signIn(String userName, String password) async {
+  Future<String> signIn(String userName, String password) async {
     await Future.delayed(const Duration(seconds: 2));
 
-    return _networkClient.setToken('token');
+    return 'token';
   }
 
   Future<void> signOut() {
-    return _networkClient.clearToken();
+    return Future.delayed(const Duration(seconds: 1));
   }
 }

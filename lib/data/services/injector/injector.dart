@@ -21,6 +21,7 @@ void configureAuthDependencies() {
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
+    ..registerSingleton<AuthSession>(networkClient)
     ..registerSingleton<NetworkBaseClient>(networkClient)
     ..registerFactory(() => AuthService(networkClient))
     ..registerFactory(() => UserService(networkClient))

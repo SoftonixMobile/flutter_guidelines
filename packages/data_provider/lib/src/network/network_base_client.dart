@@ -1,11 +1,16 @@
+import 'package:data_provider/src/network/json_parser.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'models/index.dart';
 
 abstract class NetworkBaseClient {
-  Stream<AuthStatus> get authStatusStream;
+  @protected
+  final IJsonParser jsonParser;
 
-  void registerType<T>(T Function(Map<String, dynamic>) fromJson);
-  Future<void> setToken(String token);
-  Future<void> clearToken();
+  NetworkBaseClient(this.jsonParser);
+
+  void registerType<T>(T Function(Map<String, dynamic>) fromJson) {
+    jsonParser.registerType(fromJson);
+  }
 
   Future<Response<T>> get<T>(
     String url, {

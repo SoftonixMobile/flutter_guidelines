@@ -8,19 +8,16 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'adapters/index.dart';
 
-class HttpClient extends NetworkBaseClient {
+class HttpClient extends NetworkBaseClient implements AuthSession {
   late final Dio _dio;
   late final Fresh<String> _fresh;
-  late final JsonDataParser _jsonParser;
 
   HttpClient({
     @ignoreParam Dio? dio,
     @ignoreParam Fresh<String>? fresh,
     @ignoreParam JsonDataParser? jsonParser,
     required Logger logger,
-  }) {
-    _jsonParser = jsonParser ?? JsonDataParser();
-
+  }) : super(jsonParser ?? JsonDataParser()) {
     _dio =
         dio ??
         Dio(
@@ -53,7 +50,7 @@ class HttpClient extends NetworkBaseClient {
   }
 
   @override
-  Stream<AuthStatus> get authStatusStream =>
+  Stream<AuthStatus> get authenticationStatus =>
       _fresh.authenticationStatus.map((status) {
         return switch (status) {
           AuthenticationStatus.initial => AuthStatus.initial,
@@ -61,11 +58,6 @@ class HttpClient extends NetworkBaseClient {
           AuthenticationStatus.authenticated => AuthStatus.authenticated,
         };
       });
-
-  @override
-  void registerType<T>(JsonConverter<T> fromJson) {
-    _jsonParser.registerType(fromJson);
-  }
 
   @override
   Future<void> setToken(String authResponse) {
@@ -90,7 +82,7 @@ class HttpClient extends NetworkBaseClient {
     );
 
     return DioResponseAdapter(
-      response.parse<T>(_jsonParser),
+      response.parse<T>(jsonParser),
     );
   }
 
@@ -109,7 +101,7 @@ class HttpClient extends NetworkBaseClient {
     );
 
     return DioResponseAdapter(
-      response.parse<T>(_jsonParser),
+      response.parse<T>(jsonParser),
     );
   }
 
@@ -128,7 +120,7 @@ class HttpClient extends NetworkBaseClient {
     );
 
     return DioResponseAdapter(
-      response.parse<T>(_jsonParser),
+      response.parse<T>(jsonParser),
     );
   }
 
@@ -147,7 +139,7 @@ class HttpClient extends NetworkBaseClient {
     );
 
     return DioResponseAdapter(
-      response.parse<T>(_jsonParser),
+      response.parse<T>(jsonParser),
     );
   }
 
@@ -164,7 +156,7 @@ class HttpClient extends NetworkBaseClient {
     );
 
     return DioResponseAdapter(
-      response.parse<T>(_jsonParser),
+      response.parse<T>(jsonParser),
     );
   }
 

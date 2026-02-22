@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:data_provider/data_provider.dart' as _i117;
 import 'package:data_provider/models.dart' as _i921;
+import 'package:data_provider/services.dart' as _i304;
 import 'package:flutter_guidelines/data/repositories/auth_repository.dart'
     as _i776;
 import 'package:flutter_guidelines/data/repositories/chats_repository.dart'
@@ -20,6 +21,11 @@ import 'package:flutter_guidelines/data/repositories/posts_repository.dart'
     as _i1049;
 import 'package:flutter_guidelines/data/repositories/user_repository.dart'
     as _i365;
+import 'package:flutter_guidelines/data/services/auth/auth_manager.dart'
+    as _i270;
+import 'package:flutter_guidelines/data/services/auth/base/auth_session.dart'
+    as _i345;
+import 'package:flutter_guidelines/data/services/index.dart' as _i349;
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
     as _i883;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_form_bloc.dart'
@@ -42,11 +48,17 @@ extension GetItInjectableX on _i174.GetIt {
       'auth',
       dispose: dispose,
       init: (_i526.GetItHelper gh) {
+        gh.factory<_i270.AuthManager>(
+          () => _i270.AuthManager(gh<_i345.AuthSession>()),
+        );
         gh.lazySingleton<_i365.UserRepository>(
           () => _i365.UserRepository(gh<_i117.UserService>()),
         );
         gh.lazySingleton<_i776.AuthRepository>(
-          () => _i776.AuthRepository(gh<_i117.AuthService>()),
+          () => _i776.AuthRepository(
+            gh<_i304.AuthService>(),
+            gh<_i349.AuthManager>(),
+          ),
         );
         gh.factory<_i883.AuthBloc>(
           () => _i883.AuthBloc(
