@@ -1,0 +1,28 @@
+import 'package:data_provider/models.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
+
+class UserProfileGroupBloc extends GroupFieldBloc {
+  late final TextFieldBloc userName;
+  late final TextFieldBloc email;
+
+  final UserProfile? initial;
+
+  UserProfileGroupBloc({this.initial}) {
+    userName = TextFieldBloc(
+      initialValue: initial?.userName,
+    );
+    email = TextFieldBloc();
+
+    addFieldBlocs([
+      userName,
+      email,
+    ]);
+  }
+
+  UserProfile toUserProfile() {
+    return .new(
+      id: initial?.id ?? 0,
+      userName: userName.value,
+    );
+  }
+}
