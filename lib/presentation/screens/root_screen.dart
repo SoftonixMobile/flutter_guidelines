@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
-import 'package:flutter_guidelines/data/services/index.dart';
 import '../blocs/auth/auth_bloc.dart';
 
 @RoutePage()
@@ -17,12 +16,7 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state.status == .authenticated) {
-          LoggerService.instance.registerUserProfile(state.userProfile);
-        }
-      },
+    return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state.status != .initial) {
           _removeSplashScreen();

@@ -32,3 +32,4 @@ linter:
     avoid_catches_without_on_clauses: false
     lines_longer_than_80_chars: false
     specify_nonobvious_property_types: false
+    document_ignores: false

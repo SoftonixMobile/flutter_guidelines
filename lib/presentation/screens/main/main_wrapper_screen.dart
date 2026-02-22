@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/presentation/blocs/index.dart';
 import 'drawer/drawer_bloc.dart';
 
 @RoutePage(name: 'MainRouter')
@@ -21,7 +22,18 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
   void initState() {
     super.initState();
 
-    getIt.pushNewScope(init: configureUserDependencies);
+    // ignore: discarded_futures
+    getIt.pushNewScopeAsync(init: configureUserDependencies).then((_) {
+      return _setProfileInLogger();
+    });
+  }
+
+  Future<void> _setProfileInLogger() async {
+    final userProfile = (await getIt<UserBloc>().loadAsyncFuture()).data;
+
+    if (mounted) {
+      LoggerService.instance.registerUserProfile(userProfile);
+    }
   }
 
   @override
@@ -33,8 +45,11 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<DrawerBloc>()..load(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<DrawerBloc>()..load()),
+        BlocProvider(create: (context) => getIt<UserBloc>()),
+      ],
       child: const AutoRouter(),
     );
   }

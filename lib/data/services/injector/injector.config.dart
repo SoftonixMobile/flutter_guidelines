@@ -26,8 +26,11 @@ import 'package:flutter_guidelines/data/services/auth/auth_manager.dart'
 import 'package:flutter_guidelines/data/services/auth/base/auth_session.dart'
     as _i345;
 import 'package:flutter_guidelines/data/services/index.dart' as _i349;
+import 'package:flutter_guidelines/domain/models/index.dart' as _i595;
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
     as _i883;
+import 'package:flutter_guidelines/presentation/blocs/user/user_bloc.dart'
+    as _i492;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_form_bloc.dart'
     as _i175;
 import 'package:flutter_guidelines/presentation/screens/main/drawer/drawer_bloc.dart'
@@ -83,6 +86,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i1049.PostsRepository>(
       () => _i1049.PostsRepository(gh<_i117.PostsService>()),
       dispose: (i) => i.close(),
+    );
+    gh.singleton<_i492.UserBloc>(
+      () => _i492.UserBloc(gh<_i595.UserData>(), gh<_i44.UserRepository>()),
     );
     gh.lazySingleton<_i148.ChatsRepository>(
       () => _i148.ChatsRepository(gh<_i117.ChatsService>()),

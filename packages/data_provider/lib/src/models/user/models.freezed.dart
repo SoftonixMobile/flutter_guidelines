@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$UserProfile {
 
- String? get userName;
+ int get id; String? get userName;
 /// Create a copy of UserProfile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $UserProfileCopyWith<UserProfile> get copyWith => _$UserProfileCopyWithImpl<User
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfile&&(identical(other.userName, userName) || other.userName == userName));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userName, userName) || other.userName == userName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userName);
+int get hashCode => Object.hash(runtimeType,id,userName);
 
 @override
 String toString() {
-  return 'UserProfile(userName: $userName)';
+  return 'UserProfile(id: $id, userName: $userName)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $UserProfileCopyWith<$Res>  {
   factory $UserProfileCopyWith(UserProfile value, $Res Function(UserProfile) _then) = _$UserProfileCopyWithImpl;
 @useResult
 $Res call({
- String? userName
+ int id, String? userName
 });
 
 
@@ -65,9 +65,10 @@ class _$UserProfileCopyWithImpl<$Res>
 
 /// Create a copy of UserProfile
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? userName = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userName = freezed,}) {
   return _then(_self.copyWith(
-userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -150,10 +151,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? userName)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String? userName)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UserProfile() when $default != null:
-return $default(_that.userName);case _:
+return $default(_that.id,_that.userName);case _:
   return orElse();
 
 }
@@ -171,10 +172,10 @@ return $default(_that.userName);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? userName)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String? userName)  $default,) {final _that = this;
 switch (_that) {
 case _UserProfile():
-return $default(_that.userName);}
+return $default(_that.id,_that.userName);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -188,10 +189,10 @@ return $default(_that.userName);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? userName)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String? userName)?  $default,) {final _that = this;
 switch (_that) {
 case _UserProfile() when $default != null:
-return $default(_that.userName);case _:
+return $default(_that.id,_that.userName);case _:
   return null;
 
 }
@@ -203,9 +204,10 @@ return $default(_that.userName);case _:
 @JsonSerializable()
 
 class _UserProfile implements UserProfile {
-  const _UserProfile({this.userName});
+  const _UserProfile({this.id = 0, this.userName});
   factory _UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
 
+@override@JsonKey() final  int id;
 @override final  String? userName;
 
 /// Create a copy of UserProfile
@@ -221,16 +223,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserProfile&&(identical(other.userName, userName) || other.userName == userName));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userName, userName) || other.userName == userName));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userName);
+int get hashCode => Object.hash(runtimeType,id,userName);
 
 @override
 String toString() {
-  return 'UserProfile(userName: $userName)';
+  return 'UserProfile(id: $id, userName: $userName)';
 }
 
 
@@ -241,7 +243,7 @@ abstract mixin class _$UserProfileCopyWith<$Res> implements $UserProfileCopyWith
   factory _$UserProfileCopyWith(_UserProfile value, $Res Function(_UserProfile) _then) = __$UserProfileCopyWithImpl;
 @override @useResult
 $Res call({
- String? userName
+ int id, String? userName
 });
 
 
@@ -258,9 +260,10 @@ class __$UserProfileCopyWithImpl<$Res>
 
 /// Create a copy of UserProfile
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? userName = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userName = freezed,}) {
   return _then(_UserProfile(
-userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,userName: freezed == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

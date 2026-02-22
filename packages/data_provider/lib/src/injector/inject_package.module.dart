@@ -7,7 +7,6 @@
 import 'dart:async' as _i687;
 
 import 'package:data_provider/network.dart' as _i164;
-import 'package:data_provider/src/network/network_base_client.dart' as _i763;
 import 'package:data_provider/src/services/auth_service.dart' as _i915;
 import 'package:data_provider/src/services/chats_service.dart' as _i1034;
 import 'package:data_provider/src/services/posts_service.dart' as _i576;
@@ -19,7 +18,7 @@ class DataProviderPackageModule extends _i526.MicroPackageModule {
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     gh.factory<_i1034.ChatsService>(
-        () => _i1034.ChatsService(gh<_i763.NetworkBaseClient>()));
+        () => _i1034.ChatsService(gh<_i164.NetworkBaseClient>()));
     gh.factory<_i23.UserService>(
         () => _i23.UserService(gh<_i164.NetworkBaseClient>()));
     gh.factory<_i915.AuthService>(

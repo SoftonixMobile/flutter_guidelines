@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -37,22 +36,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     if (event.status == .authenticated) {
       try {
-        final userProfile = await _userRepository.getUserProfile(
-          forceLoad: true,
-        );
+        await _userRepository.getUserProfile(forceLoad: true);
 
-        emit(AuthState.authenticated(userProfile));
+        emit(.authenticated());
       } catch (e, stackTrace) {
         addError(e, stackTrace);
 
-        emit(AuthState.unauthenticated());
+        emit(.unauthenticated());
       }
     } else {
       emit(
-        state.copyWith(
-          status: event.status,
-          userProfile: const UserProfile(),
-        ),
+        state.copyWith(status: event.status),
       );
     }
   }

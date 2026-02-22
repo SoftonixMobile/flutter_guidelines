@@ -60,7 +60,7 @@ void main() {
         ).thenAnswer((_) async => fullUserProfile);
       },
       build: () => AuthBloc(mockAuthRepo, mockUserRepo),
-      expect: () => [AuthState.authenticated(fullUserProfile)],
+      expect: () => [AuthState.authenticated()],
     );
 
     blocTest(
@@ -98,7 +98,7 @@ void main() {
       // Set the previous state in a bloc for testing specific cases
       // without unnecessary actions
       // (to prevent test failure due to unrelated methods)
-      seed: () => AuthState.authenticated(fullUserProfile),
+      seed: AuthState.authenticated,
       act: (bloc) {
         bloc
           ..add(const AuthEvent.signOut())

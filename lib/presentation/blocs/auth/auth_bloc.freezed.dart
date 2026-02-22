@@ -125,7 +125,6 @@ class _SignOut implements AuthEvent {
 /// @nodoc
 mixin _$AuthState {
   AuthStatus get status;
-  UserProfile get userProfile;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -139,17 +138,15 @@ mixin _$AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AuthState &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userProfile);
+  int get hashCode => Object.hash(runtimeType, status);
 
   @override
   String toString() {
-    return 'AuthState(status: $status, userProfile: $userProfile)';
+    return 'AuthState(status: $status)';
   }
 }
 
@@ -158,9 +155,7 @@ abstract mixin class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) _then) =
       _$AuthStateCopyWithImpl;
   @useResult
-  $Res call({AuthStatus status, UserProfile userProfile});
-
-  $UserProfileCopyWith<$Res> get userProfile;
+  $Res call({AuthStatus status});
 }
 
 /// @nodoc
@@ -174,46 +169,26 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? status = null, Object? userProfile = null}) {
+  $Res call({Object? status = null}) {
     return _then(
       _self.copyWith(
         status: null == status
             ? _self.status
             : status // ignore: cast_nullable_to_non_nullable
                   as AuthStatus,
-        userProfile: null == userProfile
-            ? _self.userProfile
-            : userProfile // ignore: cast_nullable_to_non_nullable
-                  as UserProfile,
       ),
     );
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get userProfile {
-    return $UserProfileCopyWith<$Res>(_self.userProfile, (value) {
-      return _then(_self.copyWith(userProfile: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _AuthState implements AuthState {
-  const _AuthState({
-    this.status = AuthStatus.initial,
-    this.userProfile = const UserProfile(),
-  });
+  const _AuthState({this.status = AuthStatus.initial});
 
   @override
   @JsonKey()
   final AuthStatus status;
-  @override
-  @JsonKey()
-  final UserProfile userProfile;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -228,17 +203,15 @@ class _AuthState implements AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AuthState &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile));
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userProfile);
+  int get hashCode => Object.hash(runtimeType, status);
 
   @override
   String toString() {
-    return 'AuthState(status: $status, userProfile: $userProfile)';
+    return 'AuthState(status: $status)';
   }
 }
 
@@ -251,10 +224,7 @@ abstract mixin class _$AuthStateCopyWith<$Res>
   ) = __$AuthStateCopyWithImpl;
   @override
   @useResult
-  $Res call({AuthStatus status, UserProfile userProfile});
-
-  @override
-  $UserProfileCopyWith<$Res> get userProfile;
+  $Res call({AuthStatus status});
 }
 
 /// @nodoc
@@ -268,28 +238,14 @@ class __$AuthStateCopyWithImpl<$Res> implements _$AuthStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? status = null, Object? userProfile = null}) {
+  $Res call({Object? status = null}) {
     return _then(
       _AuthState(
         status: null == status
             ? _self.status
             : status // ignore: cast_nullable_to_non_nullable
                   as AuthStatus,
-        userProfile: null == userProfile
-            ? _self.userProfile
-            : userProfile // ignore: cast_nullable_to_non_nullable
-                  as UserProfile,
       ),
     );
-  }
-
-  /// Create a copy of AuthState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res> get userProfile {
-    return $UserProfileCopyWith<$Res>(_self.userProfile, (value) {
-      return _then(_self.copyWith(userProfile: value));
-    });
   }
 }

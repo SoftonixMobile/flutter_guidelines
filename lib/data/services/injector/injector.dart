@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/core/router/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
 import 'injector.config.dart';
 
 final getIt = GetIt.instance;
@@ -29,6 +30,10 @@ void configureAuthDependencies() {
 }
 
 //register other dependencies (except auth ones)
-Future<void> configureUserDependencies(GetIt getIt) {
-  return getIt.init();
+Future<void> configureUserDependencies(GetIt getIt) async {
+  getIt.registerSingleton<UserData>(
+    .new(userProfile: const UserProfile()),
+  );
+
+  await getIt.init();
 }
