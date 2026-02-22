@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
-import '../network/network_base_client.dart';
-import '../../models.dart';
+import 'package:data_provider/models.dart';
+import 'package:data_provider/network.dart';
 
 @injectable
 class ChatsService {
@@ -11,11 +11,11 @@ class ChatsService {
     _network.registerType(Chat.fromJson);
   }
 
-  Future<List<Chat>> getAll() async {
+  Future<List<Chat>> getAllChats() async {
     return _network.getData<List<Chat>>('/chats');
   }
 
-  Future<Chat> getById(int id) async {
+  Future<Chat> getChatById(int id) async {
     return _network.getData<Chat>('/chats/$id');
   }
 }

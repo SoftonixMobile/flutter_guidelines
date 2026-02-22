@@ -123,7 +123,7 @@ flutter:
           style: italic
 
 flutter_gen:
-  output: lib/theme/
+  output: lib/presentation/theme/
   line_length: 80
 
   integrations:

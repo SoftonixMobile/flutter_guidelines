@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
-import 'package:flutter_guidelines/presentation/helpers/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 @RoutePage()
 class DashboardScreen extends StatelessWidget {

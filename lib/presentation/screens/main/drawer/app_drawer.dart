@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
-
+import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'drawer_bloc.dart';
 
 class AppDrawer extends StatelessWidget {

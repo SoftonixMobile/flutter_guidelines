@@ -8,8 +8,10 @@ mixin SyncLoadRepositoryMixin<T> on DisposableRepositoryMixin<T> {
   @override
   Future<T> load(
     Future<T> Function() loadCallback, {
-    bool forceDataRefresh = false,
+    bool refresh = false,
   }) async {
+    if (!refresh && !shouldRefreshData()) return data;
+
     if (_loadCompleter != null) {
       return _loadCompleter!.future;
     }
@@ -17,10 +19,7 @@ mixin SyncLoadRepositoryMixin<T> on DisposableRepositoryMixin<T> {
     _loadCompleter = Completer<T>();
 
     try {
-      final result = await super.load(
-        loadCallback,
-        forceDataRefresh: forceDataRefresh,
-      );
+      final result = await super.load(loadCallback, refresh: refresh);
 
       _loadCompleter!.complete(result);
     } catch (e) {

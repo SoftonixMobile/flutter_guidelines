@@ -28,6 +28,6 @@ void configureAuthDependencies() {
 }
 
 //register other dependencies (except auth ones)
-void configureUserDependencies(GetIt getIt) {
-  getIt.init();
+Future<void> configureUserDependencies(GetIt getIt) {
+  return getIt.init();
 }

@@ -1,5 +1,6 @@
-import 'package:data_provider/network.dart';
 import 'package:injectable/injectable.dart';
+
+import 'package:data_provider/network.dart';
 
 @injectable
 class AuthService {

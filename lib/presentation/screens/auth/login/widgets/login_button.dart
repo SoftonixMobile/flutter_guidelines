@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:bouncing_widget/bouncing_widget.dart';
 
-import 'package:flutter_guidelines/core/theme/index.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({

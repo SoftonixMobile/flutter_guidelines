@@ -1,6 +1,7 @@
+import 'package:injectable/injectable.dart';
+
 import 'package:data_provider/models.dart';
 import 'package:data_provider/network.dart';
-import 'package:injectable/injectable.dart';
 
 @injectable
 class UserService {
@@ -10,7 +11,7 @@ class UserService {
     _networkBaseClient.registerType(UserProfile.fromJson);
   }
 
-  Future<UserProfile> get() async {
+  Future<UserProfile> getUserProfile() async {
     return UserProfile.fromJson({'userName': 'test'});
   }
 }

@@ -1,6 +1,7 @@
+import 'package:injectable/injectable.dart';
+
 import 'package:data_provider/models.dart';
 import 'package:data_provider/network.dart';
-import 'package:injectable/injectable.dart';
 
 @injectable
 class PostsService {
@@ -10,17 +11,17 @@ class PostsService {
     _networkClient.registerType(Post.fromJson);
   }
 
-  Future<List<Post>> getAll() async {
+  Future<List<Post>> getAllPosts() async {
     return _networkClient.getData<List<Post>>(
       'https://jsonplaceholder.typicode.com/posts',
     );
   }
 
-  Future<Post> create(Post post) {
+  Future<Post> createPost(Post post) {
     return Future.delayed(Duration(seconds: 1), () => post);
   }
 
-  Future<Post> update(Post post) {
+  Future<Post> updatePost(Post post) {
     return Future.delayed(Duration(seconds: 1), () => post);
   }
 }

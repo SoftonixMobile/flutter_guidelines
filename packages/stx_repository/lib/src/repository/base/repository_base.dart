@@ -15,11 +15,11 @@ abstract class RepositoryBase<T> {
   @protected
   Future<T> load(
     Future<T> Function() loadCallback, {
-    bool forceDataRefresh = false,
+    bool refresh = false,
   }) async {
     var loadedValue = data;
 
-    if (forceDataRefresh || shouldRefreshData()) {
+    if (refresh || shouldRefreshData()) {
       loadedValue = await loadCallback();
       _isDataLoaded = true;
 

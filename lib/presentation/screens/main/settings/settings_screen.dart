@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/core/localization/index.dart';
 import 'package:flutter_guidelines/core/router/index.dart';
-import 'package:flutter_guidelines/presentation/helpers/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 export 'pages/index.dart';
 

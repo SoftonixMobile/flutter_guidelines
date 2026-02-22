@@ -9,8 +9,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/bloc_observer.dart';
 
-// TODO(Pasha): Remove import for presentation
-
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 

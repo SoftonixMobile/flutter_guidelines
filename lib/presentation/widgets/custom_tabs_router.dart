@@ -4,7 +4,8 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
-import 'package:flutter_guidelines/presentation/helpers/index.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 class CustomTabsRouter extends StatelessWidget {
   const CustomTabsRouter({

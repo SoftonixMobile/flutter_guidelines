@@ -20,17 +20,12 @@ mixin TtlRefreshRepositoryMixin<T> on RepositoryBase<T> {
   @override
   Future<T> load(
     Future<T> Function() loadCallback, {
-    bool forceDataRefresh = false,
+    bool refresh = false,
   }) async {
-    var loadedValue = data;
-
-    if (forceDataRefresh || shouldRefreshData()) {
+    if (refresh || shouldRefreshData()) {
       _lastRefreshTime = DateTime.now();
-      loadedValue = await loadCallback();
-
-      emit(loadedValue);
     }
 
-    return loadedValue;
+    return super.load(loadCallback, refresh: refresh);
   }
 }
