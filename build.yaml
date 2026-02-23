@@ -50,4 +50,4 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/data/services/injector/injector.dart
+            - lib/core/injector/injector.dart

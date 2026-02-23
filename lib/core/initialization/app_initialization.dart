@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'package:flutter_guidelines/data/services/index.dart';
