@@ -38,8 +38,8 @@ class LoggerService extends Logger {
     for (final logger in loggers) {
       try {
         logger.log(message, category: category);
-      } catch (error, stackTrace) {
-        logError(error, stackTrace);
+      } catch (e, stackTrace) {
+        logError(e, stackTrace);
       }
     }
   }
@@ -49,8 +49,8 @@ class LoggerService extends Logger {
     for (final logger in loggers) {
       try {
         logger.logInfo(message);
-      } catch (error, stackTrace) {
-        logError(error, stackTrace);
+      } catch (e, stackTrace) {
+        logError(e, stackTrace);
       }
     }
   }
@@ -60,8 +60,8 @@ class LoggerService extends Logger {
     for (final logger in loggers) {
       try {
         logger.logWarning(message);
-      } catch (error, stackTrace) {
-        logError(error, stackTrace);
+      } catch (e, stackTrace) {
+        logError(e, stackTrace);
       }
     }
   }

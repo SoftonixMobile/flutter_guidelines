@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/blocs/bloc_observer.dart';
+import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
 Future<void> initializeApp() async {
@@ -17,6 +19,7 @@ Future<void> initializeApp() async {
   await initializeLocalization();
   initializeCrashlytics();
   initializeBlocObserver();
+  initializeValidators();
   initializeDependencies();
 }
 
@@ -46,6 +49,11 @@ void initializeCrashlytics() {
 
 void initializeBlocObserver() {
   Bloc.observer = SimpleBlocObserver(LoggerService.instance);
+}
+
+void initializeValidators() {
+  FieldBlocValidators.requiredValidator = FieldValidators.required;
+  FieldBlocValidators.requiredBooleanValidator = FieldValidators.booleanRequired;
 }
 
 void initializeDependencies() {
