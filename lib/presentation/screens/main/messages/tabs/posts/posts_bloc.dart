@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:data_provider/models.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stx_bloc_base/stx_bloc_base.dart';
@@ -13,8 +15,13 @@ class PostsBloc extends NetworkListBloc<Post, PostsState> {
   PostsBloc(this._postsRepository) : super(const NetworkListState(data: []));
 
   @override
-  Future<List<Post>> onLoadAsync() {
-    return _postsRepository.getPosts(forceRefresh: true);
+  FutureOr<List<Post>> onLazyLoad() {
+    return _postsRepository.getPosts();
+  }
+
+  @override
+  Future<List<Post>> onLoadAsync() async {
+    return _postsRepository.getPosts(refreshData: true);
   }
 
   @override

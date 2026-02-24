@@ -29,7 +29,7 @@ dependencies:
   flutter_native_splash: ^2.4.7
 
   #softonix core packages
-  stx_bloc_base: ^0.6.1
+  stx_bloc_base: ^0.6.2
   stx_flutter_form_bloc: ^3.0.0
 
   #state management

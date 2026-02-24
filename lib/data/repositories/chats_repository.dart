@@ -10,8 +10,8 @@ class ChatsRepository extends ListRepositoryBase<Chat> {
 
   ChatsRepository(this._chatsService);
 
-  FutureOr<List<Chat>> getChats({bool forceDataRefresh = false}) {
-    return load(_chatsService.getAllChats, refresh: forceDataRefresh);
+  FutureOr<List<Chat>> getChats({bool refreshData = false}) {
+    return load(_chatsService.getAllChats, refresh: refreshData);
   }
 
   @override

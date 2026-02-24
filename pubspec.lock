@@ -1140,10 +1140,10 @@ packages:
     dependency: "direct main"
     description:
       name: stx_bloc_base
-      sha256: a7c19bbd9e93fe22d9e7476910912ff7a5328d68936ffe92d9676456ce05c8f7
+      sha256: d5538432399a7cf28243b67f8af67cebc9f1860f9d6184f35abb2ba9d14eae18
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.1"
+    version: "0.6.2"
   stx_easy_localization_generator:
     dependency: "direct main"
     description:

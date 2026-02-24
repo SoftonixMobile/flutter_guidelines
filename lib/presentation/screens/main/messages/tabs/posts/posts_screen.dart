@@ -12,7 +12,7 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<PostsBloc>()..load(),
+      create: (context) => getIt<PostsBloc>()..lazyLoad(),
       child: this,
     );
   }

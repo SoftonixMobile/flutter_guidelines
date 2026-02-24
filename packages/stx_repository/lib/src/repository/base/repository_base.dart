@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:meta/meta.dart';
 
 abstract class RepositoryBase<T> {
@@ -13,18 +15,22 @@ abstract class RepositoryBase<T> {
   bool shouldRefreshData() => !_isDataLoaded;
 
   @protected
-  Future<T> load(
-    Future<T> Function() loadCallback, {
-    bool refresh = false,
-  }) async {
+  FutureOr<T> load(Future<T> Function() loadCallback, {bool refresh = false}) {
     var loadedValue = data;
 
     if (refresh || shouldRefreshData()) {
-      loadedValue = await loadCallback();
-      _isDataLoaded = true;
-
-      emit(loadedValue);
+      return onRefresh(loadCallback);
     }
+
+    return loadedValue;
+  }
+
+  @protected
+  Future<T> onRefresh(Future<T> Function() loadCallback) async {
+    final loadedValue = await loadCallback();
+    _isDataLoaded = true;
+
+    emit(loadedValue);
 
     return loadedValue;
   }

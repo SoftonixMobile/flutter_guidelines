@@ -10,7 +10,7 @@ class UserRepository extends RepositoryBase<UserProfile> {
 
   UserRepository(this._userService) : super(initialValue: const UserProfile());
 
-  Future<UserProfile> getUserProfile({bool forceLoad = false}) {
-    return load(_userService.getUserProfile, refresh: forceLoad);
+  FutureOr<UserProfile> getUserProfile({bool refreshData = false}) {
+    return load(_userService.getUserProfile, refresh: refreshData);
   }
 }

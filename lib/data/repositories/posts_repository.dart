@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:data_provider/data_provider.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stx_repository/stx_repository.dart';
@@ -9,8 +11,8 @@ class PostsRepository extends ListRepositoryBase<Post>
 
   PostsRepository(this._postsService);
 
-  Future<List<Post>> getPosts({bool forceRefresh = false}) {
-    return load(_postsService.getAllPosts, refresh: forceRefresh);
+  FutureOr<List<Post>> getPosts({bool refreshData = false}) {
+    return load(_postsService.getAllPosts, refresh: refreshData);
   }
 
   Future<Post> createPost(Post post) async {

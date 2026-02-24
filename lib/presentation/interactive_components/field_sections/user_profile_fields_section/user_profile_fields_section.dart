@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_guidelines/presentation/widgets/index.dart';
 
+import 'package:flutter_guidelines/presentation/widgets/index.dart';
 import 'user_profile_group_bloc.dart';
 
 class UserProfileFieldsSection extends StatelessWidget {

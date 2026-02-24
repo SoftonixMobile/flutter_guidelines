@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:data_provider/models.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,8 +17,15 @@ class UserBloc extends NetworkBloc<UserProfile, UserState> {
     : super(UserState(data: _userData.userProfile));
 
   @override
+  FutureOr<UserProfile> onLazyLoad() {
+    return _userRepository.getUserProfile();
+  }
+
+  @override
   Future<UserProfile> onLoadAsync() async {
-    final userProfile = await _userRepository.getUserProfile();
+    final userProfile = await _userRepository.getUserProfile(
+      refreshData: true,
+    );
 
     _userData.userProfile = userProfile;
     return userProfile;

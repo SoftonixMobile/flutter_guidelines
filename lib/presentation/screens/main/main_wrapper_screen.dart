@@ -29,7 +29,13 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
   }
 
   Future<void> _setProfileInLogger() async {
-    final userProfile = (await getIt<UserBloc>().loadAsyncFuture()).data;
+    final userBloc = getIt<UserBloc>()..lazyLoad();
+
+    if (userBloc.state.status == .loading) {
+      await userBloc.getAsync();
+    }
+
+    final userProfile = userBloc.state.data;
 
     if (mounted) {
       LoggerService.instance.registerUserProfile(userProfile);
