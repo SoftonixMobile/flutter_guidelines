@@ -66,15 +66,26 @@ class HttpClient {
     return _fresh.clearToken();
   }
 
+  Future<Response<dynamic>> _guard(
+    Future<Response<dynamic>> Function() request,
+  ) async {
+    try {
+      return await request();
+    } on DioException catch (e) {
+      Error.throwWithStackTrace(
+        AppExceptionMapper.fromDioException(e),
+        e.stackTrace,
+      );
+    }
+  }
+
   Future<Response<T>> getR<T>(
     String url, {
     DynamicMap? queryParameters,
     Options? options,
   }) async {
-    final response = await _dio.get(
-      url,
-      queryParameters: queryParameters,
-      options: options,
+    final response = await _guard(
+      () => _dio.get(url, queryParameters: queryParameters, options: options),
     );
     return response.convert<T>(_parser);
   }
@@ -95,11 +106,13 @@ class HttpClient {
     DynamicMap? queryParameters,
     Options? options,
   }) async {
-    final response = await _dio.post(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: options,
+    final response = await _guard(
+      () => _dio.post(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ),
     );
     return response.convert<T>(_parser);
   }
@@ -122,11 +135,13 @@ class HttpClient {
     DynamicMap? queryParameters,
     Options? options,
   }) async {
-    final response = await _dio.put(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: options,
+    final response = await _guard(
+      () => _dio.put(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ),
     );
     return response.convert<T>(_parser);
   }
@@ -149,11 +164,13 @@ class HttpClient {
     DynamicMap? queryParameters,
     Options? options,
   }) async {
-    final response = await _dio.patch(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: options,
+    final response = await _guard(
+      () => _dio.patch(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      ),
     );
     return response.convert<T>(_parser);
   }
@@ -175,10 +192,9 @@ class HttpClient {
     DynamicMap? queryParameters,
     Options? options,
   }) async {
-    final response = await _dio.delete(
-      url,
-      queryParameters: queryParameters,
-      options: options,
+    final response = await _guard(
+      () =>
+          _dio.delete(url, queryParameters: queryParameters, options: options),
     );
     return response.convert<T>(_parser);
   }

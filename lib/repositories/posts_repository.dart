@@ -11,6 +11,7 @@ class PostsRepository {
     _httpClient.registerType<Post>(Post.fromJson);
   }
 
-  Future<List<Post>> getPosts() =>
-      _httpClient.get<List<Post>>('https://jsonplaceholder.typicode.com/posts');
+  Future<List<Post>> getPosts() => _httpClient.get<List<Post>>(
+    'https://jsonplaceholder.typicode.com/posts2',
+  );
 }
