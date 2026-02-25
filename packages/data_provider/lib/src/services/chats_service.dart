@@ -5,17 +5,17 @@ import 'package:data_provider/network.dart';
 
 @injectable
 class ChatsService {
-  final NetworkBaseClient _network;
+  final ApiClient _client;
 
-  ChatsService(this._network) {
-    _network.registerType(Chat.fromJson);
+  ChatsService(this._client) {
+    _client.registerType(Chat.fromJson);
   }
 
   Future<List<Chat>> getAllChats() async {
-    return _network.getData<List<Chat>>('/chats');
+    return _client.getData<List<Chat>>('/chats');
   }
 
   Future<Chat> getChatById(int id) async {
-    return _network.getData<Chat>('/chats/$id');
+    return _client.getData<Chat>('/chats/$id');
   }
 }

@@ -1,7 +1,7 @@
-abstract class IJsonParser {
+abstract class JsonParser {
   void registerType<T>(T Function(Map<String, dynamic>) fromJson);
 
   void unregisterType<T>();
 
-  T convert<T>(dynamic input);
+  T parse<T>(dynamic input);
 }

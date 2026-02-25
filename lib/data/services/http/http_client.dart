@@ -9,7 +9,7 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'adapters/index.dart';
 
-class HttpClient extends NetworkBaseClient implements AuthSession {
+class HttpClient extends ApiClient implements AuthSession {
   late final Dio _dio;
   late final Fresh<String> _fresh;
 

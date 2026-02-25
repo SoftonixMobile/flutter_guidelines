@@ -12,9 +12,9 @@ class DioResponseAdapter<T> extends data.Response<T> {
 }
 
 extension DioResponseParser on dio.Response {
-  dio.Response<T> parse<T>(data.IJsonParser parser) {
+  dio.Response<T> parse<T>(data.JsonParser parser) {
     return dio.Response(
-      data: parser.convert<T>(this.data),
+      data: parser.parse<T>(this.data),
       statusCode: statusCode,
       statusMessage: statusMessage,
       headers: headers,

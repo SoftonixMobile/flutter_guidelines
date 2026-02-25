@@ -5,10 +5,10 @@ import 'package:data_provider/network.dart';
 
 @injectable
 class UserService {
-  final NetworkBaseClient _networkBaseClient;
+  final ApiClient _client;
 
-  UserService(this._networkBaseClient) {
-    _networkBaseClient.registerType(UserProfile.fromJson);
+  UserService(this._client) {
+    _client.registerType(UserProfile.fromJson);
   }
 
   Future<UserProfile> getUserProfile() async {

@@ -26,7 +26,7 @@ Future<void> configureAuthDependencies() async {
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
     ..registerSingleton<AuthSession>(httpClient)
-    ..registerSingleton<NetworkBaseClient>(httpClient)
+    ..registerSingleton<ApiClient>(httpClient)
     ..registerFactory(() => AuthService(httpClient))
     ..registerFactory(() => UserService(httpClient))
     ..initAuthScope();
