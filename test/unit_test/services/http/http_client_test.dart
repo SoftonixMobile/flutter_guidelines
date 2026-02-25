@@ -9,7 +9,7 @@ import 'package:flutter_guidelines/data/services/index.dart';
 
 class MockDio extends Mock implements Dio {}
 
-class MockFresh extends Mock implements Fresh<String> {}
+class MockFresh extends Mock implements Fresh<AuthResponse> {}
 
 class MockLogger extends Mock implements Logger {}
 
@@ -18,7 +18,7 @@ class MockInterceptors extends Mock implements Interceptors {}
 // Tests for HttpClient methods
 void main() async {
   late final Dio mockDio;
-  late final Fresh<String> mockFresh;
+  late final Fresh<AuthResponse> mockFresh;
   late final Logger mockLogger;
 
   late HttpClient httpClient;

@@ -11,11 +11,11 @@ import 'adapters/index.dart';
 
 class HttpClient extends ApiClient implements AuthSession {
   late final Dio _dio;
-  late final Fresh<String> _fresh;
+  late final Fresh<AuthResponse> _fresh;
 
   HttpClient({
     @ignoreParam Dio? dio,
-    @ignoreParam Fresh<String>? fresh,
+    @ignoreParam Fresh<AuthResponse>? fresh,
     @ignoreParam JsonDataParser? jsonParser,
     required Logger logger,
   }) : super(jsonParser ?? JsonDataParser()) {
@@ -31,9 +31,9 @@ class HttpClient extends ApiClient implements AuthSession {
 
     _fresh =
         fresh ??
-        Fresh<String>(
-          tokenHeader: (token) => {'Authorization': 'Bearer $token'},
-          tokenStorage: SecureTokenStorage(),
+        Fresh<AuthResponse>(
+          tokenHeader: (token) => {'Authorization': 'Bearer ${token.accessToken}'},
+          tokenStorage: SecureTokenStorage(logger),
           refreshToken: (token, client) {
             // throws a RevokeTokenException to trigger a logout
             throw RevokeTokenException();
@@ -61,8 +61,8 @@ class HttpClient extends ApiClient implements AuthSession {
       });
 
   @override
-  Future<void> setToken(String authResponse) {
-    return _fresh.setToken(authResponse);
+  Future<void> setToken(AuthResponse token) {
+    return _fresh.setToken(token);
   }
 
   @override

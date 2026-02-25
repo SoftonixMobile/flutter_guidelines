@@ -17,9 +17,9 @@ class AuthRepository {
       _authSession.authenticationStatus;
 
   Future<void> signIn(String userName, String password) async {
-    final token = await _authService.signIn(userName, password);
+    final authResponse = await _authService.signIn(userName, password);
 
-    return _authSession.setToken(token);
+    return _authSession.setToken(authResponse);
   }
 
   Future<void> signOut() async {
