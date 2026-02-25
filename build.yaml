@@ -45,7 +45,6 @@ targets:
           include:
             - lib/data/repositories/**
             - lib/data/services/**
-            - lib/domain/**_manager.dart
             - lib/presentation/**_bloc.dart
             - lib/presentation/**_cubit.dart
       injectable_generator:injectable_config_builder:
