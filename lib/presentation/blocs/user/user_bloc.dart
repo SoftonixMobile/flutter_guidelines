@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:data_provider/models.dart';
 import 'package:injectable/injectable.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/data/repositories/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 typedef UserState = NetworkState<UserProfile>;
 
@@ -13,12 +13,16 @@ class UserBloc extends NetworkBloc<UserProfile, UserState> {
   final UserData _userData;
   final UserRepository _userRepository;
 
-  UserBloc(this._userData, this._userRepository)
-    : super(UserState(data: _userData.userProfile));
+  UserBloc(
+    this._userData,
+    this._userRepository,
+  ) : super(UserState(data: _userData.userProfile));
 
   @override
-  FutureOr<UserProfile> onLazyLoad() {
-    return _userRepository.getUserProfile();
+  FutureOr<UserProfile> onLazyLoad() async {
+    final userProfile = await _userRepository.getUserProfile();
+
+    return _userData.userProfile = userProfile;
   }
 
   @override
@@ -27,7 +31,6 @@ class UserBloc extends NetworkBloc<UserProfile, UserState> {
       refreshData: true,
     );
 
-    _userData.userProfile = userProfile;
-    return userProfile;
+    return _userData.userProfile = userProfile;
   }
 }

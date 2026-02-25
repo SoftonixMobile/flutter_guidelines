@@ -5,6 +5,7 @@ targets:
         enabled: true
         generate_for:
           include:
+            - lib/data/models/**.dart
             - lib/domain/models/**.dart
             - lib/presentation/**_event.dart
             - lib/presentation/**_bloc.dart
@@ -23,6 +24,7 @@ targets:
         enabled: true
         generate_for:
           include:
+            - lib/data/models/**.dart
             - lib/domain/models/**.dart
       auto_route_generator:auto_route_generator:
         enabled: true
@@ -41,11 +43,11 @@ targets:
         enabled: true
         generate_for:
           include:
+            - lib/data/repositories/**
+            - lib/data/services/**
+            - lib/domain/**_manager.dart
             - lib/presentation/**_bloc.dart
             - lib/presentation/**_cubit.dart
-            - lib/data/**_repository.dart
-            - lib/data/**_provider.dart
-            - lib/data/**_manager.dart
       injectable_generator:injectable_config_builder:
         enabled: true
         generate_for:

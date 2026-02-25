@@ -1,5 +1,6 @@
-import 'package:data_provider/models.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
+
+import 'package:flutter_guidelines/domain/models/index.dart';
 
 class UserProfileGroupBloc extends GroupFieldBloc {
   late final TextFieldBloc userName;

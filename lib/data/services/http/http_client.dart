@@ -81,9 +81,7 @@ class HttpClient extends NetworkBaseClient implements AuthSession {
       queryParameters: queryParameters,
     );
 
-    return DioResponseAdapter(
-      response.parse<T>(jsonParser),
-    );
+    return DioResponseAdapter(response.parse<T>(jsonParser));
   }
 
   @override
@@ -100,9 +98,7 @@ class HttpClient extends NetworkBaseClient implements AuthSession {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(
-      response.parse<T>(jsonParser),
-    );
+    return DioResponseAdapter(response.parse<T>(jsonParser));
   }
 
   @override
@@ -119,9 +115,7 @@ class HttpClient extends NetworkBaseClient implements AuthSession {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(
-      response.parse<T>(jsonParser),
-    );
+    return DioResponseAdapter(response.parse<T>(jsonParser));
   }
 
   @override
@@ -138,9 +132,7 @@ class HttpClient extends NetworkBaseClient implements AuthSession {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(
-      response.parse<T>(jsonParser),
-    );
+    return DioResponseAdapter(response.parse<T>(jsonParser));
   }
 
   @override
@@ -155,13 +147,11 @@ class HttpClient extends NetworkBaseClient implements AuthSession {
       options: RequestOptionsAdapter.fromOptional(options),
     );
 
-    return DioResponseAdapter(
-      response.parse<T>(jsonParser),
-    );
+    return DioResponseAdapter(response.parse<T>(jsonParser));
   }
 
   @override
-  Future<Response<T>> download<T>(
+  Future<Response> download(
     String url,
     String path, {
     DynamicMap? queryParameters,

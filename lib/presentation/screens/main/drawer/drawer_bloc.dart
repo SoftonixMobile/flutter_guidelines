@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:data_provider/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/data/repositories/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 typedef DrawerState = NetworkListState<Post>;
 
@@ -33,15 +33,15 @@ class DrawerBloc extends NetworkListBloc<Post, DrawerState> {
     });
   }
 
+  List<Post> _filterPosts(List<Post> posts) {
+    return posts.where((post) => post.id < 5).toList();
+  }
+
   @override
   Future<List<Post>> onLoadAsync() async {
     final posts = await _postsRepository.getPosts();
 
     return _filterPosts(posts);
-  }
-
-  List<Post> _filterPosts(List<Post> posts) {
-    return posts.where((post) => post.id < 5).toList();
   }
 
   @override

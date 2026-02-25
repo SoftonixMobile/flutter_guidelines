@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:data_provider/models.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-import 'package:flutter_guidelines/data/repositories/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 @injectable
 class PostModalBloc extends FormBloc<Post, String> {

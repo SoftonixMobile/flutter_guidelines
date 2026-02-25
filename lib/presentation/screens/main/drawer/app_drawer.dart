@@ -91,7 +91,6 @@ class AppDrawer extends StatelessWidget {
                           );
                         },
                       ),
-
                       BlocBuilder<DrawerBloc, DrawerState>(
                         builder: (context, state) {
                           return ListView.builder(

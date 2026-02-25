@@ -11,8 +11,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:data_provider/data_provider.dart' as _i15;
-import 'package:data_provider/models.dart' as _i14;
 import 'package:flutter/material.dart' as _i13;
+import 'package:flutter_guidelines/domain/models/index.dart' as _i14;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_screen.dart'
     as _i4;
 import 'package:flutter_guidelines/presentation/screens/main/dashboard/dashboard_screen.dart'

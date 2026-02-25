@@ -101,7 +101,7 @@ abstract class NetworkBaseClient {
     options: options,
   ).then((response) => response.data as T);
 
-  Future<Response<T>> download<T>(
+  Future<Response> download(
     String url,
     String path, {
     Map<String, dynamic>? queryParameters,

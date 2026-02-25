@@ -4,5 +4,6 @@ abstract class AuthSession {
   Stream<AuthStatus> get authenticationStatus;
 
   Future<void> setToken(String token);
+
   Future<void> clearToken();
 }

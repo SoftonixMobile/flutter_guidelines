@@ -1,8 +1,10 @@
 import 'dart:async';
 
-import 'package:data_provider/data_provider.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stx_repository/stx_repository.dart';
+
+import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
 
 @lazySingleton
 class PostsRepository extends ListRepositoryBase<Post>

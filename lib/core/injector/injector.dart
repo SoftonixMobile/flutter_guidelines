@@ -1,4 +1,4 @@
-import 'package:data_provider/data_provider.dart';
+import 'package:data_provider/network.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,23 +17,24 @@ final getIt = GetIt.instance;
 //register only auth dependencies
 void configureAuthDependencies() {
   final logger = LoggerService.instance;
-  final networkClient = HttpClient(logger: logger);
+  final httpClient = HttpClient(logger: logger);
 
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
-    ..registerSingleton<AuthSession>(networkClient)
-    ..registerSingleton<NetworkBaseClient>(networkClient)
-    ..registerFactory(() => AuthService(networkClient))
-    ..registerFactory(() => UserService(networkClient))
+    ..registerSingleton<AuthSession>(httpClient)
+    ..registerSingleton<NetworkBaseClient>(httpClient)
+    ..registerFactory(() => AuthService(httpClient))
+    ..registerFactory(() => UserService(httpClient))
     ..initAuthScope();
 }
 
 //register other dependencies (except auth ones)
-Future<void> configureUserDependencies(GetIt getIt) async {
-  getIt.registerSingleton<UserData>(
-    .new(userProfile: const UserProfile()),
-  );
+Future<void> configureUserDependencies(
+  GetIt getIt, {
+  UserProfile userProfile = const UserProfile(),
+}) async {
+  getIt.registerSingleton<UserData>(.new(userProfile: userProfile));
 
   await getIt.init();
 }

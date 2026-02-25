@@ -1,9 +1,8 @@
-import 'package:data_provider/data_provider.dart';
 import 'package:data_provider/network.dart' as data;
 import 'package:dio/dio.dart' as dio;
 
 class DioResponseAdapter<T> extends data.Response<T> {
-  DioResponseAdapter(dio.Response response)
+  DioResponseAdapter(dio.Response<T> response)
     : super(
         data: response.data,
         statusCode: response.statusCode ?? 0,
@@ -13,7 +12,7 @@ class DioResponseAdapter<T> extends data.Response<T> {
 }
 
 extension DioResponseParser on dio.Response {
-  dio.Response parse<T>(IJsonParser parser) {
+  dio.Response<T> parse<T>(data.IJsonParser parser) {
     return dio.Response(
       data: parser.convert<T>(this.data),
       statusCode: statusCode,

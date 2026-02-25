@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/data/repositories/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';
@@ -45,9 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(.unauthenticated());
       }
     } else {
-      emit(
-        state.copyWith(status: event.status),
-      );
+      emit(state.copyWith(status: event.status));
     }
   }
 

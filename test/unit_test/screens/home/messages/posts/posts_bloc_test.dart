@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:stx_bloc_base/stx_bloc_base.dart';
 
-import 'package:flutter_guidelines/data/repositories/index.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/domain/repositories/index.dart';
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_bloc.dart';
 
 class MockPostsRepository extends Mock implements PostsRepository {}
@@ -32,7 +32,9 @@ void main() {
     blocTest(
       'Success state with data after load',
       setUp: () {
-        when(mockPostRepository.getPosts).thenAnswer((_) async => [testItem]);
+        when(
+          () => mockPostRepository.getPosts(refreshData: true),
+        ).thenAnswer((_) async => [testItem]);
       },
       build: () => postsBloc,
       act: (bloc) {

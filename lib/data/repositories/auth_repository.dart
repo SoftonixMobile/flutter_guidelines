@@ -1,4 +1,3 @@
-import 'package:data_provider/services.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/data/services/index.dart';

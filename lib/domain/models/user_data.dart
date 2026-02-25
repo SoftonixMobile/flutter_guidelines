@@ -1,4 +1,4 @@
-import 'package:data_provider/models.dart';
+import 'index.dart';
 
 class UserData {
   UserProfile userProfile;

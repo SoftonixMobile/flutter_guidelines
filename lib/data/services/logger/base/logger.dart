@@ -1,4 +1,4 @@
-import 'package:data_provider/models.dart';
+import 'package:flutter_guidelines/domain/models/index.dart';
 
 abstract class Logger {
   Future<void> init() async {}

@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/domain/models/index.dart';
-import 'base/auth_session.dart';
+import 'auth_session.dart';
 
 @Injectable(scope: 'auth')
 class AuthManager {
