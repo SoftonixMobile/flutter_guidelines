@@ -1,4 +1,4 @@
-import '../localization/index.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 abstract final class DateFormatConstants {
   static DateFormat defaultDateFormat = DateFormat('EE MM/dd/yyyy', 'en');

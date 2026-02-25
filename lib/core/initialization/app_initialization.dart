@@ -8,6 +8,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/bloc_observer.dart';
+import 'package:flutter_guidelines/presentation/localization/index.dart';
 
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

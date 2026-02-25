@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
+import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'drawer/drawer_bloc.dart';
 
 @RoutePage(name: 'MainRouter')

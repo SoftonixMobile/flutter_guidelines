@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/presentation/localization/index.dart';
+import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 @RoutePage()

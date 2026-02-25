@@ -2,9 +2,9 @@ import 'package:data_provider/network.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/core/router/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'injector.config.dart';
 
 final getIt = GetIt.instance;

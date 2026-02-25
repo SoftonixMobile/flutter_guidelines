@@ -6,6 +6,7 @@ import 'package:data_provider/data_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
 import 'post_modal_bloc.dart';
 
