@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter_guidelines/data/services/logger/index.dart';
+import 'package:flutter_guidelines/core/logger/index.dart';
 
 class SimpleBlocObserver extends BlocObserver {
   final Logger _logger;

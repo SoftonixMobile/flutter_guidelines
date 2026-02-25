@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:data_provider/network.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:flutter_guidelines/core/logger/index.dart';
 import 'package:flutter_guidelines/core/router/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
@@ -15,8 +18,8 @@ final getIt = GetIt.instance;
   ],
 )
 //register only auth dependencies
-void configureAuthDependencies() {
-  final logger = LoggerService.instance;
+Future<void> configureAuthDependencies() async {
+  final logger = await _configureLogger();
   final httpClient = HttpClient(logger: logger);
 
   getIt
@@ -27,6 +30,15 @@ void configureAuthDependencies() {
     ..registerFactory(() => AuthService(httpClient))
     ..registerFactory(() => UserService(httpClient))
     ..initAuthScope();
+}
+
+Future<Logger> _configureLogger() async {
+  final logger = MultiLogger([
+    if (kDebugMode) ConsoleLogger(),
+  ]);
+  await logger.init();
+
+  return logger;
 }
 
 //register other dependencies (except auth ones)

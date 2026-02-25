@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:auto_route/auto_route.dart';
 
-import 'package:flutter_guidelines/data/services/logger/index.dart';
+import 'package:flutter_guidelines/core/logger/index.dart';
 
 class RouterObserver extends AutoRouterObserver {
   final Logger _logger;

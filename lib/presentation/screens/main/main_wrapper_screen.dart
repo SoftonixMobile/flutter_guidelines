@@ -43,7 +43,7 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
       //   listenWhen: (previous, current) =>
       //       current.status.isSuccess && previous.data != current.data,
       //   listener: (context, state) {
-      //     LoggerService.instance.registerUserProfile(state.data);
+      //     getIt<Logger>().registerUserProfile(state.data);
       //   },
       //   child: const AutoRouter(),
       // ),

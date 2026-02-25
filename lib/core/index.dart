@@ -1,4 +1,5 @@
 export 'config/app_config.dart';
+export 'logger/index.dart';
 export 'initialization/app_initialization.dart';
 export 'injector/injector.dart';
 export 'constants/index.dart';
