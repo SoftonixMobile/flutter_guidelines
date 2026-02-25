@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-
+import 'package:data_provider/injector.dart';
 import 'package:data_provider/network.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
@@ -13,13 +12,12 @@ import 'injector.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit(
-  externalPackageModulesBefore: [
-    ExternalModule(DataProviderPackageModule),
-  ],
+  includeMicroPackages: false,
 )
 //register only auth dependencies
-Future<void> configureAuthDependencies() async {
-  final logger = await _configureLogger();
+void configureAuthDependencies({
+  required Logger logger,
+}) {
   final httpClient = HttpClient(logger: logger);
 
   getIt
@@ -32,21 +30,15 @@ Future<void> configureAuthDependencies() async {
     ..initAuthScope();
 }
 
-Future<Logger> _configureLogger() async {
-  final logger = MultiLogger([
-    if (kDebugMode) ConsoleLogger(),
-  ]);
-  await logger.init();
-
-  return logger;
-}
-
 //register other dependencies (except auth ones)
-Future<void> configureUserDependencies(
+void configureUserDependencies(
   GetIt getIt, {
   UserProfile userProfile = const UserProfile(),
-}) async {
-  getIt.registerSingleton<UserData>(.new(userProfile: userProfile));
+}) {
+  // ignore: discarded_futures
+  DataProviderPackageModule().init(GetItHelper(getIt));
 
-  await getIt.init();
+  getIt
+    ..registerSingleton<UserData>(.new(userProfile: userProfile))
+    ..init();
 }

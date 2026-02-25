@@ -10,7 +10,6 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i12;
-import 'package:data_provider/data_provider.dart' as _i15;
 import 'package:flutter/material.dart' as _i13;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i14;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_screen.dart'
@@ -184,8 +183,8 @@ class MessagesTabsRoute extends _i12.PageRouteInfo<void> {
 class PostModalRoute extends _i12.PageRouteInfo<PostModalRouteArgs> {
   PostModalRoute({
     _i13.Key? key,
-    _i15.Post? post,
-    void Function(_i15.Post, {required bool isEditing})? onSuccess,
+    _i14.Post? post,
+    void Function(_i14.Post, {required bool isEditing})? onSuccess,
     List<_i12.PageRouteInfo>? children,
   }) : super(
          PostModalRoute.name,
@@ -217,9 +216,9 @@ class PostModalRouteArgs {
 
   final _i13.Key? key;
 
-  final _i15.Post? post;
+  final _i14.Post? post;
 
-  final void Function(_i15.Post, {required bool isEditing})? onSuccess;
+  final void Function(_i14.Post, {required bool isEditing})? onSuccess;
 
   @override
   String toString() {

@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +12,11 @@ Future<void> initializeApp() async {
 
   initializeSplashScreen(widgetsBinding);
   await initializeLocalization();
-  await initializeDependencies();
-  initializeCrashlytics();
-  initializeBlocObserver();
+
+  final logger = await initializeLogger();
+  initializeCrashlytics(logger);
+  initializeBlocObserver(logger);
+  initializeDependencies(logger);
 }
 
 void initializeSplashScreen(WidgetsBinding widgetsBinding) {
@@ -26,22 +27,31 @@ Future<void> initializeLocalization() {
   return EasyLocalization.ensureInitialized();
 }
 
-Future<void> initializeDependencies() {
-  return configureAuthDependencies();
+Future<Logger> initializeLogger() async {
+  final logger = MultiLogger([
+    if (kDebugMode) ConsoleLogger(),
+  ]);
+  await logger.init();
+
+  return logger;
 }
 
-void initializeCrashlytics() {
+void initializeDependencies(Logger logger) {
+  return configureAuthDependencies(logger: logger);
+}
+
+void initializeCrashlytics(Logger logger) {
   FlutterError.onError = (errorDetails) {
-    getIt<Logger>().logError(errorDetails.exception, errorDetails.stack);
+    logger.logError(errorDetails.exception, errorDetails.stack);
   };
 
   PlatformDispatcher.instance.onError = (error, stack) {
-    getIt<Logger>().logError(error, stack);
+    logger.logError(error, stack);
 
     return true;
   };
 }
 
-void initializeBlocObserver() {
-  Bloc.observer = SimpleBlocObserver(getIt<Logger>());
+void initializeBlocObserver(Logger logger) {
+  Bloc.observer = SimpleBlocObserver(logger);
 }

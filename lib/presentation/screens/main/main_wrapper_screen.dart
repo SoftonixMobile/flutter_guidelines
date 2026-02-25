@@ -21,7 +21,7 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
   void initState() {
     super.initState();
 
-    unawaited(getIt.pushNewScopeAsync(init: configureUserDependencies));
+    getIt.pushNewScope(init: configureUserDependencies);
   }
 
   @override
@@ -33,20 +33,34 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
 
   @override
   Widget build(BuildContext context) {
+    return _MainStateWrapper(
+      child: BlocListener<UserBloc, UserState>(
+        listenWhen: (previous, current) =>
+            current.status.isSuccess && previous.data != current.data,
+        listener: (context, state) {
+          getIt<Logger>().registerUserProfile(state.data);
+        },
+        child: const AutoRouter(),
+      ),
+    );
+  }
+}
+
+class _MainStateWrapper extends StatelessWidget {
+  const _MainStateWrapper({
+    required this.child,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<UserBloc>()..lazyLoad()),
         BlocProvider(create: (context) => getIt<DrawerBloc>()..load()),
       ],
-      child: const AutoRouter(),
-      // child: BlocListener<UserBloc, UserState>(
-      //   listenWhen: (previous, current) =>
-      //       current.status.isSuccess && previous.data != current.data,
-      //   listener: (context, state) {
-      //     getIt<Logger>().registerUserProfile(state.data);
-      //   },
-      //   child: const AutoRouter(),
-      // ),
+      child: child,
     );
   }
 }
