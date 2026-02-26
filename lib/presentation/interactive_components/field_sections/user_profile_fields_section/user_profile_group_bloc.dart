@@ -21,7 +21,7 @@ class UserProfileGroupBloc extends GroupFieldBloc {
   }
 
   UserProfile toUserProfile() {
-    return .new(
+    return UserProfile(
       id: initial?.id ?? 0,
       userName: userName.value,
     );

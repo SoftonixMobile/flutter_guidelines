@@ -1,3 +1,4 @@
+export 'exception_mapper.dart';
 export 'http_client.dart';
 export 'interceptors/index.dart';
 export 'json_data_parser.dart';

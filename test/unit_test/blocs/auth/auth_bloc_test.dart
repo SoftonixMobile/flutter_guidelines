@@ -55,7 +55,7 @@ void main() {
         });
 
         when(
-          () => mockUserRepo.getUserProfile(refreshData: true),
+          () => mockUserRepo.getUserProfile(refresh: true),
         ).thenAnswer((_) async => fullUserProfile);
       },
       build: () => AuthBloc(mockAuthRepo, mockUserRepo),

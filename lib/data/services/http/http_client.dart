@@ -32,7 +32,9 @@ class HttpClient extends ApiClient implements AuthSession {
     _fresh =
         fresh ??
         Fresh<AuthResponse>(
-          tokenHeader: (token) => {'Authorization': 'Bearer ${token.accessToken}'},
+          tokenHeader: (token) => {
+            'Authorization': 'Bearer ${token.accessToken}',
+          },
           tokenStorage: SecureTokenStorage(logger),
           refreshToken: (token, client) {
             // throws a RevokeTokenException to trigger a logout
@@ -70,16 +72,29 @@ class HttpClient extends ApiClient implements AuthSession {
     return _fresh.clearToken();
   }
 
+  Future<T> _guard<T>(Future<T> Function() request) async {
+    try {
+      return await request();
+    } on DioException catch (e) {
+      Error.throwWithStackTrace(
+        AppExceptionMapper.fromDioException(e),
+        e.stackTrace,
+      );
+    }
+  }
+
   @override
   Future<Response<T>> get<T>(
     String url, {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.get(
-      url,
-      options: RequestOptionsAdapter.fromOptional(options),
-      queryParameters: queryParameters,
+    final response = await _guard(
+      () => _dio.get(
+        url,
+        options: RequestOptionsAdapter.fromOptional(options),
+        queryParameters: queryParameters,
+      ),
     );
 
     return DioResponseAdapter(response.parse<T>(jsonParser));
@@ -92,11 +107,13 @@ class HttpClient extends ApiClient implements AuthSession {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.post(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: RequestOptionsAdapter.fromOptional(options),
+    final response = await _guard(
+      () => _dio.post(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: RequestOptionsAdapter.fromOptional(options),
+      ),
     );
 
     return DioResponseAdapter(response.parse<T>(jsonParser));
@@ -109,11 +126,13 @@ class HttpClient extends ApiClient implements AuthSession {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.put(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: RequestOptionsAdapter.fromOptional(options),
+    final response = await _guard(
+      () => _dio.put(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: RequestOptionsAdapter.fromOptional(options),
+      ),
     );
 
     return DioResponseAdapter(response.parse<T>(jsonParser));
@@ -126,11 +145,13 @@ class HttpClient extends ApiClient implements AuthSession {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.patch(
-      url,
-      data: data,
-      queryParameters: queryParameters,
-      options: RequestOptionsAdapter.fromOptional(options),
+    final response = await _guard(
+      () => _dio.patch(
+        url,
+        data: data,
+        queryParameters: queryParameters,
+        options: RequestOptionsAdapter.fromOptional(options),
+      ),
     );
 
     return DioResponseAdapter(response.parse<T>(jsonParser));
@@ -142,10 +163,12 @@ class HttpClient extends ApiClient implements AuthSession {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.delete(
-      url,
-      queryParameters: queryParameters,
-      options: RequestOptionsAdapter.fromOptional(options),
+    final response = await _guard(
+      () => _dio.delete(
+        url,
+        queryParameters: queryParameters,
+        options: RequestOptionsAdapter.fromOptional(options),
+      ),
     );
 
     return DioResponseAdapter(response.parse<T>(jsonParser));
@@ -158,11 +181,13 @@ class HttpClient extends ApiClient implements AuthSession {
     DynamicMap? queryParameters,
     NetworkOptions? options,
   }) async {
-    final response = await _dio.download(
-      url,
-      path,
-      queryParameters: queryParameters,
-      options: RequestOptionsAdapter.fromOptional(options),
+    final response = await _guard(
+      () => _dio.download(
+        url,
+        path,
+        queryParameters: queryParameters,
+        options: RequestOptionsAdapter.fromOptional(options),
+      ),
     );
 
     return DioResponseAdapter(response);

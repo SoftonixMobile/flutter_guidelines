@@ -4,8 +4,8 @@ import 'package:injectable/injectable.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/domain/repositories/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
 
-// TODO(Vova): add validators
 @Injectable(scope: 'auth')
 class LoginFormBloc extends FormBloc<bool, String> {
   late final TextFieldBloc username;
@@ -21,9 +21,7 @@ class LoginFormBloc extends FormBloc<bool, String> {
 
     password = TextFieldBloc(
       required: true,
-      // Will be changed later
-      // ignore: deprecated_member_use
-      customValidators: {FieldBlocValidators.passwordMin6Chars},
+      customValidators: {FieldValidators.passwordMin6Chars},
       rules: {ValidationType.onBlur},
     );
 

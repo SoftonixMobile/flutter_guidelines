@@ -8,16 +8,16 @@ analyzer:
     strict-casts: false
     strict-inference: false
     strict-raw-types: false
-  
-  errors: 
+
+  errors:
     invalid_annotation_target: false
 
   exclude:
     - bricks/**
-    - '**/*.g.dart'
-    - '**/*.config.dart'
-    - '**/*.freezed.dart'
-    - '**/*.gen.dart'
+    - "**/*.g.dart"
+    - "**/*.config.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"
     #- '**/*.gr.dart'
 
 linter:

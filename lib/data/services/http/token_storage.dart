@@ -19,7 +19,9 @@ class SecureTokenStorage extends TokenStorage<AuthResponse> {
     try {
       final value = await _storage.read(key: _tokenKey);
 
-      return value != null ? AuthResponse.fromJson(jsonDecode(value) as Map<String, dynamic>) : null;
+      return value != null
+          ? AuthResponse.fromJson(jsonDecode(value) as Map<String, dynamic>)
+          : null;
     } catch (e, stackTrace) {
       _logger.logError(e, stackTrace);
     }

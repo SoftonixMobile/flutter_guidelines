@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
 import 'package:flutter_guidelines/presentation/localization/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +20,7 @@ Future<void> initializeApp() async {
   initializeCrashlytics(logger);
   initializeBlocObserver(logger);
   initializeDependencies(logger);
+  initializeValidators();
 }
 
 void initializeSplashScreen(WidgetsBinding widgetsBinding) {
@@ -37,10 +40,6 @@ Future<Logger> initializeLogger() async {
   return logger;
 }
 
-void initializeDependencies(Logger logger) {
-  return configureAuthDependencies(logger: logger);
-}
-
 void initializeCrashlytics(Logger logger) {
   FlutterError.onError = (errorDetails) {
     logger.logError(errorDetails.exception, errorDetails.stack);
@@ -55,4 +54,14 @@ void initializeCrashlytics(Logger logger) {
 
 void initializeBlocObserver(Logger logger) {
   Bloc.observer = SimpleBlocObserver(logger);
+}
+
+void initializeDependencies(Logger logger) {
+  return configureAuthDependencies(logger: logger);
+}
+
+void initializeValidators() {
+  FieldBlocValidators.requiredValidator = FieldValidators.required;
+  FieldBlocValidators.requiredBooleanValidator =
+      FieldValidators.booleanRequired;
 }

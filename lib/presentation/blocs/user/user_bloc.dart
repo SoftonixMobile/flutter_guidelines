@@ -23,6 +23,6 @@ class UserBloc extends NetworkBloc<UserProfile, UserState> {
 
   @override
   Future<UserProfile> onLoadAsync() async {
-    return _userRepository.getUserProfile(refreshData: true);
+    return _userRepository.getUserProfile(refresh: true);
   }
 }

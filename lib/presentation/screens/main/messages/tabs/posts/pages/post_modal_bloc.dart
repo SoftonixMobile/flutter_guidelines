@@ -29,7 +29,7 @@ class PostModalBloc extends FormBloc<Post, String> {
 
   @override
   FutureOr<void> onSubmit() async {
-    final payload = (initial ?? const .new()).copyWith(name: name.value ?? '');
+    final payload = (initial ?? const Post()).copyWith(name: name.value ?? '');
 
     final response = isCreating
         ? await postsRepository.createPost(payload)
