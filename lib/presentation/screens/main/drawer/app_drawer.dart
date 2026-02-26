@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
+import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'drawer_bloc.dart';
 
@@ -33,83 +34,88 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
 
-    return Container(
-      width: screenSize.width * 0.75,
-      height: screenSize.height,
-      color: AppColors.white,
-      child: Drawer(
-        elevation: 3,
-        child: SafeArea(
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            width: double.infinity,
-            height: screenSize.height,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 60,
-                      backgroundColor: AppColors.black,
-                      backgroundImage: AssetImage(Assets.images.logoShort.path),
-                    ),
-                  ],
-                ),
-                const Divider(height: 20),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Column(
+    return BlocProvider(
+      create: (context) => getIt<DrawerBloc>()..lazyLoad(),
+      child: Container(
+        width: screenSize.width * 0.75,
+        height: screenSize.height,
+        color: AppColors.white,
+        child: Drawer(
+          elevation: 3,
+          child: SafeArea(
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              width: double.infinity,
+              height: screenSize.height,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildMenuItem(
-                        text: context.tr(LocaleKeys.changePassword),
-                        iconData: FontAwesomeIcons.lock,
-                      ),
-                      GestureDetector(
-                        child: _buildMenuItem(
-                          text: context.tr(LocaleKeys.languageName),
-                          iconData: FontAwesomeIcons.globe,
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundColor: AppColors.black,
+                        backgroundImage: AssetImage(
+                          Assets.images.logoShort.path,
                         ),
-                        onTap: () async {
-                          final newLocale =
-                              context.locale == context.supportedLocales[0]
-                              ? context.supportedLocales[1]
-                              : context.supportedLocales[0];
-
-                          await context.setLocale(newLocale);
-                        },
-                      ),
-                      GestureDetector(
-                        child: _buildMenuItem(
-                          text: context.tr(LocaleKeys.signOut),
-                          iconData: FontAwesomeIcons.rightFromBracket,
-                        ),
-                        onTap: () {
-                          context.read<AuthBloc>().add(
-                            const AuthEvent.signOut(),
-                          );
-                        },
-                      ),
-                      BlocBuilder<DrawerBloc, DrawerState>(
-                        builder: (context, state) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: state.data.length,
-                            itemBuilder: (context, index) {
-                              final post = state.data[index];
-
-                              return ListTile(
-                                title: Text(post.name),
-                              );
-                            },
-                          );
-                        },
                       ),
                     ],
                   ),
-                ),
-              ],
+                  const Divider(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Column(
+                      children: [
+                        _buildMenuItem(
+                          text: context.tr(LocaleKeys.changePassword),
+                          iconData: FontAwesomeIcons.lock,
+                        ),
+                        GestureDetector(
+                          child: _buildMenuItem(
+                            text: context.tr(LocaleKeys.languageName),
+                            iconData: FontAwesomeIcons.globe,
+                          ),
+                          onTap: () async {
+                            final newLocale =
+                                context.locale == context.supportedLocales[0]
+                                ? context.supportedLocales[1]
+                                : context.supportedLocales[0];
+
+                            await context.setLocale(newLocale);
+                          },
+                        ),
+                        GestureDetector(
+                          child: _buildMenuItem(
+                            text: context.tr(LocaleKeys.signOut),
+                            iconData: FontAwesomeIcons.rightFromBracket,
+                          ),
+                          onTap: () {
+                            context.read<AuthBloc>().add(
+                              const AuthEvent.signOut(),
+                            );
+                          },
+                        ),
+                        BlocBuilder<DrawerBloc, DrawerState>(
+                          builder: (context, state) {
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: state.data.length,
+                              itemBuilder: (context, index) {
+                                final post = state.data[index];
+
+                                return ListTile(
+                                  title: Text(post.name),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

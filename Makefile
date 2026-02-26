@@ -13,8 +13,8 @@ watch:
 	dart run build_runner watch --delete-conflicting-outputs
 
 lang:
-	dart run stx_easy_localization_generator:generate -O lib/core/localization
-	dart run stx_easy_localization_generator:generate -f keys -O lib/core/localization -o locale_keys.g.dart
+	dart run stx_easy_localization_generator:generate -O lib/presentation/localization
+	dart run stx_easy_localization_generator:generate -f keys -O lib/presentation/localization -o locale_keys.g.dart
 
 sort:
 	dart run import_sorter:main

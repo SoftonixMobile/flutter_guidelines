@@ -19,14 +19,14 @@ abstract class RepositoryBase<T> {
     var loadedValue = data;
 
     if (refresh || shouldRefreshData()) {
-      return onRefresh(loadCallback);
+      return this.refresh(loadCallback);
     }
 
     return loadedValue;
   }
 
   @protected
-  Future<T> onRefresh(Future<T> Function() loadCallback) async {
+  Future<T> refresh(Future<T> Function() loadCallback) async {
     final loadedValue = await loadCallback();
     _isDataLoaded = true;
 

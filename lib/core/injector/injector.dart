@@ -4,9 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/core/logger/index.dart';
-import 'package:flutter_guidelines/core/router/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
+import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'injector.config.dart';
 
 final getIt = GetIt.instance;
@@ -18,11 +18,13 @@ final getIt = GetIt.instance;
 void configureAuthDependencies({
   required Logger logger,
 }) {
+  final userData = UserData(userProfile: const UserProfile());
   final httpClient = HttpClient(logger: logger);
 
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
+    ..registerSingleton<UserData>(userData)
     ..registerSingleton<AuthSession>(httpClient)
     ..registerSingleton<ApiClient>(httpClient)
     ..registerFactory(() => AuthService(httpClient))
@@ -31,14 +33,9 @@ void configureAuthDependencies({
 }
 
 //register other dependencies (except auth ones)
-void configureUserDependencies(
-  GetIt getIt, {
-  UserProfile userProfile = const UserProfile(),
-}) {
+void configureUserDependencies(GetIt getIt) {
   // ignore: discarded_futures
   DataProviderPackageModule().init(GetItHelper(getIt));
 
-  getIt
-    ..registerSingleton<UserData>(.new(userProfile: userProfile))
-    ..init();
+  getIt.init();
 }

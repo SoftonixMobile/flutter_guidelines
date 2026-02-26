@@ -18,9 +18,9 @@ mixin TtlRefreshRepositoryMixin<T> on RepositoryBase<T> {
   }
 
   @override
-  Future<T> onRefresh(Future<T> Function() loadCallback) {
+  Future<T> refresh(Future<T> Function() loadCallback) {
     _lastRefreshTime = DateTime.now();
 
-    return super.onRefresh(loadCallback);
+    return super.refresh(loadCallback);
   }
 }
