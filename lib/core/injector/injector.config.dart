@@ -49,13 +49,16 @@ extension GetItInjectableX on _i174.GetIt {
         gh.factory<_i192.AuthManager>(
           () => _i192.AuthManager(gh<_i630.AuthSession>()),
         );
-        gh.lazySingleton<_i365.UserRepository>(
-          () => _i365.UserRepository(gh<_i349.UserService>()),
-        );
         gh.lazySingleton<_i776.AuthRepository>(
           () => _i776.AuthRepository(
             gh<_i349.AuthService>(),
             gh<_i349.AuthManager>(),
+          ),
+        );
+        gh.lazySingleton<_i365.UserRepository>(
+          () => _i365.UserRepository(
+            gh<_i595.UserData>(),
+            gh<_i349.UserService>(),
           ),
         );
         gh.factory<_i175.LoginFormBloc>(
@@ -78,6 +81,9 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     await _i349.DataProviderPackageModule().init(gh);
+    gh.singleton<_i492.UserBloc>(
+      () => _i492.UserBloc(gh<_i64.UserRepository>()),
+    );
     gh.lazySingleton<_i148.ChatsRepository>(
       () => _i148.ChatsRepository(gh<_i349.ChatsService>()),
     );
@@ -87,9 +93,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i440.ChatsBloc>(
       () => _i440.ChatsBloc(gh<_i64.ChatsRepository>()),
-    );
-    gh.singleton<_i492.UserBloc>(
-      () => _i492.UserBloc(gh<_i595.UserData>(), gh<_i64.UserRepository>()),
     );
     gh.factoryParam<_i387.PostModalBloc, _i595.Post?, dynamic>(
       (initial, _) => _i387.PostModalBloc(initial, gh<_i64.PostsRepository>()),

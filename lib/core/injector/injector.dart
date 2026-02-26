@@ -17,11 +17,13 @@ final getIt = GetIt.instance;
 //register only auth dependencies
 void configureAuthDependencies() {
   final logger = LoggerService.instance;
+  final userData = UserData(userProfile: const UserProfile());
   final httpClient = HttpClient(logger: logger);
 
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
+    ..registerSingleton<UserData>(userData)
     ..registerSingleton<AuthSession>(httpClient)
     ..registerSingleton<NetworkBaseClient>(httpClient)
     ..registerFactory(() => AuthService(httpClient))
@@ -30,11 +32,6 @@ void configureAuthDependencies() {
 }
 
 //register other dependencies (except auth ones)
-Future<void> configureUserDependencies(
-  GetIt getIt, {
-  UserProfile userProfile = const UserProfile(),
-}) async {
-  getIt.registerSingleton<UserData>(.new(userProfile: userProfile));
-
-  await getIt.init();
+Future<void> configureUserDependencies(GetIt getIt) {
+  return getIt.init();
 }
