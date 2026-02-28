@@ -1,19 +1,15 @@
 {
-    "screenText": "Filtrer",
-
-    "dashboard" : "Tableau de bord",
-    "dashboardScreenTitle": "@:dashboard @:screenText",
-
-    "messages": "Messages",
-    "chats": "Chats",
-    "chatsScreenTitle" : "@:chats @:screenText",
-    "posts": "Des postes",
-    "postsScreenTitle" : "@:posts @:screenText",
-
-    "settings" : "Réglages",
-    "settingsScreenTitle" : "@:settings @:screenText",
-
     "changePassword": "Changer le mot de passe",
+    "chats": "Chats",
+    "chatsScreenTitle": "@:chats @:screenText",
+    "dashboard": "Tableau de bord",
+    "dashboardScreenTitle": "@:dashboard @:screenText",
     "languageName": "French",
+    "messages": "Messages",
+    "posts": "Des postes",
+    "postsScreenTitle": "@:posts @:screenText",
+    "screenText": "Filtrer",
+    "settings": "Réglages",
+    "settingsScreenTitle": "@:settings @:screenText",
     "signOut": "Se déconnecter"
 }
