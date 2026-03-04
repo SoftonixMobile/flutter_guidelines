@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_guidelines/presentation/theme/index.dart';
+
 class CustomCard extends StatelessWidget {
   const CustomCard({
     required this.child,
@@ -15,17 +17,19 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.theme.colorsTheme;
+
     return Card(
       elevation: 6,
-      color: Colors.lightBlue,
-      shadowColor: Colors.black,
+      color: colors.primary,
+      shadowColor: colors.textPrimary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
       child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
+        decoration: BoxDecoration(
+          color: colors.surface,
+          borderRadius: const BorderRadius.all(
             Radius.circular(12),
           ),
         ),

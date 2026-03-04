@@ -25,6 +25,8 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.theme.colorsTheme;
+
     final screenSize = MediaQuery.sizeOf(context);
     final mainContainerWidth = screenSize.width * 0.85;
 
@@ -33,7 +35,7 @@ class LoginScreen extends StatelessWidget implements AutoRouteWrapper {
         resizeToAvoidBottomInset: true,
         body: Container(
           width: double.infinity,
-          color: Colors.lightBlue,
+          color: colors.primary,
           child: SingleChildScrollView(
             child: SizedBox(
               height: max(screenSize.height, 600),

@@ -1,7 +1,7 @@
 export 'assets.gen.dart';
-export 'colors.gen.dart';
-export 'fonts.gen.dart';
-export 'colors.dart';
+export 'colors/index.dart';
 export 'constants.dart';
+export 'extensions.dart';
+export 'fonts.gen.dart';
 export 'theme.dart';
-export 'text_styles.dart';
+export 'typography/index.dart';

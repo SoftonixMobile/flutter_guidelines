@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 export 'pages/index.dart';
@@ -12,6 +13,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final typography = context.theme.typographyTheme;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(context.tr(LocaleKeys.settings)),
@@ -25,6 +28,7 @@ class SettingsScreen extends StatelessWidget {
       body: Center(
         child: Text(
           context.tr(LocaleKeys.settingsScreenTitle),
+          style: typography.bodyLarge,
         ),
       ),
     );

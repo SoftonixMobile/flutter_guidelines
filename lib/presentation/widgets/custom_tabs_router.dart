@@ -26,6 +26,8 @@ class CustomTabsRouter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.theme.colorsTheme;
+
     return AutoTabsRouter(
       routes: routes,
       builder: (context, child) {
@@ -51,8 +53,9 @@ class CustomTabsRouter extends StatelessWidget {
                     height: 5,
                     topLeftRadius: 8,
                     topRightRadius: 8,
-                    color: AppColors.white,
+                    color: colors.primary,
                   ),
+                  dividerColor: Colors.transparent,
                   tabAlignment: TabAlignment.center,
                 ),
                 actions: [

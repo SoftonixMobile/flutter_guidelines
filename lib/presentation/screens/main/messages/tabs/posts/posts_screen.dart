@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'posts_bloc.dart';
 
 @RoutePage()
@@ -20,6 +21,8 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
+    final typography = context.theme.typographyTheme;
+
     final postsBloc = context.read<PostsBloc>();
 
     return RefreshIndicator(
@@ -56,7 +59,10 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                           ),
                           child: Padding(
                             padding: const .all(8),
-                            child: Text('Post ${post.name}'),
+                            child: Text(
+                              'Post ${post.name}',
+                              style: typography.bodySmall,
+                            ),
                           ),
                         );
                       },

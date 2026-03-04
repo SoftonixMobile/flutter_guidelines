@@ -14,24 +14,26 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = context.theme;
+    final colors = theme.colorsTheme;
+    final typography = theme.typographyTheme;
+
     return BouncingWidget(
       duration: const Duration(milliseconds: 100),
       onPressed: onPressed,
       child: Container(
         height: 40,
-        decoration: const BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.all(
+        decoration: BoxDecoration(
+          color: colors.primary,
+          borderRadius: const BorderRadius.all(
             Radius.circular(6),
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
             'Login',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
+            style: typography.titleSmall.copyWith(
+              color: colors.onPrimary,
             ),
           ),
         ),

@@ -15,16 +15,18 @@ class AppDrawer extends StatelessWidget {
   Widget _buildMenuItem({
     required String text,
     required IconData iconData,
+    required AppColorsTheme colors,
+    required AppTypographyTheme typography,
   }) {
     return ListTile(
       leading: Icon(
         iconData,
-        color: AppColors.grey,
+        color: colors.textSecondary,
       ),
       title: Text(
         text,
-        style: const TextStyle(
-          color: AppColors.grey,
+        style: typography.bodySmall.copyWith(
+          color: colors.textSecondary,
         ),
       ),
     );
@@ -33,13 +35,15 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
+    final colors = context.theme.colorsTheme;
+    final typography = context.theme.typographyTheme;
 
     return BlocProvider(
       create: (context) => getIt<DrawerBloc>()..lazyLoad(),
       child: Container(
         width: screenSize.width * 0.75,
         height: screenSize.height,
-        color: AppColors.white,
+        color: colors.surface,
         child: Drawer(
           elevation: 3,
           child: SafeArea(
@@ -55,7 +59,7 @@ class AppDrawer extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: AppColors.black,
+                        backgroundColor: colors.textPrimary,
                         backgroundImage: AssetImage(
                           Assets.images.logoShort.path,
                         ),
@@ -70,11 +74,15 @@ class AppDrawer extends StatelessWidget {
                         _buildMenuItem(
                           text: context.tr(LocaleKeys.changePassword),
                           iconData: FontAwesomeIcons.lock,
+                          colors: colors,
+                          typography: typography,
                         ),
                         GestureDetector(
                           child: _buildMenuItem(
                             text: context.tr(LocaleKeys.languageName),
                             iconData: FontAwesomeIcons.globe,
+                            colors: colors,
+                            typography: typography,
                           ),
                           onTap: () async {
                             final newLocale =
@@ -89,6 +97,8 @@ class AppDrawer extends StatelessWidget {
                           child: _buildMenuItem(
                             text: context.tr(LocaleKeys.signOut),
                             iconData: FontAwesomeIcons.rightFromBracket,
+                            colors: colors,
+                            typography: typography,
                           ),
                           onTap: () {
                             context.read<AuthBloc>().add(

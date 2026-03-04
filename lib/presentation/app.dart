@@ -19,7 +19,7 @@ class FlutterGuidelines extends StatelessWidget {
     return AppStateWrapper(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.getAppTheme(context),
+        theme: AppTheme.lightTheme(),
         builder: (context, child) {
           return AppUpgraderDialog(
             navigatorKey: _appRouter.navigatorKey,

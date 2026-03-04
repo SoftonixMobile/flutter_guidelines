@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
+import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'bloc/chats_bloc.dart';
 
 @RoutePage()
@@ -20,6 +21,8 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
+    final typography = context.theme.typographyTheme;
+
     return RefreshIndicator(
       onRefresh: () {
         final chatsBloc = context.read<ChatsBloc>()
@@ -51,7 +54,10 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8),
-                            child: Text(chat.name),
+                            child: Text(
+                              chat.name,
+                              style: typography.bodySmall,
+                            ),
                           ),
                         );
                       },
@@ -61,7 +67,10 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                 case .failure:
                   return SliverFillRemaining(
                     child: Center(
-                      child: Text(state.errorMessage ?? 'Something went wrong'),
+                      child: Text(
+                        state.errorMessage ?? 'Something went wrong',
+                        style: typography.bodyLarge,
+                      ),
                     ),
                   );
               }
