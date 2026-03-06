@@ -29,12 +29,12 @@ import 'package:flutter_guidelines/presentation/screens/auth/login/login_form_bl
     as _i175;
 import 'package:flutter_guidelines/presentation/screens/main/drawer/drawer_bloc.dart'
     as _i1061;
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/bloc/chats_bloc.dart'
-    as _i440;
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_form_bloc.dart'
-    as _i889;
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_bloc.dart'
-    as _i521;
+import 'package:flutter_guidelines/presentation/screens/main/messages/chats/bloc/chats_bloc.dart'
+    as _i73;
+import 'package:flutter_guidelines/presentation/screens/main/messages/posts/pages/post_form_bloc.dart'
+    as _i233;
+import 'package:flutter_guidelines/presentation/screens/main/messages/posts/posts_bloc.dart'
+    as _i830;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -55,17 +55,17 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1049.PostsRepository(gh<_i349.PostsService>()),
       dispose: (i) => i.close(),
     );
-    gh.factory<_i440.ChatsBloc>(
-      () => _i440.ChatsBloc(gh<_i64.ChatsRepository>()),
+    gh.factory<_i73.ChatsBloc>(
+      () => _i73.ChatsBloc(gh<_i64.ChatsRepository>()),
     );
-    gh.factoryParam<_i889.PostFormBloc, _i595.Post?, dynamic>(
-      (initial, _) => _i889.PostFormBloc(initial, gh<_i64.PostsRepository>()),
+    gh.factoryParam<_i233.PostFormBloc, _i595.Post?, dynamic>(
+      (initial, _) => _i233.PostFormBloc(initial, gh<_i64.PostsRepository>()),
     );
     gh.factory<_i1061.DrawerBloc>(
       () => _i1061.DrawerBloc(gh<_i64.PostsRepository>()),
     );
-    gh.factory<_i521.PostsBloc>(
-      () => _i521.PostsBloc(gh<_i64.PostsRepository>()),
+    gh.factory<_i830.PostsBloc>(
+      () => _i830.PostsBloc(gh<_i64.PostsRepository>()),
     );
     return this;
   }

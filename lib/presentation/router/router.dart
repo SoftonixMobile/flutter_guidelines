@@ -23,7 +23,7 @@ class AppRouter extends RootStackRouter {
               children: [
                 AutoRoute(page: DashboardRoute.page),
                 AutoRoute(
-                  page: MessagesTabsRoute.page,
+                  page: MessagesRoute.page,
                   children: [
                     AutoRoute(page: ChatsRoute.page),
                     AutoRoute(page: PostsRoute.page),

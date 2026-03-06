@@ -5,7 +5,7 @@ import 'package:stx_bloc_base/stx_bloc_base.dart';
 
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_bloc.dart';
+import 'package:flutter_guidelines/presentation/screens/main/messages/posts/posts_bloc.dart';
 
 class MockPostsRepository extends Mock implements PostsRepository {}
 
