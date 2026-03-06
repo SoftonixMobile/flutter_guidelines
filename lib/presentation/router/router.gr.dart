@@ -26,7 +26,7 @@ import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats
     as _i2;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/pages/chat_details/chat_details_screen.dart'
     as _i1;
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_modal_screen.dart'
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_form_screen.dart'
     as _i8;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_screen.dart'
     as _i9;
@@ -179,29 +179,29 @@ class MessagesTabsRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.PostModalScreen]
-class PostModalRoute extends _i12.PageRouteInfo<PostModalRouteArgs> {
-  PostModalRoute({
+/// [_i8.PostFormScreen]
+class PostFormRoute extends _i12.PageRouteInfo<PostFormRouteArgs> {
+  PostFormRoute({
     _i13.Key? key,
     _i14.Post? post,
-    void Function(_i14.Post, {required bool isEditing})? onSuccess,
+    void Function(_i14.Post, bool)? onSuccess,
     List<_i12.PageRouteInfo>? children,
   }) : super(
-         PostModalRoute.name,
-         args: PostModalRouteArgs(key: key, post: post, onSuccess: onSuccess),
+         PostFormRoute.name,
+         args: PostFormRouteArgs(key: key, post: post, onSuccess: onSuccess),
          initialChildren: children,
        );
 
-  static const String name = 'PostModalRoute';
+  static const String name = 'PostFormRoute';
 
   static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<PostModalRouteArgs>(
-        orElse: () => const PostModalRouteArgs(),
+      final args = data.argsAs<PostFormRouteArgs>(
+        orElse: () => const PostFormRouteArgs(),
       );
       return _i12.WrappedRoute(
-        child: _i8.PostModalScreen(
+        child: _i8.PostFormScreen(
           key: args.key,
           post: args.post,
           onSuccess: args.onSuccess,
@@ -211,24 +211,24 @@ class PostModalRoute extends _i12.PageRouteInfo<PostModalRouteArgs> {
   );
 }
 
-class PostModalRouteArgs {
-  const PostModalRouteArgs({this.key, this.post, this.onSuccess});
+class PostFormRouteArgs {
+  const PostFormRouteArgs({this.key, this.post, this.onSuccess});
 
   final _i13.Key? key;
 
   final _i14.Post? post;
 
-  final void Function(_i14.Post, {required bool isEditing})? onSuccess;
+  final void Function(_i14.Post, bool)? onSuccess;
 
   @override
   String toString() {
-    return 'PostModalRouteArgs{key: $key, post: $post, onSuccess: $onSuccess}';
+    return 'PostFormRouteArgs{key: $key, post: $post, onSuccess: $onSuccess}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (other is! PostModalRouteArgs) return false;
+    if (other is! PostFormRouteArgs) return false;
     return key == other.key && post == other.post;
   }
 

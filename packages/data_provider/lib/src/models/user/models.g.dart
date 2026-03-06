@@ -8,7 +8,7 @@ part of 'models.dart';
 
 _UserProfile _$UserProfileFromJson(Map<String, dynamic> json) => _UserProfile(
   id: (json['id'] as num?)?.toInt() ?? 0,
-  userName: json['userName'] as String?,
+  userName: json['userName'] as String? ?? '',
 );
 
 Map<String, dynamic> _$UserProfileToJson(_UserProfile instance) =>

@@ -14,15 +14,18 @@ import 'package:data_provider/src/services/user_service.dart' as _i23;
 import 'package:injectable/injectable.dart' as _i526;
 
 class DataProviderPackageModule extends _i526.MicroPackageModule {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     gh.factory<_i915.AuthService>(
-        () => _i915.AuthService(gh<_i164.ApiClient>()));
+      () => _i915.AuthService(gh<_i164.ApiClient>()),
+    );
     gh.factory<_i1034.ChatsService>(
-        () => _i1034.ChatsService(gh<_i164.ApiClient>()));
+      () => _i1034.ChatsService(gh<_i164.ApiClient>()),
+    );
     gh.factory<_i576.PostsService>(
-        () => _i576.PostsService(gh<_i164.ApiClient>()));
+      () => _i576.PostsService(gh<_i164.ApiClient>()),
+    );
     gh.factory<_i23.UserService>(() => _i23.UserService(gh<_i164.ApiClient>()));
   }
 }

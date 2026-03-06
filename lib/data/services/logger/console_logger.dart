@@ -1,7 +1,7 @@
 // Required for console
 // ignore_for_file: avoid_print
 
-import 'base/logger.dart';
+import 'package:flutter_guidelines/core/logger/logger.dart';
 
 class ConsoleLogger extends Logger {
   ConsoleLogger();

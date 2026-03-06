@@ -1,6 +1,6 @@
-import 'app_exception.dart';
+import 'package:flutter_guidelines/core/exceptions/app_exception.dart';
 
-enum NetworkExceptionType {
+enum RemoteExceptionType {
   noConnection,
   timeout,
   badRequest,
@@ -11,12 +11,12 @@ enum NetworkExceptionType {
   unknown,
 }
 
-class NetworkException extends AppException {
-  final NetworkExceptionType type;
+class RemoteException extends AppException {
+  final RemoteExceptionType type;
   final int? statusCode;
   final Object? error;
 
-  const NetworkException({
+  const RemoteException({
     super.message,
     required this.type,
     this.statusCode,
@@ -25,6 +25,6 @@ class NetworkException extends AppException {
 
   @override
   String toString() {
-    return 'NetworkException(${type.name}, $statusCode): $message';
+    return 'RemoteException(${type.name}, $statusCode): $message';
   }
 }

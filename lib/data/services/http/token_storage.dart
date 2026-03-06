@@ -4,10 +4,11 @@ import 'package:data_provider/models.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fresh_dio/fresh_dio.dart';
 
-import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/core/logger/logger.dart';
+import 'package:flutter_guidelines/data/constants/index.dart';
 
 class SecureTokenStorage extends TokenStorage<AuthResponse> {
-  static const _tokenKey = AppKeys.tokenKey;
+  static const _tokenKey = StorageKeys.tokenKey;
 
   final Logger _logger;
   final _storage = const FlutterSecureStorage();

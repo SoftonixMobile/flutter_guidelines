@@ -4,8 +4,9 @@ import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:fresh_dio/fresh_dio.dart' hide Response;
 import 'package:injectable/injectable.dart';
 
-import 'package:flutter_guidelines/core/logger/index.dart';
+import 'package:flutter_guidelines/core/logger/logger.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'adapters/index.dart';
 
@@ -77,7 +78,7 @@ class HttpClient extends ApiClient implements AuthSession {
       return await request();
     } on DioException catch (e) {
       Error.throwWithStackTrace(
-        AppExceptionMapper.fromDioException(e),
+        RemoteExceptionMapper.fromDioException(e),
         e.stackTrace,
       );
     }

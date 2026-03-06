@@ -6,6 +6,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
+import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';

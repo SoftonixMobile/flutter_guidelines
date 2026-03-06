@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_guidelines/domain/models/index.dart';
-import 'base/logger.dart';
+import 'package:flutter_guidelines/core/logger/logger.dart';
 
 class MultiLogger extends Logger {
   final List<Logger> _loggers;
@@ -14,9 +13,12 @@ class MultiLogger extends Logger {
   }
 
   @override
-  void registerUserProfile(UserProfile userProfile) {
+  void registerUser({
+    required int id,
+    required String userName,
+  }) {
     for (final logger in _loggers) {
-      logger.registerUserProfile(userProfile);
+      logger.registerUser(id: id, userName: userName);
     }
   }
 

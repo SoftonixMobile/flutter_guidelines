@@ -38,7 +38,10 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
         listenWhen: (previous, current) =>
             current.status.isSuccess && previous.data != current.data,
         listener: (context, state) {
-          getIt<Logger>().registerUserProfile(state.data);
+          getIt<Logger>().registerUser(
+            id: state.data.id,
+            userName: state.data.userName,
+          );
         },
         child: const AutoRouter(),
       ),

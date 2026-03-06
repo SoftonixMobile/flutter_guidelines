@@ -7,15 +7,15 @@ import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 @injectable
-class PostModalBloc extends FormBloc<Post, String> {
+class PostFormBloc extends FormBloc<Post, String> {
   late final TextFieldBloc name;
 
   final Post? initial;
-  final PostsRepository postsRepository;
+  final PostsRepository _postsRepository;
 
-  PostModalBloc(
+  PostFormBloc(
     @factoryParam this.initial,
-    this.postsRepository,
+    this._postsRepository,
   ) : super(customSubmit: false, isEditing: initial != null) {
     name = TextFieldBloc(
       initialValue: initial?.name ?? '',
@@ -32,8 +32,8 @@ class PostModalBloc extends FormBloc<Post, String> {
     final payload = (initial ?? const Post()).copyWith(name: name.value ?? '');
 
     final response = isCreating
-        ? await postsRepository.createPost(payload)
-        : await postsRepository.updatePost(payload);
+        ? await _postsRepository.createPost(payload)
+        : await _postsRepository.updatePost(payload);
 
     emitSuccess(response);
   }

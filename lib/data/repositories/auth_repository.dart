@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:flutter_guidelines/data/services/index.dart';
+import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
 @LazySingleton(scope: 'auth')

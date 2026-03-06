@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-class TextInputFormBuilder extends StatefulWidget {
-  const TextInputFormBuilder({
+class TextInputFieldBuilder extends StatefulWidget {
+  const TextInputFieldBuilder({
     super.key,
     required this.fieldBloc,
     this.label = '',
@@ -31,10 +31,10 @@ class TextInputFormBuilder extends StatefulWidget {
   final VoidCallback? onSubmit;
 
   @override
-  State<TextInputFormBuilder> createState() => _TextInputFormBuilderState();
+  State<TextInputFieldBuilder> createState() => _TextInputFieldBuilderState();
 }
 
-class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
+class _TextInputFieldBuilderState extends State<TextInputFieldBuilder> {
   late final TextEditingController _controller;
 
   @override

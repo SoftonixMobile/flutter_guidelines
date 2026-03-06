@@ -46,9 +46,9 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
                         return GestureDetector(
                           behavior: .opaque,
                           onTap: () => context.pushRoute(
-                            PostModalRoute(
+                            PostFormRoute(
                               post: post,
-                              onSuccess: (post, {required isEditing}) {
+                              onSuccess: (post, isEditing) {
                                 if (isEditing) {
                                   postsBloc.editItem(post);
                                 } else {

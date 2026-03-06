@@ -16,7 +16,7 @@ class FlutterGuidelines extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppStateWrapper(
+    return _AppStateWrapper(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme(),
@@ -40,9 +40,8 @@ class FlutterGuidelines extends StatelessWidget {
   }
 }
 
-class AppStateWrapper extends StatelessWidget {
-  const AppStateWrapper({
-    super.key,
+class _AppStateWrapper extends StatelessWidget {
+  const _AppStateWrapper({
     required this.child,
   });
 

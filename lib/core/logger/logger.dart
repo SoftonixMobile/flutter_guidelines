@@ -1,9 +1,10 @@
-import 'package:flutter_guidelines/domain/models/index.dart';
-
 abstract class Logger {
   Future<void> init() async {}
 
-  void registerUserProfile(UserProfile userProfile) {}
+  void registerUser({
+    required int id,
+    required String userName,
+  }) {}
 
   void log(String message, {String? category});
 

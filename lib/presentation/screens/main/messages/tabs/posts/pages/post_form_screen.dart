@@ -8,11 +8,11 @@ import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
-import 'post_modal_bloc.dart';
+import 'post_form_bloc.dart';
 
 @RoutePage()
-class PostModalScreen extends StatelessWidget implements AutoRouteWrapper {
-  const PostModalScreen({
+class PostFormScreen extends StatelessWidget implements AutoRouteWrapper {
+  const PostFormScreen({
     super.key,
     this.post,
     this.onSuccess,
@@ -20,11 +20,11 @@ class PostModalScreen extends StatelessWidget implements AutoRouteWrapper {
 
   final Post? post;
 
-  final void Function(Post, {required bool isEditing})? onSuccess;
+  final void Function(Post, bool)? onSuccess;
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    final formBloc = getIt<PostModalBloc>(param1: post);
+    final formBloc = getIt<PostFormBloc>(param1: post);
 
     return BlocProvider(
       create: (context) => formBloc,
@@ -34,12 +34,12 @@ class PostModalScreen extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    final formBloc = context.read<PostModalBloc>();
+    final formBloc = context.read<PostFormBloc>();
 
-    return CustomFormBlocListener<PostModalBloc, Post>(
+    return CustomFormBlocListener<PostFormBloc, Post>(
       formBloc: formBloc,
       onSuccess: (_, state) {
-        onSuccess?.call(state.response!, isEditing: formBloc.isEditing);
+        onSuccess?.call(state.response!, formBloc.isEditing);
 
         unawaited(context.maybePop());
       },
@@ -50,7 +50,7 @@ class PostModalScreen extends StatelessWidget implements AutoRouteWrapper {
         body: Center(
           child: Column(
             children: [
-              TextInputFormBuilder(
+              TextInputFieldBuilder(
                 fieldBloc: formBloc.name,
               ),
               ElevatedButton(

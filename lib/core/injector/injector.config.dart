@@ -18,6 +18,7 @@ import 'package:flutter_guidelines/data/repositories/posts_repository.dart'
 import 'package:flutter_guidelines/data/repositories/user_repository.dart'
     as _i365;
 import 'package:flutter_guidelines/data/services/index.dart' as _i349;
+import 'package:flutter_guidelines/domain/auth/index.dart' as _i826;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i595;
 import 'package:flutter_guidelines/domain/repositories/index.dart' as _i64;
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
@@ -30,8 +31,8 @@ import 'package:flutter_guidelines/presentation/screens/main/drawer/drawer_bloc.
     as _i1061;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/chats/bloc/chats_bloc.dart'
     as _i440;
-import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_modal_bloc.dart'
-    as _i387;
+import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/pages/post_form_bloc.dart'
+    as _i889;
 import 'package:flutter_guidelines/presentation/screens/main/messages/tabs/posts/posts_bloc.dart'
     as _i521;
 import 'package:get_it/get_it.dart' as _i174;
@@ -57,8 +58,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i440.ChatsBloc>(
       () => _i440.ChatsBloc(gh<_i64.ChatsRepository>()),
     );
-    gh.factoryParam<_i387.PostModalBloc, _i595.Post?, dynamic>(
-      (initial, _) => _i387.PostModalBloc(initial, gh<_i64.PostsRepository>()),
+    gh.factoryParam<_i889.PostFormBloc, _i595.Post?, dynamic>(
+      (initial, _) => _i889.PostFormBloc(initial, gh<_i64.PostsRepository>()),
     );
     gh.factory<_i1061.DrawerBloc>(
       () => _i1061.DrawerBloc(gh<_i64.PostsRepository>()),
@@ -77,7 +78,7 @@ extension GetItInjectableX on _i174.GetIt {
       init: (_i526.GetItHelper gh) {
         gh.lazySingleton<_i776.AuthRepository>(
           () => _i776.AuthRepository(
-            gh<_i349.AuthSession>(),
+            gh<_i826.AuthSession>(),
             gh<_i349.AuthService>(),
           ),
         );
