@@ -16,13 +16,11 @@ abstract class RepositoryBase<T> {
 
   @protected
   FutureOr<T> load(Future<T> Function() loadCallback, {bool refresh = false}) {
-    var loadedValue = data;
-
     if (refresh || shouldRefreshData()) {
       return this.refresh(loadCallback);
     }
 
-    return loadedValue;
+    return _data;
   }
 
   @protected

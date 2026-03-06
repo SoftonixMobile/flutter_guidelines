@@ -13,8 +13,8 @@ class PostsRepository extends ListRepositoryBase<Post>
 
   PostsRepository(this._postsService);
 
-  FutureOr<List<Post>> getPosts({bool refreshData = false}) {
-    return load(_postsService.getAllPosts, refresh: refreshData);
+  FutureOr<List<Post>> getPosts({bool refresh = false}) {
+    return load(_postsService.getAllPosts, refresh: refresh);
   }
 
   Future<Post> createPost(Post post) async {

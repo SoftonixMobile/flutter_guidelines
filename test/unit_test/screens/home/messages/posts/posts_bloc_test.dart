@@ -33,7 +33,7 @@ void main() {
       'Success state with data after load',
       setUp: () {
         when(
-          () => mockPostRepository.getPosts(refreshData: true),
+          () => mockPostRepository.getPosts(refresh: true),
         ).thenAnswer((_) async => [testItem]);
       },
       build: () => postsBloc,

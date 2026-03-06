@@ -21,7 +21,7 @@ class PostsBloc extends NetworkListBloc<Post, PostsState> {
 
   @override
   Future<List<Post>> onLoadAsync() async {
-    return _postsRepository.getPosts(refreshData: true);
+    return _postsRepository.getPosts(refresh: true);
   }
 
   @override

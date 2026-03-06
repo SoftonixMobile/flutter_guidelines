@@ -11,7 +11,7 @@ class PostsService {
     _client.registerType(Post.fromJson);
   }
 
-  Future<List<Post>> getAllPosts() async {
+  Future<List<Post>> getAllPosts() {
     return _client.getData<List<Post>>(
       'https://jsonplaceholder.typicode.com/posts',
     );
