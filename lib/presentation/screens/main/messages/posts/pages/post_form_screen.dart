@@ -50,7 +50,7 @@ class PostFormScreen extends StatelessWidget implements AutoRouteWrapper {
         body: Center(
           child: Column(
             children: [
-              TextInputFieldBuilder(
+              TextInputFormField(
                 fieldBloc: formBloc.name,
               ),
               ElevatedButton(

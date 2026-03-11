@@ -15,12 +15,12 @@ class LoginForm extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        TextInputFieldBuilder(
+        TextInputFormField(
           key: const Key('username'),
           label: 'Username',
           fieldBloc: formBloc.username,
         ),
-        TextInputFieldBuilder(
+        TextInputFormField(
           key: const Key('password'),
           label: 'Password',
           isObscureText: true,
