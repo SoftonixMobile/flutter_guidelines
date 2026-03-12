@@ -128,11 +128,6 @@ flutter_gen:
   fonts:
     enabled: true
 
-  colors:
-    enabled: true
-    inputs:
-      - assets/colors/colors.xml
-
 import_sorter:
   comments: false
   ignored_files:
