@@ -73,14 +73,14 @@ class AppDrawer extends StatelessWidget {
                       children: [
                         _buildMenuItem(
                           text: context.tr(LocaleKeys.changePassword),
-                          iconData: FontAwesomeIcons.lock,
+                          iconData: FontAwesomeIcons.lock.data,
                           colors: colors,
                           typography: typography,
                         ),
                         GestureDetector(
                           child: _buildMenuItem(
                             text: context.tr(LocaleKeys.languageName),
-                            iconData: FontAwesomeIcons.globe,
+                            iconData: FontAwesomeIcons.globe.data,
                             colors: colors,
                             typography: typography,
                           ),
@@ -96,7 +96,7 @@ class AppDrawer extends StatelessWidget {
                         GestureDetector(
                           child: _buildMenuItem(
                             text: context.tr(LocaleKeys.signOut),
-                            iconData: FontAwesomeIcons.rightFromBracket,
+                            iconData: FontAwesomeIcons.rightFromBracket.data,
                             colors: colors,
                             typography: typography,
                           ),

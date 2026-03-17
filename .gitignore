@@ -17,7 +17,6 @@
 
 # FVM Version Cache
 .fvm/
-.fvmrc
 
 # IntelliJ related
 *.iml

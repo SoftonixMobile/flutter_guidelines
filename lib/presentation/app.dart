@@ -9,8 +9,8 @@ import 'router/index.dart';
 import 'theme/index.dart';
 import 'widgets/index.dart';
 
-class FlutterGuidelines extends StatelessWidget {
-  FlutterGuidelines({super.key});
+class FlutterGuidelinesApp extends StatelessWidget {
+  FlutterGuidelinesApp({super.key});
 
   final _appRouter = getIt<AppRouter>();
 
