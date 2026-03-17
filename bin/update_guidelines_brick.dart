@@ -96,8 +96,8 @@ void convertToBrickFormat(File file) {
   );
 
   newFileContent = newFileContent.replaceAll(
-    'FlutterGuidelines',
-    '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
+    'FlutterGuidelinesApp',
+    '{{#pascalCase}}{{project_name}}{{/pascalCase}}App',
   );
   newFileContent = newFileContent.replaceAll(
     'Flutter_Guidelines_',

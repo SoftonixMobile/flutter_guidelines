@@ -63,12 +63,12 @@ class AppDrawer extends StatelessWidget {
                     children: [
                       _buildMenuItem(
                         text: context.tr(LocaleKeys.changePassword),
-                        iconData: FontAwesomeIcons.lock,
+                        iconData: FontAwesomeIcons.lock.data,
                       ),
                       GestureDetector(
                         child: _buildMenuItem(
                           text: context.tr(LocaleKeys.languageName),
-                          iconData: FontAwesomeIcons.globe,
+                          iconData: FontAwesomeIcons.globe.data,
                         ),
                         onTap: () async {
                           final newLocale =
@@ -82,7 +82,7 @@ class AppDrawer extends StatelessWidget {
                       GestureDetector(
                         child: _buildMenuItem(
                           text: context.tr(LocaleKeys.signOut),
-                          iconData: FontAwesomeIcons.rightFromBracket,
+                          iconData: FontAwesomeIcons.rightFromBracket.data,
                         ),
                         onTap: () {
                           context.read<AuthBloc>().add(
