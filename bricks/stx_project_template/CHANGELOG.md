@@ -1,3 +1,10 @@
+# 0.15.0
+
+- Support flutter 3.41.
+- Add Claude Code setup with project-specific skills.
+- Add custom http exceptions.
+- Add custom validators.
+
 # 0.14.0
 
 - Support flutter 3.38.

@@ -14,6 +14,7 @@ void main(List<String> args) async {
   copyDirectory(Directory('packages'), brickDirectory);
   copyDirectory(Directory('resources'), brickDirectory);
   copyDirectory(Directory('scripts'), brickDirectory);
+  copyDirectory(Directory('.claude/skills'), brickDirectory, convert: true);
 
   copyFileWithDirectory(
     File('.vscode/launch.json'),
@@ -70,7 +71,7 @@ void copyDirectory(
     destination.path + Platform.pathSeparator + source.path,
   );
   if (!coreFolder.existsSync()) {
-    coreFolder.createSync();
+    coreFolder.createSync(recursive: true);
   }
 
   source.listSync(recursive: true).forEach((entity) {

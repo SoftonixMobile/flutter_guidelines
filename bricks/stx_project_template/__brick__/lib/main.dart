@@ -12,7 +12,7 @@ void main() async {
       supportedLocales: CodegenLoader.supportedLocales,
       fallbackLocale: CodegenLoader.supportedLocales.last,
       assetLoader: const CodegenLoader(),
-      child: {{#pascalCase}}{{project_name}}{{/pascalCase}}(),
+      child: {{#pascalCase}}{{project_name}}{{/pascalCase}}App(),
     ),
   );
 }
