@@ -8,8 +8,8 @@ import 'package:flutter_guidelines/theme/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 import 'app_state_wrapper.dart';
 
-class FlutterGuidelines extends StatelessWidget {
-  FlutterGuidelines({super.key});
+class FlutterGuidelinesApp extends StatelessWidget {
+  FlutterGuidelinesApp({super.key});
 
   final _appRouter = getIt<AppRouter>();
 
