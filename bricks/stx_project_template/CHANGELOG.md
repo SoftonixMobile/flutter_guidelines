@@ -1,3 +1,7 @@
+# 0.15.1
+
+- Include `.fvmrc` in the generated project to pin the Flutter SDK version.
+
 # 0.15.0
 
 - Support flutter 3.41.

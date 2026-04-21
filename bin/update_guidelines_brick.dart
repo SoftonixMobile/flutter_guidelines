@@ -24,6 +24,7 @@ void main(List<String> args) async {
 
   copyFile(File('.env.dev'), '$brickPath/.env.dev', convert: true);
   copyFile(File('.env.prod'), '$brickPath/.env.prod', convert: true);
+  copyFile(File('.fvmrc'), '$brickPath/.fvmrc');
   copyFile(File('.gitignore'), '$brickPath/.gitignore');
   copyFile(File('analysis_options.yaml'), '$brickPath/analysis_options.yaml');
   copyFile(File('build.yaml'), '$brickPath/build.yaml');
