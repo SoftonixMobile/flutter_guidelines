@@ -6,8 +6,8 @@ publish_to: "none"
 version: 0.0.1+1
 
 environment:
-  sdk: ^3.10.0
-  flutter: ^3.38.0
+  sdk: ^3.11.0
+  flutter: ^3.41.0
 
 dependencies:
   flutter:
@@ -23,7 +23,7 @@ dependencies:
   flutter_native_splash: ^2.4.7
 
   #softonix core packages
-  stx_bloc_base: ^0.6.1
+  stx_bloc_base: ^0.6.2
   stx_flutter_form_bloc: ^3.0.0
 
   #state management
@@ -31,32 +31,32 @@ dependencies:
   flutter_bloc: ^9.1.1
 
   #dependency injection
-  get_it: ^9.2.0
-  injectable: ^2.7.1+4
+  get_it: ^9.2.1
+  injectable: ^3.0.0
 
   #routing
   auto_route: ^11.1.0
 
   #http
-  dio: ^5.9.1
-  fresh_dio: ^0.4.5
+  dio: ^5.9.2
+  fresh_dio: ^0.6.0
   dio_smart_retry: ^7.0.1
 
   #code generator for unions/pattern-matching/copy.
   freezed_annotation: ^3.1.0
-  json_annotation: ^4.10.0
+  json_annotation: ^4.11.0
 
   #easy_localization and generator
   easy_localization: ^3.0.8
   stx_easy_localization_generator: ^1.0.1
 
   #local storage
-  shared_preferences: ^2.5.4
+  shared_preferences: ^2.5.5
   flutter_secure_storage: ^10.0.0
 
   #icons
-  font_awesome_flutter: ^10.12.0
-  cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^11.0.0
+  cupertino_icons: ^1.0.9
 
   #widgets
   bouncing_widget: ^2.0.0
@@ -66,31 +66,26 @@ dependencies:
   #others
   darq: ^2.1.0
   collection: ^1.19.1
-  upgrader: ^12.5.0
-
-dependency_overrides:
-  test: 1.29.0
-  test_api: 0.7.9
-  path_provider_foundation: 2.5.1 # https://github.com/flutter/flutter/issues/180163
+  upgrader: ^13.1.0
 
 dev_dependencies:
   #testing
   flutter_test:
     sdk: flutter
-  mocktail: ^1.0.4
+  mocktail: ^1.0.5
   bloc_test: ^10.0.0
 
   #builders
-  build_runner: ^2.11.0
-  flutter_gen_runner: ^5.12.0
-  auto_route_generator: ^10.4.0
-  injectable_generator: ^2.12.0
-  json_serializable: ^6.12.0
+  build_runner: ^2.13.1
+  flutter_gen_runner: ^5.14.0
+  auto_route_generator: ^10.5.0
+  injectable_generator: ^3.0.2
+  json_serializable: ^6.13.1
   freezed: ^3.2.5
 
   #lints
   flutter_lints: ^6.0.0
-  very_good_analysis: ^10.1.0
+  very_good_analysis: ^10.2.0
 
   #others
   import_sorter: ^4.6.0
@@ -132,11 +127,6 @@ flutter_gen:
 
   fonts:
     enabled: true
-
-  colors:
-    enabled: true
-    inputs:
-      - assets/colors/colors.xml
 
 import_sorter:
   comments: false

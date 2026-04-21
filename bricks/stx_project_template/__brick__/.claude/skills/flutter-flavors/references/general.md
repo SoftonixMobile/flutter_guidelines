@@ -69,7 +69,7 @@ void main() async {
       supportedLocales: CodegenLoader.supportedLocales,
       fallbackLocale: CodegenLoader.supportedLocales.last,
       assetLoader: const CodegenLoader(),
-      child: FlutterGuidelinesApp(),
+      child: {{#pascalCase}}{{project_name}}{{/pascalCase}}App(),
     ),
   );
 }
