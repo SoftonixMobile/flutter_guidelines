@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart' hide CupertinoDialogAction;
 import 'package:flutter/material.dart';
 
 import 'package:customizable_cupertino_dialog/customizable_cupertino_dialog.dart';
@@ -130,5 +130,31 @@ class AppUpgradeAlertState extends UpgradeAlertState {
             content: content,
             actions: actions,
           );
+  }
+
+  @override
+  Widget button({
+    required bool cupertino,
+    String? text,
+    required BuildContext context,
+    VoidCallback? onPressed,
+    bool isDefaultAction = false,
+  }) {
+    if (!cupertino) {
+      return super.button(
+        cupertino: cupertino,
+        context: context,
+        text: text,
+        onPressed: onPressed,
+        isDefaultAction: isDefaultAction,
+      );
+    }
+
+    return CupertinoDialogAction(
+      textStyle: widget.cupertinoButtonTextStyle,
+      onPressed: onPressed,
+      isDefaultAction: isDefaultAction,
+      child: Text(text ?? ''),
+    );
   }
 }
