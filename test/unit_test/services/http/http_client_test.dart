@@ -6,13 +6,13 @@ import 'package:mocktail/mocktail.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
-class MockDio extends Mock implements Dio {}
+class MockDio extends Mock implements Dio;
 
-class MockFresh extends Mock implements Fresh<String> {}
+class MockFresh extends Mock implements Fresh<String>;
 
-class MockLogger extends Mock implements Logger {}
+class MockLogger extends Mock implements Logger;
 
-class MockInterceptors extends Mock implements Interceptors {}
+class MockInterceptors extends Mock implements Interceptors;
 
 // Tests for HttpClient methods
 void main() async {

@@ -4,8 +4,7 @@ typedef StringMap = Map<String, String>;
 enum AuthStatus {
   initial,
   unauthenticated,
-  authenticated
-  ;
+  authenticated;
 
   bool get isAuthenticated => this == authenticated;
 }

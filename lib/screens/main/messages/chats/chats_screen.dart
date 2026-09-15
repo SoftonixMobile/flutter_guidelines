@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stx_bloc_base/stx_bloc_base.dart';
 
 import 'package:flutter_guidelines/router/index.dart';
+
 import 'bloc/chats_bloc.dart';
 
 @RoutePage()
-class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
-  const ChatsScreen({super.key});
-
+class const ChatsScreen({super.key})
+    extends StatelessWidget
+    implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
-    context.read<ChatsBloc>().add(const ChatsEvent.load());
+    context.read<ChatsBloc>().add(const .load());
 
     return this;
   }
@@ -21,11 +21,10 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () {
-        final chatsBloc = context.read<ChatsBloc>()
-          ..add(const ChatsEvent.load());
+        final chatsBloc = context.read<ChatsBloc>()..add(const .load());
 
         return chatsBloc.stream.firstWhere(
-          (state) => state.status != NetworkStatus.loading,
+          (state) => state.status != .loading,
         );
       },
       child: CustomScrollView(
@@ -33,12 +32,12 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
           BlocBuilder<ChatsBloc, ChatsState>(
             builder: (context, state) {
               switch (state.status) {
-                case NetworkStatus.initial:
-                case NetworkStatus.loading:
+                case .initial:
+                case .loading:
                   return const SliverFillRemaining(
                     child: Center(child: CircularProgressIndicator()),
                   );
-                case NetworkStatus.success:
+                case .success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
@@ -49,7 +48,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                             ChatDetailsRoute(chat: chat),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8),
+                            padding: const .all(8),
                             child: Text(chat.name),
                           ),
                         );
@@ -57,7 +56,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                       childCount: state.chats.length,
                     ),
                   );
-                case NetworkStatus.failure:
+                case .failure:
                   return SliverFillRemaining(
                     child: Center(
                       child: Text(state.errorMessage ?? 'Something went wrong'),

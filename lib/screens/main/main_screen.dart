@@ -5,9 +5,7 @@ import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
-
+class const MainScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
@@ -29,7 +27,7 @@ class MainScreen extends StatelessWidget {
             ],
           ),
           child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
+            type: .fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
             items: [

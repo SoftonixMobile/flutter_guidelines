@@ -14,28 +14,28 @@ import 'package:flutter_guidelines/services/index.dart';
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
-  initializeSplashScreen(widgetsBinding);
-  await initializeLogger();
-  await initializeLocalization();
-  initializeCrashlytics();
-  initializeBlocObserver();
-  initializeValidators();
-  initializeDependencies();
+  _initializeSplashScreen(widgetsBinding);
+  await _initializeLogger();
+  await _initializeLocalization();
+  _initializeCrashlytics();
+  _initializeBlocObserver();
+  _initializeValidators();
+  _initializeDependencies();
 }
 
-void initializeSplashScreen(WidgetsBinding widgetsBinding) {
+void _initializeSplashScreen(WidgetsBinding widgetsBinding) {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 }
 
-Future<void> initializeLogger() {
+Future<void> _initializeLogger() {
   return LoggerService.instance.init();
 }
 
-Future<void> initializeLocalization() {
+Future<void> _initializeLocalization() {
   return EasyLocalization.ensureInitialized();
 }
 
-void initializeCrashlytics() {
+void _initializeCrashlytics() {
   FlutterError.onError = (errorDetails) {
     LoggerService.instance.logError(errorDetails.exception, errorDetails.stack);
   };
@@ -47,15 +47,16 @@ void initializeCrashlytics() {
   };
 }
 
-void initializeBlocObserver() {
+void _initializeBlocObserver() {
   Bloc.observer = SimpleBlocObserver(LoggerService.instance);
 }
 
-void initializeValidators() {
+void _initializeValidators() {
   FieldBlocValidators.requiredValidator = FieldValidators.required;
-  FieldBlocValidators.requiredBooleanValidator = FieldValidators.booleanRequired;
+  FieldBlocValidators.requiredBooleanValidator =
+      FieldValidators.booleanRequired;
 }
 
-void initializeDependencies() {
+void _initializeDependencies() {
   configureAuthDependencies();
 }

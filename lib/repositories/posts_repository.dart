@@ -4,10 +4,8 @@ import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
 @injectable
-class PostsRepository {
-  final HttpClient _httpClient;
-
-  PostsRepository(this._httpClient) {
+class PostsRepository(final HttpClient _httpClient) {
+  this {
     _httpClient.registerType<Post>(Post.fromJson);
   }
 

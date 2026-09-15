@@ -5,7 +5,7 @@ import 'router.gr.dart';
 @AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   @override
-  RouteType get defaultRouteType => const RouteType.adaptive();
+  RouteType get defaultRouteType => const .adaptive();
 
   @override
   final List<AutoRoute> routes = [

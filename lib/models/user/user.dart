@@ -5,8 +5,7 @@ part 'user.g.dart';
 
 @freezed
 sealed class UserProfile with _$UserProfile {
-  const factory UserProfile({String? userName}) = _UserProfile;
+  const factory({String? userName}) = _UserProfile;
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) =>
-      _$UserProfileFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
 }

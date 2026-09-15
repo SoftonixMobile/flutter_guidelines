@@ -7,23 +7,20 @@ import 'package:flutter_guidelines/core/index.dart';
 abstract final class AppExceptionMapper {
   static NetworkException fromDioException(DioException e) {
     return switch (e.type) {
-      DioExceptionType.connectionError || DioExceptionType.unknown
-          when e.error is SocketException =>
-        NetworkException(
-          type: NetworkExceptionType.noConnection,
-          message: e.message,
-          error: e.error,
-        ),
-      DioExceptionType.connectionTimeout ||
-      DioExceptionType.receiveTimeout ||
-      DioExceptionType.sendTimeout => NetworkException(
-        type: NetworkExceptionType.timeout,
+      .connectionError ||
+      .unknown when e.error is SocketException => NetworkException(
+        type: .noConnection,
         message: e.message,
         error: e.error,
       ),
-      DioExceptionType.badResponse => _fromResponse(e),
+      .connectionTimeout || .receiveTimeout || .sendTimeout => NetworkException(
+        type: .timeout,
+        message: e.message,
+        error: e.error,
+      ),
+      .badResponse => _fromResponse(e),
       _ => NetworkException(
-        type: NetworkExceptionType.unknown,
+        type: .unknown,
         message: e.message,
         error: e.error,
       ),
@@ -41,18 +38,16 @@ abstract final class AppExceptionMapper {
             : null) ??
         e.message;
 
-    final type = switch (statusCode) {
-      null => NetworkExceptionType.unknown,
-      400 => NetworkExceptionType.badRequest,
-      401 => NetworkExceptionType.unauthorized,
-      404 => NetworkExceptionType.notFound,
-      >= 400 && < 500 => NetworkExceptionType.clientError,
-      >= 500 => NetworkExceptionType.serverError,
-      _ => NetworkExceptionType.unknown,
-    };
-
     return NetworkException(
-      type: type,
+      type: switch (statusCode) {
+        null => .unknown,
+        400 => .badRequest,
+        401 => .unauthorized,
+        404 => .notFound,
+        >= 400 && < 500 => .clientError,
+        >= 500 => .serverError,
+        _ => .unknown,
+      },
       statusCode: statusCode,
       message: message,
       error: e.error,

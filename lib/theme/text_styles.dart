@@ -6,7 +6,7 @@ abstract final class AppTextStyles {
   static TextStyle get appTitle => const TextStyle(
     color: AppColors.white,
     fontSize: 18,
-    fontWeight: FontWeight.w700,
+    fontWeight: .w700,
   );
 
   static TextStyle get error => const TextStyle(

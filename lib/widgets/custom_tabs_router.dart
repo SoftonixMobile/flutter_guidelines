@@ -7,19 +7,12 @@ import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 import 'package:flutter_guidelines/core/helpers/index.dart';
 import 'package:flutter_guidelines/theme/index.dart';
 
-class CustomTabsRouter extends StatelessWidget {
-  const CustomTabsRouter({
-    super.key,
-    required this.appBarTitle,
-    required this.tabs,
-    required this.routes,
-  });
-
-  final String appBarTitle;
-
-  final List<String> tabs;
-  final List<PageRouteInfo<dynamic>> routes;
-
+class const CustomTabsRouter({
+  super.key,
+  required final String appBarTitle,
+  required final List<String> tabs,
+  required final List<PageRouteInfo<dynamic>> routes,
+}) extends StatelessWidget {
   List<Widget> _buildTabs(List<String> tabs) {
     return tabs.map((tab) => Tab(text: tab, height: 46)).toList();
   }
@@ -46,14 +39,14 @@ class CustomTabsRouter extends StatelessWidget {
                   onTap: context.tabsRouter.setActiveIndex,
                   isScrollable: true,
                   indicatorWeight: 0,
-                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorSize: .label,
                   indicator: MaterialIndicator(
                     height: 5,
                     topLeftRadius: 8,
                     topRightRadius: 8,
                     color: AppColors.white,
                   ),
-                  tabAlignment: TabAlignment.center,
+                  tabAlignment: .center,
                 ),
                 actions: [
                   IconButton(

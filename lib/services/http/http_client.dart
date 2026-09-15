@@ -7,38 +7,36 @@ import 'package:flutter_guidelines/models/general_models.dart';
 import 'package:flutter_guidelines/services/index.dart';
 
 @Singleton(scope: 'auth')
-class HttpClient {
-  late final Dio _dio;
-  late final Fresh<String> _fresh;
-  final JsonDataParser _parser;
+class HttpClient({
+  @ignoreParam Dio? dio,
+  @ignoreParam Fresh<String>? fresh,
+  @ignoreParam JsonDataParser? parser,
+  required Logger logger,
+}) {
+  final Dio _dio =
+      dio ??
+      Dio(
+        BaseOptions(
+          baseUrl: DioOptions.baseUrl,
+          connectTimeout: DioOptions.connectTimeout,
+          receiveTimeout: DioOptions.receiveTimeout,
+        ),
+      );
 
-  HttpClient({
-    @ignoreParam Dio? dio,
-    @ignoreParam Fresh<String>? fresh,
-    @ignoreParam JsonDataParser? parser,
-    required Logger logger,
-  }) : _parser = parser ?? JsonDataParser() {
-    _dio =
-        dio ??
-        Dio(
-          BaseOptions(
-            baseUrl: DioOptions.baseUrl,
-            connectTimeout: DioOptions.connectTimeout,
-            receiveTimeout: DioOptions.receiveTimeout,
-          ),
-        );
+  final Fresh<String> _fresh =
+      fresh ??
+      Fresh<String>(
+        tokenHeader: (token) => {'Authorization': 'Bearer $token'},
+        tokenStorage: SecureTokenStorage(),
+        refreshToken: (token, client) {
+          // throws a RevokeTokenException to trigger a logout
+          throw RevokeTokenException();
+        },
+      );
 
-    _fresh =
-        fresh ??
-        Fresh<String>(
-          tokenHeader: (token) => {'Authorization': 'Bearer $token'},
-          tokenStorage: SecureTokenStorage(),
-          refreshToken: (token, client) {
-            // throws a RevokeTokenException to trigger a logout
-            throw RevokeTokenException();
-          },
-        );
+  final JsonDataParser _parser = parser ?? JsonDataParser();
 
+  this {
     _dio.interceptors.addAll([
       _fresh,
       HttpInterceptor(logger),
@@ -52,9 +50,9 @@ class HttpClient {
   Stream<AuthStatus> get authenticationStatus =>
       _fresh.authenticationStatus.map((status) {
         return switch (status) {
-          AuthenticationStatus.initial => AuthStatus.initial,
-          AuthenticationStatus.unauthenticated => AuthStatus.unauthenticated,
-          AuthenticationStatus.authenticated => AuthStatus.authenticated,
+          .initial => .initial,
+          .unauthenticated => .unauthenticated,
+          .authenticated => .authenticated,
         };
       });
 

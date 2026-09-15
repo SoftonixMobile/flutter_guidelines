@@ -7,9 +7,7 @@ import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
 import 'package:flutter_guidelines/theme/index.dart';
 
-class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
-
+class const AppDrawer({super.key}) extends StatelessWidget {
   Widget _buildMenuItem({
     required String text,
     required IconData iconData,
@@ -40,14 +38,14 @@ class AppDrawer extends StatelessWidget {
         elevation: 3,
         child: SafeArea(
           child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            width: double.infinity,
+            padding: const .symmetric(vertical: 10),
+            width: .infinity,
             height: screenSize.height,
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: .center,
+                  crossAxisAlignment: .start,
                   children: [
                     CircleAvatar(
                       radius: 60,
@@ -58,7 +56,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 const Divider(height: 20),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const .only(top: 20),
                   child: Column(
                     children: [
                       _buildMenuItem(
@@ -85,9 +83,7 @@ class AppDrawer extends StatelessWidget {
                           iconData: FontAwesomeIcons.rightFromBracket.data,
                         ),
                         onTap: () {
-                          context.read<AuthBloc>().add(
-                            const AuthEvent.signOut(),
-                          );
+                          context.read<AuthBloc>().add(const .signOut());
                         },
                       ),
                     ],
