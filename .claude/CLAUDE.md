@@ -19,13 +19,13 @@ Driven by `Makefile`:
 - `make build` — one-shot `build_runner build --delete-conflicting-outputs` (freezed, json_serializable, auto_route, injectable, flutter_gen)
 - `make watch` — build_runner in watch mode
 - `make lang` — regenerate `codegen_loader.g.dart` and `locale_keys.g.dart` from `resources/langs/` via `stx_easy_localization_generator`
-- `make sort` — `import_sorter` (must produce "Sorted 0 files" for pre-commit to pass)
+- `make sort` — `tidy_imports` (pre-commit runs it with `--exit-if-changed` and fails if any file needs sorting)
 - `make fix` — `dart fix --apply`
 - `make format` — `dart format .`
 - `make lint` — `flutter analyze .`
 - `make refactor` — upgrade + build + lang + fix + sort + lint (run after pulling or large edits)
 - `make splash` / `make icon` — regenerate native splash / launcher icons
-- `make setup_hooks` — installs `scripts/hooks/pre-commit` (runs import_sorter then `flutter analyze`; fails commits on unsorted imports or analyzer errors)
+- `make setup_hooks` — installs `scripts/hooks/pre-commit` (runs tidy_imports then `flutter analyze`; fails commits on unsorted imports or analyzer errors)
 
 Testing:
 
@@ -100,7 +100,7 @@ Auth status is exposed as `Stream<AuthStatus>` derived from Fresh's stream; `Aut
 
 ## Conventions enforced by tooling
 
-- **Import sorting**: `import_sorter` groups imports; pre-commit hook rejects commits with unsorted imports. Generated files (`.g.dart`, `.config.dart`, `.freezed.dart`, `.gen.dart`, `.gr.dart`, `.mocks.dart`) are excluded.
+- **Import sorting**: `tidy_imports` groups imports (config in the `tidy_imports:` block of `pubspec.yaml`); pre-commit hook rejects commits with unsorted imports. Generated files (`.g.dart`, `.config.dart`, `.freezed.dart`, `.gen.dart`, `.gr.dart`, `.mocks.dart`) are excluded via `ignored_files`.
 - **Lints**: `very_good_analysis` baseline with project-specific relaxations in `analysis_options.yaml` (notably `always_use_package_imports: false`, `public_member_api_docs: false`, `lines_longer_than_80_chars: false`, `avoid_catches_without_on_clauses: false`). Formatter keeps trailing commas.
 - **Barrel files**: each feature folder has an `index.dart` (`lib/app/index.dart`, `lib/blocs/index.dart`, etc.). Export new public members there.
 

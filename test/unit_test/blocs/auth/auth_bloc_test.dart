@@ -6,9 +6,9 @@ import 'package:flutter_guidelines/blocs/auth/auth_bloc.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/repositories/index.dart';
 
-class _MockAuthRepository extends Mock implements AuthRepository {}
+class _MockAuthRepository extends Mock implements AuthRepository;
 
-class _MockUserRepository extends Mock implements UserRepository {}
+class _MockUserRepository extends Mock implements UserRepository;
 
 // Tests for AuthBloc using bloc_test lib
 void main() {

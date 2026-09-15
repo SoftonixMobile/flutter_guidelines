@@ -11,18 +11,12 @@ enum NetworkExceptionType {
   unknown,
 }
 
-class NetworkException extends AppException {
-  final NetworkExceptionType type;
-  final int? statusCode;
-  final Object? error;
-
-  const NetworkException({
-    super.message,
-    required this.type,
-    this.statusCode,
-    this.error,
-  });
-
+class const NetworkException({
+  super.message,
+  required final NetworkExceptionType type,
+  final int? statusCode,
+  final Object? error,
+}) extends AppException {
   @override
   String toString() {
     return 'NetworkException(${type.name}, $statusCode): $message';

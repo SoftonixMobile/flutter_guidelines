@@ -6,11 +6,10 @@ import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/services/index.dart';
 import 'package:flutter_guidelines/theme/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
+
 import 'app_state_wrapper.dart';
 
-class FlutterGuidelinesApp extends StatelessWidget {
-  FlutterGuidelinesApp({super.key});
-
+class FlutterGuidelinesApp({super.key}) extends StatelessWidget {
   final _appRouter = getIt<AppRouter>();
 
   @override

@@ -5,9 +5,7 @@ import 'package:flutter_guidelines/router/index.dart';
 import 'package:flutter_guidelines/widgets/index.dart';
 
 @RoutePage()
-class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({super.key});
-
+class const MessagesScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
