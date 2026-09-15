@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:{{project_name}}/blocs/auth/auth_bloc.dart' as _i495;
 import 'package:{{project_name}}/repositories/auth_repository.dart' as _i567;
 import 'package:{{project_name}}/repositories/chats_repository.dart' as _i66;

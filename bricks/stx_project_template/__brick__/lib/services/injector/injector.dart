@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
+
 import 'injector.config.dart';
 
 final getIt = GetIt.instance;

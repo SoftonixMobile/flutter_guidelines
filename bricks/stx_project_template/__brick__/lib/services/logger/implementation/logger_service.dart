@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:{{project_name}}/models/index.dart';
+
 import '../index.dart';
 
-class LoggerService extends Logger {
+class LoggerService._() extends Logger {
   static Logger? _instance;
   static Logger get instance => _instance ??= LoggerService._();
 
   final List<Logger> loggers = [];
 
-  LoggerService._() {
+  this {
     if (kReleaseMode) {
       loggers.addAll([]);
     } else {

@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:{{project_name}}/models/index.dart';
 import 'posts_bloc.dart';
 
 @RoutePage()
-class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
-  const PostsScreen({super.key});
-
+class const PostsScreen({super.key})
+    extends StatelessWidget
+    implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     context.read<PostsBloc>().load();
@@ -26,26 +25,26 @@ class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
           BlocBuilder<PostsBloc, PostsState>(
             builder: (context, state) {
               switch (state.status) {
-                case NetworkStatus.initial:
-                case NetworkStatus.loading:
+                case .initial:
+                case .loading:
                   return const SliverFillRemaining(
                     child: Center(child: CircularProgressIndicator()),
                   );
-                case NetworkStatus.success:
+                case .success:
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final post = state.data[index];
 
                         return Padding(
-                          padding: const EdgeInsets.all(8),
+                          padding: const .all(8),
                           child: Text('Post ${post.id}'),
                         );
                       },
                       childCount: state.data.length,
                     ),
                   );
-                case NetworkStatus.failure:
+                case .failure:
                   return const SliverFillRemaining(
                     child: Center(child: Text('Something went wrong')),
                   );

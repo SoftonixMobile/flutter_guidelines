@@ -5,11 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/blocs/index.dart';
 import 'package:{{project_name}}/services/index.dart';
 
-class MainStateWrapper extends StatelessWidget {
-  const MainStateWrapper({super.key, required this.child});
-
-  final Widget child;
-
+class const MainStateWrapper({super.key, required final Widget child})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

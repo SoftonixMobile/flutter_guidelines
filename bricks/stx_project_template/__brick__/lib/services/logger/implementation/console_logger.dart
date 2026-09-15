@@ -3,9 +3,7 @@
 
 import '../index.dart';
 
-class ConsoleLogger extends Logger {
-  ConsoleLogger();
-
+class ConsoleLogger() extends Logger {
   @override
   void log(String message, {String? category}) {
     print(message);
