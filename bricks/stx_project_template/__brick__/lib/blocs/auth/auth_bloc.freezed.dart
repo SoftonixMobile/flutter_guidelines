@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_bloc.dart';
@@ -9,6 +9,7 @@ part of 'auth_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
 
 /// @nodoc
@@ -60,7 +61,9 @@ class _AuthenticationStatusChanged implements AuthEvent {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status);
+  int get hashCode {
+    return Object.hash(runtimeType, status);
+  }
 
   @override
   String toString() {
@@ -136,20 +139,26 @@ mixin _$AuthState {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as AuthState;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AuthState &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile));
+            (identical(other.status, _this.status) ||
+                other.status == _this.status) &&
+            (identical(other.userProfile, _this.userProfile) ||
+                other.userProfile == _this.userProfile));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userProfile);
+  int get hashCode {
+    final _this = this as AuthState;
+    return Object.hash(runtimeType, _this.status, _this.userProfile);
+  }
 
   @override
   String toString() {
-    return 'AuthState(status: $status, userProfile: $userProfile)';
+    final _this = this as AuthState;
+    return 'AuthState(status: ${_this.status}, userProfile: ${_this.userProfile})';
   }
 }
 
@@ -176,7 +185,7 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   @override
   $Res call({Object? status = null, Object? userProfile = null}) {
     return _then(
-      _self.copyWith(
+      AuthState(
         status: null == status
             ? _self.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -234,7 +243,9 @@ class _AuthState implements AuthState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, userProfile);
+  int get hashCode {
+    return Object.hash(runtimeType, status, userProfile);
+  }
 
   @override
   String toString() {

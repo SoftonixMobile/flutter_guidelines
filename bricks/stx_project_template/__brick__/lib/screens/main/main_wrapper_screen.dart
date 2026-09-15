@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
+
 import 'main_state_wrapper.dart';
 
 @RoutePage(name: 'MainRouter')
-class MainWrapperScreen extends StatefulWidget {
-  const MainWrapperScreen({super.key});
-
+class const MainWrapperScreen({super.key}) extends StatefulWidget {
   @override
   State<MainWrapperScreen> createState() => _MainWrapperScreenState();
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'chats_bloc.dart';
@@ -9,6 +9,7 @@ part of 'chats_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 T _$identity<T>(T value) => value;
 
 /// @nodoc
@@ -68,26 +69,32 @@ mixin _$ChatsState {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as ChatsState;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ChatsState &&
-            (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other.chats, chats) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.status, _this.status) ||
+                other.status == _this.status) &&
+            const DeepCollectionEquality().equals(other.chats, _this.chats) &&
+            (identical(other.errorMessage, _this.errorMessage) ||
+                other.errorMessage == _this.errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    const DeepCollectionEquality().hash(chats),
-    errorMessage,
-  );
+  int get hashCode {
+    final _this = this as ChatsState;
+    return Object.hash(
+      runtimeType,
+      _this.status,
+      const DeepCollectionEquality().hash(_this.chats),
+      _this.errorMessage,
+    );
+  }
 
   @override
   String toString() {
-    return 'ChatsState(status: $status, chats: $chats, errorMessage: $errorMessage)';
+    final _this = this as ChatsState;
+    return 'ChatsState(status: ${_this.status}, chats: ${_this.chats}, errorMessage: ${_this.errorMessage})';
   }
 }
 
@@ -118,7 +125,7 @@ class _$ChatsStateCopyWithImpl<$Res> implements $ChatsStateCopyWith<$Res> {
     Object? errorMessage = freezed,
   }) {
     return _then(
-      _self.copyWith(
+      ChatsState(
         status: null == status
             ? _self.status
             : status // ignore: cast_nullable_to_non_nullable
@@ -141,7 +148,7 @@ class _$ChatsStateCopyWithImpl<$Res> implements $ChatsStateCopyWith<$Res> {
 class _ChatsState implements ChatsState {
   const _ChatsState({
     this.status = NetworkStatus.initial,
-    final List<Chat> chats = const [],
+    List<Chat> chats = const [],
     this.errorMessage,
   }) : _chats = chats;
 
@@ -174,18 +181,20 @@ class _ChatsState implements ChatsState {
         (other.runtimeType == runtimeType &&
             other is _ChatsState &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._chats, _chats) &&
+            const DeepCollectionEquality().equals(other.chats, _chats) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    status,
-    const DeepCollectionEquality().hash(_chats),
-    errorMessage,
-  );
+  int get hashCode {
+    return Object.hash(
+      runtimeType,
+      status,
+      const DeepCollectionEquality().hash(_chats),
+      errorMessage,
+    );
+  }
 
   @override
   String toString() {

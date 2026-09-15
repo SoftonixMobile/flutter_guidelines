@@ -7,31 +7,16 @@ import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 import 'package:{{project_name}}/theme/index.dart';
 
-class TextInputFormBuilder extends StatefulWidget {
-  const TextInputFormBuilder({
-    super.key,
-    required this.fieldBloc,
-    this.label = '',
-    this.hintText,
-    this.isObscureText = false,
-    this.fieldFocusNode,
-    this.nextFieldFocusNode,
-    this.onSubmit,
-  });
-
-  final TextFieldBloc fieldBloc;
-
-  final String label;
-
-  final String? hintText;
-
-  final bool isObscureText;
-
-  final FocusNode? fieldFocusNode;
-  final FocusNode? nextFieldFocusNode;
-
-  final VoidCallback? onSubmit;
-
+class const TextInputFormBuilder({
+  super.key,
+  required final TextFieldBloc fieldBloc,
+  final String label = '',
+  final String? hintText,
+  final bool isObscureText = false,
+  final FocusNode? fieldFocusNode,
+  final FocusNode? nextFieldFocusNode,
+  final VoidCallback? onSubmit,
+}) extends StatefulWidget {
   @override
   State<TextInputFormBuilder> createState() => _TextInputFormBuilderState();
 }
@@ -82,7 +67,7 @@ class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
           child: TextField(
             controller: _controller,
             autocorrect: false,
-            textInputAction: TextInputAction.next,
+            textInputAction: .next,
             focusNode: widget.fieldFocusNode,
             obscureText: widget.isObscureText,
             onChanged: widget.fieldBloc.changeValue,

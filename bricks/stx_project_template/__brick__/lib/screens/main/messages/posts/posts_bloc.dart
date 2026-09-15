@@ -6,10 +6,9 @@ import 'package:{{project_name}}/repositories/index.dart';
 typedef PostsState = NetworkListState<Post>;
 
 @lazySingleton
-class PostsBloc extends NetworkListBloc<Post, PostsState> {
-  final PostsRepository _postsRepository;
-
-  PostsBloc(this._postsRepository) : super(const NetworkListState(data: []));
+class PostsBloc(final PostsRepository _postsRepository)
+    extends NetworkListBloc<Post, PostsState> {
+  this : super(const NetworkListState(data: []));
 
   @override
   Future<List<Post>> onLoadAsync() {

@@ -2,11 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:{{project_name}}/services/logger/index.dart';
 
-class SimpleBlocObserver extends BlocObserver {
-  final Logger _logger;
-
-  SimpleBlocObserver(this._logger);
-
+class SimpleBlocObserver(final Logger _logger) extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);

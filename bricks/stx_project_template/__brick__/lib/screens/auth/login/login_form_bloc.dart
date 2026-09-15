@@ -7,22 +7,21 @@ import 'package:{{project_name}}/core/index.dart';
 import 'package:{{project_name}}/repositories/index.dart';
 
 @Injectable(scope: 'auth')
-class LoginFormBloc extends FormBloc<bool, String> {
+class LoginFormBloc(final AuthRepository _authRepository)
+    extends FormBloc<bool, String> {
   late final TextFieldBloc username;
   late final TextFieldBloc password;
 
-  final AuthRepository _authRepository;
-
-  LoginFormBloc(this._authRepository) : super(customSubmit: false) {
+  this : super(customSubmit: false) {
     username = TextFieldBloc(
       required: true,
-      rules: {ValidationType.onBlur},
+      rules: {.onBlur},
     );
 
     password = TextFieldBloc(
       required: true,
       customValidators: {FieldValidators.passwordMin6Chars},
-      rules: {ValidationType.onBlur},
+      rules: {.onBlur},
     );
 
     addFields([

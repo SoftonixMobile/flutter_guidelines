@@ -4,11 +4,10 @@ import 'package:{{project_name}}/models/index.dart';
 import 'package:{{project_name}}/router/index.dart';
 
 @RoutePage()
-class ChatDetailsScreen extends StatelessWidget {
-  const ChatDetailsScreen({super.key, required this.chat});
-
-  final Chat chat;
-
+class const ChatDetailsScreen({
+  super.key,
+  required final Chat chat,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

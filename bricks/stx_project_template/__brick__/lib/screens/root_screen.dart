@@ -8,9 +8,7 @@ import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
 
 @RoutePage()
-class RootScreen extends StatelessWidget {
-  const RootScreen({super.key});
-
+class const RootScreen({super.key}) extends StatelessWidget {
   void _removeSplashScreen() {
     FlutterNativeSplash.remove();
   }

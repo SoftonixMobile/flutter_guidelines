@@ -6,11 +6,10 @@ import 'package:{{project_name}}/router/index.dart';
 import 'package:{{project_name}}/services/index.dart';
 import 'package:{{project_name}}/theme/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';
+
 import 'app_state_wrapper.dart';
 
-class {{#pascalCase}}{{project_name}}{{/pascalCase}}App extends StatelessWidget {
-  {{#pascalCase}}{{project_name}}{{/pascalCase}}App({super.key});
-
+class {{#pascalCase}}{{project_name}}{{/pascalCase}}App({super.key}) extends StatelessWidget {
   final _appRouter = getIt<AppRouter>();
 
   @override
