@@ -1,3 +1,12 @@
+# 0.16.0
+
+- Support flutter 3.47.
+- Update deps.
+- Use primary constructors and dot shorthands.
+- Replace `import_sorter` with `tidy_imports`.
+- Use `CupertinoDialogAction` from `customizable_cupertino_dialog` in the upgrader dialog.
+- Add `dart-flutter-sdk-upgrade` Claude skill.
+
 # 0.15.1
 
 - Include `.fvmrc` in the generated project to pin the Flutter SDK version.
