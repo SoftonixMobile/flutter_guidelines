@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_guidelines/models/index.dart';
 
-abstract class Logger {
+abstract class Logger() {
   Future<void> init() async {}
 
   void registerUserProfile(UserProfile userProfile) {}

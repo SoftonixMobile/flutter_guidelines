@@ -6,7 +6,7 @@ import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/models/index.dart';
 import 'package:flutter_guidelines/repositories/index.dart';
 
-class MockPostsRepository extends Mock implements PostsRepository;
+class MockPostsRepository() extends Mock implements PostsRepository;
 
 void main() {
   /// Default state instance to avoid code repeating

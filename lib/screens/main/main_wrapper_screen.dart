@@ -13,7 +13,7 @@ class const MainWrapperScreen({super.key}) extends StatefulWidget {
   State<MainWrapperScreen> createState() => _MainWrapperScreenState();
 }
 
-class _MainWrapperScreenState extends State<MainWrapperScreen> {
+class _MainWrapperScreenState() extends State<MainWrapperScreen> {
   @override
   void initState() {
     super.initState();
