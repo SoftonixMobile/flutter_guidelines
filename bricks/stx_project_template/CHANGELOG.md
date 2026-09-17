@@ -1,3 +1,8 @@
+# 0.16.1
+
+- Enable `use_primary_constructors` lint and apply primary constructors across the template.
+- Allow caret range for `injectable_generator`.
+
 # 0.16.0
 
 - Support flutter 3.47.
