@@ -21,7 +21,7 @@ class const TextInputFormBuilder({
   State<TextInputFormBuilder> createState() => _TextInputFormBuilderState();
 }
 
-class _TextInputFormBuilderState extends State<TextInputFormBuilder> {
+class _TextInputFormBuilderState() extends State<TextInputFormBuilder> {
   late final TextEditingController _controller;
 
   @override

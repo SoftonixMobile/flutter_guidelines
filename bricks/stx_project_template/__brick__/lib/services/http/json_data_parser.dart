@@ -1,12 +1,8 @@
 typedef JsonMap = Map<String, dynamic>;
 typedef JsonConverter<T> = T Function(JsonMap);
 
-class JsonDataParser {
+class JsonDataParser() {
   final _converters = <Type, Function(dynamic)>{};
-
-  new() {
-    // Register default converters if needed
-  }
 
   void registerType<T>(JsonConverter<T> converter) {
     _converters[T] = (input) => converter(input);

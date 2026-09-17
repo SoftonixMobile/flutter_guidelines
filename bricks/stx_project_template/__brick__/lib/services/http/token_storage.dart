@@ -3,7 +3,7 @@ import 'package:fresh_dio/fresh_dio.dart';
 
 import 'package:{{project_name}}/core/index.dart';
 
-class SecureTokenStorage extends TokenStorage<String> {
+class SecureTokenStorage() extends TokenStorage<String> {
   static const _tokenKey = AppKeys.tokenKey;
 
   final _storage = const FlutterSecureStorage();

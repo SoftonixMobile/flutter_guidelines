@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 import 'package:{{project_name}}/core/index.dart';
 
-abstract final class AppExceptionMapper {
+abstract final class AppExceptionMapper() {
   static NetworkException fromDioException(DioException e) {
     return switch (e.type) {
       .connectionError ||

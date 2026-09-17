@@ -1,7 +1,7 @@
 typedef DynamicMap = Map<String, dynamic>;
 typedef StringMap = Map<String, String>;
 
-enum AuthStatus {
+enum AuthStatus() {
   initial,
   unauthenticated,
   authenticated;
