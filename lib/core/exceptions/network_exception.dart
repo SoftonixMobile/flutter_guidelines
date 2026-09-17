@@ -1,6 +1,6 @@
 import 'app_exception.dart';
 
-enum NetworkExceptionType {
+enum NetworkExceptionType() {
   noConnection,
   timeout,
   badRequest,

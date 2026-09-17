@@ -45,7 +45,7 @@ class const AppUpgraderDialog({
 }
 
 /// Custom messages
-class DPUpgraderMessages extends UpgraderMessages {
+class DPUpgraderMessages() extends UpgraderMessages {
   @override
   String get buttonTitleLater => 'Later';
 

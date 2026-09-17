@@ -27,7 +27,7 @@ class AppUpgradeAlert({
   AppUpgradeAlertState createState() => AppUpgradeAlertState();
 }
 
-class AppUpgradeAlertState extends UpgradeAlertState {
+class AppUpgradeAlertState() extends UpgradeAlertState {
   @override
   Widget alertDialog(
     Key? key,

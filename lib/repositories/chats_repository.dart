@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:flutter_guidelines/models/index.dart';
 
 @injectable
-class ChatsRepository {
+class ChatsRepository() {
   Future<List<Chat>> getChats() async {
     await Future.delayed(const Duration(seconds: 1));
 
