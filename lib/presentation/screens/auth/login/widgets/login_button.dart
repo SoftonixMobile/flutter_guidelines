@@ -1,17 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:bouncing_widget/bouncing_widget.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({
-    super.key,
-    required this.onPressed,
-  });
-
-  final VoidCallback onPressed;
-
+class const LoginButton({
+  super.key,
+  required final VoidCallback onPressed,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -25,7 +20,7 @@ class LoginButton extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           color: colors.primary,
-          borderRadius: const BorderRadius.all(
+          borderRadius: const .all(
             Radius.circular(6),
           ),
         ),

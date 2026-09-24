@@ -1,13 +1,10 @@
-import 'package:injectable/injectable.dart';
-
 import 'package:data_provider/models.dart';
 import 'package:data_provider/network.dart';
+import 'package:injectable/injectable.dart';
 
 @injectable
-class ChatsService {
-  final ApiClient _client;
-
-  ChatsService(this._client) {
+class ChatsService(final ApiClient _client) {
+  this {
     _client.registerType(Chat.fromJson);
   }
 

@@ -2,11 +2,10 @@ part of 'models.dart';
 
 @freezed
 sealed class AuthResponse with _$AuthResponse {
-  const factory AuthResponse({
+  const factory({
     required String accessToken,
     required String refreshToken,
   }) = _AuthResponse;
 
-  factory AuthResponse.fromJson(Map<String, dynamic> json) =>
-      _$AuthResponseFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$AuthResponseFromJson(json);
 }

@@ -1,21 +1,18 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart' hide CupertinoAlertDialog;
-import 'package:flutter/material.dart';
-
+import 'package:cupertino_ui/cupertino_ui.dart' hide CupertinoAlertDialog;
+import 'package:material_ui/material_ui.dart';
 import 'package:upgrader/upgrader.dart';
 
 import 'app_upgrade_alert.dart';
 
 /// Dialog that prompts the user to update the app
 ///  when a new version is available.
-class AppUpgraderDialog extends StatelessWidget {
-  const AppUpgraderDialog({super.key, required this.navigatorKey, this.child});
-
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  final Widget? child;
-
+class const AppUpgraderDialog({
+  super.key,
+  required final GlobalKey<NavigatorState> navigatorKey,
+  final Widget? child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -49,7 +46,7 @@ class AppUpgraderDialog extends StatelessWidget {
 }
 
 /// Custom messages
-class DPUpgraderMessages extends UpgraderMessages {
+class DPUpgraderMessages() extends UpgraderMessages {
   @override
   String get buttonTitleLater => 'Later';
 

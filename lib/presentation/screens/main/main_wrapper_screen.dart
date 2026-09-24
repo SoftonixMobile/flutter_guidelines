@@ -1,22 +1,19 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 
 @RoutePage(name: 'MainRouter')
-class MainWrapperScreen extends StatefulWidget {
-  const MainWrapperScreen({super.key});
-
+class const MainWrapperScreen({super.key}) extends StatefulWidget {
   @override
   State<MainWrapperScreen> createState() => _MainWrapperScreenState();
 }
 
-class _MainWrapperScreenState extends State<MainWrapperScreen> {
+class _MainWrapperScreenState() extends State<MainWrapperScreen> {
   @override
   void initState() {
     super.initState();
@@ -49,13 +46,9 @@ class _MainWrapperScreenState extends State<MainWrapperScreen> {
   }
 }
 
-class _MainStateWrapper extends StatelessWidget {
-  const _MainStateWrapper({
-    required this.child,
-  });
-
-  final Widget child;
-
+class const _MainStateWrapper({
+  required final Widget child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

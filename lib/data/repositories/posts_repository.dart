@@ -7,12 +7,9 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
 @lazySingleton
-class PostsRepository extends ListRepositoryBase<Post>
+class PostsRepository(final PostsService _postsService)
+    extends ListRepositoryBase<Post>
     with DisposableRepositoryMixin, StreamRepositoryMixin {
-  final PostsService _postsService;
-
-  PostsRepository(this._postsService);
-
   FutureOr<List<Post>> getPosts({bool refresh = false}) {
     return load(_postsService.getAllPosts, refresh: refresh);
   }

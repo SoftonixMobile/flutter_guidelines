@@ -10,12 +10,11 @@ import 'package:flutter_guidelines/domain/repositories/index.dart';
 typedef DrawerState = NetworkListState<Post>;
 
 @injectable
-class DrawerBloc extends NetworkListBloc<Post, DrawerState> {
-  final PostsRepository _postsRepository;
-
+class DrawerBloc(final PostsRepository _postsRepository)
+    extends NetworkListBloc<Post, DrawerState> {
   late final StreamSubscription<List<Post>> _postsSubscription;
 
-  DrawerBloc(this._postsRepository)
+  this
     : super(
         const DrawerState(
           data: [],
@@ -52,6 +51,6 @@ class DrawerBloc extends NetworkListBloc<Post, DrawerState> {
   @override
   Future<void> close() async {
     await _postsSubscription.cancel();
-    return super.close();
+    return await super.close();
   }
 }

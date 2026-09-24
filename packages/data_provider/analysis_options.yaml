@@ -2,3 +2,10 @@ include: package:lints/recommended.yaml
 
 formatter:
   trailing_commas: preserve
+
+linter:
+  rules:
+    use_primary_constructors: true
+    use_declaring_parameters: true
+    unnecessary_type_name_in_constructor: true
+    empty_container_bodies: true

@@ -8,13 +8,12 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
+
 import 'injector.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit(
-  includeMicroPackages: false,
-)
+@InjectableInit()
 //register only auth dependencies
 void configureAuthDependencies({
   required Logger logger,

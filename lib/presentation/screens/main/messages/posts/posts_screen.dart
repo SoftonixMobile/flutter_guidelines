@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
+
 import 'posts_bloc.dart';
 
 @RoutePage()
-class PostsScreen extends StatelessWidget implements AutoRouteWrapper {
-  const PostsScreen({super.key});
-
+class const PostsScreen({super.key})
+    extends StatelessWidget
+    implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(

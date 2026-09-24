@@ -1,29 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'index.dart';
 
-class AppTypographyTheme extends ThemeExtension<AppTypographyTheme> {
-  final TextStyle displayLarge;
-  final TextStyle displaySmall;
-  final TextStyle titleLarge;
-  final TextStyle titleSmall;
-  final TextStyle bodyLarge;
-  final TextStyle bodySmall;
-  final TextStyle captionLarge;
-  final TextStyle captionSmall;
-
-  const AppTypographyTheme({
-    required this.displayLarge,
-    required this.displaySmall,
-    required this.titleLarge,
-    required this.titleSmall,
-    required this.bodyLarge,
-    required this.bodySmall,
-    required this.captionLarge,
-    required this.captionSmall,
-  });
-
-  factory AppTypographyTheme.fromFontFamily({
+class const AppTypographyTheme({
+  required final TextStyle displayLarge,
+  required final TextStyle displaySmall,
+  required final TextStyle titleLarge,
+  required final TextStyle titleSmall,
+  required final TextStyle bodyLarge,
+  required final TextStyle bodySmall,
+  required final TextStyle captionLarge,
+  required final TextStyle captionSmall,
+}) extends ThemeExtension<AppTypographyTheme> {
+  factory fromFontFamily({
     required String fontFamily,
   }) {
     return AppTypographyTheme(
@@ -68,14 +57,14 @@ class AppTypographyTheme extends ThemeExtension<AppTypographyTheme> {
   ) {
     if (other is! AppTypographyTheme) return this;
     return AppTypographyTheme(
-      displayLarge: TextStyle.lerp(displayLarge, other.displayLarge, t)!,
-      displaySmall: TextStyle.lerp(displaySmall, other.displaySmall, t)!,
-      titleLarge: TextStyle.lerp(titleLarge, other.titleLarge, t)!,
-      titleSmall: TextStyle.lerp(titleSmall, other.titleSmall, t)!,
-      bodyLarge: TextStyle.lerp(bodyLarge, other.bodyLarge, t)!,
-      bodySmall: TextStyle.lerp(bodySmall, other.bodySmall, t)!,
-      captionLarge: TextStyle.lerp(captionLarge, other.captionLarge, t)!,
-      captionSmall: TextStyle.lerp(captionSmall, other.captionSmall, t)!,
+      displayLarge: .lerp(displayLarge, other.displayLarge, t)!,
+      displaySmall: .lerp(displaySmall, other.displaySmall, t)!,
+      titleLarge: .lerp(titleLarge, other.titleLarge, t)!,
+      titleSmall: .lerp(titleSmall, other.titleSmall, t)!,
+      bodyLarge: .lerp(bodyLarge, other.bodyLarge, t)!,
+      bodySmall: .lerp(bodySmall, other.bodySmall, t)!,
+      captionLarge: .lerp(captionLarge, other.captionLarge, t)!,
+      captionSmall: .lerp(captionSmall, other.captionSmall, t)!,
     );
   }
 }

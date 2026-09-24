@@ -7,16 +7,13 @@ import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 @injectable
-class PostFormBloc extends FormBloc<Post, String> {
+class PostFormBloc(
+  @factoryParam final Post? initial,
+  final PostsRepository _postsRepository,
+) extends FormBloc<Post, String> {
   late final TextFieldBloc name;
 
-  final Post? initial;
-  final PostsRepository _postsRepository;
-
-  PostFormBloc(
-    @factoryParam this.initial,
-    this._postsRepository,
-  ) : super(customSubmit: false, isEditing: initial != null) {
+  this : super(customSubmit: false, isEditing: initial != null) {
     name = TextFieldBloc(
       initialValue: initial?.name ?? '',
       required: true,

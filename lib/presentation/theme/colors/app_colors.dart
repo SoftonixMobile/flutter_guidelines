@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-abstract final class AppColors {
+abstract final class AppColors() {
   // Brand
   static const primary = Color(0xFF1186FC);
   static const primaryDark = Color(0xFF3B82F6);

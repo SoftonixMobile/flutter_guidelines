@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'index.dart';
 
-abstract final class AppTheme {
+abstract final class AppTheme() {
   static ThemeData lightTheme() {
     const fontFamily = FontFamily.poppins;
 
@@ -12,10 +12,10 @@ abstract final class AppTheme {
     );
 
     return ThemeData(
-      brightness: Brightness.light,
+      brightness: .light,
       fontFamily: fontFamily,
       scaffoldBackgroundColor: colors.background,
-      colorScheme: ColorScheme.light(
+      colorScheme: .light(
         primary: colors.primary,
         surface: colors.surface,
         onPrimary: colors.onPrimary,
@@ -30,7 +30,7 @@ abstract final class AppTheme {
         color: colors.surface,
         elevation: 2,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: .circular(12),
         ),
       ),
       dividerColor: colors.grey.withValues(alpha: 0.3),
@@ -50,10 +50,10 @@ abstract final class AppTheme {
     );
 
     return ThemeData(
-      brightness: Brightness.dark,
+      brightness: .dark,
       fontFamily: fontFamily,
       scaffoldBackgroundColor: colors.background,
-      colorScheme: ColorScheme.dark(
+      colorScheme: .dark(
         primary: colors.primary,
         surface: colors.surface,
         onPrimary: colors.onPrimary,
@@ -68,7 +68,7 @@ abstract final class AppTheme {
         color: colors.surface,
         elevation: 2,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: .circular(12),
         ),
       ),
       dividerColor: colors.grey.withValues(alpha: 0.3),

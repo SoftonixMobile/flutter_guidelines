@@ -2,11 +2,7 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter_guidelines/core/logger/logger.dart';
 
-class HttpInterceptor extends Interceptor {
-  final Logger _logger;
-
-  HttpInterceptor(this._logger);
-
+class HttpInterceptor(final Logger _logger) extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers['Authorization'] = 'Bearer ...put auth token here';

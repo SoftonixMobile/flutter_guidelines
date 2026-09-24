@@ -4,33 +4,30 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter_guidelines/domain/exceptions/index.dart';
 
-abstract final class RemoteExceptionMapper {
-  static RemoteException fromDioException(DioException e) {
+abstract final class AppExceptionMapper() {
+  static NetworkException fromDioException(DioException e) {
     return switch (e.type) {
-      DioExceptionType.connectionError || DioExceptionType.unknown
-          when e.error is SocketException =>
-        RemoteException(
-          type: RemoteExceptionType.noConnection,
-          message: e.message,
-          error: e.error,
-        ),
-      DioExceptionType.connectionTimeout ||
-      DioExceptionType.receiveTimeout ||
-      DioExceptionType.sendTimeout => RemoteException(
-        type: RemoteExceptionType.timeout,
+      .connectionError ||
+      .unknown when e.error is SocketException => NetworkException(
+        type: .noConnection,
         message: e.message,
         error: e.error,
       ),
-      DioExceptionType.badResponse => _fromResponse(e),
-      _ => RemoteException(
-        type: RemoteExceptionType.unknown,
+      .connectionTimeout || .receiveTimeout || .sendTimeout => NetworkException(
+        type: .timeout,
+        message: e.message,
+        error: e.error,
+      ),
+      .badResponse => _fromResponse(e),
+      _ => NetworkException(
+        type: .unknown,
         message: e.message,
         error: e.error,
       ),
     };
   }
 
-  static RemoteException _fromResponse(DioException e) {
+  static NetworkException _fromResponse(DioException e) {
     final response = e.response;
     final statusCode = response?.statusCode;
     final data = response?.data;
@@ -41,18 +38,16 @@ abstract final class RemoteExceptionMapper {
             : null) ??
         e.message;
 
-    final type = switch (statusCode) {
-      null => RemoteExceptionType.unknown,
-      400 => RemoteExceptionType.badRequest,
-      401 => RemoteExceptionType.unauthorized,
-      404 => RemoteExceptionType.notFound,
-      >= 400 && < 500 => RemoteExceptionType.clientError,
-      >= 500 => RemoteExceptionType.serverError,
-      _ => RemoteExceptionType.unknown,
-    };
-
-    return RemoteException(
-      type: type,
+    return NetworkException(
+      type: switch (statusCode) {
+        null => .unknown,
+        400 => .badRequest,
+        401 => .unauthorized,
+        404 => .notFound,
+        >= 400 && < 500 => .clientError,
+        >= 500 => .serverError,
+        _ => .unknown,
+      },
       statusCode: statusCode,
       message: message,
       error: e.error,

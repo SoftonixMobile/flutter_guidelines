@@ -3,12 +3,8 @@ import 'package:data_provider/network.dart';
 typedef JsonMap = Map<String, dynamic>;
 typedef JsonConverter<T> = T Function(JsonMap);
 
-class JsonDataParser implements JsonParser {
+class JsonDataParser() implements JsonParser {
   final _converters = <Type, Function(dynamic)>{};
-
-  JsonDataParser() {
-    // Register default converters if needed
-  }
 
   @override
   void registerType<T>(JsonConverter<T> converter) {

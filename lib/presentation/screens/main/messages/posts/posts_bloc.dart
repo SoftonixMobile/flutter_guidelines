@@ -9,10 +9,9 @@ import 'package:flutter_guidelines/domain/repositories/index.dart';
 typedef PostsState = NetworkListState<Post>;
 
 @injectable
-class PostsBloc extends NetworkListBloc<Post, PostsState> {
-  final PostsRepository _postsRepository;
-
-  PostsBloc(this._postsRepository) : super(const NetworkListState(data: []));
+class PostsBloc(final PostsRepository _postsRepository)
+    extends NetworkListBloc<Post, PostsState> {
+  this : super(const NetworkListState(data: []));
 
   @override
   FutureOr<List<Post>> onLazyLoad() {
@@ -21,7 +20,7 @@ class PostsBloc extends NetworkListBloc<Post, PostsState> {
 
   @override
   Future<List<Post>> onLoadAsync() async {
-    return _postsRepository.getPosts(refresh: true);
+    return await _postsRepository.getPosts(refresh: true);
   }
 
   @override

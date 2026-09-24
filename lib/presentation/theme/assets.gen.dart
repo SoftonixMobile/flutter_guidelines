@@ -45,9 +45,7 @@ class $ResourcesLangsGen {
   List<String> get values => [enUS, frFR];
 }
 
-class Assets {
-  const Assets._();
-
+abstract final class Assets {
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $ResourcesGen resources = $ResourcesGen();
 }

@@ -1,31 +1,19 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'app_colors.dart';
 
-class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
-  final Color primary;
-  final Color success;
-  final Color danger;
-  final Color grey;
-  final Color background;
-  final Color surface;
-  final Color onPrimary;
-  final Color textPrimary;
-  final Color textSecondary;
-
-  const AppColorsTheme({
-    required this.primary,
-    required this.success,
-    required this.danger,
-    required this.grey,
-    required this.background,
-    required this.surface,
-    required this.onPrimary,
-    required this.textPrimary,
-    required this.textSecondary,
-  });
-
-  factory AppColorsTheme.light() => const AppColorsTheme(
+class const AppColorsTheme({
+  required final Color primary,
+  required final Color success,
+  required final Color danger,
+  required final Color grey,
+  required final Color background,
+  required final Color surface,
+  required final Color onPrimary,
+  required final Color textPrimary,
+  required final Color textSecondary,
+}) extends ThemeExtension<AppColorsTheme> {
+  factory light() => const AppColorsTheme(
     primary: AppColors.primary,
     success: AppColors.success,
     danger: AppColors.danger,
@@ -37,7 +25,7 @@ class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
     textSecondary: AppColors.textSecondaryLight,
   );
 
-  factory AppColorsTheme.dark() => const AppColorsTheme(
+  factory dark() => const AppColorsTheme(
     primary: AppColors.primaryDark,
     success: AppColors.success,
     danger: AppColors.danger,
@@ -81,15 +69,15 @@ class AppColorsTheme extends ThemeExtension<AppColorsTheme> {
   ) {
     if (other is! AppColorsTheme) return this;
     return AppColorsTheme(
-      primary: Color.lerp(primary, other.primary, t)!,
-      success: Color.lerp(success, other.success, t)!,
-      danger: Color.lerp(danger, other.danger, t)!,
-      grey: Color.lerp(grey, other.grey, t)!,
-      background: Color.lerp(background, other.background, t)!,
-      surface: Color.lerp(surface, other.surface, t)!,
-      onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
-      textPrimary: Color.lerp(textPrimary, other.textPrimary, t)!,
-      textSecondary: Color.lerp(textSecondary, other.textSecondary, t)!,
+      primary: .lerp(primary, other.primary, t)!,
+      success: .lerp(success, other.success, t)!,
+      danger: .lerp(danger, other.danger, t)!,
+      grey: .lerp(grey, other.grey, t)!,
+      background: .lerp(background, other.background, t)!,
+      surface: .lerp(surface, other.surface, t)!,
+      onPrimary: .lerp(onPrimary, other.onPrimary, t)!,
+      textPrimary: .lerp(textPrimary, other.textPrimary, t)!,
+      textSecondary: .lerp(textSecondary, other.textSecondary, t)!,
     );
   }
 }

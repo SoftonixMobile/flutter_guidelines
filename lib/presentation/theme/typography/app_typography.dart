@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-abstract final class AppTypography {
+abstract final class AppTypography() {
   static TextStyle displayLarge({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 32,
-    fontWeight: FontWeight.w700,
+    fontWeight: .w700,
     letterSpacing: 0,
     height: 1.25,
   );
@@ -12,7 +12,7 @@ abstract final class AppTypography {
   static TextStyle displaySmall({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 24,
-    fontWeight: FontWeight.w600,
+    fontWeight: .w600,
     letterSpacing: 0,
     height: 1.33,
   );
@@ -20,7 +20,7 @@ abstract final class AppTypography {
   static TextStyle titleLarge({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 20,
-    fontWeight: FontWeight.w600,
+    fontWeight: .w600,
     letterSpacing: 0,
     height: 1.4,
   );
@@ -28,7 +28,7 @@ abstract final class AppTypography {
   static TextStyle titleSmall({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 16,
-    fontWeight: FontWeight.w600,
+    fontWeight: .w600,
     letterSpacing: 0,
     height: 1.5,
   );
@@ -36,7 +36,7 @@ abstract final class AppTypography {
   static TextStyle bodyLarge({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 16,
-    fontWeight: FontWeight.w400,
+    fontWeight: .w400,
     letterSpacing: 0,
     height: 1.5,
   );
@@ -44,7 +44,7 @@ abstract final class AppTypography {
   static TextStyle bodySmall({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 14,
-    fontWeight: FontWeight.w400,
+    fontWeight: .w400,
     letterSpacing: 0,
     height: 1.43,
   );
@@ -52,7 +52,7 @@ abstract final class AppTypography {
   static TextStyle captionLarge({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 12,
-    fontWeight: FontWeight.w500,
+    fontWeight: .w500,
     letterSpacing: 0,
     height: 1.33,
   );
@@ -60,7 +60,7 @@ abstract final class AppTypography {
   static TextStyle captionSmall({String? fontFamily}) => TextStyle(
     fontFamily: fontFamily,
     fontSize: 10,
-    fontWeight: FontWeight.w400,
+    fontWeight: .w400,
     letterSpacing: 0,
     height: 1.4,
   );

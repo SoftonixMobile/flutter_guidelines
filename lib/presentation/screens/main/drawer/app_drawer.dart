@@ -1,17 +1,15 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
+
 import 'drawer_bloc.dart';
 
-class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
-
+class const AppDrawer({super.key}) extends StatelessWidget {
   Widget _buildMenuItem({
     required String text,
     required IconData iconData,
@@ -48,14 +46,14 @@ class AppDrawer extends StatelessWidget {
           elevation: 3,
           child: SafeArea(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const .symmetric(vertical: 10),
               width: double.infinity,
               height: screenSize.height,
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .start,
                     children: [
                       CircleAvatar(
                         radius: 60,
@@ -68,7 +66,7 @@ class AppDrawer extends StatelessWidget {
                   ),
                   const Divider(height: 20),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const .only(top: 20),
                     child: Column(
                       children: [
                         _buildMenuItem(

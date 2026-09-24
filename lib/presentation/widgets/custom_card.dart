@@ -1,20 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 
-class CustomCard extends StatelessWidget {
-  const CustomCard({
-    required this.child,
-    this.width,
-    this.height,
-    super.key,
-  });
-
-  final double? width;
-  final double? height;
-
-  final Widget child;
-
+class const CustomCard({
+  required final Widget child,
+  final double? width,
+  final double? height,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.theme.colorsTheme;
@@ -24,18 +17,18 @@ class CustomCard extends StatelessWidget {
       color: colors.primary,
       shadowColor: colors.textPrimary,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: .circular(12),
       ),
       child: Container(
         decoration: BoxDecoration(
           color: colors.surface,
-          borderRadius: const BorderRadius.all(
+          borderRadius: const .all(
             Radius.circular(12),
           ),
         ),
         height: height,
         width: width ?? 0,
-        padding: const EdgeInsets.symmetric(
+        padding: const .symmetric(
           vertical: 20,
           horizontal: 14,
         ),

@@ -2,8 +2,8 @@ import 'package:meta/meta.dart';
 
 import 'repository_base.dart';
 
-abstract class ListRepositoryBase<T> extends RepositoryBase<List<T>> {
-  ListRepositoryBase() : super(initialValue: []);
+abstract class ListRepositoryBase<T>() extends RepositoryBase<List<T>> {
+  this : super(initialValue: []);
 
   /// If [item] exists in the list, it will be updated
   /// otherwise it will be added to the end of the list.

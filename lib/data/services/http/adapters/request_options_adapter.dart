@@ -1,8 +1,8 @@
 import 'package:data_provider/network.dart' as data;
 import 'package:dio/dio.dart' as dio;
 
-class RequestOptionsAdapter extends dio.Options {
-  RequestOptionsAdapter(data.NetworkOptions options)
+class RequestOptionsAdapter(data.NetworkOptions options) extends dio.Options {
+  this
     : super(
         method: options.method,
         sendTimeout: options.sendTimeout,

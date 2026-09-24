@@ -1,37 +1,32 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
+import 'package:cupertino_ui/cupertino_ui.dart' hide CupertinoDialogAction;
 import 'package:customizable_cupertino_dialog/customizable_cupertino_dialog.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:upgrader/upgrader.dart';
 
-class AppUpgradeAlert extends UpgradeAlert {
-  AppUpgradeAlert({
-    super.key,
-    super.upgrader,
-    super.barrierDismissible,
-    super.dialogStyle,
-    super.onIgnore,
-    super.onLater,
-    super.onUpdate,
-    super.shouldPopScope,
-    super.showIgnore,
-    super.showLater,
-    super.showReleaseNotes,
-    super.cupertinoButtonTextStyle,
-    super.dialogKey,
-    super.navigatorKey,
-    this.cupertinoDialogColor =
-        CustomizableCupertinoAlertDialog.opaqueCupertinoDialogColor,
-    super.child,
-  });
-
-  final CupertinoDynamicColor? cupertinoDialogColor;
-
+class AppUpgradeAlert({
+  super.key,
+  super.upgrader,
+  super.barrierDismissible,
+  super.dialogStyle,
+  super.onIgnore,
+  super.onLater,
+  super.onUpdate,
+  super.shouldPopScope,
+  super.showIgnore,
+  super.showLater,
+  super.showReleaseNotes,
+  super.cupertinoButtonTextStyle,
+  super.dialogKey,
+  super.navigatorKey,
+  final CupertinoDynamicColor? cupertinoDialogColor =
+      CustomizableCupertinoAlertDialog.opaqueCupertinoDialogColor,
+  super.child,
+}) extends UpgradeAlert {
   @override
   AppUpgradeAlertState createState() => AppUpgradeAlertState();
 }
 
-class AppUpgradeAlertState extends UpgradeAlertState {
+class AppUpgradeAlertState() extends UpgradeAlertState {
   @override
   Widget alertDialog(
     Key? key,
@@ -51,16 +46,16 @@ class AppUpgradeAlertState extends UpgradeAlertState {
     Widget? notes;
     if (releaseNotes != null) {
       notes = Padding(
-        padding: const EdgeInsets.only(top: 15),
+        padding: const .only(top: 15),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: .min,
           crossAxisAlignment: cupertino
               ? CrossAxisAlignment.center
               : CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               messages.message(UpgraderMessage.releaseNotes) ?? '',
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: .bold),
             ),
             Text(releaseNotes),
           ],
@@ -75,11 +70,11 @@ class AppUpgradeAlertState extends UpgradeAlertState {
           crossAxisAlignment: cupertino
               ? CrossAxisAlignment.center
               : CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: .min,
           children: <Widget>[
             Text(message),
             Padding(
-              padding: const EdgeInsets.only(top: 15),
+              padding: const .only(top: 15),
               child: Text(messages.message(UpgraderMessage.prompt) ?? ''),
             ),
             ?notes,
@@ -130,5 +125,23 @@ class AppUpgradeAlertState extends UpgradeAlertState {
             content: content,
             actions: actions,
           );
+  }
+
+  @override
+  Widget button({
+    required bool cupertino,
+    String? text,
+    required BuildContext context,
+    VoidCallback? onPressed,
+    bool isDefaultAction = false,
+  }) {
+    return cupertino
+        ? CupertinoDialogAction(
+            textStyle: widget.cupertinoButtonTextStyle,
+            onPressed: onPressed,
+            isDefaultAction: isDefaultAction,
+            child: Text(text ?? ''),
+          )
+        : TextButton(onPressed: onPressed, child: Text(text ?? ''));
   }
 }

@@ -1,13 +1,6 @@
-class Response<T> {
-  final T? data;
-  final int statusCode;
-  final String? statusMessage;
-  final Map<String, List<String>> headers;
-
-  Response({
-    required this.data,
-    required this.statusCode,
-    required this.statusMessage,
-    required this.headers,
-  });
-}
+class Response<T>({
+  required final T? data,
+  required final int statusCode,
+  required final String? statusMessage,
+  required final Map<String, List<String>> headers,
+});

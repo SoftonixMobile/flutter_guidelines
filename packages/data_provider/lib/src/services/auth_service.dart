@@ -1,13 +1,10 @@
-import 'package:injectable/injectable.dart';
-
 import 'package:data_provider/models.dart';
 import 'package:data_provider/network.dart';
+import 'package:injectable/injectable.dart';
 
 @injectable
-class AuthService {
-  final ApiClient _client;
-
-  AuthService(this._client) {
+class AuthService(final ApiClient _client) {
+  this {
     _client.registerType(AuthResponse.fromJson);
   }
 

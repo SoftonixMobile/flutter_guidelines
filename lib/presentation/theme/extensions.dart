@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'index.dart';
 
@@ -7,8 +7,8 @@ extension BuildContextX on BuildContext {
 }
 
 extension ThemeDataX on ThemeData {
-  bool get isLight => brightness == Brightness.light;
-  bool get isDark => brightness == Brightness.dark;
+  bool get isLight => brightness == .light;
+  bool get isDark => brightness == .dark;
 
   AppColorsTheme get colorsTheme => extension<AppColorsTheme>()!;
   AppTypographyTheme get typographyTheme => extension<AppTypographyTheme>()!;
@@ -17,13 +17,13 @@ extension ThemeDataX on ThemeData {
 extension TextStyleX on TextStyle {
   TextStyle get poppins => copyWith(fontFamily: FontFamily.poppins);
 
-  TextStyle get w300 => copyWith(fontWeight: FontWeight.w300);
-  TextStyle get w400 => copyWith(fontWeight: FontWeight.w400);
-  TextStyle get w500 => copyWith(fontWeight: FontWeight.w500);
-  TextStyle get w600 => copyWith(fontWeight: FontWeight.w600);
-  TextStyle get w700 => copyWith(fontWeight: FontWeight.w700);
-  TextStyle get w800 => copyWith(fontWeight: FontWeight.w800);
-  TextStyle get w900 => copyWith(fontWeight: FontWeight.w900);
+  TextStyle get w300 => copyWith(fontWeight: .w300);
+  TextStyle get w400 => copyWith(fontWeight: .w400);
+  TextStyle get w500 => copyWith(fontWeight: .w500);
+  TextStyle get w600 => copyWith(fontWeight: .w600);
+  TextStyle get w700 => copyWith(fontWeight: .w700);
+  TextStyle get w800 => copyWith(fontWeight: .w800);
+  TextStyle get w900 => copyWith(fontWeight: .w900);
 
   TextStyle get f64 => copyWith(fontSize: 64);
   TextStyle get f56 => copyWith(fontSize: 56);

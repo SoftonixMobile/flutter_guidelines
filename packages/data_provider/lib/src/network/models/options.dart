@@ -1,27 +1,13 @@
-class NetworkOptions {
-  String? method;
-  Duration? sendTimeout;
-  Duration? receiveTimeout;
-  Duration? connectTimeout;
-  Map<String, Object?>? extra;
-  Map<String, Object?>? headers;
-  bool? preserveHeaderCase;
-  String? contentType;
-  bool? receiveDataWhenStatusError;
-  bool? followRedirects;
-  int? maxRedirects;
-
-  NetworkOptions({
-    this.method,
-    this.sendTimeout,
-    this.receiveTimeout,
-    this.connectTimeout,
-    this.extra,
-    this.headers,
-    this.preserveHeaderCase,
-    this.contentType,
-    this.receiveDataWhenStatusError,
-    this.followRedirects,
-    this.maxRedirects,
-  });
-}
+class NetworkOptions({
+  var String? method,
+  var Duration? sendTimeout,
+  var Duration? receiveTimeout,
+  var Duration? connectTimeout,
+  var Map<String, Object?>? extra,
+  var Map<String, Object?>? headers,
+  var bool? preserveHeaderCase,
+  var String? contentType,
+  var bool? receiveDataWhenStatusError,
+  var bool? followRedirects,
+  var int? maxRedirects,
+});

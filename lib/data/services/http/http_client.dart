@@ -8,41 +8,39 @@ import 'package:flutter_guidelines/core/logger/logger.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
+
 import 'adapters/index.dart';
 
-class HttpClient extends ApiClient implements AuthSession {
-  late final Dio _dio;
-  late final Fresh<AuthResponse> _fresh;
+class HttpClient({
+  @ignoreParam Dio? dio,
+  @ignoreParam Fresh<AuthResponse>? fresh,
+  @ignoreParam JsonDataParser? jsonParser,
+  required Logger logger,
+}) extends ApiClient implements AuthSession {
+  final Dio _dio =
+      dio ??
+      Dio(
+        BaseOptions(
+          baseUrl: DioOptions.baseUrl,
+          connectTimeout: DioOptions.connectTimeout,
+          receiveTimeout: DioOptions.receiveTimeout,
+        ),
+      );
 
-  HttpClient({
-    @ignoreParam Dio? dio,
-    @ignoreParam Fresh<AuthResponse>? fresh,
-    @ignoreParam JsonDataParser? jsonParser,
-    required Logger logger,
-  }) : super(jsonParser ?? JsonDataParser()) {
-    _dio =
-        dio ??
-        Dio(
-          BaseOptions(
-            baseUrl: DioOptions.baseUrl,
-            connectTimeout: DioOptions.connectTimeout,
-            receiveTimeout: DioOptions.receiveTimeout,
-          ),
-        );
+  final Fresh<AuthResponse> _fresh =
+      fresh ??
+      Fresh<AuthResponse>(
+        tokenHeader: (token) => {
+          'Authorization': 'Bearer ${token.accessToken}',
+        },
+        tokenStorage: SecureTokenStorage(logger),
+        refreshToken: (token, client) {
+          // throws a RevokeTokenException to trigger a logout
+          throw RevokeTokenException();
+        },
+      );
 
-    _fresh =
-        fresh ??
-        Fresh<AuthResponse>(
-          tokenHeader: (token) => {
-            'Authorization': 'Bearer ${token.accessToken}',
-          },
-          tokenStorage: SecureTokenStorage(logger),
-          refreshToken: (token, client) {
-            // throws a RevokeTokenException to trigger a logout
-            throw RevokeTokenException();
-          },
-        );
-
+  this : super(jsonParser ?? JsonDataParser()) {
     _dio.interceptors.addAll([
       _fresh,
       HttpInterceptor(logger),
@@ -57,9 +55,9 @@ class HttpClient extends ApiClient implements AuthSession {
   Stream<AuthStatus> get authenticationStatus =>
       _fresh.authenticationStatus.map((status) {
         return switch (status) {
-          AuthenticationStatus.initial => AuthStatus.initial,
-          AuthenticationStatus.unauthenticated => AuthStatus.unauthenticated,
-          AuthenticationStatus.authenticated => AuthStatus.authenticated,
+          .initial => .initial,
+          .unauthenticated => .unauthenticated,
+          .authenticated => .authenticated,
         };
       });
 
@@ -78,7 +76,7 @@ class HttpClient extends ApiClient implements AuthSession {
       return await request();
     } on DioException catch (e) {
       Error.throwWithStackTrace(
-        RemoteExceptionMapper.fromDioException(e),
+        AppExceptionMapper.fromDioException(e),
         e.stackTrace,
       );
     }

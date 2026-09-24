@@ -3,14 +3,10 @@ import 'dart:math';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-class SliverPinnedOverlapInjector extends SingleChildRenderObjectWidget {
-  const SliverPinnedOverlapInjector({
-    required this.handle,
-    super.key,
-  });
-
-  final SliverOverlapAbsorberHandle handle;
-
+class const SliverPinnedOverlapInjector({
+  required final SliverOverlapAbsorberHandle handle,
+  super.key,
+}) extends SingleChildRenderObjectWidget {
   @override
   RenderSliverPinnedOverlapInjector createRenderObject(BuildContext context) {
     return RenderSliverPinnedOverlapInjector(
@@ -27,16 +23,13 @@ class SliverPinnedOverlapInjector extends SingleChildRenderObjectWidget {
   }
 }
 
-class RenderSliverPinnedOverlapInjector extends RenderSliver {
-  RenderSliverPinnedOverlapInjector({
-    required SliverOverlapAbsorberHandle handle,
-  }) : _handle = handle;
-
+class RenderSliverPinnedOverlapInjector({
+  required var SliverOverlapAbsorberHandle _handle,
+}) extends RenderSliver {
   double? _currentLayoutExtent;
   double? _currentMaxExtent;
 
   SliverOverlapAbsorberHandle get handle => _handle;
-  SliverOverlapAbsorberHandle _handle;
   set handle(SliverOverlapAbsorberHandle value) {
     if (handle == value) return;
     if (attached) {

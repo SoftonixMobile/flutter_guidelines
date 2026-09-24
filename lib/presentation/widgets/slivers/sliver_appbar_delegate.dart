@@ -1,18 +1,12 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-
-  SliverAppBarDelegate({
-    required this.minHeight,
-    required this.maxHeight,
-    required this.child,
-  });
-
+class SliverAppBarDelegate({
+  required final double minHeight,
+  required final double maxHeight,
+  required final Widget child,
+}) extends SliverPersistentHeaderDelegate {
   @override
   double get minExtent => minHeight;
 

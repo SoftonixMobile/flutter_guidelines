@@ -10,11 +10,12 @@ library;
 import 'dart:math' as math;
 import 'dart:ui' show ImageFilter, lerpDouble;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+
+import 'package:cupertino_ui/cupertino_ui.dart';
 
 // Used XD to flutter plugin(https://github.com/AdobeXD/xd-to-flutter-plugin/)
 // to derive values of TextStyle(height and letterSpacing) from
@@ -2429,9 +2430,9 @@ class _CupertinoDialogActionState extends State<CupertinoDialogAction>
 // an odd length.
 class _AlertDialogActionsLayout extends MultiChildRenderObjectWidget {
   const _AlertDialogActionsLayout({
-    required double dividerThickness,
+    required this._dividerThickness,
     required super.children,
-  }) : _dividerThickness = dividerThickness;
+  });
 
   final double _dividerThickness;
 
@@ -2452,9 +2453,8 @@ class _AlertDialogActionsLayout extends MultiChildRenderObjectWidget {
 class _RenderAlertDialogActionsLayout extends RenderFlex {
   _RenderAlertDialogActionsLayout({
     List<RenderBox>? children,
-    required double dividerThickness,
-  })  : _dividerThickness = dividerThickness,
-        super(
+    required this._dividerThickness,
+  })  : super(
           direction: Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2674,9 +2674,8 @@ class _PriorityColumn extends MultiChildRenderObjectWidget {
 class _RenderPriorityColumn extends RenderFlex {
   _RenderPriorityColumn({
     List<RenderBox>? children,
-    required double bottomMinHeight,
-  })  : _bottomMinHeight = bottomMinHeight,
-        super(
+    required this._bottomMinHeight,
+  })  : super(
           direction: Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,

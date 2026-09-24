@@ -7,11 +7,8 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
 @lazySingleton
-class ChatsRepository extends ListRepositoryBase<Chat> {
-  final ChatsService _chatsService;
-
-  ChatsRepository(this._chatsService);
-
+class ChatsRepository(final ChatsService _chatsService)
+    extends ListRepositoryBase<Chat> {
   FutureOr<List<Chat>> getChats({bool refresh = false}) {
     return load(_chatsService.getAllChats, refresh: refresh);
   }

@@ -6,9 +6,9 @@ import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
 
-class _MockAuthRepository extends Mock implements AuthRepository {}
+class _MockAuthRepository() extends Mock implements AuthRepository;
 
-class _MockUserRepository extends Mock implements UserRepository {}
+class _MockUserRepository() extends Mock implements UserRepository;
 
 // Tests for AuthBloc using bloc_test lib
 void main() {
@@ -103,7 +103,7 @@ void main() {
           ..add(const AuthEvent.signOut())
           ..add(
             const AuthEvent.authenticationStatusChanged(
-              AuthStatus.unauthenticated,
+              .unauthenticated,
             ),
           );
       },

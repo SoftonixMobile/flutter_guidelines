@@ -1,40 +1,24 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
-class TextInputFormField extends StatefulWidget {
-  const TextInputFormField({
-    super.key,
-    required this.fieldBloc,
-    this.label = '',
-    this.hintText,
-    this.isObscureText = false,
-    this.fieldFocusNode,
-    this.nextFieldFocusNode,
-    this.onSubmit,
-  });
-
-  final TextFieldBloc fieldBloc;
-
-  final String label;
-
-  final String? hintText;
-
-  final bool isObscureText;
-
-  final FocusNode? fieldFocusNode;
-  final FocusNode? nextFieldFocusNode;
-
-  final VoidCallback? onSubmit;
-
+class const TextInputFormField({
+  super.key,
+  required final TextFieldBloc fieldBloc,
+  final String label = '',
+  final String? hintText,
+  final bool isObscureText = false,
+  final FocusNode? fieldFocusNode,
+  final FocusNode? nextFieldFocusNode,
+  final VoidCallback? onSubmit,
+}) extends StatefulWidget {
   @override
   State<TextInputFormField> createState() => _TextInputFormFieldState();
 }
 
-class _TextInputFormFieldState extends State<TextInputFormField> {
+class _TextInputFormFieldState() extends State<TextInputFormField> {
   late final TextEditingController _controller;
 
   @override
@@ -80,7 +64,7 @@ class _TextInputFormFieldState extends State<TextInputFormField> {
           child: TextField(
             controller: _controller,
             autocorrect: false,
-            textInputAction: TextInputAction.next,
+            textInputAction: .next,
             focusNode: widget.fieldFocusNode,
             obscureText: widget.isObscureText,
             onChanged: widget.fieldBloc.changeValue,

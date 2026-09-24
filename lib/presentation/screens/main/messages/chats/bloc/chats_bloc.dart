@@ -13,24 +13,23 @@ part 'chats_state.dart';
 part 'chats_bloc.freezed.dart';
 
 @injectable
-class ChatsBloc extends Bloc<ChatsEvent, ChatsState> {
-  final ChatsRepository _chatsRepository;
-
-  ChatsBloc(this._chatsRepository) : super(const ChatsState()) {
+class ChatsBloc(final ChatsRepository _chatsRepository)
+    extends Bloc<ChatsEvent, ChatsState> {
+  this : super(const ChatsState()) {
     on<_Load>(_load);
   }
 
   FutureOr<void> _load(_Load event, Emitter<ChatsState> emit) async {
-    emit(state.copyWith(status: NetworkStatus.loading));
+    emit(state.copyWith(status: .loading));
 
     try {
       final chats = await _chatsRepository.getChats();
 
-      emit(ChatsState.success(chats));
+      emit(.success(chats));
     } catch (e, stackTrace) {
       addError(e, stackTrace);
 
-      emit(state.copyWith(status: NetworkStatus.failure));
+      emit(state.copyWith(status: .failure));
     }
   }
 }

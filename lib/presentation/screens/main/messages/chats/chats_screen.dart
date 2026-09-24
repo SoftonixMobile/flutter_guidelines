@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
+
 import 'bloc/chats_bloc.dart';
 
 @RoutePage()
-class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
-  const ChatsScreen({super.key});
-
+class const ChatsScreen({super.key})
+    extends StatelessWidget
+    implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
@@ -53,7 +53,7 @@ class ChatsScreen extends StatelessWidget implements AutoRouteWrapper {
                             ChatDetailsRoute(chat: chat),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8),
+                            padding: const .all(8),
                             child: Text(
                               chat.name,
                               style: typography.bodySmall,

@@ -7,12 +7,9 @@ import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
 @LazySingleton(scope: 'auth')
-class UserRepository extends RepositoryBase<UserProfile> {
-  final UserData _userData;
-  final UserService _userService;
-
-  UserRepository(this._userData, this._userService)
-    : super(initialValue: const UserProfile());
+class UserRepository(final UserData _userData, final UserService _userService)
+    extends RepositoryBase<UserProfile> {
+  this : super(initialValue: const UserProfile());
 
   FutureOr<UserProfile> getUserProfile({bool refresh = false}) {
     return load(_userService.getUserProfile, refresh: refresh);

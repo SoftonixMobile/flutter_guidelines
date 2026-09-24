@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:meta/meta.dart';
 
-abstract class RepositoryBase<T> {
+abstract class RepositoryBase<T>({required T initialValue}) {
   T _data;
   bool _isDataLoaded = false;
 
-  RepositoryBase({required T initialValue}) : _data = initialValue;
+  this : _data = initialValue;
 
   T get data => _data;
   bool get isDataLoaded => _isDataLoaded;

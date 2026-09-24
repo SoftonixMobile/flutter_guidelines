@@ -1,13 +1,9 @@
 import 'package:data_provider/src/network/json_parser.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'models/index.dart';
 
-abstract class ApiClient {
-  @protected
-  final JsonParser jsonParser;
-
-  ApiClient(this.jsonParser);
-
+abstract class ApiClient(@protected final JsonParser jsonParser) {
   void registerType<T>(T Function(Map<String, dynamic>) fromJson) {
     jsonParser.registerType(fromJson);
   }

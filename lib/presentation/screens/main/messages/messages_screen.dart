@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
 
 @RoutePage()
-class MessagesScreen extends StatelessWidget {
-  const MessagesScreen({super.key});
-
+class const MessagesScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [

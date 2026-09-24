@@ -9,20 +9,18 @@ import 'package:flutter_guidelines/domain/repositories/index.dart';
 typedef UserState = NetworkState<UserProfile>;
 
 @singleton
-class UserBloc extends NetworkBloc<UserProfile, UserState> {
-  final UserRepository _userRepository;
-
-  UserBloc(
-    this._userRepository,
-  ) : super(const UserState(data: UserProfile()));
+class UserBloc(
+  final UserRepository _userRepository,
+) extends NetworkBloc<UserProfile, UserState> {
+  this : super(const UserState(data: UserProfile()));
 
   @override
-  FutureOr<UserProfile> onLazyLoad() async {
+  FutureOr<UserProfile> onLazyLoad() {
     return _userRepository.getUserProfile();
   }
 
   @override
   Future<UserProfile> onLoadAsync() async {
-    return _userRepository.getUserProfile(refresh: true);
+    return await _userRepository.getUserProfile(refresh: true);
   }
 }

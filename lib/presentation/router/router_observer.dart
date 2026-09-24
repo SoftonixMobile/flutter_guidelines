@@ -1,14 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:auto_route/auto_route.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/logger/logger.dart';
 
-class RouterObserver extends AutoRouterObserver {
-  final Logger _logger;
-
-  RouterObserver(this._logger);
-
+class RouterObserver(final Logger _logger) extends AutoRouterObserver {
   @override
   void didPush(Route route, Route? previousRoute) {
     _logger.log(

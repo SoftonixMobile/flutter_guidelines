@@ -12,16 +12,13 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 @Injectable(scope: 'auth')
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository _authRepository;
-  final UserRepository _userRepository;
-
+class AuthBloc(
+  final AuthRepository _authRepository,
+  final UserRepository _userRepository,
+) extends Bloc<AuthEvent, AuthState> {
   late final StreamSubscription<AuthStatus> _statusSubscription;
 
-  AuthBloc(
-    this._authRepository,
-    this._userRepository,
-  ) : super(const AuthState()) {
+  this : super(const AuthState()) {
     _statusSubscription = _authRepository.authenticationStatus.listen((status) {
       add(AuthEvent.authenticationStatusChanged(status));
     });
@@ -56,6 +53,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   Future<void> close() async {
     await _statusSubscription.cancel();
-    return super.close();
+    return await super.close();
   }
 }

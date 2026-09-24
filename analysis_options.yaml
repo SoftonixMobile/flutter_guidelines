@@ -13,12 +13,18 @@ analyzer:
     invalid_annotation_target: false
 
   exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
     - bricks/**
     - "**/*.g.dart"
     - "**/*.config.dart"
     - "**/*.freezed.dart"
     - "**/*.gen.dart"
-    #- '**/*.gr.dart'
 
 linter:
   rules:
@@ -34,3 +40,5 @@ linter:
     specify_nonobvious_property_types: false
     document_ignores: false
     avoid_positional_boolean_parameters: false
+    prefer_const_constructors_in_immutables: false
+    use_primary_constructors: true

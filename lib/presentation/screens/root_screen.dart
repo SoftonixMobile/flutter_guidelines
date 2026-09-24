@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/router/index.dart';
+
 import '../blocs/auth/auth_bloc.dart';
 
 @RoutePage()
-class RootScreen extends StatelessWidget {
-  const RootScreen({super.key});
-
+class const RootScreen({super.key}) extends StatelessWidget {
   void _removeSplashScreen() {
     FlutterNativeSplash.remove();
   }

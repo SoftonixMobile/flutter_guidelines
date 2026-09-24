@@ -2,11 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_guidelines/core/logger/logger.dart';
 
-class MultiLogger extends Logger {
-  final List<Logger> _loggers;
-
-  MultiLogger(this._loggers);
-
+class MultiLogger(final List<Logger> _loggers) extends Logger {
   @override
   Future<void> init() {
     return Future.wait(_loggers.map((logger) => logger.init()));

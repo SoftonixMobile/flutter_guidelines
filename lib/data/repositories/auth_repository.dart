@@ -5,27 +5,22 @@ import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
 @LazySingleton(scope: 'auth')
-class AuthRepository {
-  final AuthSession _authSession;
-  final AuthService _authService;
-
-  AuthRepository(
-    this._authSession,
-    this._authService,
-  );
-
+class AuthRepository(
+  final AuthSession _authSession,
+  final AuthService _authService,
+) {
   Stream<AuthStatus> get authenticationStatus =>
       _authSession.authenticationStatus;
 
   Future<void> signIn(String userName, String password) async {
     final authResponse = await _authService.signIn(userName, password);
 
-    return _authSession.setToken(authResponse);
+    return await _authSession.setToken(authResponse);
   }
 
   Future<void> signOut() async {
     await _authService.signOut();
 
-    return _authSession.clearToken();
+    return await _authSession.clearToken();
   }
 }

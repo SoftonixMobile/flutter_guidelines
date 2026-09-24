@@ -1,9 +1,9 @@
-//@GeneratedMicroModule;DataProviderPackageModule;package:data_provider/src/injector/inject_package.module.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'dart:async' as _i687;
 
 import 'package:data_provider/network.dart' as _i164;

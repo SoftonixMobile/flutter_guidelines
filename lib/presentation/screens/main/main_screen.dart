@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
+
 import 'drawer/app_drawer.dart';
 
 @RoutePage()
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
-
+class const MainScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsScaffold(
@@ -29,7 +28,7 @@ class MainScreen extends StatelessWidget {
             ],
           ),
           child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
+            type: .fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
             items: [

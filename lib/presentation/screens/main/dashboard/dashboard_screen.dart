@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
@@ -6,9 +6,7 @@ import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 @RoutePage()
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
-
+class const DashboardScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final typography = context.theme.typographyTheme;

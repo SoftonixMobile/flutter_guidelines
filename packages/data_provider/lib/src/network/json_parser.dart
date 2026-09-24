@@ -1,4 +1,4 @@
-abstract class JsonParser {
+abstract class JsonParser() {
   void registerType<T>(T Function(Map<String, dynamic>) fromJson);
 
   void unregisterType<T>();

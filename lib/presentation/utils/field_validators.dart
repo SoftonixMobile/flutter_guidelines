@@ -1,4 +1,4 @@
-abstract final class FieldValidators {
+abstract final class FieldValidators() {
   static final _emailRegExp = RegExp(
     r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$',
   );

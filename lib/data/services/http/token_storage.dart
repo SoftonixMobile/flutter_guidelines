@@ -7,13 +7,11 @@ import 'package:fresh_dio/fresh_dio.dart';
 import 'package:flutter_guidelines/core/logger/logger.dart';
 import 'package:flutter_guidelines/data/constants/index.dart';
 
-class SecureTokenStorage extends TokenStorage<AuthResponse> {
+class SecureTokenStorage(final Logger _logger)
+    extends TokenStorage<AuthResponse> {
   static const _tokenKey = StorageKeys.tokenKey;
 
-  final Logger _logger;
   final _storage = const FlutterSecureStorage();
-
-  SecureTokenStorage(this._logger);
 
   @override
   Future<AuthResponse?> read() async {

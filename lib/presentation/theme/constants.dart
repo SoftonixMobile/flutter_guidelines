@@ -1,3 +1,3 @@
-abstract final class AppThemeConstants {
+abstract final class AppThemeConstants() {
   static const double buttonHeight = 48;
 }

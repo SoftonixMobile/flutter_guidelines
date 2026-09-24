@@ -1,4 +1,4 @@
-abstract class Logger {
+abstract class Logger() {
   Future<void> init() async {}
 
   void registerUser({

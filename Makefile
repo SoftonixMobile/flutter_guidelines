@@ -17,13 +17,14 @@ lang:
 	dart run stx_easy_localization_generator:generate -f keys -O lib/presentation/localization -o locale_keys.g.dart
 
 sort:
-	dart run import_sorter:main
+	dart run tidy_imports
 
 fix:
 	dart fix --apply
 
 format:
 	dart format .
+	make lang
 
 lint:
 	flutter analyze .
