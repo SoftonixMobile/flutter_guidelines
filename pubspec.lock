@@ -2,21 +2,21 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   _fe_analyzer_shared:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: _fe_analyzer_shared
-      sha256: "1b0e6a07425a3e460666e88bf1c949ccc7bb0116ad562ce94a1eca60fe820725"
+      sha256: fdcd9f70f9eb80df3bc5ed0fa67280df2595fd481948df8a9ab082e6a40ad04b
       url: "https://pub.dev"
     source: hosted
-    version: "103.0.0"
+    version: "108.0.0"
   analyzer:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: analyzer
-      sha256: "61c04d0c1bfed555c681ea079519933f071a5a026578ff73c4ff0df2d3462e5e"
+      sha256: a51c769bff3b6dfbe9d60199b8606d808290702a296bef0c26a4ca391d414e46
       url: "https://pub.dev"
     source: hosted
-    version: "13.3.0"
+    version: "14.4.0"
   analyzer_buffer:
     dependency: transitive
     description:
@@ -61,10 +61,10 @@ packages:
     dependency: "direct main"
     description:
       name: auto_route
-      sha256: e9acfeb3df33d188fce4ad0239ef4238f333b7aa4d95ec52af3c2b9360dcd969
+      sha256: "538d8eb2ffc48de30abb30d4545a90405b5f8a29248b82d5e4b2977a79bfd229"
       url: "https://pub.dev"
     source: hosted
-    version: "11.1.0"
+    version: "11.2.0"
   auto_route_generator:
     dependency: "direct dev"
     description:
@@ -197,10 +197,10 @@ packages:
     dependency: transitive
     description:
       name: code_assets
-      sha256: cfd4f5f575a49c5f10ca856e9846073f1e6c3ee94912377eea5f6cefc5272941
+      sha256: "828110d598123b5ea96c00c9f3c72105bf79f8ee36c20a39b26209ade421ec57"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   code_builder:
     dependency: transitive
     description:
@@ -265,6 +265,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
+  cupertino_ui:
+    dependency: transitive
+    description:
+      name: cupertino_ui
+      sha256: c23816577a1280cff409e989541767887011f8f1d8c1863a794ed308af46f2a9
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   customizable_cupertino_dialog:
     dependency: "direct main"
     description:
@@ -348,10 +356,10 @@ packages:
     dependency: transitive
     description:
       name: equatable
-      sha256: "3bce007a596ff8b3119c45d68aaef631272537c03d30e5d4534dd24bf4c5eaa2"
+      sha256: ea36e500cbf0ec18361deabca755434f73e42fe53c5130021c7e2d6b5ebe1702
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "3.0.0"
   extended_nested_scroll_view:
     dependency: "direct main"
     description:
@@ -462,18 +470,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_secure_storage
-      sha256: d87713a152ee2f255117bdbbf43da1dea1797e0551e499e0334f0c9dcfafddd2
+      sha256: d4e1fb6b2cb524868929e78dc0282fa000554b22060fb53789dc481c9fc95bb8
       url: "https://pub.dev"
     source: hosted
-    version: "11.1.1"
+    version: "11.2.0"
   flutter_secure_storage_darwin:
     dependency: transitive
     description:
       name: flutter_secure_storage_darwin
-      sha256: d0b136b1e21fd4081170fc394e64197046ce889e8f63f2370a13e41b832cc044
+      sha256: a031ceac9b070e62ef183cd7f7d1a8798ebde402d5049f0fe6eb3a51bd797a21
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.2"
+    version: "0.4.3"
   flutter_secure_storage_linux:
     dependency: transitive
     description:
@@ -486,10 +494,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_secure_storage_platform_interface
-      sha256: "4bc033841169d07f690d46d89dbc3f5305b6562820822445384c82e0866e2719"
+      sha256: "64951127f001f546891c86f414972bf49ef2c4c8a4c92c65f5790cc0c9100045"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.1"
   flutter_secure_storage_web:
     dependency: transitive
     description:
@@ -528,10 +536,10 @@ packages:
     dependency: "direct dev"
     description:
       name: freezed
-      sha256: "541a82723c84298f3ca46a6c2186935aa21ad529ad1f1423d67af18040494f51"
+      sha256: "3af98c92d7d4dd182ea1393193e69a840fcbaee1f66f1158bd20504e5f3f6f4f"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.2"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -568,10 +576,10 @@ packages:
     dependency: "direct main"
     description:
       name: get_it
-      sha256: "568d62f0e68666fb5d95519743b3c24a34c7f19d834b0658c46e26d778461f66"
+      sha256: "2b5c6b077aad30bba9782178baff6076a2044141f1d5f2f15b43bca3fbe74874"
       url: "https://pub.dev"
     source: hosted
-    version: "9.2.1"
+    version: "9.3.0"
   glob:
     dependency: transitive
     description:
@@ -796,6 +804,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
+  material_ui:
+    dependency: transitive
+    description:
+      name: material_ui
+      sha256: "134ab2f0843545c4e661e4ba2753fe1bcf0753cb690d5a9ee4870638a40411e9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   meta:
     dependency: transitive
     description:
@@ -1125,10 +1141,10 @@ packages:
     dependency: transitive
     description:
       name: source_gen
-      sha256: a603f1fb984a7391ae5978d1b92bfaaa08b350dca5c825256f925818f7943bf5
+      sha256: "11b6047da8e4eb6c643ccac3d0fda3f9c9e11651695f7da24a85ade8aff15a44"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.4"
+    version: "4.3.0"
   source_helper:
     dependency: transitive
     description:
@@ -1197,10 +1213,10 @@ packages:
     dependency: "direct main"
     description:
       name: stx_bloc_base
-      sha256: d5538432399a7cf28243b67f8af67cebc9f1860f9d6184f35abb2ba9d14eae18
+      sha256: "820909a582e3cd2969ee0e38ccb1439ff86f7e8d57f0d01c2779efc0c5341ae7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.2"
+    version: "0.7.0"
   stx_easy_localization_generator:
     dependency: "direct main"
     description:
@@ -1213,18 +1229,18 @@ packages:
     dependency: "direct main"
     description:
       name: stx_flutter_form_bloc
-      sha256: "53b49dd08f0a02cc66def31b27156e53dda9e7e15444f9eb556875a5c5e551ee"
+      sha256: f9872c747066dd60b8436b0de18ef27f2ecc64d12b254206aa59f7bf12e3423d
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.1.0"
   stx_form_bloc:
     dependency: transitive
     description:
       name: stx_form_bloc
-      sha256: "3327da34ee6ce550f36cce8621c101bb30f451cbb6a1e1e5d3ddf730cb333fc3"
+      sha256: "9ec9cda3fb81d490f778e68c0a38616caa780404ee1cbc0c204ba23aa3800cb2"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.2"
+    version: "4.1.0"
   tab_indicator_styler:
     dependency: "direct main"
     description:
@@ -1269,10 +1285,10 @@ packages:
     dependency: "direct dev"
     description:
       name: tidy_imports
-      sha256: "4e87d8f9cc256dcc5888fb723222c75914c3b4c57b25920486ad544e5f663289"
+      sha256: "74f3fa428bc232a2737630f4166992cb3549d72f293690f6d7bced102494cba2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "2.5.0"
   time:
     dependency: transitive
     description:
@@ -1405,10 +1421,10 @@ packages:
     dependency: transitive
     description:
       name: vector_math
-      sha256: f36f9f3be64c6198714492bb455c11056e33e2f85d9a0b676a48301e44fdcf47
+      sha256: "92b9910f66ed1057fd4da7b040ae7c74cafacf885bdc81be496928d5049b032d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.4.3"
   version:
     dependency: transitive
     description:

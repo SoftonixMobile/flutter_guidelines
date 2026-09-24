@@ -1,3 +1,8 @@
+# 0.16.2
+
+- Update dependencies (`stx_bloc_base` 0.7.0, `stx_flutter_form_bloc` 3.1.0, `get_it`, `auto_route`, `flutter_secure_storage`, `freezed`, `tidy_imports` 2.5.0).
+- Override `analyzer` and `_fe_analyzer_shared` versions.
+
 # 0.16.1
 
 - Enable `use_primary_constructors` lint and apply primary constructors across the template.
