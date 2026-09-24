@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart' hide CupertinoAlertDialog;
-import 'package:flutter/material.dart';
-
+import 'package:cupertino_ui/cupertino_ui.dart' hide CupertinoAlertDialog;
+import 'package:material_ui/material_ui.dart';
 import 'package:upgrader/upgrader.dart';
 
 import 'app_upgrade_alert.dart';
