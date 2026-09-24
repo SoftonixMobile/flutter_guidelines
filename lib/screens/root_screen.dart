@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/blocs/index.dart';
 import 'package:flutter_guidelines/router/index.dart';
