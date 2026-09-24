@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart' hide CupertinoDialogAction;
-import 'package:flutter/material.dart';
-
+import 'package:cupertino_ui/cupertino_ui.dart' hide CupertinoDialogAction;
 import 'package:customizable_cupertino_dialog/customizable_cupertino_dialog.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:upgrader/upgrader.dart';
 
 class AppUpgradeAlert({
@@ -132,21 +131,13 @@ class AppUpgradeAlertState() extends UpgradeAlertState {
     VoidCallback? onPressed,
     bool isDefaultAction = false,
   }) {
-    if (!cupertino) {
-      return super.button(
-        cupertino: cupertino,
-        context: context,
-        text: text,
-        onPressed: onPressed,
-        isDefaultAction: isDefaultAction,
-      );
-    }
-
-    return CupertinoDialogAction(
-      textStyle: widget.cupertinoButtonTextStyle,
-      onPressed: onPressed,
-      isDefaultAction: isDefaultAction,
-      child: Text(text ?? ''),
-    );
+    return cupertino
+        ? CupertinoDialogAction(
+            textStyle: widget.cupertinoButtonTextStyle,
+            onPressed: onPressed,
+            isDefaultAction: isDefaultAction,
+            child: Text(text ?? ''),
+          )
+        : TextButton(onPressed: onPressed, child: Text(text ?? ''));
   }
 }

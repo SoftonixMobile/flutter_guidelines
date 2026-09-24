@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:{{project_name}}/screens/auth/login/widgets/index.dart';
 import 'package:{{project_name}}/widgets/index.dart';

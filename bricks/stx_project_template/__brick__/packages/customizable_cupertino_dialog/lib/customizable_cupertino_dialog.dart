@@ -1,8 +1,7 @@
 /// This file is a copy of Cupertino's `dialog.dart`
 /// with customizations for `dialogColor`.
 ///
-/// @docImport 'package:flutter/cupertino.dart';
-/// @docImport 'package:flutter/material.dart';
+/// @docImport 'package:cupertino_ui/cupertino_ui.dart';
 // ignore_for_file: lines_longer_than_80_chars, prefer_asserts_with_message, avoid_private_typedef_functions, avoid_positional_boolean_parameters
 
 library;
@@ -10,11 +9,12 @@ library;
 import 'dart:math' as math;
 import 'dart:ui' show ImageFilter, lerpDouble;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+
+import 'package:cupertino_ui/cupertino_ui.dart';
 
 // Used XD to flutter plugin(https://github.com/AdobeXD/xd-to-flutter-plugin/)
 // to derive values of TextStyle(height and letterSpacing) from
@@ -203,7 +203,7 @@ bool _isInAccessibilityMode(BuildContext context) {
 /// To display action buttons that look like standard iOS dialog buttons,
 /// provide [CupertinoDialogAction]s for the [actions] given to this dialog.
 ///
-/// Typically passed as the child widget to [showDialog], which displays the
+/// Typically passed as the child widget to [showCupertinoDialog], which displays the
 /// dialog.
 ///
 /// {@tool dartpad}
@@ -219,7 +219,7 @@ bool _isInAccessibilityMode(BuildContext context) {
 ///  * [CupertinoPopupSurface], which is a generic iOS-style popup surface that
 ///    holds arbitrary content to create custom popups.
 ///  * [CupertinoDialogAction], which is an iOS-style dialog button.
-///  * [AlertDialog], a Material Design alert dialog.
+///  * `AlertDialog` from `package:material_ui`, a Material Design alert dialog.
 ///  * <https://developer.apple.com/design/human-interface-guidelines/alerts/>
 class CustomizableCupertinoAlertDialog extends StatefulWidget {
   /// Creates an iOS-style alert dialog.
@@ -2429,9 +2429,9 @@ class _CupertinoDialogActionState extends State<CupertinoDialogAction>
 // an odd length.
 class _AlertDialogActionsLayout extends MultiChildRenderObjectWidget {
   const _AlertDialogActionsLayout({
-    required double dividerThickness,
+    required this._dividerThickness,
     required super.children,
-  }) : _dividerThickness = dividerThickness;
+  });
 
   final double _dividerThickness;
 
@@ -2452,9 +2452,8 @@ class _AlertDialogActionsLayout extends MultiChildRenderObjectWidget {
 class _RenderAlertDialogActionsLayout extends RenderFlex {
   _RenderAlertDialogActionsLayout({
     List<RenderBox>? children,
-    required double dividerThickness,
-  })  : _dividerThickness = dividerThickness,
-        super(
+    required this._dividerThickness,
+  })  : super(
           direction: Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -2674,9 +2673,8 @@ class _PriorityColumn extends MultiChildRenderObjectWidget {
 class _RenderPriorityColumn extends RenderFlex {
   _RenderPriorityColumn({
     List<RenderBox>? children,
-    required double bottomMinHeight,
-  })  : _bottomMinHeight = bottomMinHeight,
-        super(
+    required this._bottomMinHeight,
+  })  : super(
           direction: Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,

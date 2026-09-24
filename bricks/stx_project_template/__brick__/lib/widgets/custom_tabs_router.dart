@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 import 'package:{{project_name}}/core/helpers/index.dart';

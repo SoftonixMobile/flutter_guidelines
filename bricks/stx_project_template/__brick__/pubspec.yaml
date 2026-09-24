@@ -16,6 +16,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  #design libraries
+  material_ui: ^1.4.0
+  cupertino_ui: ^1.1.1
+
   customizable_cupertino_dialog:
     path: packages/customizable_cupertino_dialog
 

@@ -1,3 +1,9 @@
+# 0.16.3
+
+- Migrate from `package:flutter/material.dart` / `package:flutter/cupertino.dart` to `material_ui` and `cupertino_ui`.
+- Add `material_ui` localization delegates and wrap the app in `MaterialUiCompatibilityBridge` for dependencies still using `flutter/material`.
+- Migrate `customizable_cupertino_dialog` to `cupertino_ui`.
+
 # 0.16.2
 
 - Update dependencies (`stx_bloc_base` 0.7.0, `stx_flutter_form_bloc` 3.1.0, `get_it`, `auto_route`, `flutter_secure_storage`, `freezed`, `tidy_imports` 2.5.0).

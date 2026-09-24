@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/app/index.dart';
 import 'package:flutter_guidelines/localization/index.dart';
