@@ -9,8 +9,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:auto_route/auto_route.dart' as _i12;
-import 'package:flutter/material.dart' as _i13;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i14;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_screen.dart'
     as _i4;
@@ -34,6 +34,7 @@ import 'package:flutter_guidelines/presentation/screens/main/settings/settings_s
     as _i11;
 import 'package:flutter_guidelines/presentation/screens/root_screen.dart'
     as _i10;
+import 'package:material_ui/material_ui.dart' as _i13;
 
 /// generated route for
 /// [_i1.ChatDetailsScreen]

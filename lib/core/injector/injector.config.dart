@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:flutter_guidelines/data/repositories/auth_repository.dart'
     as _i776;
 import 'package:flutter_guidelines/data/repositories/chats_repository.dart'
@@ -18,7 +19,6 @@ import 'package:flutter_guidelines/data/repositories/posts_repository.dart'
 import 'package:flutter_guidelines/data/repositories/user_repository.dart'
     as _i365;
 import 'package:flutter_guidelines/data/services/index.dart' as _i349;
-import 'package:flutter_guidelines/domain/auth/index.dart' as _i826;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i595;
 import 'package:flutter_guidelines/domain/repositories/index.dart' as _i64;
 import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
@@ -78,8 +78,8 @@ extension GetItInjectableX on _i174.GetIt {
       init: (_i526.GetItHelper gh) {
         gh.lazySingleton<_i776.AuthRepository>(
           () => _i776.AuthRepository(
-            gh<_i826.AuthSession>(),
             gh<_i349.AuthService>(),
+            gh<_i349.SessionService>(),
           ),
         );
         gh.lazySingleton<_i365.UserRepository>(

@@ -2,10 +2,11 @@ import 'package:data_provider/injector.dart';
 import 'package:data_provider/network.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:secure_storage/secure_storage.dart';
 
+import 'package:flutter_guidelines/core/config/app_config.dart';
 import 'package:flutter_guidelines/core/logger/logger.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
-import 'package:flutter_guidelines/domain/auth/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 
@@ -19,16 +20,19 @@ void configureAuthDependencies({
   required Logger logger,
 }) {
   final userData = UserData(userProfile: const UserProfile());
-  final httpClient = HttpClient(logger: logger);
+  final apiClient = DioApiClient(
+    baseUrl: AppConfig.appApiUrl,
+    storage: const SecureStorage(),
+  );
 
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
     ..registerSingleton<UserData>(userData)
-    ..registerSingleton<AuthSession>(httpClient)
-    ..registerSingleton<ApiClient>(httpClient)
-    ..registerFactory(() => AuthService(httpClient))
-    ..registerFactory(() => UserService(httpClient))
+    ..registerSingleton<ApiClient>(apiClient)
+    ..registerFactory(() => AuthService(apiClient))
+    ..registerFactory(() => SessionService(apiClient))
+    ..registerFactory(() => UserService(apiClient))
     ..initAuthScope();
 }
 

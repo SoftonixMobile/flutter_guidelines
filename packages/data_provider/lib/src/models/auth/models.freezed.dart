@@ -14,44 +14,44 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$AuthResponse {
+mixin _$TokenResponse {
 
  String get accessToken; String get refreshToken;
-/// Create a copy of AuthResponse
+/// Create a copy of TokenResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$AuthResponseCopyWith<AuthResponse> get copyWith => _$AuthResponseCopyWithImpl<AuthResponse>(this as AuthResponse, _$identity);
+$TokenResponseCopyWith<TokenResponse> get copyWith => _$TokenResponseCopyWithImpl<TokenResponse>(this as TokenResponse, _$identity);
 
-  /// Serializes this AuthResponse to a JSON map.
+  /// Serializes this TokenResponse to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  final _this = this as AuthResponse;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthResponse&&(identical(other.accessToken, _this.accessToken) || other.accessToken == _this.accessToken)&&(identical(other.refreshToken, _this.refreshToken) || other.refreshToken == _this.refreshToken));
+  final _this = this as TokenResponse;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TokenResponse&&(identical(other.accessToken, _this.accessToken) || other.accessToken == _this.accessToken)&&(identical(other.refreshToken, _this.refreshToken) || other.refreshToken == _this.refreshToken));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode {
-  final _this = this as AuthResponse;
+  final _this = this as TokenResponse;
   return Object.hash(runtimeType,_this.accessToken,_this.refreshToken);
 }
 
 @override
 String toString() {
-  final _this = this as AuthResponse;
-  return 'AuthResponse(accessToken: ${_this.accessToken}, refreshToken: ${_this.refreshToken})';
+  final _this = this as TokenResponse;
+  return 'TokenResponse(accessToken: ${_this.accessToken}, refreshToken: ${_this.refreshToken})';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $AuthResponseCopyWith<$Res>  {
-  factory $AuthResponseCopyWith(AuthResponse value, $Res Function(AuthResponse) _then) = _$AuthResponseCopyWithImpl;
+abstract mixin class $TokenResponseCopyWith<$Res>  {
+  factory $TokenResponseCopyWith(TokenResponse value, $Res Function(TokenResponse) _then) = _$TokenResponseCopyWithImpl;
 @useResult
 $Res call({
  String accessToken, String refreshToken
@@ -62,17 +62,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$AuthResponseCopyWithImpl<$Res>
-    implements $AuthResponseCopyWith<$Res> {
-  _$AuthResponseCopyWithImpl(this._self, this._then);
+class _$TokenResponseCopyWithImpl<$Res>
+    implements $TokenResponseCopyWith<$Res> {
+  _$TokenResponseCopyWithImpl(this._self, this._then);
 
-  final AuthResponse _self;
-  final $Res Function(AuthResponse) _then;
+  final TokenResponse _self;
+  final $Res Function(TokenResponse) _then;
 
-/// Create a copy of AuthResponse
+/// Create a copy of TokenResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? accessToken = null,Object? refreshToken = null,}) {
-  return _then(AuthResponse(
+  return _then(TokenResponse(
 accessToken: null == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
 as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
 as String,
@@ -82,8 +82,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [AuthResponse].
-extension AuthResponsePatterns on AuthResponse {
+/// Adds pattern-matching-related methods to [TokenResponse].
+extension TokenResponsePatterns on TokenResponse {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -96,10 +96,10 @@ extension AuthResponsePatterns on AuthResponse {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AuthResponse value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TokenResponse value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _AuthResponse() when $default != null:
+case _TokenResponse() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -118,10 +118,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AuthResponse value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TokenResponse value)  $default,){
 final _that = this;
 switch (_that) {
-case _AuthResponse():
+case _TokenResponse():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -136,10 +136,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AuthResponse value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TokenResponse value)?  $default,){
 final _that = this;
 switch (_that) {
-case _AuthResponse() when $default != null:
+case _TokenResponse() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -159,7 +159,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String accessToken,  String refreshToken)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _AuthResponse() when $default != null:
+case _TokenResponse() when $default != null:
 return $default(_that.accessToken,_that.refreshToken);case _:
   return orElse();
 
@@ -180,7 +180,7 @@ return $default(_that.accessToken,_that.refreshToken);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String accessToken,  String refreshToken)  $default,) {final _that = this;
 switch (_that) {
-case _AuthResponse():
+case _TokenResponse():
 return $default(_that.accessToken,_that.refreshToken);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -197,7 +197,7 @@ return $default(_that.accessToken,_that.refreshToken);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String accessToken,  String refreshToken)?  $default,) {final _that = this;
 switch (_that) {
-case _AuthResponse() when $default != null:
+case _TokenResponse() when $default != null:
 return $default(_that.accessToken,_that.refreshToken);case _:
   return null;
 
@@ -209,27 +209,27 @@ return $default(_that.accessToken,_that.refreshToken);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _AuthResponse implements AuthResponse {
-  const _AuthResponse({required this.accessToken, required this.refreshToken});
-  factory _AuthResponse.fromJson(Map<String, dynamic> json) => _$AuthResponseFromJson(json);
+class _TokenResponse implements TokenResponse {
+  const _TokenResponse({required this.accessToken, required this.refreshToken});
+  factory _TokenResponse.fromJson(Map<String, dynamic> json) => _$TokenResponseFromJson(json);
 
 @override final  String accessToken;
 @override final  String refreshToken;
 
-/// Create a copy of AuthResponse
+/// Create a copy of TokenResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$AuthResponseCopyWith<_AuthResponse> get copyWith => __$AuthResponseCopyWithImpl<_AuthResponse>(this, _$identity);
+_$TokenResponseCopyWith<_TokenResponse> get copyWith => __$TokenResponseCopyWithImpl<_TokenResponse>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$AuthResponseToJson(this, );
+  return _$TokenResponseToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthResponse&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TokenResponse&&(identical(other.accessToken, accessToken) || other.accessToken == accessToken)&&(identical(other.refreshToken, refreshToken) || other.refreshToken == refreshToken));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -240,15 +240,15 @@ int get hashCode {
 
 @override
 String toString() {
-    return 'AuthResponse(accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'TokenResponse(accessToken: $accessToken, refreshToken: $refreshToken)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$AuthResponseCopyWith<$Res> implements $AuthResponseCopyWith<$Res> {
-  factory _$AuthResponseCopyWith(_AuthResponse value, $Res Function(_AuthResponse) _then) = __$AuthResponseCopyWithImpl;
+abstract mixin class _$TokenResponseCopyWith<$Res> implements $TokenResponseCopyWith<$Res> {
+  factory _$TokenResponseCopyWith(_TokenResponse value, $Res Function(_TokenResponse) _then) = __$TokenResponseCopyWithImpl;
 @override @useResult
 $Res call({
  String accessToken, String refreshToken
@@ -259,17 +259,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$AuthResponseCopyWithImpl<$Res>
-    implements _$AuthResponseCopyWith<$Res> {
-  __$AuthResponseCopyWithImpl(this._self, this._then);
+class __$TokenResponseCopyWithImpl<$Res>
+    implements _$TokenResponseCopyWith<$Res> {
+  __$TokenResponseCopyWithImpl(this._self, this._then);
 
-  final _AuthResponse _self;
-  final $Res Function(_AuthResponse) _then;
+  final _TokenResponse _self;
+  final $Res Function(_TokenResponse) _then;
 
-/// Create a copy of AuthResponse
+/// Create a copy of TokenResponse
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? accessToken = null,Object? refreshToken = null,}) {
-  return _then(_AuthResponse(
+  return _then(_TokenResponse(
 accessToken: null == accessToken ? _self.accessToken : accessToken // ignore: cast_nullable_to_non_nullable
 as String,refreshToken: null == refreshToken ? _self.refreshToken : refreshToken // ignore: cast_nullable_to_non_nullable
 as String,

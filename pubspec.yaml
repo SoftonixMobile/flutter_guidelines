@@ -26,6 +26,9 @@ dependencies:
   data_provider:
     path: packages/data_provider
 
+  secure_storage:
+    path: packages/storage/secure_storage
+
   stx_repository:
     path: packages/stx_repository
 
@@ -47,11 +50,6 @@ dependencies:
   #routing
   auto_route: ^11.2.0
 
-  #http
-  dio: ^5.11.1
-  fresh_dio: ^0.6.0
-  dio_smart_retry: ^7.0.1
-
   #code generator for unions/pattern-matching/copy.
   freezed_annotation: ^3.1.0
   json_annotation: ^4.12.0
@@ -62,7 +60,6 @@ dependencies:
 
   #local storage
   shared_preferences: ^2.5.5
-  flutter_secure_storage: ^11.2.0
 
   #icons
   font_awesome_flutter: ^11.0.0

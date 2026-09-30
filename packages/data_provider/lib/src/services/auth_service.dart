@@ -5,13 +5,13 @@ import 'package:injectable/injectable.dart';
 @injectable
 class AuthService(final ApiClient _client) {
   this {
-    _client.registerType(AuthResponse.fromJson);
+    _client.registerType(TokenResponse.fromJson);
   }
 
-  Future<AuthResponse> signIn(String userName, String password) async {
+  Future<TokenResponse> signIn(String userName, String password) async {
     await Future.delayed(const Duration(seconds: 2));
 
-    return const AuthResponse(
+    return const TokenResponse(
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     );

@@ -53,12 +53,12 @@ VS Code `launch.json` has `dev debug`, `dev release`, `prod debug`, `prod releas
 
 **Clean Architecture layers:**
 - `lib/core/` — Config (`AppConfig` via `--dart-define`), constants, base exceptions (`AppException`), initialization, DI (get_it + injectable), abstract `Logger`, utils
-- `lib/domain/` — Domain models (`UserData`, `AuthStatus`, type aliases, data models re-exports), `NetworkException`, abstract `AuthSession`, repository re-exports
-- `lib/data/` — Repositories (extend `stx_repository` base), HTTP service (Dio + Fresh), logger implementations, storage keys
+- `lib/domain/` — Domain models (`UserData`, type aliases, data models re-exports incl. `AuthStatus`), repository re-exports
+- `lib/data/` — Repositories (extend `stx_repository` base), logger implementations
 - `lib/presentation/` — App entry, BLoCs, screens, router (auto_route), localization, theme/design system, reusable widgets
 
 **Dependency injection has two phases (`lib/core/injector/injector.dart`):**
-1. `configureAuthDependencies()` — Registers core singletons (AppRouter, Logger, UserData, HttpClient as both ApiClient and AuthSession) and calls `getIt.initAuthScope()` which adds auth-scoped dependencies: AuthRepository, UserRepository, AuthBloc, LoginFormBloc
+1. `configureAuthDependencies()` — Registers core singletons (AppRouter, Logger, UserData, `DioApiClient` as `ApiClient`) and calls `getIt.initAuthScope()` which adds auth-scoped dependencies: AuthRepository, UserRepository, AuthBloc, LoginFormBloc
 2. `configureUserDependencies()` — Called via `getIt.pushNewScope(init: configureUserDependencies)` inside `MainWrapperScreen.initState`; registers `DataProviderPackageModule` (services) and user-scoped dependencies (UserBloc, PostsRepository, ChatsRepository, PostsBloc, ChatsBloc, DrawerBloc, PostFormBloc)
 
 User-scoped dependencies are torn down when `MainWrapperScreen.dispose()` calls `getIt.popScope()`.
@@ -85,9 +85,10 @@ Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserve
 
 ## Local Packages
 
-- `packages/data_provider/` — Shared data models (UserProfile, Chat, Post, AuthResponse), abstract network layer (ApiClient, JsonParser, NetworkOptions, Response), network services (AuthService, UserService, PostsService, ChatsService). Has its own injectable micro-package module (`DataProviderPackageModule`). Services register their JSON types via `_client.registerType(Model.fromJson)` in constructors.
+- `packages/data_provider/` — Shared data models (UserProfile, Chat, Post, TokenResponse, AuthStatus), network client in `src/client/` (abstract `ApiClient` + `DioApiClient` implementation with Fresh auth and `SecureTokenStorage`, `ApiException` + mapper, `JsonParser`/`JsonDataParser`, `RequestOptions`, `Response`), network services (AuthService, UserService, PostsService, ChatsService). Has its own injectable micro-package module (`DataProviderPackageModule`). Services register their JSON types via `_client.registerType(Model.fromJson)` in constructors.
 - `packages/stx_repository/` — Base repository abstraction with mixins: `SyncLoadRepositoryMixin`, `StreamRepositoryMixin`, `TTLRefreshRepositoryMixin`, `DisposableRepositoryMixin`
 - `packages/customizable_cupertino_dialog/` — Custom iOS dialog widget
+- `packages/storage/` — Key-value `Storage` interface (`storage`) with `SecureStorage` (`secure_storage`, flutter_secure_storage) and `PersistentStorage` (`persistent_storage`, shared_preferences) implementations
 
 ## Code Generation Conventions
 
@@ -189,11 +190,11 @@ After adding a new `@RoutePage()` screen, register it in `lib/presentation/route
 
 **Exception hierarchy:**
 - `AppException` (`lib/core/exceptions/`) — base exception with `String? message`
-- `NetworkException` (`lib/domain/exceptions/`) — extends `AppException`; has `NetworkExceptionType` enum (noConnection, timeout, badRequest, unauthorized, notFound, clientError, serverError, unknown) and `int? statusCode`
+- `ApiException` (`packages/data_provider`) — thrown by `ApiClient`; has `ApiExceptionType` enum (noConnection, timeout, cancelled, badCertificate, badRequest, unauthorized, forbidden, notFound, tooManyRequests, clientError, serviceUnavailable, serverError, unknown), `int? statusCode` and `message` (read from the response body's `message`/`error` when present)
 
-**Flow:** `DioException` → `HttpClient._guard()` → `AppExceptionMapper.fromDioException()` → `NetworkException` → BLoC `addError(e, stackTrace)` → `SimpleBlocObserver.onError()` → `logger.logError()`
+**Flow:** `DioException` → `DioApiClient._guard()` → `ApiExceptionMapper.fromDioException()` → `ApiException` → BLoC `addError(e, stackTrace)` → `SimpleBlocObserver.onError()` → `logger.logError()`
 
-`fresh_dio` throws `RevokeTokenException` on 401 (refreshToken always throws) → `AuthSession.authenticationStatus` emits `unauthenticated` → `AuthBloc` navigates to Login.
+**Session:** `AuthRepository` calls `ApiClient.startSession(token)` / `clearSession()` and exposes `ApiClient.onSessionStatusChanged`. Before each request `DioApiClient` checks the JWT `exp` claim (`TokenHelper.isExpired`, 30 s leeway); an expired token or a 401 hits `refreshToken`, which throws `RevokeTokenException` → session status emits `unauthenticated` → `AuthBloc` navigates to Login.
 
 ## Logger
 
