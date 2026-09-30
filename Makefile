@@ -1,4 +1,4 @@
-.PHONY: get upgrade build watch lang sort fix format lint refactor splash icon setup_hooks
+.PHONY: get upgrade build build_data watch lang sort fix format lint refactor splash icon setup_hooks
 
 get:
 	dart pub get
@@ -8,6 +8,10 @@ upgrade:
 
 build:
 	dart run build_runner build --delete-conflicting-outputs
+
+build_data:
+	cd packages/data_provider && dart run build_runner build --delete-conflicting-outputs
+	dart format packages/data_provider/lib/src/injector/inject_package.module.dart
 
 watch:
 	dart run build_runner watch --delete-conflicting-outputs
@@ -23,7 +27,7 @@ fix:
 	dart fix --apply
 
 format:
-	dart format .
+	dart format bin lib packages test
 	make lang
 
 lint:

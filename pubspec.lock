@@ -141,10 +141,10 @@ packages:
     dependency: transitive
     description:
       name: built_collection
-      sha256: "376e3dd27b51ea877c28d525560790aee2e6fbb5f20e2f85d5081027d94e2100"
+      sha256: "44922ecebd8e3d0cef743dadd3b54df4e87e2a4c52a29465a1872aa9e192caa8"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.1"
+    version: "5.1.2"
   built_value:
     dependency: transitive
     description:
@@ -261,10 +261,10 @@ packages:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      sha256: "41e005c33bd814be4d3096aff55b1908d419fde52ca656c8c47719ec745873cd"
+      sha256: b7cc2390aac296c083bea762859413eb1cf5b630c70e0c7e4d831018f762a8b2
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.9"
+    version: "2.0.0"
   cupertino_ui:
     dependency: "direct main"
     description:
@@ -807,10 +807,10 @@ packages:
     dependency: "direct main"
     description:
       name: material_ui
-      sha256: "134ab2f0843545c4e661e4ba2753fe1bcf0753cb690d5a9ee4870638a40411e9"
+      sha256: "32d98f11cf5942a095a8c3e01b03e4de3b17941437713dcf36b1088fb62e23d2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.5.0"
   meta:
     dependency: transitive
     description:
@@ -959,10 +959,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: "91bd59303e9f769f108f8df05e371341b15d59e995e6806aefab827b58336675"
+      sha256: "2f1564aadb14215e478563b5406cb80729d022158c01dc50c96013c2f7eb4790"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.2"
+    version: "7.1.0"
   platform:
     dependency: transitive
     description:
@@ -1147,10 +1147,10 @@ packages:
     dependency: transitive
     description:
       name: source_gen
-      sha256: a603f1fb984a7391ae5978d1b92bfaaa08b350dca5c825256f925818f7943bf5
+      sha256: "11b6047da8e4eb6c643ccac3d0fda3f9c9e11651695f7da24a85ade8aff15a44"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.4"
+    version: "4.3.0"
   source_helper:
     dependency: transitive
     description:
@@ -1305,10 +1305,10 @@ packages:
     dependency: "direct dev"
     description:
       name: tidy_imports
-      sha256: "74f3fa428bc232a2737630f4166992cb3549d72f293690f6d7bced102494cba2"
+      sha256: c7ba57bd0929ede0f7fecda5f37ab36c831578a4ddded18641fe5ad73a139903
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "2.6.0"
   time:
     dependency: transitive
     description:

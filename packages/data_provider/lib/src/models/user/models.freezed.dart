@@ -10,273 +10,169 @@ part of 'models.dart';
 // **************************************************************************
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserProfile {
+  int get id;
+  String get userName;
 
- int get id; String get userName;
-/// Create a copy of UserProfile
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$UserProfileCopyWith<UserProfile> get copyWith => _$UserProfileCopyWithImpl<UserProfile>(this as UserProfile, _$identity);
+  /// Create a copy of UserProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $UserProfileCopyWith<UserProfile> get copyWith =>
+      _$UserProfileCopyWithImpl<UserProfile>(this as UserProfile, _$identity);
 
   /// Serializes this UserProfile to a JSON map.
   Map<String, dynamic> toJson();
 
+  @override
+  bool operator ==(Object other) {
+    final _this = this as UserProfile;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UserProfile &&
+            (identical(other.id, _this.id) || other.id == _this.id) &&
+            (identical(other.userName, _this.userName) ||
+                other.userName == _this.userName));
+  }
 
-@override
-bool operator ==(Object other) {
-  final _this = this as UserProfile;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UserProfile&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.userName, _this.userName) || other.userName == _this.userName));
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    final _this = this as UserProfile;
+    return Object.hash(runtimeType, _this.id, _this.userName);
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-  final _this = this as UserProfile;
-  return Object.hash(runtimeType,_this.id,_this.userName);
-}
-
-@override
-String toString() {
-  final _this = this as UserProfile;
-  return 'UserProfile(id: ${_this.id}, userName: ${_this.userName})';
-}
-
-
+  @override
+  String toString() {
+    final _this = this as UserProfile;
+    return 'UserProfile(id: ${_this.id}, userName: ${_this.userName})';
+  }
 }
 
 /// @nodoc
-abstract mixin class $UserProfileCopyWith<$Res>  {
-  factory $UserProfileCopyWith(UserProfile value, $Res Function(UserProfile) _then) = _$UserProfileCopyWithImpl;
-@useResult
-$Res call({
- int id, String userName
-});
-
-
-
-
+abstract mixin class $UserProfileCopyWith<$Res> {
+  factory $UserProfileCopyWith(
+    UserProfile value,
+    $Res Function(UserProfile) _then,
+  ) = _$UserProfileCopyWithImpl;
+  @useResult
+  $Res call({int id, String userName});
 }
+
 /// @nodoc
-class _$UserProfileCopyWithImpl<$Res>
-    implements $UserProfileCopyWith<$Res> {
+class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
   _$UserProfileCopyWithImpl(this._self, this._then);
 
   final UserProfile _self;
   final $Res Function(UserProfile) _then;
 
-/// Create a copy of UserProfile
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? userName = null,}) {
-  return _then(UserProfile(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [UserProfile].
-extension UserProfilePatterns on UserProfile {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UserProfile value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _UserProfile() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UserProfile value)  $default,){
-final _that = this;
-switch (_that) {
-case _UserProfile():
-return $default(_that);}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UserProfile value)?  $default,){
-final _that = this;
-switch (_that) {
-case _UserProfile() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String userName)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _UserProfile() when $default != null:
-return $default(_that.id,_that.userName);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String userName)  $default,) {final _that = this;
-switch (_that) {
-case _UserProfile():
-return $default(_that.id,_that.userName);}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String userName)?  $default,) {final _that = this;
-switch (_that) {
-case _UserProfile() when $default != null:
-return $default(_that.id,_that.userName);case _:
-  return null;
-
-}
-}
-
+  /// Create a copy of UserProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? id = null, Object? userName = null}) {
+    return _then(
+      UserProfile(
+        id: null == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        userName: null == userName
+            ? _self.userName
+            : userName // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
-
 class _UserProfile implements UserProfile {
   const _UserProfile({this.id = 0, this.userName = ''});
-  factory _UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
+  factory _UserProfile.fromJson(Map<String, dynamic> json) =>
+      _$UserProfileFromJson(json);
 
-@override@JsonKey() final  int id;
-@override@JsonKey() final  String userName;
+  @override
+  @JsonKey()
+  final int id;
+  @override
+  @JsonKey()
+  final String userName;
 
-/// Create a copy of UserProfile
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$UserProfileCopyWith<_UserProfile> get copyWith => __$UserProfileCopyWithImpl<_UserProfile>(this, _$identity);
+  /// Create a copy of UserProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UserProfileCopyWith<_UserProfile> get copyWith =>
+      __$UserProfileCopyWithImpl<_UserProfile>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$UserProfileToJson(this, );
-}
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UserProfileToJson(this);
+  }
 
-@override
-bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UserProfile&&(identical(other.id, id) || other.id == id)&&(identical(other.userName, userName) || other.userName == userName));
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UserProfile &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName));
+  }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode {
-    return Object.hash(runtimeType,id,userName);
-}
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode {
+    return Object.hash(runtimeType, id, userName);
+  }
 
-@override
-String toString() {
+  @override
+  String toString() {
     return 'UserProfile(id: $id, userName: $userName)';
-}
-
-
+  }
 }
 
 /// @nodoc
-abstract mixin class _$UserProfileCopyWith<$Res> implements $UserProfileCopyWith<$Res> {
-  factory _$UserProfileCopyWith(_UserProfile value, $Res Function(_UserProfile) _then) = __$UserProfileCopyWithImpl;
-@override @useResult
-$Res call({
- int id, String userName
-});
-
-
-
-
+abstract mixin class _$UserProfileCopyWith<$Res>
+    implements $UserProfileCopyWith<$Res> {
+  factory _$UserProfileCopyWith(
+    _UserProfile value,
+    $Res Function(_UserProfile) _then,
+  ) = __$UserProfileCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int id, String userName});
 }
+
 /// @nodoc
-class __$UserProfileCopyWithImpl<$Res>
-    implements _$UserProfileCopyWith<$Res> {
+class __$UserProfileCopyWithImpl<$Res> implements _$UserProfileCopyWith<$Res> {
   __$UserProfileCopyWithImpl(this._self, this._then);
 
   final _UserProfile _self;
   final $Res Function(_UserProfile) _then;
 
-/// Create a copy of UserProfile
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? userName = null,}) {
-  return _then(_UserProfile(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as int,userName: null == userName ? _self.userName : userName // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of UserProfile
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({Object? id = null, Object? userName = null}) {
+    return _then(
+      _UserProfile(
+        id: null == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        userName: null == userName
+            ? _self.userName
+            : userName // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
-
-
-}
-
-// dart format on

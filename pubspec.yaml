@@ -16,10 +16,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  #ui libraries
-  material_ui: ^1.4.0
-  cupertino_ui: ^1.1.1
-
   customizable_cupertino_dialog:
     path: packages/customizable_cupertino_dialog
 
@@ -61,9 +57,13 @@ dependencies:
   #local storage
   shared_preferences: ^2.5.5
 
+  #ui libraries
+  material_ui: ^1.4.0
+  cupertino_ui: ^1.1.1
+
   #icons
   font_awesome_flutter: ^11.0.0
-  cupertino_icons: ^1.0.9
+  cupertino_icons: ^2.0.0
 
   #widgets
   bouncing_widget: ^2.0.0
@@ -96,7 +96,7 @@ dev_dependencies:
 
   #others
   flutter_launcher_icons: ^0.14.4
-  tidy_imports: ^2.5.0
+  tidy_imports: ^2.6.0
 
 dependency_overrides:
   analyzer: ^14.4.0
