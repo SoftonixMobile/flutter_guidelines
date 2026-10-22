@@ -8,7 +8,7 @@ Flutter mobile application template following Clean Architecture with BLoC patte
 
 ## Toolchain
 
-- Flutter pinned via FVM in `.fvmrc` (currently 3.47.4). Prefer `fvm flutter ...` / `fvm dart ...` locally.
+- Flutter pinned via FVM in `.fvmrc` (currently 3.47.7). Prefer `fvm flutter ...` / `fvm dart ...` locally.
 - Dart SDK `^3.13.0`, Flutter `^3.47.0`. Code uses Dart 3.13 **primary constructors** and **dot shorthands** (see Code Style).
 
 ## Common Commands
@@ -22,7 +22,7 @@ make lint           # dart analyze --fatal-infos .
 make sort           # Sort imports via tidy_imports
 make fix            # dart fix --apply
 make format         # dart format + make lang
-make refactor       # Full pipeline: upgrade → build → lang → fix → sort → lint
+make refactor       # Full pipeline: build → lang → fix → sort → lint
 make splash         # Generate splash screen via flutter_native_splash
 make icon           # Generate app icons via flutter_launcher_icons
 make setup_hooks    # Install git hooks (pre-commit: tidy_imports --exit-if-changed + analyze)
@@ -59,9 +59,9 @@ VS Code `launch.json` has `dev debug`, `dev release`, `prod debug`, `prod releas
 
 **Dependency injection has two phases (`lib/core/injector/injector.dart`):**
 1. `configureAppDependencies()` — core singletons (AppRouter, Logger, `ApiClient`), all `data_provider` services, and `scope: 'app'` dependencies (AuthRepository, SessionBloc, LoginFormBloc).
-2. `configureUserDependencies()` — pushed as a new scope in `MainWrapperScreen.initState`; registers `UserData` and user-scoped repositories/BLoCs.
+2. `configureUserDependencies()` — pushed as the `'user'` scope in `MainScopeProvider.initState` (wraps `MainWrapperScreen`); registers `UserData` and user-scoped repositories/BLoCs.
 
-User-scoped dependencies are torn down when `MainWrapperScreen.dispose()` calls `getIt.popScope()`.
+User-scoped dependencies are torn down when `MainScopeProvider.dispose()` calls `getIt.dropScope('user')`.
 
 **App initialization sequence** (`lib/core/initialization/app_initialization.dart`):
 Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserver → `configureAppDependencies()` → Validators
