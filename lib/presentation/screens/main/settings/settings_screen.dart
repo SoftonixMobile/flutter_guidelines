@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
@@ -15,7 +14,7 @@ class const SettingsScreen({super.key}) extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.tr(LocaleKeys.settings)),
+        title: const Text('Settings'),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -25,7 +24,7 @@ class const SettingsScreen({super.key}) extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          context.tr(LocaleKeys.settingsScreenTitle),
+          'Settings Screen',
           style: typography.bodyLarge,
         ),
       ),

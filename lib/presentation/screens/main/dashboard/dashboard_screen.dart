@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
@@ -13,7 +12,7 @@ class const DashboardScreen({super.key}) extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.tr(LocaleKeys.dashboard)),
+        title: const Text('Dashboard'),
         actions: [
           IconButton(
             icon: const Icon(Icons.menu),
@@ -23,7 +22,7 @@ class const DashboardScreen({super.key}) extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          context.tr(LocaleKeys.dashboardScreenTitle),
+          'Dashboard Screen',
           style: typography.bodyLarge,
         ),
       ),

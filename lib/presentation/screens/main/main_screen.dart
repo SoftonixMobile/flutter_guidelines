@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 
 import 'drawer/app_drawer.dart';
@@ -31,18 +30,18 @@ class const MainScreen({super.key}) extends StatelessWidget {
             type: .fixed,
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
-            items: [
+            items: const [
               BottomNavigationBarItem(
-                icon: const Icon(Icons.dashboard),
-                label: context.tr(LocaleKeys.dashboard),
+                icon: Icon(Icons.dashboard),
+                label: 'Dashboard',
               ),
               BottomNavigationBarItem(
-                icon: const Icon(Icons.message),
-                label: context.tr(LocaleKeys.messages),
+                icon: Icon(Icons.message),
+                label: 'Messages',
               ),
               BottomNavigationBarItem(
-                icon: const Icon(Icons.settings),
-                label: context.tr(LocaleKeys.settings),
+                icon: Icon(Icons.settings),
+                label: 'Settings',
               ),
             ],
           ),

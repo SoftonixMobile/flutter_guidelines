@@ -1,22 +1,3 @@
 {
-    "screenText": "Filtrer",
-
-    "dashboard" : "Tableau de bord",
-    "dashboardScreenTitle": "@:dashboard @:screenText",
-
-    "messages": "Messages",
-    "chats": "Chats",
-    "chatsScreenTitle" : "@:chats @:screenText",
-    "posts": "Des postes",
-    "postsScreenTitle" : "@:posts @:screenText",
-
-    "settings" : "Réglages",
-    "settingsScreenTitle" : "@:settings @:screenText",
-
-    "changePassword": "Changer le mot de passe",
-    "languageName": "French",
-    "signOut": "Se déconnecter",
-
-    "somethingWentWrong": "Une erreur s'est produite",
-    "retry": "Réessayer"
+    "languageName": "French"
 }

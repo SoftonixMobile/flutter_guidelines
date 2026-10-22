@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
 
@@ -8,9 +7,9 @@ import 'package:flutter_guidelines/presentation/widgets/index.dart';
 class const MessagesScreen({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final tabs = [
-      context.tr(LocaleKeys.chats),
-      context.tr(LocaleKeys.posts),
+    const tabs = [
+      'Chats',
+      'Posts',
     ];
 
     const routes = [
@@ -18,8 +17,8 @@ class const MessagesScreen({super.key}) extends StatelessWidget {
       PostsRoute(),
     ];
 
-    return CustomTabsRouter(
-      appBarTitle: context.tr(LocaleKeys.messages),
+    return const CustomTabsRouter(
+      appBarTitle: 'Messages',
       tabs: tabs,
       routes: routes,
     );

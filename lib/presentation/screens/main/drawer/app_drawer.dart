@@ -70,7 +70,7 @@ class const AppDrawer({super.key}) extends StatelessWidget {
                     child: Column(
                       children: [
                         _buildMenuItem(
-                          text: context.tr(LocaleKeys.changePassword),
+                          text: 'Change Password',
                           iconData: FontAwesomeIcons.lock.data,
                           colors: colors,
                           typography: typography,
@@ -93,7 +93,7 @@ class const AppDrawer({super.key}) extends StatelessWidget {
                         ),
                         GestureDetector(
                           child: _buildMenuItem(
-                            text: context.tr(LocaleKeys.signOut),
+                            text: 'Sign Out',
                             iconData: FontAwesomeIcons.rightFromBracket.data,
                             colors: colors,
                             typography: typography,

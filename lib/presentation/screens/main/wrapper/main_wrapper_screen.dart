@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 import 'package:flutter_guidelines/presentation/widgets/index.dart';
@@ -56,12 +55,12 @@ class const _UserLoadFailure({
           spacing: 16,
           children: [
             Text(
-              context.tr(LocaleKeys.somethingWentWrong),
+              'Something went wrong',
               style: typography.bodyLarge.copyWith(color: colors.textPrimary),
             ),
             FilledButton(
               onPressed: onRetry,
-              child: Text(context.tr(LocaleKeys.retry)),
+              child: const Text('Retry'),
             ),
           ],
         ),

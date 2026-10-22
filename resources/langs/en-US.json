@@ -1,22 +1,3 @@
 {
-    "screenText": "Screen",
-
-    "dashboard" : "Dashboard",
-    "dashboardScreenTitle": "@:dashboard @:screenText",
-
-    "messages": "Messages",
-    "chats": "Chats",
-    "chatsScreenTitle" : "@:chats @:screenText",
-    "posts": "Posts",
-    "postsScreenTitle" : "@:posts @:screenText",
-
-    "settings" : "Settings",
-    "settingsScreenTitle" : "@:settings @:screenText",
-
-    "changePassword": "Change Password",
-    "languageName": "English",
-    "signOut": "Sign Out",
-
-    "somethingWentWrong": "Something went wrong",
-    "retry": "Retry"
+    "languageName": "English"
 }
