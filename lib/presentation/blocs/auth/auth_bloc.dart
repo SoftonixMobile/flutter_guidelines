@@ -12,47 +12,24 @@ part 'auth_event.dart';
 part 'auth_state.dart';
 
 @Injectable(scope: 'auth')
-class AuthBloc(
-  final AuthRepository _authRepository,
-  final UserRepository _userRepository,
-) extends Bloc<AuthEvent, AuthState> {
-  late final StreamSubscription<AuthStatus> _statusSubscription;
-
+class AuthBloc(final AuthRepository _authRepository)
+    extends Bloc<AuthEvent, AuthState> {
   this : super(const AuthState()) {
-    _statusSubscription = _authRepository.authenticationStatus.listen((status) {
-      add(AuthEvent.authenticationStatusChanged(status));
-    });
-
-    on<_AuthenticationStatusChanged>(_authenticationStatusChanged);
+    on<_Subscribe>(_subscribe);
     on<_SignOut>(_signOut);
   }
 
-  FutureOr<void> _authenticationStatusChanged(
-    _AuthenticationStatusChanged event,
+  Future<void> _subscribe(
+    _Subscribe event,
     Emitter<AuthState> emit,
-  ) async {
-    if (event.status == .authenticated) {
-      try {
-        await _userRepository.getUserProfile(refresh: true);
-
-        emit(.authenticated());
-      } catch (e, stackTrace) {
-        addError(e, stackTrace);
-
-        emit(.unauthenticated());
-      }
-    } else {
-      emit(state.copyWith(status: event.status));
-    }
+  ) {
+    return emit.forEach(
+      _authRepository.onStatusChanged,
+      onData: (status) => state.copyWith(status: status),
+    );
   }
 
   FutureOr<void> _signOut(_SignOut event, Emitter<AuthState> emit) {
     return _authRepository.signOut();
-  }
-
-  @override
-  Future<void> close() async {
-    await _statusSubscription.cancel();
-    return await super.close();
   }
 }

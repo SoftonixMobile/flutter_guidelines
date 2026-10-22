@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -8,25 +10,19 @@ import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
 
 class _MockAuthRepository() extends Mock implements AuthRepository;
 
-class _MockUserRepository() extends Mock implements UserRepository;
-
 // Tests for AuthBloc using bloc_test lib
 void main() {
-  const fullUserProfile = UserProfile(userName: 'test');
-
   // Define mock instance with uses for all tests
   late AuthRepository mockAuthRepo;
-  late UserRepository mockUserRepo;
 
   group('Auth bloc tests', () {
     // Creating mock instance for each test
     setUp(() {
       mockAuthRepo = _MockAuthRepository();
-      mockUserRepo = _MockUserRepository();
 
       // Using 'when' method for simulate fake call
       // Mock the authentication status stream
-      when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+      when(() => mockAuthRepo.onStatusChanged).thenAnswer((_) {
         return const Stream<AuthStatus>.empty();
       });
     });
@@ -34,14 +30,15 @@ void main() {
     blocTest(
       'Initial state',
       setUp: () {
-        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+        when(() => mockAuthRepo.onStatusChanged).thenAnswer((_) {
           return Stream<AuthStatus>.value(AuthStatus.initial);
         });
       },
       // Provide creating bloc method here
       // (its better to create new instance of bloc for each test
       // to avoid mess up)
-      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
+      build: () => AuthBloc(mockAuthRepo),
+      act: (bloc) => bloc.add(const AuthEvent.subscribe()),
       // Here you only need to specify states which you receive from bloc
       // in right order
       expect: () => [const AuthState()],
@@ -50,63 +47,51 @@ void main() {
     blocTest(
       'Authenticated state',
       setUp: () {
-        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+        when(() => mockAuthRepo.onStatusChanged).thenAnswer((_) {
           return Stream<AuthStatus>.value(AuthStatus.authenticated);
         });
-
-        when(
-          () => mockUserRepo.getUserProfile(refresh: true),
-        ).thenAnswer((_) async => fullUserProfile);
       },
-      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
+      build: () => AuthBloc(mockAuthRepo),
+      act: (bloc) => bloc.add(const AuthEvent.subscribe()),
       expect: () => [AuthState.authenticated()],
-    );
-
-    blocTest(
-      'Unauthenticated state when getUserProfile throws error',
-      setUp: () {
-        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
-          return Stream<AuthStatus>.value(AuthStatus.authenticated);
-        });
-
-        when(mockUserRepo.getUserProfile).thenThrow(UnimplementedError());
-      },
-      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
-      expect: () => [AuthState.unauthenticated()],
     );
 
     blocTest(
       'Unauthenticated state',
       setUp: () {
-        when(() => mockAuthRepo.authenticationStatus).thenAnswer((_) {
+        when(() => mockAuthRepo.onStatusChanged).thenAnswer((_) {
           return Stream<AuthStatus>.value(AuthStatus.unauthenticated);
         });
       },
-      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
+      build: () => AuthBloc(mockAuthRepo),
+      act: (bloc) => bloc.add(const AuthEvent.subscribe()),
       expect: () => [AuthState.unauthenticated()],
     );
+
+    late StreamController<AuthStatus> statusController;
 
     blocTest(
       'Sign out',
       setUp: () {
+        statusController = StreamController<AuthStatus>();
+
         when(
-          mockAuthRepo.signOut,
-        ).thenAnswer((_) async => {});
+          () => mockAuthRepo.onStatusChanged,
+        ).thenAnswer((_) => statusController.stream);
+
+        // Simulate the session emitting unauthenticated after sign out
+        when(mockAuthRepo.signOut).thenAnswer((_) async {
+          statusController.add(.unauthenticated);
+        });
       },
-      build: () => AuthBloc(mockAuthRepo, mockUserRepo),
+      tearDown: () => statusController.close(),
+      build: () => AuthBloc(mockAuthRepo),
       // Set the previous state in a bloc for testing specific cases
       // without unnecessary actions
-      // (to prevent test failure due to unrelated methods)
       seed: AuthState.authenticated,
-      act: (bloc) {
-        bloc
-          ..add(const AuthEvent.signOut())
-          ..add(
-            const AuthEvent.authenticationStatusChanged(
-              .unauthenticated,
-            ),
-          );
-      },
+      act: (bloc) => bloc
+        ..add(const AuthEvent.subscribe())
+        ..add(const AuthEvent.signOut()),
       // Verify that signOut method was called
       verify: (bloc) {
         verify(mockAuthRepo.signOut).called(1);

@@ -8,8 +8,7 @@ class AuthRepository(
   final AuthService _authService,
   final SessionService _sessionService,
 ) {
-  Stream<AuthStatus> get authenticationStatus =>
-      _sessionService.onStatusChanged;
+  Stream<AuthStatus> get onStatusChanged => _sessionService.onStatusChanged;
 
   Future<void> signIn(String userName, String password) async {
     final token = await _authService.signIn(userName, password);

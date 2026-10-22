@@ -35,35 +35,41 @@ class DioApiClient({
 
   final dio.Dio _dio = httpClient ?? _createClient(baseUrl);
 
+  AuthStatus _sessionStatus = .initial;
+
   this : super(jsonParser ?? JsonDataParser()) {
     _dio.interceptors.add(_fresh);
+
+    onSessionStatusChanged.listen((status) => _sessionStatus = status);
   }
+
+  @override
+  AuthStatus get sessionStatus => _sessionStatus;
 
   @override
   Stream<AuthStatus> get onSessionStatusChanged =>
       _fresh.authenticationStatus.map(_mapAuthStatus);
 
   @override
-  Future<void> startSession(TokenResponse token) => _fresh.setToken(token);
+  Future<void> ensureSessionRestored() async {
+    if (_sessionStatus != .initial) return;
 
-  @override
-  Future<void> clearSession() => _fresh.clearToken();
-
-  static AuthStatus _mapAuthStatus(AuthenticationStatus status) {
-    return switch (status) {
-      .initial => .initial,
-      .authenticated => .authenticated,
-      .unauthenticated => .unauthenticated,
-    };
+    await onSessionStatusChanged.firstWhere((status) => status != .initial);
   }
 
-  static dio.Dio _createClient(String baseUrl) => dio.Dio(
-    dio.BaseOptions(
-      baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 100),
-    ),
-  );
+  @override
+  Future<void> startSession(TokenResponse token) async {
+    await _fresh.setToken(token);
+
+    _sessionStatus = .authenticated;
+  }
+
+  @override
+  Future<void> clearSession() async {
+    await _fresh.clearToken();
+
+    _sessionStatus = .unauthenticated;
+  }
 
   @override
   Future<Response<T>> get<T>(
@@ -212,4 +218,20 @@ class DioApiClient({
       maxRedirects: options.maxRedirects,
     );
   }
+
+  static AuthStatus _mapAuthStatus(AuthenticationStatus status) {
+    return switch (status) {
+      .initial => .initial,
+      .authenticated => .authenticated,
+      .unauthenticated => .unauthenticated,
+    };
+  }
+
+  static dio.Dio _createClient(String baseUrl) => dio.Dio(
+    dio.BaseOptions(
+      baseUrl: baseUrl,
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 100),
+    ),
+  );
 }

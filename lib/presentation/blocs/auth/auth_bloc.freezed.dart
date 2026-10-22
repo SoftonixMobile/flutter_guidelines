@@ -36,72 +36,21 @@ class $AuthEventCopyWith<$Res> {
 
 /// @nodoc
 
-class _AuthenticationStatusChanged implements AuthEvent {
-  const _AuthenticationStatusChanged(this.status);
-
-  final AuthStatus status;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$AuthenticationStatusChangedCopyWith<_AuthenticationStatusChanged>
-  get copyWith =>
-      __$AuthenticationStatusChangedCopyWithImpl<_AuthenticationStatusChanged>(
-        this,
-        _$identity,
-      );
+class _Subscribe implements AuthEvent {
+  const _Subscribe();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _AuthenticationStatusChanged &&
-            (identical(other.status, status) || other.status == status));
+        (other.runtimeType == runtimeType && other is _Subscribe);
   }
 
   @override
-  int get hashCode {
-    return Object.hash(runtimeType, status);
-  }
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
-    return 'AuthEvent.authenticationStatusChanged(status: $status)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$AuthenticationStatusChangedCopyWith<$Res>
-    implements $AuthEventCopyWith<$Res> {
-  factory _$AuthenticationStatusChangedCopyWith(
-    _AuthenticationStatusChanged value,
-    $Res Function(_AuthenticationStatusChanged) _then,
-  ) = __$AuthenticationStatusChangedCopyWithImpl;
-  @useResult
-  $Res call({AuthStatus status});
-}
-
-/// @nodoc
-class __$AuthenticationStatusChangedCopyWithImpl<$Res>
-    implements _$AuthenticationStatusChangedCopyWith<$Res> {
-  __$AuthenticationStatusChangedCopyWithImpl(this._self, this._then);
-
-  final _AuthenticationStatusChanged _self;
-  final $Res Function(_AuthenticationStatusChanged) _then;
-
-  /// Create a copy of AuthEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({Object? status = null}) {
-    return _then(
-      _AuthenticationStatusChanged(
-        null == status
-            ? _self.status
-            : status // ignore: cast_nullable_to_non_nullable
-                  as AuthStatus,
-      ),
-    );
+    return 'AuthEvent.subscribe()';
   }
 }
 

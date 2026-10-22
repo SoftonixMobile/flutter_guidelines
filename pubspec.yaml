@@ -141,8 +141,7 @@ flutter_gen:
 
 tidy_imports:
   comments: false
-  # Set to true once https://github.com/Franklyn-R-Silva/tidy_imports/issues/6 is fixed
-  sort_exports: false
+  sort_exports: true
   separate_relative_imports: true
   ignored_files:
     - \.g\.dart$

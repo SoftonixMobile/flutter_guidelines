@@ -54,7 +54,8 @@ class const _AppStateWrapper({
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt<AuthBloc>(),
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.subscribe()),
         ),
       ],
       child: child,

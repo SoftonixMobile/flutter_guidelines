@@ -9,6 +9,11 @@ class UserService(final ApiClient _client) {
   }
 
   Future<UserProfile> getUserProfile() async {
-    return UserProfile.fromJson({'userName': 'test'});
+    await Future.delayed(Duration(seconds: 1));
+
+    return UserProfile.fromJson({
+      'id': 1,
+      'userName': 'test',
+    });
   }
 }

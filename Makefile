@@ -1,53 +1,56 @@
 .PHONY: get upgrade build build_data watch lang sort fix format lint refactor splash icon setup_hooks
 
+# Use fvm when the project pins a Flutter version (.fvmrc) and fvm is installed
+FVM := $(if $(and $(wildcard .fvmrc),$(shell command -v fvm 2>/dev/null)),fvm )
+DART := $(FVM)dart
+
 get:
-	dart pub get
+	$(DART) pub get
 
 upgrade:
-	dart pub upgrade
+	$(DART) pub upgrade
 
 build:
-	dart run build_runner build --delete-conflicting-outputs
+	$(DART) run build_runner build --delete-conflicting-outputs
 
 build_data:
-	cd packages/data_provider && dart run build_runner build --delete-conflicting-outputs
-	dart format packages/data_provider/lib/src/injector/inject_package.module.dart
+	cd packages/data_provider && $(DART) run build_runner build --delete-conflicting-outputs
+	$(DART) format packages/data_provider/lib/src/injector/inject_package.module.dart
 
 watch:
-	dart run build_runner watch --delete-conflicting-outputs
+	$(DART) run build_runner watch --delete-conflicting-outputs
 
 lang:
-	dart run stx_easy_localization_generator:generate -O lib/presentation/localization
-	dart run stx_easy_localization_generator:generate -f keys -O lib/presentation/localization -o locale_keys.g.dart
+	$(DART) run stx_easy_localization_generator:generate -O lib/presentation/localization
+	$(DART) run stx_easy_localization_generator:generate -f keys -O lib/presentation/localization -o locale_keys.g.dart
 
 sort:
-	dart run tidy_imports
+	$(DART) run tidy_imports
 
 fix:
-	dart fix --apply
+	$(DART) fix --apply
 
 format:
-	dart format bin lib packages test
+	$(DART) format bin lib packages test
 	make lang
 
 lint:
-	flutter analyze .
-	# flutter analyze --no-fatal-infos | grep -E "error •|warning •" || true
+	$(DART) analyze --fatal-infos .
+	# $(DART) analyze | grep -E "error -|warning -" || true
 
 refactor:
-	make upgrade
 	make build
 	make lang
 	make fix
-	# make format
+	make format
 	make sort
 	make lint
 
 splash:
-	dart run flutter_native_splash:create
+	$(DART) run flutter_native_splash:create
 
 icon:
-	dart run flutter_launcher_icons
+	$(DART) run flutter_launcher_icons
 
 setup_hooks:
 	sh scripts/setup-hooks.sh

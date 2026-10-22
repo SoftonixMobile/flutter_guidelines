@@ -88,14 +88,11 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i349.UserService>(),
           ),
         );
+        gh.factory<_i883.AuthBloc>(
+          () => _i883.AuthBloc(gh<_i64.AuthRepository>()),
+        );
         gh.factory<_i175.LoginFormBloc>(
           () => _i175.LoginFormBloc(gh<_i64.AuthRepository>()),
-        );
-        gh.factory<_i883.AuthBloc>(
-          () => _i883.AuthBloc(
-            gh<_i64.AuthRepository>(),
-            gh<_i64.UserRepository>(),
-          ),
         );
       },
     );

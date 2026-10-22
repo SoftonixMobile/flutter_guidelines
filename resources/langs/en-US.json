@@ -15,5 +15,8 @@
 
     "changePassword": "Change Password",
     "languageName": "English",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+
+    "somethingWentWrong": "Something went wrong",
+    "retry": "Retry"
 }

@@ -18,7 +18,7 @@ make get            # dart pub get
 make build          # Run build_runner (generates *.g.dart, *.freezed.dart, *.config.dart, *.gr.dart)
 make watch          # Run build_runner in watch mode
 make lang           # Generate localization files in lib/presentation/localization/
-make lint           # flutter analyze .
+make lint           # dart analyze --fatal-infos .
 make sort           # Sort imports via tidy_imports
 make fix            # dart fix --apply
 make format         # dart format + make lang

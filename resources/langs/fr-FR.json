@@ -15,5 +15,8 @@
 
     "changePassword": "Changer le mot de passe",
     "languageName": "French",
-    "signOut": "Se déconnecter"
+    "signOut": "Se déconnecter",
+
+    "somethingWentWrong": "Une erreur s'est produite",
+    "retry": "Réessayer"
 }

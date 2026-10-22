@@ -15,12 +15,12 @@ class UserBloc(
   this : super(const UserState(data: UserProfile()));
 
   @override
-  FutureOr<UserProfile> onLazyLoad() {
-    return _userRepository.getUserProfile();
+  Future<UserProfile> onLoadAsync() async {
+    return await _userRepository.getUserProfile(refresh: true);
   }
 
   @override
-  Future<UserProfile> onLoadAsync() async {
-    return await _userRepository.getUserProfile(refresh: true);
+  FutureOr<UserProfile> onLazyLoad() {
+    return _userRepository.getUserProfile();
   }
 }
