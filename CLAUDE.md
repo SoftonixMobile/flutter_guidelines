@@ -33,8 +33,8 @@ After modifying models, BLoCs, routes, or DI registrations, always run `make bui
 **Running tests:**
 ```bash
 flutter test                                          # All tests
-flutter test test/unit_test/blocs/auth/auth_bloc_test.dart  # Single file
-flutter test --name "Auth bloc"                       # By name pattern
+flutter test test/unit_test/blocs/session/session_bloc_test.dart  # Single file
+flutter test --name "Session bloc"                    # By name pattern
 flutter test --coverage                               # With coverage
 ```
 
@@ -58,15 +58,15 @@ VS Code `launch.json` has `dev debug`, `dev release`, `prod debug`, `prod releas
 - `lib/presentation/` — App entry, BLoCs, screens, router (auto_route), localization, theme/design system, reusable widgets
 
 **Dependency injection has two phases (`lib/core/injector/injector.dart`):**
-1. `configureAuthDependencies()` — Registers core singletons (AppRouter, Logger, UserData, `DioApiClient` as `ApiClient`) and calls `getIt.initAuthScope()` which adds auth-scoped dependencies: AuthRepository, UserRepository, AuthBloc, LoginFormBloc
-2. `configureUserDependencies()` — Called via `getIt.pushNewScope(init: configureUserDependencies)` inside `MainWrapperScreen.initState`; registers `DataProviderPackageModule` (services) and user-scoped dependencies (UserBloc, PostsRepository, ChatsRepository, PostsBloc, ChatsBloc, DrawerBloc, PostFormBloc)
+1. `configureAppDependencies()` — core singletons (AppRouter, Logger, `ApiClient`), all `data_provider` services, and `scope: 'app'` dependencies (AuthRepository, SessionBloc, LoginFormBloc).
+2. `configureUserDependencies()` — pushed as a new scope in `MainWrapperScreen.initState`; registers `UserData` and user-scoped repositories/BLoCs.
 
 User-scoped dependencies are torn down when `MainWrapperScreen.dispose()` calls `getIt.popScope()`.
 
 **App initialization sequence** (`lib/core/initialization/app_initialization.dart`):
-Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserver → `configureAuthDependencies()` → Validators
+Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserver → `configureAppDependencies()` → Validators
 
-**Navigation:** auto_route with declarative routing at root. `RootScreen` switches between `LoginRoute` and `MainRouter` based on `AuthBloc` state. `MainWrapperScreen` (annotated `@RoutePage(name: 'MainRouter')`) manages user scope lifecycle. `MainScreen` uses `AutoTabsScaffold` with 3 bottom tabs (Dashboard, Messages, Settings) and an `AppDrawer` as endDrawer.
+**Navigation:** auto_route with declarative routing at root. `RootScreen` switches between `LoginRoute` and `MainRouter` based on `SessionBloc` state. `MainWrapperScreen` (annotated `@RoutePage(name: 'MainRouter')`) manages user scope lifecycle. `MainScreen` uses `AutoTabsScaffold` with 3 bottom tabs (Dashboard, Messages, Settings) and an `AppDrawer` as endDrawer.
 
 **Route tree:**
 ```
@@ -118,7 +118,7 @@ class PostsRepository extends ListRepositoryBase<Post>
 }
 ```
 
-`UserRepository.emit()` overrides the base to keep the `UserData` singleton in sync. Auth-scoped repositories use `@LazySingleton(scope: 'auth')`.
+`UserRepository.emit()` overrides the base to keep the `UserData` singleton in sync. App-scoped repositories use `@LazySingleton(scope: 'app')`.
 
 ## BLoC Patterns
 
@@ -147,9 +147,9 @@ class PostsBloc(final PostsRepository _postsRepository)
 **Auth/complex state machines** use custom `@freezed` sealed unions:
 ```dart
 @freezed
-sealed class AuthState with _$AuthState {
-  const factory({@Default(AuthStatus.initial) AuthStatus status}) = _AuthState;
-  factory authenticated() => const AuthState(status: .authenticated);
+sealed class SessionState with _$SessionState {
+  const factory({@Default(AuthStatus.initial) AuthStatus authStatus}) = _SessionState;
+  factory authenticated() => const SessionState(authStatus: .authenticated);
 }
 ```
 
@@ -194,7 +194,7 @@ After adding a new `@RoutePage()` screen, register it in `lib/presentation/route
 
 **Flow:** `DioException` → `DioApiClient._guard()` → `ApiExceptionMapper.fromDioException()` → `ApiException` → BLoC `addError(e, stackTrace)` → `SimpleBlocObserver.onError()` → `logger.logError()`
 
-**Session:** `AuthRepository` calls `ApiClient.startSession(token)` / `clearSession()` and exposes `ApiClient.onSessionStatusChanged`. Before each request `DioApiClient` checks the JWT `exp` claim (`TokenHelper.isExpired`, 30 s leeway); an expired token or a 401 hits `refreshToken`, which throws `RevokeTokenException` → session status emits `unauthenticated` → `AuthBloc` navigates to Login.
+**Session:** `AuthRepository` calls `ApiClient.startSession(token)` / `clearSession()` and exposes `ApiClient.onAuthStatusChanged`. Before each request `DioApiClient` checks the JWT `exp` claim (`TokenHelper.isExpired`, 30 s leeway); an expired token or a 401 hits `refreshToken`, which throws `RevokeTokenException` → auth status emits `unauthenticated` → `SessionBloc` navigates to Login.
 
 ## Logger
 

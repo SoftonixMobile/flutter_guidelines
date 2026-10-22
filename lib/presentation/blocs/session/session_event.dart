@@ -1,7 +1,7 @@
-part of 'auth_bloc.dart';
+part of 'session_bloc.dart';
 
 @freezed
-class AuthEvent with _$AuthEvent {
+class SessionEvent with _$SessionEvent {
   const factory subscribe() = _Subscribe;
   const factory signOut() = _SignOut;
 }

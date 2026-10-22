@@ -8,7 +8,7 @@ import 'package:flutter_guidelines/domain/repositories/index.dart';
 
 typedef UserState = NetworkState<UserProfile>;
 
-@singleton
+@lazySingleton
 class UserBloc(
   final UserRepository _userRepository,
 ) extends NetworkBloc<UserProfile, UserState> {

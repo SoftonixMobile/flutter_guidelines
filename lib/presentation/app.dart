@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 
-import 'blocs/auth/auth_bloc.dart';
+import 'blocs/session/session_bloc.dart';
 import 'localization/index.dart';
 import 'router/index.dart';
 import 'theme/index.dart';
@@ -55,7 +55,7 @@ class const _AppStateWrapper({
       providers: [
         BlocProvider(
           create: (context) =>
-              getIt<AuthBloc>()..add(const AuthEvent.subscribe()),
+              getIt<SessionBloc>()..add(const SessionEvent.subscribe()),
         ),
       ],
       child: child,

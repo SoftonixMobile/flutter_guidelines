@@ -20,7 +20,7 @@ Future<void> initializeApp() async {
   final logger = await _initializeLogger();
   _initializeCrashlytics(logger);
   _initializeBlocObserver(logger);
-  _initializeDependencies(logger);
+  await _initializeDependencies(logger);
   _initializeValidators();
 }
 
@@ -57,8 +57,8 @@ void _initializeBlocObserver(Logger logger) {
   Bloc.observer = SimpleBlocObserver(logger);
 }
 
-void _initializeDependencies(Logger logger) {
-  return configureAuthDependencies(logger: logger);
+Future<void> _initializeDependencies(Logger logger) {
+  return configureAppDependencies(logger: logger);
 }
 
 void _initializeValidators() {

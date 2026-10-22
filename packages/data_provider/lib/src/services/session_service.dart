@@ -4,13 +4,13 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class SessionService(final ApiClient _client) {
-  Stream<AuthStatus> get onStatusChanged => _client.onSessionStatusChanged;
+  AuthStatus get authStatus => _client.authStatus;
 
-  AuthStatus get status => _client.sessionStatus;
+  Stream<AuthStatus> get onAuthStatusChanged => _client.onAuthStatusChanged;
 
-  bool get isAuthenticated => status == .authenticated;
+  bool get isAuthenticated => authStatus == .authenticated;
 
-  Future<void> start(TokenResponse token) => _client.startSession(token);
+  Future<void> startSession(TokenResponse token) => _client.startSession(token);
 
-  Future<void> clear() => _client.clearSession();
+  Future<void> clearSession() => _client.clearSession();
 }

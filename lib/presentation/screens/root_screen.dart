@@ -4,7 +4,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/presentation/router/index.dart';
 
-import '../blocs/auth/auth_bloc.dart';
+import '../blocs/session/session_bloc.dart';
 
 @RoutePage()
 class const RootScreen({super.key}) extends StatelessWidget {
@@ -14,15 +14,15 @@ class const RootScreen({super.key}) extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<SessionBloc, SessionState>(
       builder: (context, state) {
-        if (state.status != .initial) {
+        if (state.authStatus != .initial) {
           _removeSplashScreen();
         }
 
         return AutoRouter.declarative(
           routes: (_) {
-            return switch (state.status) {
+            return switch (state.authStatus) {
               .initial => const [],
               .unauthenticated => const [LoginRoute()],
               .authenticated => const [MainRouter()],

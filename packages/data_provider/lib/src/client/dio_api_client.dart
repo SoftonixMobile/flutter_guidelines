@@ -35,40 +35,33 @@ class DioApiClient({
 
   final dio.Dio _dio = httpClient ?? _createClient(baseUrl);
 
-  AuthStatus _sessionStatus = .initial;
+  AuthStatus _authStatus = .initial;
 
   this : super(jsonParser ?? JsonDataParser()) {
     _dio.interceptors.add(_fresh);
 
-    onSessionStatusChanged.listen((status) => _sessionStatus = status);
+    onAuthStatusChanged.listen((status) => _authStatus = status);
   }
 
   @override
-  AuthStatus get sessionStatus => _sessionStatus;
+  AuthStatus get authStatus => _authStatus;
 
   @override
-  Stream<AuthStatus> get onSessionStatusChanged =>
+  Stream<AuthStatus> get onAuthStatusChanged =>
       _fresh.authenticationStatus.map(_mapAuthStatus);
-
-  @override
-  Future<void> ensureSessionRestored() async {
-    if (_sessionStatus != .initial) return;
-
-    await onSessionStatusChanged.firstWhere((status) => status != .initial);
-  }
 
   @override
   Future<void> startSession(TokenResponse token) async {
     await _fresh.setToken(token);
 
-    _sessionStatus = .authenticated;
+    _authStatus = .authenticated;
   }
 
   @override
   Future<void> clearSession() async {
     await _fresh.clearToken();
 
-    _sessionStatus = .unauthenticated;
+    _authStatus = .unauthenticated;
   }
 
   @override

@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
-import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart';
+import 'package:flutter_guidelines/presentation/blocs/session/session_bloc.dart';
 import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 
@@ -99,8 +99,8 @@ class const AppDrawer({super.key}) extends StatelessWidget {
                             typography: typography,
                           ),
                           onTap: () {
-                            context.read<AuthBloc>().add(
-                              const AuthEvent.signOut(),
+                            context.read<SessionBloc>().add(
+                              const SessionEvent.signOut(),
                             );
                           },
                         ),

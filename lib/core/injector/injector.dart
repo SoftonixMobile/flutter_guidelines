@@ -6,7 +6,6 @@ import 'package:secure_storage/secure_storage.dart';
 
 import 'package:flutter_guidelines/core/config/app_config.dart';
 import 'package:flutter_guidelines/core/logger/logger.dart';
-import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/presentation/router/index.dart';
 
@@ -15,11 +14,10 @@ import 'injector.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit()
-//register only auth dependencies
-void configureAuthDependencies({
+//register app-wide dependencies
+Future<void> configureAppDependencies({
   required Logger logger,
-}) {
-  final userData = UserData(userProfile: const UserProfile());
+}) async {
   final apiClient = DioApiClient(
     baseUrl: AppConfig.appApiUrl,
     storage: const SecureStorage(),
@@ -28,18 +26,18 @@ void configureAuthDependencies({
   getIt
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
-    ..registerSingleton<UserData>(userData)
-    ..registerSingleton<ApiClient>(apiClient)
-    ..registerFactory(() => AuthService(apiClient))
-    ..registerFactory(() => SessionService(apiClient))
-    ..registerFactory(() => UserService(apiClient))
-    ..initAuthScope();
+    ..registerSingleton<ApiClient>(apiClient);
+
+  await DataProviderPackageModule().init(GetItHelper(getIt));
+
+  getIt.initAppScope();
 }
 
-//register other dependencies (except auth ones)
+//register user-scoped dependencies (except app-wide ones)
 void configureUserDependencies(GetIt getIt) {
-  // ignore: discarded_futures
-  DataProviderPackageModule().init(GetItHelper(getIt));
+  final userData = UserData(userProfile: const UserProfile());
 
-  getIt.init();
+  getIt
+    ..registerSingleton(userData)
+    ..init();
 }

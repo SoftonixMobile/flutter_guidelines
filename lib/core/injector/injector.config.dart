@@ -21,8 +21,8 @@ import 'package:flutter_guidelines/data/repositories/user_repository.dart'
 import 'package:flutter_guidelines/data/services/index.dart' as _i349;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i595;
 import 'package:flutter_guidelines/domain/repositories/index.dart' as _i64;
-import 'package:flutter_guidelines/presentation/blocs/auth/auth_bloc.dart'
-    as _i883;
+import 'package:flutter_guidelines/presentation/blocs/session/session_bloc.dart'
+    as _i694;
 import 'package:flutter_guidelines/presentation/blocs/user/user_bloc.dart'
     as _i492;
 import 'package:flutter_guidelines/presentation/screens/auth/login/login_form_bloc.dart'
@@ -39,15 +39,34 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of app-scope dependencies inside of GetIt
+  _i174.GetIt initAppScope({_i174.ScopeDisposeFunc? dispose}) {
+    return _i526.GetItHelper(this).initScope(
+      'app',
+      dispose: dispose,
+      init: (_i526.GetItHelper gh) {
+        gh.lazySingleton<_i776.AuthRepository>(
+          () => _i776.AuthRepository(
+            gh<_i349.AuthService>(),
+            gh<_i349.SessionService>(),
+          ),
+        );
+        gh.factory<_i694.SessionBloc>(
+          () => _i694.SessionBloc(gh<_i64.AuthRepository>()),
+        );
+        gh.factory<_i175.LoginFormBloc>(
+          () => _i175.LoginFormBloc(gh<_i64.AuthRepository>()),
+        );
+      },
+    );
+  }
+
   // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.singleton<_i492.UserBloc>(
-      () => _i492.UserBloc(gh<_i64.UserRepository>()),
-    );
     gh.lazySingleton<_i148.ChatsRepository>(
       () => _i148.ChatsRepository(gh<_i349.ChatsService>()),
     );
@@ -55,8 +74,14 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1049.PostsRepository(gh<_i349.PostsService>()),
       dispose: (i) => i.close(),
     );
+    gh.lazySingleton<_i365.UserRepository>(
+      () => _i365.UserRepository(gh<_i595.UserData>(), gh<_i349.UserService>()),
+    );
     gh.factory<_i73.ChatsBloc>(
       () => _i73.ChatsBloc(gh<_i64.ChatsRepository>()),
+    );
+    gh.lazySingleton<_i492.UserBloc>(
+      () => _i492.UserBloc(gh<_i64.UserRepository>()),
     );
     gh.factoryParam<_i233.PostFormBloc, _i595.Post?, dynamic>(
       (initial, _) => _i233.PostFormBloc(initial, gh<_i64.PostsRepository>()),
@@ -68,33 +93,5 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i830.PostsBloc(gh<_i64.PostsRepository>()),
     );
     return this;
-  }
-
-  // initializes the registration of auth-scope dependencies inside of GetIt
-  _i174.GetIt initAuthScope({_i174.ScopeDisposeFunc? dispose}) {
-    return _i526.GetItHelper(this).initScope(
-      'auth',
-      dispose: dispose,
-      init: (_i526.GetItHelper gh) {
-        gh.lazySingleton<_i776.AuthRepository>(
-          () => _i776.AuthRepository(
-            gh<_i349.AuthService>(),
-            gh<_i349.SessionService>(),
-          ),
-        );
-        gh.lazySingleton<_i365.UserRepository>(
-          () => _i365.UserRepository(
-            gh<_i595.UserData>(),
-            gh<_i349.UserService>(),
-          ),
-        );
-        gh.factory<_i883.AuthBloc>(
-          () => _i883.AuthBloc(gh<_i64.AuthRepository>()),
-        );
-        gh.factory<_i175.LoginFormBloc>(
-          () => _i175.LoginFormBloc(gh<_i64.AuthRepository>()),
-        );
-      },
-    );
   }
 }

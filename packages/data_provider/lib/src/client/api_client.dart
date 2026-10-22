@@ -5,10 +5,9 @@ import '../models/auth/models.dart';
 import 'models/index.dart';
 
 abstract class ApiClient(@protected final JsonParser jsonParser) {
-  AuthStatus get sessionStatus;
-  Stream<AuthStatus> get onSessionStatusChanged;
+  AuthStatus get authStatus;
 
-  Future<void> ensureSessionRestored();
+  Stream<AuthStatus> get onAuthStatusChanged;
 
   Future<void> startSession(TokenResponse token);
 

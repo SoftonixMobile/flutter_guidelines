@@ -89,7 +89,7 @@ void main() {
       storage.values[_tokenKey] = jsonEncode(token.toJson());
 
   Future<AuthStatus> resolvedStatus(DioApiClient client) =>
-      client.onSessionStatusChanged.firstWhere((status) => status != .initial);
+      client.onAuthStatusChanged.firstWhere((status) => status != .initial);
 
   setUp(() {
     storage = _InMemoryStorage();

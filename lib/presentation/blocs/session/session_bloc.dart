@@ -7,29 +7,29 @@ import 'package:injectable/injectable.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 
-part 'auth_bloc.freezed.dart';
-part 'auth_event.dart';
-part 'auth_state.dart';
+part 'session_bloc.freezed.dart';
+part 'session_event.dart';
+part 'session_state.dart';
 
-@Injectable(scope: 'auth')
-class AuthBloc(final AuthRepository _authRepository)
-    extends Bloc<AuthEvent, AuthState> {
-  this : super(const AuthState()) {
+@Injectable(scope: 'app')
+class SessionBloc(final AuthRepository _authRepository)
+    extends Bloc<SessionEvent, SessionState> {
+  this : super(const SessionState()) {
     on<_Subscribe>(_subscribe);
     on<_SignOut>(_signOut);
   }
 
   Future<void> _subscribe(
     _Subscribe event,
-    Emitter<AuthState> emit,
+    Emitter<SessionState> emit,
   ) {
     return emit.forEach(
-      _authRepository.onStatusChanged,
-      onData: (status) => state.copyWith(status: status),
+      _authRepository.onAuthStatusChanged,
+      onData: (status) => state.copyWith(authStatus: status),
     );
   }
 
-  FutureOr<void> _signOut(_SignOut event, Emitter<AuthState> emit) {
+  FutureOr<void> _signOut(_SignOut event, Emitter<SessionState> emit) {
     return _authRepository.signOut();
   }
 }

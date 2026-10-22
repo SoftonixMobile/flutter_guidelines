@@ -18,8 +18,6 @@ import 'package:flutter_guidelines/presentation/screens/main/dashboard/dashboard
     as _i3;
 import 'package:flutter_guidelines/presentation/screens/main/main_screen.dart'
     as _i5;
-import 'package:flutter_guidelines/presentation/screens/main/main_wrapper_screen.dart'
-    as _i6;
 import 'package:flutter_guidelines/presentation/screens/main/messages/chats/chats_screen.dart'
     as _i2;
 import 'package:flutter_guidelines/presentation/screens/main/messages/chats/pages/chat_details/chat_details_screen.dart'
@@ -32,6 +30,8 @@ import 'package:flutter_guidelines/presentation/screens/main/messages/posts/post
     as _i9;
 import 'package:flutter_guidelines/presentation/screens/main/settings/settings_screen.dart'
     as _i11;
+import 'package:flutter_guidelines/presentation/screens/main/wrapper/main_wrapper_screen.dart'
+    as _i6;
 import 'package:flutter_guidelines/presentation/screens/root_screen.dart'
     as _i10;
 import 'package:material_ui/material_ui.dart' as _i13;

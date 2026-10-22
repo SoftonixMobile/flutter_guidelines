@@ -6,7 +6,7 @@ import 'package:stx_repository/stx_repository.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/domain/models/index.dart';
 
-@LazySingleton(scope: 'auth')
+@lazySingleton
 class UserRepository(final UserData _userData, final UserService _userService)
     extends RepositoryBase<UserProfile> {
   this : super(initialValue: const UserProfile());

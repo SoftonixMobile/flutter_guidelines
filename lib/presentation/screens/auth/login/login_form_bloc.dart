@@ -6,7 +6,7 @@ import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
 
-@Injectable(scope: 'auth')
+@Injectable(scope: 'app')
 class LoginFormBloc(final AuthRepository _authRepository)
     extends FormBloc<bool, String> {
   late final TextFieldBloc username;
