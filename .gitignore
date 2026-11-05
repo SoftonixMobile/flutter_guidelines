@@ -12,8 +12,12 @@
 #mason
 .mason/
 
-#uncomment in a real project
-#*.env
+# environment files (see .env.example)
+.env*
+!.env.example
+
+# keep mason brick template env files tracked
+!bricks/**/__brick__/.env*
 
 # FVM Version Cache
 .fvm/

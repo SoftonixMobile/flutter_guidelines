@@ -40,7 +40,7 @@ flutter test --coverage                               # With coverage
 
 ## Running the app
 
-Config is read only via `String.fromEnvironment` (`lib/core/config/app_config.dart`: `ENV`, `APP_PROJECT_PREFIX`, `APP_API_URL`), supplied from `.env.dev` / `.env.prod`:
+Config is read only via `String.fromEnvironment` (`lib/core/config/app_config.dart`: `ENV`, `APP_PROJECT_PREFIX`, `APP_API_URL`), supplied from `.env.dev` / `.env.prod`. These are git-ignored (`.env*`); copy `.env.example` (committed, keys only) and fill in real values locally:
 
 ```bash
 flutter run --dart-define-from-file=.env.dev
