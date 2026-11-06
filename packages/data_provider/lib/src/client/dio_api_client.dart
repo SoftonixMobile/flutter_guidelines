@@ -20,6 +20,10 @@ class DioApiClient({
   dio.Dio? httpClient,
   dio.Dio? bareClient,
 }) extends ApiClient {
+  static const Duration _connectTimeout = Duration(seconds: 10);
+  static const Duration _sendTimeout = Duration(seconds: 10);
+  static const Duration _receiveTimeout = Duration(seconds: 15);
+
   final Fresh<TokenResponse> _fresh = Fresh<TokenResponse>(
     tokenStorage: SecureTokenStorage(storage),
     tokenHeader: (token) => {'Authorization': 'Bearer ${token.accessToken}'},
@@ -223,8 +227,9 @@ class DioApiClient({
   static dio.Dio _createClient(String baseUrl) => dio.Dio(
     dio.BaseOptions(
       baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 100),
+      connectTimeout: _connectTimeout,
+      sendTimeout: _sendTimeout,
+      receiveTimeout: _receiveTimeout,
     ),
   );
 }
