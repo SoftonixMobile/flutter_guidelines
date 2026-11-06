@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+ (API 31+). flutter_secure_storage keeps encrypted values in
+     shared_prefs while the decryption key stays in the device-bound Android
+     Keystore, so restored values can't be decrypted. App prefs (DataStore,
+     files/datastore/) are still backed up. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="." />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="." />
+    </device-transfer>
+</data-extraction-rules>
