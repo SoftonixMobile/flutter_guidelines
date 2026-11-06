@@ -51,14 +51,17 @@ class const _AppStateWrapper({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              getIt<SessionBloc>()..add(const SessionEvent.subscribe()),
-        ),
-      ],
-      child: child,
+    return RepositoryProvider.value(
+      value: getIt<AppConfig>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) =>
+                getIt<SessionBloc>()..add(const SessionEvent.subscribe()),
+          ),
+        ],
+        child: child,
+      ),
     );
   }
 }

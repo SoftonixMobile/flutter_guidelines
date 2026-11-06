@@ -16,14 +16,16 @@ final getIt = GetIt.instance;
 @InjectableInit()
 //register app-wide dependencies
 Future<void> configureAppDependencies({
+  required AppConfig config,
   required Logger logger,
 }) async {
   final apiClient = DioApiClient(
-    baseUrl: AppConfig.appApiUrl,
+    baseUrl: config.apiUrl.toString(),
     storage: const SecureStorage(),
   );
 
   getIt
+    ..registerSingleton(config)
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
     ..registerSingleton<ApiClient>(apiClient);

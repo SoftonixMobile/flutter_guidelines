@@ -40,7 +40,7 @@ flutter test --coverage                               # With coverage
 
 ## Running the app
 
-Config is read only via `String.fromEnvironment` (`lib/core/config/app_config.dart`: `ENV`, `APP_PROJECT_PREFIX`, `APP_API_URL`), supplied from `.env.dev` / `.env.prod`. These are git-ignored (`.env*`); copy `.env.example` (committed, keys only) and fill in real values locally:
+Config keys (`ENV`, `APP_API_URL`) are passed as dart-defines from `.env.dev` / `.env.prod`. These are git-ignored (`.env*`); copy `.env.example` (committed, keys only) and fill in real values locally. `AppConfig.fromEnvironment()` reads and validates them at startup: a missing or empty key, an unknown `ENV` or a non-absolute `APP_API_URL` throws a `ConfigException` before `runApp`, so running without `--dart-define-from-file` fails immediately with a message saying what to fix:
 
 ```bash
 flutter run --dart-define-from-file=.env.dev
@@ -49,22 +49,34 @@ flutter run --dart-define-from-file=.env.prod --release
 
 VS Code `launch.json` has `dev debug`, `dev release`, `prod debug`, `prod release` preconfigured.
 
+## Config
+
+`AppConfig` (`lib/core/config/app_config.dart`) is an immutable value object with `environment` (`AppEnvironment.dev` / `.prod`), `apiUrl` (`Uri`) and `enableConsoleLogs` (= debug build). `AppConfig.parse(Map<String, String>, {isDebugBuild})` is the pure, unit-testable parser. The config is created first in `initializeApp()`, registered in get_it by `configureAppDependencies(config:, logger:)`, and provided to widgets by a `RepositoryProvider` in `_AppStateWrapper` (`context.config`, via `AppConfigX` in `lib/presentation/utils/`). In tests, construct one with `testConfig(...)` (`test/helpers/test_app_config.dart`) instead of mocking it.
+
+Rules:
+- `String.fromEnvironment` appears only in `AppConfig.fromEnvironment()`.
+- No static config access: inject `AppConfig`.
+- `packages/*` never import `AppConfig`; pass primitives.
+- `lib/domain` never imports `AppConfig`.
+- Dart-defines are baked into the binary in plain text. Never put secrets in `.env.*`.
+- A new key goes into `.env.example`, `.env.dev`, `.env.prod`, `AppConfig.parse` (with validation), `testConfig` and `app_config_test.dart`.
+
 ## Architecture
 
 **Clean Architecture layers:**
-- `lib/core/` — Config (`AppConfig` via `--dart-define`), constants, base exceptions (`AppException`), initialization, DI (get_it + injectable), abstract `Logger`, utils
+- `lib/core/` — Config (`AppConfig` value object + `AppEnvironment` enum, built once from dart-defines; see Config), constants, base exceptions (`AppException`, `ConfigException`), initialization, DI (get_it + injectable), abstract `Logger`, utils
 - `lib/domain/` — Domain models (`UserData`, type aliases, data models re-exports incl. `AuthStatus`), repository re-exports
 - `lib/data/` — Repositories (extend `stx_repository` base), logger implementations
 - `lib/presentation/` — App entry, BLoCs, screens, router (auto_route), localization, theme/design system, reusable widgets
 
 **Dependency injection has two phases (`lib/core/injector/injector.dart`):**
-1. `configureAppDependencies()` — core singletons (AppRouter, Logger, `ApiClient`), all `data_provider` services, and `scope: 'app'` dependencies (AuthRepository, SessionBloc, LoginFormBloc).
+1. `configureAppDependencies()` — core singletons (`AppConfig`, AppRouter, Logger, `ApiClient` with `baseUrl: config.apiUrl`), all `data_provider` services, and `scope: 'app'` dependencies (AuthRepository, SessionBloc, LoginFormBloc).
 2. `configureUserDependencies()` — pushed as the `'user'` scope in `MainScopeProvider.initState` (wraps `MainWrapperScreen`); registers `UserData` and user-scoped repositories/BLoCs.
 
 User-scoped dependencies are torn down when `MainScopeProvider.dispose()` calls `getIt.dropScope('user')`.
 
 **App initialization sequence** (`lib/core/initialization/app_initialization.dart`):
-Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserver → `configureAppDependencies()` → Validators
+Config (`AppConfig.fromEnvironment()`, fails fast) → Splash → Localization → Logger (MultiLogger) → Crashlytics → BlocObserver → `configureAppDependencies()` → Validators
 
 **Navigation:** auto_route with declarative routing at root. `RootScreen` switches between `LoginRoute` and `MainRouter` based on `SessionBloc` state. `MainWrapperScreen` (annotated `@RoutePage(name: 'MainRouter')`) manages user scope lifecycle. `MainScreen` uses `AutoTabsScaffold` with 3 bottom tabs (Dashboard, Messages, Settings) and an `AppDrawer` as endDrawer.
 
@@ -190,6 +202,7 @@ After adding a new `@RoutePage()` screen, register it in `lib/presentation/route
 
 **Exception hierarchy:**
 - `AppException` (`lib/core/exceptions/`) — base exception with `String? message`
+- `ConfigException extends AppException` (`lib/core/exceptions/`) — thrown by `AppConfig.parse` on missing or invalid config
 - `ApiException` (`packages/data_provider`) — thrown by `ApiClient`; has `ApiExceptionType` enum (noConnection, timeout, cancelled, badCertificate, badRequest, unauthorized, forbidden, notFound, tooManyRequests, clientError, serviceUnavailable, serverError, unknown), `int? statusCode` and `message` (read from the response body's `message`/`error` when present)
 
 **Flow:** `DioException` → `DioApiClient._guard()` → `ApiExceptionMapper.fromDioException()` → `ApiException` → BLoC `addError(e, stackTrace)` → `SimpleBlocObserver.onError()` → `logger.logError()`
@@ -198,7 +211,7 @@ After adding a new `@RoutePage()` screen, register it in `lib/presentation/route
 
 ## Logger
 
-Abstract `Logger` interface (`lib/core/logger/logger.dart`) with methods: `init`, `registerUser`, `log`, `logInfo`, `logWarning`, `logError`. `MultiLogger` (`lib/data/services/logger/`) fans out to multiple implementations. `ConsoleLogger` used in debug mode only. Add new loggers (e.g., Crashlytics) to the `MultiLogger` list in `_initializeLogger()`.
+Abstract `Logger` interface (`lib/core/logger/logger.dart`) with methods: `init`, `registerUser`, `log`, `logInfo`, `logWarning`, `logError`. `MultiLogger` (`lib/data/services/logger/`) fans out to multiple implementations. `ConsoleLogger` is added only when `config.enableConsoleLogs` is true (debug builds). Add new loggers (e.g., Crashlytics) to the `MultiLogger` list in `_initializeLogger()`.
 
 ## Code Style
 

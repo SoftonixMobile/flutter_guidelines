@@ -13,14 +13,15 @@ import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 Future<void> initializeApp() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  final config = AppConfig.fromEnvironment();
 
   _initializeSplashScreen(widgetsBinding);
   await _initializeLocalization();
 
-  final logger = await _initializeLogger();
+  final logger = await _initializeLogger(config);
   _initializeCrashlytics(logger);
   _initializeBlocObserver(logger);
-  await _initializeDependencies(logger);
+  await _initializeDependencies(config, logger);
   _initializeValidators();
 }
 
@@ -32,9 +33,9 @@ Future<void> _initializeLocalization() {
   return EasyLocalization.ensureInitialized();
 }
 
-Future<Logger> _initializeLogger() async {
+Future<Logger> _initializeLogger(AppConfig config) async {
   final logger = MultiLogger([
-    if (kDebugMode) ConsoleLogger(),
+    if (config.enableConsoleLogs) ConsoleLogger(),
   ]);
   await logger.init();
 
@@ -57,8 +58,8 @@ void _initializeBlocObserver(Logger logger) {
   Bloc.observer = SimpleBlocObserver(logger);
 }
 
-Future<void> _initializeDependencies(Logger logger) {
-  return configureAppDependencies(logger: logger);
+Future<void> _initializeDependencies(AppConfig config, Logger logger) {
+  return configureAppDependencies(config: config, logger: logger);
 }
 
 void _initializeValidators() {

@@ -1,6 +1,6 @@
-export 'config/app_config.dart';
+export 'config/index.dart';
 export 'constants/index.dart';
-export 'exceptions/app_exception.dart';
+export 'exceptions/index.dart';
 export 'initialization/app_initialization.dart';
 export 'injector/injector.dart';
 export 'logger/logger.dart';
