@@ -287,13 +287,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
-  customizable_cupertino_dialog:
-    dependency: "direct main"
-    description:
-      path: "packages/customizable_cupertino_dialog"
-      relative: true
-    source: path
-    version: "0.0.1"
   darq:
     dependency: "direct main"
     description:

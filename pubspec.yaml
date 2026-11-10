@@ -22,9 +22,6 @@ dependencies:
   app_api:
     path: packages/app_api
 
-  customizable_cupertino_dialog:
-    path: packages/customizable_cupertino_dialog
-
   secure_storage:
     path: packages/storage/secure_storage
 

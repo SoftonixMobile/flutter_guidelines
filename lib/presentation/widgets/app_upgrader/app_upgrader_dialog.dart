@@ -1,10 +1,8 @@
 import 'dart:io';
 
-import 'package:cupertino_ui/cupertino_ui.dart' hide CupertinoAlertDialog;
+import 'package:cupertino_ui/cupertino_ui.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:upgrader/upgrader.dart';
-
-import 'app_upgrade_alert.dart';
 
 /// Dialog that prompts the user to update the app
 ///  when a new version is available.
@@ -27,7 +25,7 @@ class const AppUpgraderDialog({
           ),
         ),
       ),
-      child: AppUpgradeAlert(
+      child: UpgradeAlert(
         navigatorKey: navigatorKey,
         dialogStyle: Platform.isIOS
             ? UpgradeDialogStyle.cupertino
