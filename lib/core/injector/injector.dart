@@ -1,5 +1,5 @@
-import 'package:data_provider/injector.dart';
-import 'package:data_provider/network.dart';
+import 'package:api_client/api_client.dart';
+import 'package:app_api/injector.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:secure_storage/secure_storage.dart';
@@ -19,18 +19,20 @@ Future<void> configureAppDependencies({
   required AppConfig config,
   required Logger logger,
 }) async {
+  final authSession = DioAuthSession(storage: const SecureStorage());
   final apiClient = DioApiClient(
     baseUrl: config.apiUrl.toString(),
-    storage: const SecureStorage(),
+    authSession: authSession,
   );
 
   getIt
     ..registerSingleton(config)
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
+    ..registerSingleton<AuthSession>(authSession)
     ..registerSingleton<ApiClient>(apiClient);
 
-  await DataProviderPackageModule().init(GetItHelper(getIt));
+  await AppApiPackageModule().init(GetItHelper(getIt));
 
   getIt.initAppScope();
 }

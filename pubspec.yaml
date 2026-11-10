@@ -16,11 +16,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  api_client:
+    path: packages/api_client
+
+  app_api:
+    path: packages/app_api
+
   customizable_cupertino_dialog:
     path: packages/customizable_cupertino_dialog
-
-  data_provider:
-    path: packages/data_provider
 
   secure_storage:
     path: packages/storage/secure_storage

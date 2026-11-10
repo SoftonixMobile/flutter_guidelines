@@ -14,8 +14,8 @@ build:
 	$(DART) run build_runner build --delete-conflicting-outputs
 
 build_data:
-	cd packages/data_provider && $(DART) run build_runner build --delete-conflicting-outputs
-	$(DART) format packages/data_provider/lib/src/injector/inject_package.module.dart
+	cd packages/app_api && $(DART) run build_runner build --delete-conflicting-outputs
+	$(DART) format packages/app_api/lib/src/injector/inject_package.module.dart
 
 watch:
 	$(DART) run build_runner watch --delete-conflicting-outputs

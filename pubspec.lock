@@ -33,6 +33,20 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  api_client:
+    dependency: "direct main"
+    description:
+      path: "packages/api_client"
+      relative: true
+    source: path
+    version: "1.0.0"
+  app_api:
+    dependency: "direct main"
+    description:
+      path: "packages/app_api"
+      relative: true
+    source: path
+    version: "1.0.0"
   archive:
     dependency: transitive
     description:
@@ -304,13 +318,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  data_provider:
-    dependency: "direct main"
-    description:
-      path: "packages/data_provider"
-      relative: true
-    source: path
-    version: "1.0.0"
   diff_match_patch:
     dependency: transitive
     description:

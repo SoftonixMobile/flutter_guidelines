@@ -1,7 +1,0 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'models.freezed.dart';
-part 'models.g.dart';
-
-part 'auth_status.dart';
-part 'token_response.dart';

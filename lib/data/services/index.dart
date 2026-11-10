@@ -1,3 +1,3 @@
-export 'package:data_provider/services.dart';
+export 'package:app_api/services.dart';
 
 export 'logger/index.dart';
