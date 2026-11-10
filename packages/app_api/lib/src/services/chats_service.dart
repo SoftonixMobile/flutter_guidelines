@@ -5,14 +5,14 @@ import 'package:injectable/injectable.dart';
 @injectable
 class ChatsService(final ApiClient _client) {
   this {
-    _client.registerType(Chat.fromJson);
+    _client.registerType(ChatDto.fromJson);
   }
 
-  Future<List<Chat>> getAllChats() {
-    return _client.getData<List<Chat>>('/chats');
+  Future<List<ChatDto>> getAllChats() {
+    return _client.getData<List<ChatDto>>('/chats');
   }
 
-  Future<Chat> getChatById(int id) {
-    return _client.getData<Chat>('/chats/$id');
+  Future<ChatDto> getChatById(int id) {
+    return _client.getData<ChatDto>('/chats/$id');
   }
 }

@@ -5,20 +5,20 @@ import 'package:injectable/injectable.dart';
 @injectable
 class PostsService(final ApiClient _client) {
   this {
-    _client.registerType(Post.fromJson);
+    _client.registerType(PostDto.fromJson);
   }
 
-  Future<List<Post>> getAllPosts() {
-    return _client.getData<List<Post>>(
+  Future<List<PostDto>> getAllPosts() {
+    return _client.getData<List<PostDto>>(
       'https://jsonplaceholder.typicode.com/posts',
     );
   }
 
-  Future<Post> createPost(Post post) {
+  Future<PostDto> createPost(PostDto post) {
     return Future.delayed(Duration(seconds: 1), () => post);
   }
 
-  Future<Post> updatePost(Post post) {
+  Future<PostDto> updatePost(PostDto post) {
     return Future.delayed(Duration(seconds: 1), () => post);
   }
 }

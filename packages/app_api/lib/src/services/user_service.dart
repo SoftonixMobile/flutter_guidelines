@@ -5,13 +5,13 @@ import 'package:injectable/injectable.dart';
 @injectable
 class UserService(final ApiClient _client) {
   this {
-    _client.registerType(UserProfile.fromJson);
+    _client.registerType(UserProfileDto.fromJson);
   }
 
-  Future<UserProfile> getUserProfile() async {
+  Future<UserProfileDto> getUserProfile() async {
     await Future.delayed(Duration(seconds: 1));
 
-    return UserProfile.fromJson({
+    return UserProfileDto.fromJson({
       'id': 1,
       'userName': 'test',
     });

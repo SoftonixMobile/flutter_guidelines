@@ -65,9 +65,11 @@ Rules:
 
 **Clean Architecture layers:**
 - `lib/core/` — Config (`AppConfig` value object + `AppEnvironment` enum, built once from dart-defines; see Config), constants, base exceptions (`AppException`, `ConfigException`), initialization, DI (get_it + injectable), abstract `Logger`, utils
-- `lib/domain/` — Domain models (`UserData`, type aliases, data models re-exports incl. `AuthStatus`), repository re-exports
-- `lib/data/` — Repositories (extend `stx_repository` base), logger implementations
+- `lib/domain/` — Domain models (`UserData`, `Post` class, typedef aliases `Chat` / `UserProfile` of `app_api` wire types, `AuthStatus` re-export), repository re-exports
+- `lib/data/` — Repositories (extend `stx_repository` base), wire ↔ domain mappers (`lib/data/mappers/`), logger implementations
 - `lib/presentation/` — App entry, BLoCs, screens, router (auto_route), localization, theme/design system, reusable widgets
+
+**Model naming:** wire types in `packages/app_api` and their domain names in `lib/domain/models` follow `docs/model_naming.md`.
 
 **Dependency injection has two phases (`lib/core/injector/injector.dart`):**
 1. `configureAppDependencies()` — core singletons (`AppConfig`, AppRouter, Logger, `AuthSession` with `baseUrl: config.apiUrl` and `tokenRefresher: AuthTokenRefresher.refresh`, `ApiClient` with the same `baseUrl` and that session), all `app_api` services (`AppApiPackageModule`), and `scope: 'app'` dependencies (AuthRepository, SessionBloc, LoginFormBloc).
@@ -98,7 +100,7 @@ Config (`AppConfig.fromEnvironment()`, fails fast) → Splash → Localization �
 ## Local Packages
 
 - `packages/api_client/` — Generic HTTP client, no knowledge of a specific backend and no DI or codegen: abstract `ApiClient` (requests only) + `DioApiClient`, abstract `AuthSession` (token and auth status) + `DioAuthSession` with Fresh auth, `SecureTokenStorage` and an optional `tokenRefresher`, `AuthToken` (session credentials) and `AuthStatus`, `ApiException` + mapper, `JsonParser`/`JsonDataParser`, `RequestOptions`, `Response`. Single entry point `package:api_client/api_client.dart`.
-- `packages/app_api/` — The app's backend API on top of `api_client`: response models (UserProfile, Chat, Post, TokenResponse; re-exports `AuthStatus`) and endpoint services (AuthService, UserService, PostsService, ChatsService, SessionService). Has its own injectable micro-package module (`AppApiPackageModule`). Endpoint services take an `ApiClient`; only `SessionService` takes the `AuthSession`. `AuthTokenRefresher.refresh` is the token refresh call (for now a stub that returns a fixed token, like `AuthService.signIn`): it is not registered in DI and must send its request through the client `DioAuthSession` passes to it. Services register their JSON types via `_client.registerType(Model.fromJson)` in constructors. Backend-specific code goes here, never in `api_client`.
+- `packages/app_api/` — The app's backend API on top of `api_client`: wire models (`UserProfileDto`, `ChatDto`, `PostDto`, `TokenResponse`; re-exports `AuthStatus`) and endpoint services (AuthService, UserService, PostsService, ChatsService, SessionService). Has its own injectable micro-package module (`AppApiPackageModule`). Endpoint services take an `ApiClient`; only `SessionService` takes the `AuthSession`. `AuthTokenRefresher.refresh` is the token refresh call (for now a stub that returns a fixed token, like `AuthService.signIn`): it is not registered in DI and must send its request through the client `DioAuthSession` passes to it. Services register their JSON types via `_client.registerType(Model.fromJson)` in constructors. Backend-specific code goes here, never in `api_client`.
 - `packages/stx_repository/` — Base repository abstraction with mixins: `SyncLoadRepositoryMixin`, `StreamRepositoryMixin`, `TTLRefreshRepositoryMixin`, `DisposableRepositoryMixin`
 - `packages/customizable_cupertino_dialog/` — Custom iOS dialog widget
 - `packages/storage/` — Key-value `Storage` interface (`storage`) with `SecureStorage` (`secure_storage`, flutter_secure_storage) and `PersistentStorage` (`persistent_storage`, shared_preferences) implementations

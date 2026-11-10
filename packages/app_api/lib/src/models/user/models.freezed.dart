@@ -13,26 +13,29 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$UserProfile {
+mixin _$UserProfileDto {
   int get id;
   String get userName;
 
-  /// Create a copy of UserProfile
+  /// Create a copy of UserProfileDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<UserProfile> get copyWith =>
-      _$UserProfileCopyWithImpl<UserProfile>(this as UserProfile, _$identity);
+  $UserProfileDtoCopyWith<UserProfileDto> get copyWith =>
+      _$UserProfileDtoCopyWithImpl<UserProfileDto>(
+        this as UserProfileDto,
+        _$identity,
+      );
 
-  /// Serializes this UserProfile to a JSON map.
+  /// Serializes this UserProfileDto to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
-    final _this = this as UserProfile;
+    final _this = this as UserProfileDto;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UserProfile &&
+            other is UserProfileDto &&
             (identical(other.id, _this.id) || other.id == _this.id) &&
             (identical(other.userName, _this.userName) ||
                 other.userName == _this.userName));
@@ -41,41 +44,42 @@ mixin _$UserProfile {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    final _this = this as UserProfile;
+    final _this = this as UserProfileDto;
     return Object.hash(runtimeType, _this.id, _this.userName);
   }
 
   @override
   String toString() {
-    final _this = this as UserProfile;
-    return 'UserProfile(id: ${_this.id}, userName: ${_this.userName})';
+    final _this = this as UserProfileDto;
+    return 'UserProfileDto(id: ${_this.id}, userName: ${_this.userName})';
   }
 }
 
 /// @nodoc
-abstract mixin class $UserProfileCopyWith<$Res> {
-  factory $UserProfileCopyWith(
-    UserProfile value,
-    $Res Function(UserProfile) _then,
-  ) = _$UserProfileCopyWithImpl;
+abstract mixin class $UserProfileDtoCopyWith<$Res> {
+  factory $UserProfileDtoCopyWith(
+    UserProfileDto value,
+    $Res Function(UserProfileDto) _then,
+  ) = _$UserProfileDtoCopyWithImpl;
   @useResult
   $Res call({int id, String userName});
 }
 
 /// @nodoc
-class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
-  _$UserProfileCopyWithImpl(this._self, this._then);
+class _$UserProfileDtoCopyWithImpl<$Res>
+    implements $UserProfileDtoCopyWith<$Res> {
+  _$UserProfileDtoCopyWithImpl(this._self, this._then);
 
-  final UserProfile _self;
-  final $Res Function(UserProfile) _then;
+  final UserProfileDto _self;
+  final $Res Function(UserProfileDto) _then;
 
-  /// Create a copy of UserProfile
+  /// Create a copy of UserProfileDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({Object? id = null, Object? userName = null}) {
     return _then(
-      UserProfile(
+      UserProfileDto(
         id: null == id
             ? _self.id
             : id // ignore: cast_nullable_to_non_nullable
@@ -91,10 +95,10 @@ class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _UserProfile implements UserProfile {
-  const _UserProfile({this.id = 0, this.userName = ''});
-  factory _UserProfile.fromJson(Map<String, dynamic> json) =>
-      _$UserProfileFromJson(json);
+class _UserProfileDto implements UserProfileDto {
+  const _UserProfileDto({this.id = 0, this.userName = ''});
+  factory _UserProfileDto.fromJson(Map<String, dynamic> json) =>
+      _$UserProfileDtoFromJson(json);
 
   @override
   @JsonKey()
@@ -103,24 +107,24 @@ class _UserProfile implements UserProfile {
   @JsonKey()
   final String userName;
 
-  /// Create a copy of UserProfile
+  /// Create a copy of UserProfileDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$UserProfileCopyWith<_UserProfile> get copyWith =>
-      __$UserProfileCopyWithImpl<_UserProfile>(this, _$identity);
+  _$UserProfileDtoCopyWith<_UserProfileDto> get copyWith =>
+      __$UserProfileDtoCopyWithImpl<_UserProfileDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$UserProfileToJson(this);
+    return _$UserProfileDtoToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserProfile &&
+            other is _UserProfileDto &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userName, userName) ||
                 other.userName == userName));
@@ -134,36 +138,37 @@ class _UserProfile implements UserProfile {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, userName: $userName)';
+    return 'UserProfileDto(id: $id, userName: $userName)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$UserProfileCopyWith<$Res>
-    implements $UserProfileCopyWith<$Res> {
-  factory _$UserProfileCopyWith(
-    _UserProfile value,
-    $Res Function(_UserProfile) _then,
-  ) = __$UserProfileCopyWithImpl;
+abstract mixin class _$UserProfileDtoCopyWith<$Res>
+    implements $UserProfileDtoCopyWith<$Res> {
+  factory _$UserProfileDtoCopyWith(
+    _UserProfileDto value,
+    $Res Function(_UserProfileDto) _then,
+  ) = __$UserProfileDtoCopyWithImpl;
   @override
   @useResult
   $Res call({int id, String userName});
 }
 
 /// @nodoc
-class __$UserProfileCopyWithImpl<$Res> implements _$UserProfileCopyWith<$Res> {
-  __$UserProfileCopyWithImpl(this._self, this._then);
+class __$UserProfileDtoCopyWithImpl<$Res>
+    implements _$UserProfileDtoCopyWith<$Res> {
+  __$UserProfileDtoCopyWithImpl(this._self, this._then);
 
-  final _UserProfile _self;
-  final $Res Function(_UserProfile) _then;
+  final _UserProfileDto _self;
+  final $Res Function(_UserProfileDto) _then;
 
-  /// Create a copy of UserProfile
+  /// Create a copy of UserProfileDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({Object? id = null, Object? userName = null}) {
     return _then(
-      _UserProfile(
+      _UserProfileDto(
         id: null == id
             ? _self.id
             : id // ignore: cast_nullable_to_non_nullable

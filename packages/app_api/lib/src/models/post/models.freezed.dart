@@ -13,74 +13,74 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$Post {
+mixin _$PostDto {
   int get id;
-  @JsonKey(name: 'title')
-  String get name;
+  String get title;
 
-  /// Create a copy of Post
+  /// Create a copy of PostDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PostCopyWith<Post> get copyWith =>
-      _$PostCopyWithImpl<Post>(this as Post, _$identity);
+  $PostDtoCopyWith<PostDto> get copyWith =>
+      _$PostDtoCopyWithImpl<PostDto>(this as PostDto, _$identity);
 
-  /// Serializes this Post to a JSON map.
+  /// Serializes this PostDto to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
-    final _this = this as Post;
+    final _this = this as PostDto;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is Post &&
+            other is PostDto &&
             (identical(other.id, _this.id) || other.id == _this.id) &&
-            (identical(other.name, _this.name) || other.name == _this.name));
+            (identical(other.title, _this.title) ||
+                other.title == _this.title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    final _this = this as Post;
-    return Object.hash(runtimeType, _this.id, _this.name);
+    final _this = this as PostDto;
+    return Object.hash(runtimeType, _this.id, _this.title);
   }
 
   @override
   String toString() {
-    final _this = this as Post;
-    return 'Post(id: ${_this.id}, name: ${_this.name})';
+    final _this = this as PostDto;
+    return 'PostDto(id: ${_this.id}, title: ${_this.title})';
   }
 }
 
 /// @nodoc
-abstract mixin class $PostCopyWith<$Res> {
-  factory $PostCopyWith(Post value, $Res Function(Post) _then) =
-      _$PostCopyWithImpl;
+abstract mixin class $PostDtoCopyWith<$Res> {
+  factory $PostDtoCopyWith(PostDto value, $Res Function(PostDto) _then) =
+      _$PostDtoCopyWithImpl;
   @useResult
-  $Res call({int id, @JsonKey(name: 'title') String name});
+  $Res call({int id, String title});
 }
 
 /// @nodoc
-class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
-  _$PostCopyWithImpl(this._self, this._then);
+class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
+  _$PostDtoCopyWithImpl(this._self, this._then);
 
-  final Post _self;
-  final $Res Function(Post) _then;
+  final PostDto _self;
+  final $Res Function(PostDto) _then;
 
-  /// Create a copy of Post
+  /// Create a copy of PostDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? id = null, Object? name = null}) {
+  $Res call({Object? id = null, Object? title = null}) {
     return _then(
-      Post(
+      PostDto(
         id: null == id
             ? _self.id
             : id // ignore: cast_nullable_to_non_nullable
                   as int,
-        name: null == name
-            ? _self.name
-            : name // ignore: cast_nullable_to_non_nullable
+        title: null == title
+            ? _self.title
+            : title // ignore: cast_nullable_to_non_nullable
                   as String,
       ),
     );
@@ -89,81 +89,82 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
 
 /// @nodoc
 @JsonSerializable()
-class _Post implements Post {
-  const _Post({this.id = 0, @JsonKey(name: 'title') this.name = ''});
-  factory _Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+class _PostDto implements PostDto {
+  const _PostDto({this.id = 0, this.title = ''});
+  factory _PostDto.fromJson(Map<String, dynamic> json) =>
+      _$PostDtoFromJson(json);
 
   @override
   @JsonKey()
   final int id;
   @override
-  @JsonKey(name: 'title')
-  final String name;
+  @JsonKey()
+  final String title;
 
-  /// Create a copy of Post
+  /// Create a copy of PostDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PostCopyWith<_Post> get copyWith =>
-      __$PostCopyWithImpl<_Post>(this, _$identity);
+  _$PostDtoCopyWith<_PostDto> get copyWith =>
+      __$PostDtoCopyWithImpl<_PostDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PostToJson(this);
+    return _$PostDtoToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Post &&
+            other is _PostDto &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode {
-    return Object.hash(runtimeType, id, name);
+    return Object.hash(runtimeType, id, title);
   }
 
   @override
   String toString() {
-    return 'Post(id: $id, name: $name)';
+    return 'PostDto(id: $id, title: $title)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
-  factory _$PostCopyWith(_Post value, $Res Function(_Post) _then) =
-      __$PostCopyWithImpl;
+abstract mixin class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
+  factory _$PostDtoCopyWith(_PostDto value, $Res Function(_PostDto) _then) =
+      __$PostDtoCopyWithImpl;
   @override
   @useResult
-  $Res call({int id, @JsonKey(name: 'title') String name});
+  $Res call({int id, String title});
 }
 
 /// @nodoc
-class __$PostCopyWithImpl<$Res> implements _$PostCopyWith<$Res> {
-  __$PostCopyWithImpl(this._self, this._then);
+class __$PostDtoCopyWithImpl<$Res> implements _$PostDtoCopyWith<$Res> {
+  __$PostDtoCopyWithImpl(this._self, this._then);
 
-  final _Post _self;
-  final $Res Function(_Post) _then;
+  final _PostDto _self;
+  final $Res Function(_PostDto) _then;
 
-  /// Create a copy of Post
+  /// Create a copy of PostDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $Res call({Object? id = null, Object? name = null}) {
+  $Res call({Object? id = null, Object? title = null}) {
     return _then(
-      _Post(
+      _PostDto(
         id: null == id
             ? _self.id
             : id // ignore: cast_nullable_to_non_nullable
                   as int,
-        name: null == name
-            ? _self.name
-            : name // ignore: cast_nullable_to_non_nullable
+        title: null == title
+            ? _self.title
+            : title // ignore: cast_nullable_to_non_nullable
                   as String,
       ),
     );

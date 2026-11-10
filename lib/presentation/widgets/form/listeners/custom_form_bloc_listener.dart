@@ -1,17 +1,17 @@
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
 class CustomFormBlocListener<
-  T extends FormBloc<SuccessResponse, String>,
-  SuccessResponse
+  T extends FormBloc<SuccessType, String>,
+  SuccessType
 >({
   super.key,
   super.child,
-  FormBlocListenerCallback<SuccessResponse, String>? onSubmitting,
-  FormBlocListenerCallback<SuccessResponse, String>? onSuccess,
-  FormBlocListenerCallback<SuccessResponse, String>? onFailure,
-  FormBlocListenerCallback<SuccessResponse, String>? onCancel,
+  FormBlocListenerCallback<SuccessType, String>? onSubmitting,
+  FormBlocListenerCallback<SuccessType, String>? onSuccess,
+  FormBlocListenerCallback<SuccessType, String>? onFailure,
+  FormBlocListenerCallback<SuccessType, String>? onCancel,
   super.formBloc,
-}) extends FormBlocListener<T, SuccessResponse, String> {
+}) extends FormBlocListener<T, SuccessType, String> {
   this
     : super(
         customListener: (context, state) {
