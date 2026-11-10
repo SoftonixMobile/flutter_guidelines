@@ -21,8 +21,8 @@ class DioApiClient({
   dio.Dio? bareClient,
 }) extends ApiClient {
   static const Duration _connectTimeout = Duration(seconds: 10);
-  static const Duration _sendTimeout = Duration(seconds: 10);
-  static const Duration _receiveTimeout = Duration(seconds: 15);
+  static const Duration _sendTimeout = Duration(seconds: 15);
+  static const Duration _receiveTimeout = Duration(seconds: 20);
 
   final Fresh<TokenResponse> _fresh = Fresh<TokenResponse>(
     tokenStorage: SecureTokenStorage(storage),
