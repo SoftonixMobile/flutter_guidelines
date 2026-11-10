@@ -6,8 +6,11 @@ import 'api_exception.dart';
 
 abstract final class ApiExceptionMapper() {
   static ApiException fromDioException(DioException e) {
+    final error = e.error;
+    if (error is ApiException) return error;
+
     return switch (e.type) {
-      .badResponse => _fromResponse(e),
+      _ when e.response != null => _fromResponse(e),
       _ => ApiException(
         type: _typeOf(e),
         message: e.message,

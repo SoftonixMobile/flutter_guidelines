@@ -137,5 +137,34 @@ void main() {
 
       expect(exception.type, ApiExceptionType.unknown);
     });
+
+    test('maps an unknown error that has a response by its status code', () {
+      final error = StateError('boom');
+      final exception = ApiExceptionMapper.fromDioException(
+        dio.DioException(
+          requestOptions: _request,
+          response: dio.Response(
+            requestOptions: _request,
+            statusCode: 401,
+            data: {'message': 'Token revoked'},
+          ),
+          error: error,
+        ),
+      );
+
+      expect(exception.type, ApiExceptionType.unauthorized);
+      expect(exception.statusCode, 401);
+      expect(exception.message, 'Token revoked');
+      expect(exception.error, error);
+    });
+
+    test('returns the ApiException a DioException carries', () {
+      const error = ApiException(type: .noConnection);
+      final exception = ApiExceptionMapper.fromDioException(
+        dio.DioException(requestOptions: _request, error: error),
+      );
+
+      expect(exception, same(error));
+    });
   });
 }

@@ -10,12 +10,8 @@ class SessionService(final AuthSession _session) {
 
   bool get isAuthenticated => authStatus == .authenticated;
 
-  Future<void> startSession(TokenResponse token) => _session.start(
-    AuthToken(
-      accessToken: token.accessToken,
-      refreshToken: token.refreshToken,
-    ),
-  );
+  Future<void> startSession(TokenResponse token) =>
+      _session.start(token.toAuthToken());
 
   Future<void> clearSession() => _session.clear();
 }

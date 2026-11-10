@@ -7,6 +7,7 @@ import 'exceptions/api_exception_mapper.dart';
 import 'models/index.dart';
 import 'parser/json_data_parser.dart';
 import 'parser/json_parser.dart';
+import 'utils/dio_factory.dart';
 
 class DioApiClient({
   required String baseUrl,
@@ -14,11 +15,7 @@ class DioApiClient({
   JsonParser? jsonParser,
   dio.Dio? httpClient,
 }) extends ApiClient {
-  static const Duration _connectTimeout = Duration(seconds: 10);
-  static const Duration _sendTimeout = Duration(seconds: 15);
-  static const Duration _receiveTimeout = Duration(seconds: 20);
-
-  final dio.Dio _dio = httpClient ?? _createClient(baseUrl);
+  final dio.Dio _dio = httpClient ?? DioFactory.create(baseUrl);
 
   this : super(jsonParser ?? JsonDataParser()) {
     if (authSession != null) _dio.interceptors.add(authSession.interceptor);
@@ -171,13 +168,4 @@ class DioApiClient({
       maxRedirects: options.maxRedirects,
     );
   }
-
-  static dio.Dio _createClient(String baseUrl) => dio.Dio(
-    dio.BaseOptions(
-      baseUrl: baseUrl,
-      connectTimeout: _connectTimeout,
-      sendTimeout: _sendTimeout,
-      receiveTimeout: _receiveTimeout,
-    ),
-  );
 }

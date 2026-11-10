@@ -9,3 +9,8 @@ sealed class TokenResponse with _$TokenResponse {
 
   factory fromJson(Map<String, dynamic> json) => _$TokenResponseFromJson(json);
 }
+
+extension TokenResponseX on TokenResponse {
+  AuthToken toAuthToken() =>
+      AuthToken(accessToken: accessToken, refreshToken: refreshToken);
+}
