@@ -8,11 +8,7 @@ void main() async {
   await initializeApp();
 
   runApp(
-    EasyLocalization(
-      path: CodegenLoader.path,
-      supportedLocales: CodegenLoader.supportedLocales,
-      fallbackLocale: CodegenLoader.supportedLocales.last,
-      assetLoader: const CodegenLoader(),
+    TranslationProvider(
       child: FlutterGuidelinesApp(),
     ),
   );

@@ -1,7 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:intl/intl.dart';
 
 abstract final class DateFormatConstants() {
-  static DateFormat defaultDateFormat = DateFormat('EE MM/dd/yyyy', 'en');
-  static DateFormat defaultTimeFormat = DateFormat('hh:mm a', 'en');
-  static DateFormat fullDateFormat = DateFormat('EE, MM/dd/yyyy hh:mm a', 'en');
+  static DateFormat get defaultDate => DateFormat('EE MM/dd/yyyy');
+  static DateFormat get defaultTime => DateFormat('hh:mm a');
+  static DateFormat get fullDat => DateFormat('EE, MM/dd/yyyy hh:mm a');
+
+  static final DateFormat payload = DateFormat('yyyy-MM-dd', 'en');
 }

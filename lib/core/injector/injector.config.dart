@@ -14,6 +14,8 @@ import 'package:flutter_guidelines/data/repositories/auth_repository.dart'
     as _i776;
 import 'package:flutter_guidelines/data/repositories/chats_repository.dart'
     as _i148;
+import 'package:flutter_guidelines/data/repositories/localization_repository.dart'
+    as _i755;
 import 'package:flutter_guidelines/data/repositories/posts_repository.dart'
     as _i1049;
 import 'package:flutter_guidelines/data/repositories/user_repository.dart'
@@ -21,6 +23,8 @@ import 'package:flutter_guidelines/data/repositories/user_repository.dart'
 import 'package:flutter_guidelines/data/services/index.dart' as _i349;
 import 'package:flutter_guidelines/domain/models/index.dart' as _i595;
 import 'package:flutter_guidelines/domain/repositories/index.dart' as _i64;
+import 'package:flutter_guidelines/presentation/blocs/locale/locale_cubit.dart'
+    as _i939;
 import 'package:flutter_guidelines/presentation/blocs/session/session_bloc.dart'
     as _i694;
 import 'package:flutter_guidelines/presentation/blocs/user/user_bloc.dart'
@@ -37,8 +41,43 @@ import 'package:flutter_guidelines/presentation/screens/main/messages/posts/post
     as _i830;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:persistent_storage/persistent_storage.dart' as _i819;
 
 extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of main-scope dependencies inside of GetIt
+  _i174.GetIt init({
+    String? environment,
+    _i526.EnvironmentFilter? environmentFilter,
+  }) {
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.lazySingleton<_i365.UserRepository>(
+      () => _i365.UserRepository(gh<_i595.UserData>(), gh<_i349.UserService>()),
+    );
+    gh.lazySingleton<_i1049.PostsRepository>(
+      () => _i1049.PostsRepository(gh<_i349.PostsService>()),
+      dispose: (i) => i.close(),
+    );
+    gh.factory<_i1061.DrawerBloc>(
+      () => _i1061.DrawerBloc(gh<_i64.PostsRepository>()),
+    );
+    gh.factory<_i830.PostsBloc>(
+      () => _i830.PostsBloc(gh<_i64.PostsRepository>()),
+    );
+    gh.lazySingleton<_i148.ChatsRepository>(
+      () => _i148.ChatsRepository(gh<_i349.ChatsService>()),
+    );
+    gh.factoryParam<_i233.PostFormBloc, _i595.Post?, dynamic>(
+      (initial, _) => _i233.PostFormBloc(initial, gh<_i64.PostsRepository>()),
+    );
+    gh.factory<_i73.ChatsBloc>(
+      () => _i73.ChatsBloc(gh<_i64.ChatsRepository>()),
+    );
+    gh.lazySingleton<_i492.UserBloc>(
+      () => _i492.UserBloc(gh<_i64.UserRepository>()),
+    );
+    return this;
+  }
+
   // initializes the registration of app-scope dependencies inside of GetIt
   _i174.GetIt initAppScope({_i174.ScopeDisposeFunc? dispose}) {
     return _i526.GetItHelper(this).initScope(
@@ -51,6 +90,12 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i349.SessionService>(),
           ),
         );
+        gh.lazySingleton<_i755.LocalizationRepository>(
+          () => _i755.LocalizationRepository(gh<_i819.PersistentStorage>()),
+        );
+        gh.lazySingleton<_i939.LocaleCubit>(
+          () => _i939.LocaleCubit(gh<_i64.LocalizationRepository>()),
+        );
         gh.factory<_i694.SessionBloc>(
           () => _i694.SessionBloc(gh<_i64.AuthRepository>()),
         );
@@ -59,39 +104,5 @@ extension GetItInjectableX on _i174.GetIt {
         );
       },
     );
-  }
-
-  // initializes the registration of main-scope dependencies inside of GetIt
-  _i174.GetIt init({
-    String? environment,
-    _i526.EnvironmentFilter? environmentFilter,
-  }) {
-    final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.lazySingleton<_i148.ChatsRepository>(
-      () => _i148.ChatsRepository(gh<_i349.ChatsService>()),
-    );
-    gh.lazySingleton<_i1049.PostsRepository>(
-      () => _i1049.PostsRepository(gh<_i349.PostsService>()),
-      dispose: (i) => i.close(),
-    );
-    gh.lazySingleton<_i365.UserRepository>(
-      () => _i365.UserRepository(gh<_i595.UserData>(), gh<_i349.UserService>()),
-    );
-    gh.factory<_i73.ChatsBloc>(
-      () => _i73.ChatsBloc(gh<_i64.ChatsRepository>()),
-    );
-    gh.lazySingleton<_i492.UserBloc>(
-      () => _i492.UserBloc(gh<_i64.UserRepository>()),
-    );
-    gh.factoryParam<_i233.PostFormBloc, _i595.Post?, dynamic>(
-      (initial, _) => _i233.PostFormBloc(initial, gh<_i64.PostsRepository>()),
-    );
-    gh.factory<_i1061.DrawerBloc>(
-      () => _i1061.DrawerBloc(gh<_i64.PostsRepository>()),
-    );
-    gh.factory<_i830.PostsBloc>(
-      () => _i830.PostsBloc(gh<_i64.PostsRepository>()),
-    );
-    return this;
   }
 }
