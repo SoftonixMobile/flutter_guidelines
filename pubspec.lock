@@ -335,22 +335,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
-  easy_localization:
-    dependency: "direct main"
-    description:
-      name: easy_localization
-      sha256: "2ccdf9db8fe4d9c5a75c122e6275674508fd0f0d49c827354967b8afcc56bbed"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.8"
-  easy_logger:
-    dependency: transitive
-    description:
-      name: easy_logger
-      sha256: c764a6e024846f33405a2342caf91c62e357c24b02c04dbc712ef232bf30ffb7
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   equatable:
     dependency: transitive
     description:
@@ -684,7 +668,7 @@ packages:
     source: hosted
     version: "3.1.3"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "1ca20c894b1717686a2319b8548763d812bc0aabdac580420a44c5178c57a867"
@@ -955,6 +939,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  persistent_storage:
+    dependency: "direct main"
+    description:
+      path: "packages/storage/persistent_storage"
+      relative: true
+    source: path
+    version: "0.1.0+1"
   petitparser:
     dependency: transitive
     description:
@@ -1050,6 +1041,14 @@ packages:
       relative: true
     source: path
     version: "0.1.0+1"
+  serial_csv:
+    dependency: transitive
+    description:
+      name: serial_csv
+      sha256: "2d62bb70cb3ce7251383fc86ea9aae1298ab1e57af6ef4e93b6a9751c5c268dd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.2"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1143,6 +1142,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  slang:
+    dependency: "direct main"
+    description:
+      name: slang
+      sha256: "6091c2b4cd9f663080ede24fde6bcb9ee43f9fad1f9eaa66e2801eee47684e24"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.19.2"
+  slang_flutter:
+    dependency: "direct main"
+    description:
+      name: slang_flutter
+      sha256: "2348a39432c48d7c890a2a1e3409b9faae3e49f117fe56d390d4236de8d064f4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.19.0"
   source_gen:
     dependency: transitive
     description:
@@ -1192,7 +1207,7 @@ packages:
     source: hosted
     version: "1.12.2"
   storage:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/storage/storage"
       relative: true
@@ -1230,14 +1245,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
-  stx_easy_localization_generator:
-    dependency: "direct main"
-    description:
-      name: stx_easy_localization_generator
-      sha256: "82e4e4564a7e9e1fa56d1c0ca046b6b08d295a5f3789eb4ba80ed9ef30990fe4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   stx_flutter_form_bloc:
     dependency: "direct main"
     description:

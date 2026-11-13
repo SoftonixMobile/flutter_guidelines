@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:intl/intl.dart';
 
 abstract final class AppDateFormats() {
   static final date = DateFormat('EE MM/dd/yyyy', 'en');
