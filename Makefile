@@ -21,8 +21,11 @@ watch:
 	$(DART) run build_runner watch --delete-conflicting-outputs
 
 lang:
-	$(DART) run stx_easy_localization_generator:generate -O lib/presentation/localization
-	$(DART) run stx_easy_localization_generator:generate -f keys -O lib/presentation/localization -o locale_keys.g.dart
+	$(DART) run slang
+	$(DART) run slang normalize
+
+analyze-lang:
+	$(DART) run slang analyze
 
 sort:
 	$(DART) run tidy_imports

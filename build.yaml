@@ -52,3 +52,22 @@ targets:
         generate_for:
           include:
             - lib/core/injector/injector.dart
+      slang_build_runner:
+        options:
+          base_locale: en
+          fallback_strategy: none
+          input_directory: resources/langs
+          input_file_pattern: .json
+          output_directory: lib/presentation/localization
+          output_file_name: translations.g.dart
+          translate_var: tr
+          namespaces: true
+          translation_class_visibility: private
+          key_case: camel
+          timestamp: false
+          statistics: false
+          key_map_case: null
+          translation_overrides: false
+          flat_map: false
+          param_case: camel
+          generate_enum: false
