@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flutter_guidelines"
+    namespace = "com.softonix.flutter_guidelines"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -16,7 +16,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.flutter_guidelines"
+        applicationId = "com.softonix.flutter_guidelines"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
