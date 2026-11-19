@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:intl/intl.dart';
 
 import 'package:flutter_guidelines/domain/repositories/index.dart';
 import 'package:flutter_guidelines/presentation/localization/index.dart';
@@ -38,6 +39,7 @@ class LocaleCubit(final LocalizationRepository _localizationRepository)
 
   Future<void> _apply(AppLocale locale) async {
     await LocaleSettings.setLocale(locale);
+    Intl.defaultLocale = locale.languageTag;
 
     emit(state.copyWith(current: locale));
   }
