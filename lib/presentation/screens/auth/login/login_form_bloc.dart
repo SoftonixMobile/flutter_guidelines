@@ -20,7 +20,7 @@ class LoginFormBloc(final AuthRepository _authRepository)
 
     password = TextFieldBloc(
       required: true,
-      customValidators: {FieldValidators.passwordMin6Chars},
+      customValidators: {FieldValidators.minLength(6)},
       rules: {ValidationType.onBlur},
     );
 

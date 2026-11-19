@@ -1,0 +1,13 @@
+{
+  "languageLabel": "Langue",
+  "language": {
+    "english": "Anglaise",
+    "french": "Français"
+  },
+  "validators": {
+    "required": "Ce champ est obligatoire",
+    "email": "Adresse e-mail invalide",
+    "minLength": "Doit contenir au moins $min caractères",
+    "maxLength": "Doit contenir au plus $max caractères"
+  }
+}

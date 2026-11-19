@@ -11,13 +11,6 @@
 
 import 'package:flutter/widgets.dart';
 
-class $ResourcesGen {
-  const $ResourcesGen();
-
-  /// Directory path: resources/langs
-  $ResourcesLangsGen get langs => const $ResourcesLangsGen();
-}
-
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -32,22 +25,8 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [logoShort, logo];
 }
 
-class $ResourcesLangsGen {
-  const $ResourcesLangsGen();
-
-  /// File path: resources/langs/en-US.json
-  String get enUS => 'resources/langs/en-US.json';
-
-  /// File path: resources/langs/fr-FR.json
-  String get frFR => 'resources/langs/fr-FR.json';
-
-  /// List of all assets
-  List<String> get values => [enUS, frFR];
-}
-
 abstract final class Assets {
   static const $AssetsImagesGen images = $AssetsImagesGen();
-  static const $ResourcesGen resources = $ResourcesGen();
 }
 
 class AssetGenImage {
