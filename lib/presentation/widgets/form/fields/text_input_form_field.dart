@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 
+import 'package:flutter_guidelines/presentation/localization/index.dart';
+import 'package:flutter_guidelines/presentation/utils/index.dart';
+
 class const TextInputFormField({
   super.key,
   required final TextFieldBloc fieldBloc,
@@ -37,6 +40,8 @@ class _TextInputFormFieldState() extends State<TextInputFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final tr = context.tr;
+
     return BlocBuilder<TextFieldBloc, TextFieldBlocState>(
       bloc: widget.fieldBloc,
       builder: (context, state) {
@@ -55,6 +60,11 @@ class _TextInputFormFieldState() extends State<TextInputFormField> {
               extentOffset: offset,
             );
         }
+
+        final errorText =
+            FieldError.decode(state.displayError)?.localize(tr) ??
+            state.displayError;
+
         return Focus(
           onFocusChange: (value) {
             if (!value) {
@@ -74,7 +84,7 @@ class _TextInputFormFieldState() extends State<TextInputFormField> {
             },
             decoration: InputDecoration(
               hintText: widget.hintText,
-              errorText: state.displayError,
+              errorText: errorText,
               helperText: '',
               helperMaxLines: 1,
               errorMaxLines: 1,

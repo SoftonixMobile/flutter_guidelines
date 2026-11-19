@@ -51,6 +51,7 @@ class Translations$common$en {
 	String get languageLabel => 'Language';
 
 	late final Translations$common$language$en language = Translations$common$language$en._(_root);
+	late final Translations$common$validators$en validators = Translations$common$validators$en._(_root);
 }
 
 // Path: common.language
@@ -66,4 +67,25 @@ class Translations$common$language$en {
 
 	/// en: 'French'
 	String get french => 'French';
+}
+
+// Path: common.validators
+class Translations$common$validators$en {
+	Translations$common$validators$en._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Field is required'
+	String get required => 'Field is required';
+
+	/// en: 'Email is invalid'
+	String get email => 'Email is invalid';
+
+	/// en: 'Must be at least $min characters'
+	String minLength({required Object min}) => 'Must be at least ${min} characters';
+
+	/// en: 'Must be at most $max characters'
+	String maxLength({required Object max}) => 'Must be at most ${max} characters';
 }

@@ -3,5 +3,11 @@
   "language": {
     "english": "English",
     "french": "French"
+  },
+  "validators": {
+    "required": "Field is required",
+    "email": "Email is invalid",
+    "minLength": "Must be at least $min characters",
+    "maxLength": "Must be at most $max characters"
   }
 }

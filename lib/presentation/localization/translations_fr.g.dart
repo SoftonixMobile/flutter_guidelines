@@ -45,6 +45,7 @@ class _Translations$common$fr implements Translations$common$en {
 	// Translations
 	@override String get languageLabel => 'Langue';
 	@override late final _Translations$common$language$fr language = _Translations$common$language$fr._(_root);
+	@override late final _Translations$common$validators$fr validators = _Translations$common$validators$fr._(_root);
 }
 
 // Path: common.language
@@ -56,4 +57,17 @@ class _Translations$common$language$fr implements Translations$common$language$e
 	// Translations
 	@override String get english => 'Anglaise';
 	@override String get french => 'Français';
+}
+
+// Path: common.validators
+class _Translations$common$validators$fr implements Translations$common$validators$en {
+	_Translations$common$validators$fr._(this._root);
+
+	final TranslationsFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get required => 'Ce champ est obligatoire';
+	@override String get email => 'Adresse e-mail invalide';
+	@override String minLength({required Object min}) => 'Doit contenir au moins ${min} caractères';
+	@override String maxLength({required Object max}) => 'Doit contenir au plus ${max} caractères';
 }
