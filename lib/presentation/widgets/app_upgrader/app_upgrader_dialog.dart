@@ -13,18 +13,8 @@ class const AppUpgraderDialog({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return TextButtonTheme(
-      // Making the Material dialog use the same colors
-      //  as Cupertino for consistency
-      data: TextButtonThemeData(
-        style: theme.textButtonTheme.style?.copyWith(
-          foregroundColor: const WidgetStatePropertyAll(
-            CupertinoColors.systemBlue,
-          ),
-        ),
-      ),
+      data: const TextButtonThemeData(),
       child: UpgradeAlert(
         navigatorKey: navigatorKey,
         dialogStyle: Platform.isIOS
