@@ -8,17 +8,23 @@ analyzer:
     strict-casts: false
     strict-inference: false
     strict-raw-types: false
-  
-  errors: 
+
+  errors:
     invalid_annotation_target: false
 
   exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
     - bricks/**
-    - '**/*.g.dart'
-    - '**/*.config.dart'
-    - '**/*.freezed.dart'
-    - '**/*.gen.dart'
-    #- '**/*.gr.dart'
+    - "**/*.g.dart"
+    - "**/*.config.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"
 
 linter:
   rules:
@@ -32,3 +38,7 @@ linter:
     avoid_catches_without_on_clauses: false
     lines_longer_than_80_chars: false
     specify_nonobvious_property_types: false
+    document_ignores: false
+    avoid_positional_boolean_parameters: false
+    prefer_const_constructors_in_immutables: false
+    use_primary_constructors: true

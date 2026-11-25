@@ -1,0 +1,60 @@
+import 'dart:async';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
+
+import 'package:{{project_name}}/core/index.dart';
+import 'package:{{project_name}}/domain/models/index.dart';
+import 'package:{{project_name}}/presentation/router/index.dart';
+import 'package:{{project_name}}/presentation/widgets/index.dart';
+
+import 'post_form_bloc.dart';
+
+@RoutePage()
+class const PostFormScreen({
+  super.key,
+  final Post? post,
+  final void Function(Post, bool)? onSuccess,
+}) extends StatelessWidget implements AutoRouteWrapper {
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    final formBloc = getIt<PostFormBloc>(param1: post);
+
+    return BlocProvider(
+      create: (context) => formBloc,
+      child: this,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final formBloc = context.read<PostFormBloc>();
+
+    return CustomFormBlocListener<PostFormBloc, Post>(
+      formBloc: formBloc,
+      onSuccess: (_, state) {
+        onSuccess?.call(state.response!, formBloc.isEditing);
+
+        unawaited(context.maybePop());
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Post Modal'),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              TextInputFormField(
+                fieldBloc: formBloc.name,
+              ),
+              ElevatedButton(
+                onPressed: formBloc.submit,
+                child: const Text('Submit'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

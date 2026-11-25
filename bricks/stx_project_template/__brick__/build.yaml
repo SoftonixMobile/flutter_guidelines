@@ -5,11 +5,11 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/models/**.dart
-            - lib/**/models.dart
-            - lib/**_event.dart
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
+            - lib/data/models/**.dart
+            - lib/domain/models/**.dart
+            - lib/presentation/**_event.dart
+            - lib/presentation/**_bloc.dart
+            - lib/presentation/**_cubit.dart
         options:
           format: true
           makeCollectionsUnmodifiable: false
@@ -24,32 +24,50 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/models/**.dart
-            - lib/**/models.dart
+            - lib/data/models/**.dart
+            - lib/domain/models/**.dart
       auto_route_generator:auto_route_generator:
         enabled: true
         generate_for:
           include:
-            - lib/router/router.dart
-            - lib/**_screen.dart
+            - lib/presentation/router/router.dart
+            - lib/presentation/**_screen.dart
       auto_route_generator:auto_router_generator:
         enabled: true
         generate_for:
           include:
-            - lib/router/router.dart
+            - lib/presentation/router/router.dart
       flutter_gen_runner:
         enabled: true
       injectable_generator:injectable_builder:
         enabled: true
         generate_for:
           include:
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
-            - lib/**_repository.dart
-            - lib/**_provider.dart
-            - lib/**_client.dart
+            - lib/data/repositories/**
+            - lib/data/services/**
+            - lib/presentation/**_bloc.dart
+            - lib/presentation/**_cubit.dart
       injectable_generator:injectable_config_builder:
         enabled: true
         generate_for:
           include:
-            - lib/services/injector/injector.dart
+            - lib/core/injector/injector.dart
+      slang_build_runner:
+        options:
+          base_locale: en
+          fallback_strategy: none
+          input_directory: resources/langs
+          input_file_pattern: .json
+          output_directory: lib/presentation/localization
+          output_file_name: translations.g.dart
+          translate_var: tr
+          namespaces: true
+          translation_class_visibility: private
+          key_case: camel
+          timestamp: false
+          statistics: false
+          key_map_case: null
+          translation_overrides: false
+          flat_map: false
+          param_case: camel
+          generate_enum: false

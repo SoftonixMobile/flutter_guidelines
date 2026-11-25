@@ -1,0 +1,18 @@
+name: api_client
+description: Generic HTTP client on top of Dio with bearer token auth, error mapping and JSON parsing.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.0
+
+dependencies:
+  dio: ^5.11.1
+  fresh_dio: ^0.6.0
+  meta: ^1.16.0
+  storage:
+    path: ../storage/storage
+
+dev_dependencies:
+  lints: ^6.1.0
+  test: ^1.32.0

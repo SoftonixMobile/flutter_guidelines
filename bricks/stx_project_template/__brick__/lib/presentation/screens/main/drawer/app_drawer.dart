@@ -1,0 +1,118 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_ui/material_ui.dart';
+
+import 'package:{{project_name}}/core/index.dart';
+import 'package:{{project_name}}/presentation/blocs/session/session_bloc.dart';
+import 'package:{{project_name}}/presentation/theme/index.dart';
+
+import 'drawer_bloc.dart';
+import 'language_dropdown.dart';
+
+class const AppDrawer({super.key}) extends StatelessWidget {
+  Widget _buildMenuItem({
+    required String text,
+    required IconData iconData,
+    required AppColorsTheme colors,
+    required AppTypographyTheme typography,
+  }) {
+    return ListTile(
+      leading: Icon(
+        iconData,
+        color: colors.textSecondary,
+      ),
+      title: Text(
+        text,
+        style: typography.bodySmall.copyWith(
+          color: colors.textSecondary,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
+    final colors = context.theme.colorsTheme;
+    final typography = context.theme.typographyTheme;
+
+    return BlocProvider(
+      create: (context) => getIt<DrawerBloc>()..lazyLoad(),
+      child: Container(
+        width: screenSize.width * 0.75,
+        height: screenSize.height,
+        color: colors.surface,
+        child: Drawer(
+          elevation: 3,
+          child: SafeArea(
+            child: Container(
+              padding: const .symmetric(vertical: 10),
+              width: double.infinity,
+              height: screenSize.height,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .start,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        backgroundColor: colors.textPrimary,
+                        backgroundImage: AssetImage(
+                          Assets.images.logoShort.path,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(height: 20),
+                  Padding(
+                    padding: const .only(top: 20),
+                    child: Column(
+                      children: [
+                        _buildMenuItem(
+                          text: 'Change Password',
+                          iconData: FontAwesomeIcons.lock.data,
+                          colors: colors,
+                          typography: typography,
+                        ),
+                        const LanguageDropdown(),
+                        GestureDetector(
+                          child: _buildMenuItem(
+                            text: 'Sign Out',
+                            iconData: FontAwesomeIcons.rightFromBracket.data,
+                            colors: colors,
+                            typography: typography,
+                          ),
+                          onTap: () {
+                            context.read<SessionBloc>().add(
+                              const SessionEvent.signOut(),
+                            );
+                          },
+                        ),
+                        BlocBuilder<DrawerBloc, DrawerState>(
+                          builder: (context, state) {
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: state.data.length,
+                              itemBuilder: (context, index) {
+                                final post = state.data[index];
+
+                                return ListTile(
+                                  title: Text(post.name),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

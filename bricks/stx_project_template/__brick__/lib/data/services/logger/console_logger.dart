@@ -1,0 +1,26 @@
+// Required for console
+// ignore_for_file: avoid_print
+
+import 'package:{{project_name}}/core/logger/logger.dart';
+
+class ConsoleLogger() extends Logger {
+  @override
+  void log(String message, {String? category}) {
+    print(message);
+  }
+
+  @override
+  void logInfo(String message) {
+    print('INFO:$message');
+  }
+
+  @override
+  void logWarning(String message) {
+    print('WARNING: $message');
+  }
+
+  @override
+  void logError(Object exception, [dynamic stackTrace]) {
+    print('ERROR: $exception');
+  }
+}

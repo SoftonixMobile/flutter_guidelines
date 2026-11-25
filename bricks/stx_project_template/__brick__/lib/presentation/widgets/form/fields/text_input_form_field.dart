@@ -1,0 +1,97 @@
+import 'dart:math';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
+
+import 'package:{{project_name}}/presentation/localization/index.dart';
+import 'package:{{project_name}}/presentation/utils/index.dart';
+
+class const TextInputFormField({
+  super.key,
+  required final TextFieldBloc fieldBloc,
+  final String label = '',
+  final String? hintText,
+  final bool isObscureText = false,
+  final FocusNode? fieldFocusNode,
+  final FocusNode? nextFieldFocusNode,
+  final VoidCallback? onSubmit,
+}) extends StatefulWidget {
+  @override
+  State<TextInputFormField> createState() => _TextInputFormFieldState();
+}
+
+class _TextInputFormFieldState() extends State<TextInputFormField> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = TextEditingController(text: widget.fieldBloc.value);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final tr = context.tr;
+
+    return BlocBuilder<TextFieldBloc, TextFieldBlocState>(
+      bloc: widget.fieldBloc,
+      builder: (context, state) {
+        if (_controller.text != state.value) {
+          final previousSelection = _controller.selection;
+
+          final offset = min(
+            previousSelection.baseOffset,
+            state.toString().length,
+          );
+
+          _controller
+            ..text = state.toString()
+            ..selection = previousSelection.copyWith(
+              baseOffset: offset,
+              extentOffset: offset,
+            );
+        }
+
+        final errorText =
+            FieldError.decode(state.displayError)?.localize(tr) ??
+            state.displayError;
+
+        return Focus(
+          onFocusChange: (value) {
+            if (!value) {
+              widget.fieldBloc.focusChanged();
+            }
+          },
+          child: TextField(
+            controller: _controller,
+            autocorrect: false,
+            textInputAction: .next,
+            focusNode: widget.fieldFocusNode,
+            obscureText: widget.isObscureText,
+            onChanged: widget.fieldBloc.changeValue,
+            onSubmitted: (value) {
+              widget.nextFieldFocusNode?.requestFocus();
+              widget.onSubmit?.call();
+            },
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              errorText: errorText,
+              helperText: '',
+              helperMaxLines: 1,
+              errorMaxLines: 1,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

@@ -12,12 +12,15 @@
 #mason
 .mason/
 
-#uncomment in a real project
-#*.env
+# environment files (see .env.example)
+.env*
+!.env.example
+
+# keep mason brick template env files tracked
+!bricks/**/__brick__/.env*
 
 # FVM Version Cache
 .fvm/
-.fvmrc
 
 # IntelliJ related
 *.iml
@@ -141,3 +144,8 @@ app.*.symbols
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
+
+# Claude Code
+.claude/*
+!.claude/skills/
+!.claude/skills/**

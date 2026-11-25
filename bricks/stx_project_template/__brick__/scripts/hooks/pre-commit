@@ -4,12 +4,11 @@
 
 # Sort imports
 
-echo -e "Sorting imports...\n"
+echo -e "Checking imports...\n"
 
-output=$(dart run import_sorter:main)
-echo "$output"
-
-if ! echo "$output" | grep -q "Sorted 0 files"; then
+if ! dart run tidy_imports --exit-if-changed; then
+  echo -e "\nSorting imports...\n"
+  dart run tidy_imports
   echo -e "\nOops, some imports weren't sorted. Check your unstaged changes or try to resolve the issues manually.\n"
   exit 1
 fi

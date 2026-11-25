@@ -1,0 +1,26 @@
+import 'dart:async';
+
+import 'package:injectable/injectable.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
+
+import 'package:{{project_name}}/domain/models/index.dart';
+import 'package:{{project_name}}/domain/repositories/index.dart';
+
+typedef UserState = NetworkState<UserProfile>;
+
+@lazySingleton
+class UserBloc(
+  final UserRepository _userRepository,
+) extends NetworkBloc<UserProfile, UserState> {
+  this : super(const UserState(data: UserProfile()));
+
+  @override
+  Future<UserProfile> onLoadAsync() async {
+    return await _userRepository.getUserProfile(refresh: true);
+  }
+
+  @override
+  FutureOr<UserProfile> onLazyLoad() {
+    return _userRepository.getUserProfile();
+  }
+}

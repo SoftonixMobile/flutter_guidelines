@@ -1,0 +1,108 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
+
+// **************************************************************************
+// InjectableConfigGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+
+import 'package:{{project_name}}/data/repositories/auth_repository.dart'
+    as _i776;
+import 'package:{{project_name}}/data/repositories/chats_repository.dart'
+    as _i148;
+import 'package:{{project_name}}/data/repositories/localization_repository.dart'
+    as _i755;
+import 'package:{{project_name}}/data/repositories/posts_repository.dart'
+    as _i1049;
+import 'package:{{project_name}}/data/repositories/user_repository.dart'
+    as _i365;
+import 'package:{{project_name}}/data/services/index.dart' as _i349;
+import 'package:{{project_name}}/domain/models/index.dart' as _i595;
+import 'package:{{project_name}}/domain/repositories/index.dart' as _i64;
+import 'package:{{project_name}}/presentation/blocs/locale/locale_cubit.dart'
+    as _i939;
+import 'package:{{project_name}}/presentation/blocs/session/session_bloc.dart'
+    as _i694;
+import 'package:{{project_name}}/presentation/blocs/user/user_bloc.dart'
+    as _i492;
+import 'package:{{project_name}}/presentation/screens/auth/login/login_form_bloc.dart'
+    as _i175;
+import 'package:{{project_name}}/presentation/screens/main/drawer/drawer_bloc.dart'
+    as _i1061;
+import 'package:{{project_name}}/presentation/screens/main/messages/chats/bloc/chats_bloc.dart'
+    as _i73;
+import 'package:{{project_name}}/presentation/screens/main/messages/posts/pages/post_form_bloc.dart'
+    as _i233;
+import 'package:{{project_name}}/presentation/screens/main/messages/posts/posts_bloc.dart'
+    as _i830;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:persistent_storage/persistent_storage.dart' as _i819;
+
+extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of main-scope dependencies inside of GetIt
+  _i174.GetIt init({
+    String? environment,
+    _i526.EnvironmentFilter? environmentFilter,
+  }) {
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    gh.lazySingleton<_i365.UserRepository>(
+      () => _i365.UserRepository(gh<_i595.UserData>(), gh<_i349.UserService>()),
+    );
+    gh.lazySingleton<_i1049.PostsRepository>(
+      () => _i1049.PostsRepository(gh<_i349.PostsService>()),
+      dispose: (i) => i.close(),
+    );
+    gh.factory<_i1061.DrawerBloc>(
+      () => _i1061.DrawerBloc(gh<_i64.PostsRepository>()),
+    );
+    gh.factory<_i830.PostsBloc>(
+      () => _i830.PostsBloc(gh<_i64.PostsRepository>()),
+    );
+    gh.lazySingleton<_i148.ChatsRepository>(
+      () => _i148.ChatsRepository(gh<_i349.ChatsService>()),
+    );
+    gh.factoryParam<_i233.PostFormBloc, _i595.Post?, dynamic>(
+      (initial, _) => _i233.PostFormBloc(initial, gh<_i64.PostsRepository>()),
+    );
+    gh.factory<_i73.ChatsBloc>(
+      () => _i73.ChatsBloc(gh<_i64.ChatsRepository>()),
+    );
+    gh.lazySingleton<_i492.UserBloc>(
+      () => _i492.UserBloc(gh<_i64.UserRepository>()),
+    );
+    return this;
+  }
+
+  // initializes the registration of app-scope dependencies inside of GetIt
+  _i174.GetIt initAppScope({_i174.ScopeDisposeFunc? dispose}) {
+    return _i526.GetItHelper(this).initScope(
+      'app',
+      dispose: dispose,
+      init: (_i526.GetItHelper gh) {
+        gh.lazySingleton<_i776.AuthRepository>(
+          () => _i776.AuthRepository(
+            gh<_i349.AuthService>(),
+            gh<_i349.SessionService>(),
+          ),
+        );
+        gh.lazySingleton<_i755.LocalizationRepository>(
+          () => _i755.LocalizationRepository(gh<_i819.PersistentStorage>()),
+        );
+        gh.lazySingleton<_i939.LocaleCubit>(
+          () => _i939.LocaleCubit(gh<_i64.LocalizationRepository>()),
+        );
+        gh.factory<_i694.SessionBloc>(
+          () => _i694.SessionBloc(gh<_i64.AuthRepository>()),
+        );
+        gh.factory<_i175.LoginFormBloc>(
+          () => _i175.LoginFormBloc(gh<_i64.AuthRepository>()),
+        );
+      },
+    );
+  }
+}

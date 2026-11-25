@@ -1,0 +1,40 @@
+import 'dart:async';
+
+import 'package:meta/meta.dart';
+
+abstract class RepositoryBase<T>({required T initialValue}) {
+  T _data;
+  bool _isDataLoaded = false;
+
+  this : _data = initialValue;
+
+  T get data => _data;
+  bool get isDataLoaded => _isDataLoaded;
+
+  @mustCallSuper
+  bool shouldRefreshData() => !_isDataLoaded;
+
+  @protected
+  FutureOr<T> load(Future<T> Function() loadCallback, {bool refresh = false}) {
+    if (refresh || shouldRefreshData()) {
+      return this.refresh(loadCallback);
+    }
+
+    return _data;
+  }
+
+  @protected
+  Future<T> refresh(Future<T> Function() loadCallback) async {
+    final loadedValue = await loadCallback();
+    _isDataLoaded = true;
+
+    emit(loadedValue);
+
+    return loadedValue;
+  }
+
+  @mustCallSuper
+  void emit(T value) {
+    _data = value;
+  }
+}

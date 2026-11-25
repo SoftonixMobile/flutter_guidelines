@@ -1,0 +1,35 @@
+import 'dart:async';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:stx_bloc_base/stx_bloc_base.dart';
+
+import 'package:{{project_name}}/domain/models/index.dart';
+import 'package:{{project_name}}/domain/repositories/index.dart';
+
+part 'chats_event.dart';
+part 'chats_state.dart';
+part 'chats_bloc.freezed.dart';
+
+@injectable
+class ChatsBloc(final ChatsRepository _chatsRepository)
+    extends Bloc<ChatsEvent, ChatsState> {
+  this : super(const ChatsState()) {
+    on<_Load>(_load);
+  }
+
+  FutureOr<void> _load(_Load event, Emitter<ChatsState> emit) async {
+    emit(state.copyWith(status: .loading));
+
+    try {
+      final chats = await _chatsRepository.getChats();
+
+      emit(.success(chats));
+    } catch (e, stackTrace) {
+      addError(e, stackTrace);
+
+      emit(state.copyWith(status: .failure));
+    }
+  }
+}

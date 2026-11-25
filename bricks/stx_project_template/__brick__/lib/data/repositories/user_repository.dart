@@ -1,0 +1,24 @@
+import 'dart:async';
+
+import 'package:injectable/injectable.dart';
+import 'package:stx_repository/stx_repository.dart';
+
+import 'package:{{project_name}}/data/services/index.dart';
+import 'package:{{project_name}}/domain/models/index.dart';
+
+@lazySingleton
+class UserRepository(final UserData _userData, final UserService _userService)
+    extends RepositoryBase<UserProfile> {
+  this : super(initialValue: const UserProfile());
+
+  FutureOr<UserProfile> getUserProfile({bool refresh = false}) {
+    return load(_userService.getUserProfile, refresh: refresh);
+  }
+
+  @override
+  void emit(UserProfile value) {
+    _userData.userProfile = value;
+
+    return super.emit(value);
+  }
+}

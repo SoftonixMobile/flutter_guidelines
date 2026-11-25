@@ -1,48 +1,59 @@
-.PHONY: get upgrade build watch lang sort fix format lint refactor splash icon setup_hooks
+.PHONY: get upgrade build build_data watch lang sort fix format lint refactor splash icon setup_hooks
+
+# Use fvm when the project pins a Flutter version (.fvmrc) and fvm is installed
+FVM := $(if $(and $(wildcard .fvmrc),$(shell command -v fvm 2>/dev/null)),fvm )
+DART := $(FVM)dart
 
 get:
-	dart pub get
+	$(DART) pub get
 
 upgrade:
-	dart pub upgrade
+	$(DART) pub upgrade
 
 build:
-	dart run build_runner build --delete-conflicting-outputs
+	$(DART) run build_runner build --delete-conflicting-outputs
+
+build_data:
+	cd packages/app_api && $(DART) run build_runner build --delete-conflicting-outputs
+	$(DART) format packages/app_api/lib/src/injector/inject_package.module.dart
 
 watch:
-	dart run build_runner watch --delete-conflicting-outputs
+	$(DART) run build_runner watch --delete-conflicting-outputs
 
 lang:
-	dart run stx_easy_localization_generator:generate
-	dart run stx_easy_localization_generator:generate -f keys -o locale_keys.g.dart
+	$(DART) run slang
+	$(DART) run slang normalize
+
+analyze-lang:
+	$(DART) run slang analyze
 
 sort:
-	dart run import_sorter:main
+	$(DART) run tidy_imports
 
 fix:
-	dart fix --apply
+	$(DART) fix --apply
 
 format:
-	dart format .
+	$(DART) format bin lib packages test
+	make lang
 
 lint:
-	flutter analyze .
-	# flutter analyze --no-fatal-infos | grep -E "error •|warning •" || true
+	$(DART) analyze --fatal-infos .
+	# $(DART) analyze | grep -E "error -|warning -" || true
 
 refactor:
-	make upgrade
 	make build
 	make lang
 	make fix
-	# make format
+	make format
 	make sort
 	make lint
 
 splash:
-	dart run flutter_native_splash:create
+	$(DART) run flutter_native_splash:create
 
 icon:
-	dart run flutter_launcher_icons
+	$(DART) run flutter_launcher_icons
 
 setup_hooks:
 	sh scripts/setup-hooks.sh

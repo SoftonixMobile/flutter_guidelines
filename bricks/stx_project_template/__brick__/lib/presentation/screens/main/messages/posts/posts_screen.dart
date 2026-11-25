@@ -1,0 +1,83 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_ui/material_ui.dart';
+
+import 'package:{{project_name}}/core/index.dart';
+import 'package:{{project_name}}/presentation/router/index.dart';
+import 'package:{{project_name}}/presentation/theme/index.dart';
+
+import 'posts_bloc.dart';
+
+@RoutePage()
+class const PostsScreen({super.key})
+    extends StatelessWidget
+    implements AutoRouteWrapper {
+  @override
+  Widget wrappedRoute(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<PostsBloc>()..lazyLoad(),
+      child: this,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final typography = context.theme.typographyTheme;
+
+    final postsBloc = context.read<PostsBloc>();
+
+    return RefreshIndicator(
+      onRefresh: postsBloc.loadAsyncFuture,
+      child: CustomScrollView(
+        slivers: [
+          BlocBuilder<PostsBloc, PostsState>(
+            builder: (context, state) {
+              switch (state.status) {
+                case .initial:
+                case .loading:
+                  return const SliverFillRemaining(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                case .success:
+                  return SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final post = state.data[index];
+
+                        return GestureDetector(
+                          behavior: .opaque,
+                          onTap: () => context.pushRoute(
+                            PostFormRoute(
+                              post: post,
+                              onSuccess: (post, isEditing) {
+                                if (isEditing) {
+                                  postsBloc.editItem(post);
+                                } else {
+                                  postsBloc.addItem(post);
+                                }
+                              },
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const .all(8),
+                            child: Text(
+                              'Post ${post.name}',
+                              style: typography.bodySmall,
+                            ),
+                          ),
+                        );
+                      },
+                      childCount: state.data.length,
+                    ),
+                  );
+                case .failure:
+                  return const SliverFillRemaining(
+                    child: Center(child: Text('Something went wrong')),
+                  );
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
