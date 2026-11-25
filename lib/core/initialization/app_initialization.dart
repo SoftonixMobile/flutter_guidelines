@@ -8,7 +8,6 @@ import 'package:stx_flutter_form_bloc/stx_flutter_form_bloc.dart';
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/data/services/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/index.dart';
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/utils/index.dart';
 
 Future<void> initializeApp() async {
@@ -16,21 +15,17 @@ Future<void> initializeApp() async {
   final config = AppConfig.fromEnvironment();
 
   _initializeSplashScreen(widgetsBinding);
-  await _initializeLocalization();
 
   final logger = await _initializeLogger(config);
   _initializeCrashlytics(logger);
   _initializeBlocObserver(logger);
   await _initializeDependencies(config, logger);
+  await _initializeLocale();
   _initializeValidators();
 }
 
 void _initializeSplashScreen(WidgetsBinding widgetsBinding) {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-}
-
-Future<void> _initializeLocalization() {
-  return EasyLocalization.ensureInitialized();
 }
 
 Future<Logger> _initializeLogger(AppConfig config) async {
@@ -60,6 +55,10 @@ void _initializeBlocObserver(Logger logger) {
 
 Future<void> _initializeDependencies(AppConfig config, Logger logger) {
   return configureAppDependencies(config: config, logger: logger);
+}
+
+Future<void> _initializeLocale() {
+  return getIt<LocaleCubit>().restore();
 }
 
 void _initializeValidators() {

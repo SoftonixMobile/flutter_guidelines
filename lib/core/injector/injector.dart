@@ -3,6 +3,7 @@ import 'package:app_api/injector.dart';
 import 'package:app_api/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+import 'package:persistent_storage/persistent_storage.dart';
 import 'package:secure_storage/secure_storage.dart';
 
 import 'package:flutter_guidelines/core/config/app_config.dart';
@@ -33,7 +34,8 @@ Future<void> configureAppDependencies({
     ..registerSingleton(AppRouter())
     ..registerSingleton<Logger>(logger)
     ..registerSingleton<AuthSession>(authSession)
-    ..registerSingleton<ApiClient>(apiClient);
+    ..registerSingleton<ApiClient>(apiClient)
+    ..registerSingleton(PersistentStorage());
 
   await AppApiPackageModule().init(GetItHelper(getIt));
 

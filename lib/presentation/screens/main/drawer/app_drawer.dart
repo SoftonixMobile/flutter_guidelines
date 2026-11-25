@@ -4,10 +4,10 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 import 'package:flutter_guidelines/presentation/blocs/session/session_bloc.dart';
-import 'package:flutter_guidelines/presentation/localization/index.dart';
 import 'package:flutter_guidelines/presentation/theme/index.dart';
 
 import 'drawer_bloc.dart';
+import 'language_dropdown.dart';
 
 class const AppDrawer({super.key}) extends StatelessWidget {
   Widget _buildMenuItem({
@@ -75,22 +75,7 @@ class const AppDrawer({super.key}) extends StatelessWidget {
                           colors: colors,
                           typography: typography,
                         ),
-                        GestureDetector(
-                          child: _buildMenuItem(
-                            text: context.tr(LocaleKeys.languageName),
-                            iconData: FontAwesomeIcons.globe.data,
-                            colors: colors,
-                            typography: typography,
-                          ),
-                          onTap: () async {
-                            final newLocale =
-                                context.locale == context.supportedLocales[0]
-                                ? context.supportedLocales[1]
-                                : context.supportedLocales[0];
-
-                            await context.setLocale(newLocale);
-                          },
-                        ),
+                        const LanguageDropdown(),
                         GestureDetector(
                           child: _buildMenuItem(
                             text: 'Sign Out',

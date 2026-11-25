@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/core/index.dart';
 
-import 'blocs/session/session_bloc.dart';
+import 'blocs/index.dart';
 import 'localization/index.dart';
 import 'router/index.dart';
 import 'theme/index.dart';
@@ -35,12 +35,9 @@ class FlutterGuidelinesApp({super.key}) extends StatelessWidget {
             AutoRouteObserver(),
           ],
         ),
-        localizationsDelegates: [
-          ...context.localizationDelegates,
-          ...GlobalMaterialLocalizations.delegates,
-        ],
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
+        locale: TranslationProvider.of(context).flutterLocale,
+        supportedLocales: AppLocaleUtils.supportedLocales,
+        localizationsDelegates: GlobalMaterialLocalizations.delegates,
       ),
     );
   }
@@ -55,6 +52,9 @@ class const _AppStateWrapper({
       value: getIt<AppConfig>(),
       child: MultiBlocProvider(
         providers: [
+          BlocProvider.value(
+            value: getIt<LocaleCubit>(),
+          ),
           BlocProvider(
             create: (context) =>
                 getIt<SessionBloc>()..add(const SessionEvent.subscribe()),
