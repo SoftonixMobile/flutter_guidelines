@@ -8,8 +8,8 @@ Flutter mobile application template following Clean Architecture with BLoC patte
 
 ## Toolchain
 
-- Flutter pinned via FVM in `.fvmrc` (currently 3.47.7). Prefer `fvm flutter ...` / `fvm dart ...` locally.
-- Dart SDK `^3.13.0`, Flutter `^3.47.0`. Code uses Dart 3.13 **primary constructors** and **dot shorthands** (see Code Style).
+- Flutter pinned via FVM in `.fvmrc` (currently 3.50.1). Prefer `fvm flutter ...` / `fvm dart ...` locally.
+- Dart SDK `^3.14.0`, Flutter `^3.50.0`. Code uses Dart 3.13 **primary constructors** and **dot shorthands** (see Code Style).
 
 ## Common Commands
 
