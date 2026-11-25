@@ -1,3 +1,10 @@
+# 0.17.0
+
+- Upgrade to Flutter 3.50.1 (Dart 3.14.0).
+- Update dependencies (`upgrader` 14.0.0, `stx_flutter_form_bloc` 4.0.0, `material_ui` 1.11.1, `cupertino_ui` 1.1.7, `freezed`, `json_serializable`, `build_runner`, `tidy_imports` 2.7.0).
+- Remove `MaterialUiCompatibilityBridge`: no dependency needs the `flutter/material` theme or localizations any more.
+- Replace `BouncingWidget` in `LoginButton` with `FilledButton` and remove `bouncing_widget`.
+
 # 0.16.3
 
 - Migrate from `package:flutter/material.dart` / `package:flutter/cupertino.dart` to `material_ui` and `cupertino_ui`.
