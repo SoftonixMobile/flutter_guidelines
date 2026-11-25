@@ -18,14 +18,9 @@ class FlutterGuidelinesApp({super.key}) extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.getAppTheme(context),
         builder: (context, child) {
-          // Maps `material_ui` theme and localizations for dependencies
-          //  that still use `package:flutter/material.dart`.
-          // ignore: deprecated_member_use
-          return MaterialUiCompatibilityBridge(
-            child: AppUpgraderDialog(
-              navigatorKey: _appRouter.navigatorKey,
-              child: child,
-            ),
+          return AppUpgraderDialog(
+            navigatorKey: _appRouter.navigatorKey,
+            child: child,
           );
         },
         routerConfig: _appRouter.config(

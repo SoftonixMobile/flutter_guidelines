@@ -1,4 +1,3 @@
-import 'package:bouncing_widget/bouncing_widget.dart';
 import 'package:material_ui/material_ui.dart';
 
 import 'package:flutter_guidelines/theme/index.dart';
@@ -9,26 +8,18 @@ class const LoginButton({
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BouncingWidget(
-      duration: const Duration(milliseconds: 100),
+    return FilledButton(
       onPressed: onPressed,
-      child: Container(
-        height: 40,
-        decoration: const BoxDecoration(
-          color: AppColors.primary,
+      style: FilledButton.styleFrom(
+        minimumSize: const .fromHeight(40),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+        textStyle: const TextStyle(fontSize: 15, fontWeight: .w500),
+        shape: const RoundedRectangleBorder(
           borderRadius: .all(.circular(6)),
         ),
-        child: const Center(
-          child: Text(
-            'Login',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: .w500,
-              color: Colors.white,
-            ),
-          ),
-        ),
       ),
+      child: const Text('Login'),
     );
   }
 }
